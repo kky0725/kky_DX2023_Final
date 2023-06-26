@@ -94,6 +94,7 @@ using namespace Microsoft::WRL;
 //Animation
 #include "Framework/Animation/Action.h"
 
+
 //Object
 #include "Object/Bagic/Quad.h"
 #include "Object/Bagic/Sprite.h"
@@ -105,8 +106,8 @@ using namespace Microsoft::WRL;
 #include "Object/UI/HpBar.h"
 
 //Scence
-#include "Scene/Scene.h"
-#include "Scene/SceneManager.h"
+#include "Scence/Scene.h"
+#include "Scence/SceneManager.h"
 
 //Program
 #include "Program/Program.h"

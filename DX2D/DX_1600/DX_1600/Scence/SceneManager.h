@@ -37,6 +37,6 @@ private:
 	vector<shared_ptr<Scene>> _scenes;
 	UINT _curScene = 0;
 	
-	UINT _test = 0;
+	UINT _test;
 };
 

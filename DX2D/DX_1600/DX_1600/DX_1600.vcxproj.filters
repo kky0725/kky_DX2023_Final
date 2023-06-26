@@ -30,7 +30,7 @@
     <ClInclude Include="Program\Program.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\Scene.h">
+    <ClInclude Include="Scence\Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Device\Device.h">
@@ -57,9 +57,6 @@
     <ClInclude Include="Framework\TextureMapping\SampleState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scence\BagicScene\TutorialScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Object\Bagic\Quad.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -78,21 +75,6 @@
     <ClInclude Include="Framework\Math\Transform.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scence\BagicScene\SolarSystem.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\SolarSystem\Planet.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Scence\BagicScene\DungreedScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Dungreed\DunPlayer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Dungreed\DunBullet.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\TextureMapping\BlendState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -105,9 +87,6 @@
     <ClInclude Include="Framework\Utility\Timer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scence\BagicScene\ColliderScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Collider\RectCollider.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -115,12 +94,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Collider\Collider.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Dungreed\DunMonster.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Dungreed\DunPlayer_Advanced.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Render\ShaderManager.h">
@@ -135,43 +108,10 @@
     <ClInclude Include="Object\Bagic\Sprite.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scence\BagicScene\SpriteScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Scence\BagicScene\ActionScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Animation\Action.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Zelda\Link_Ani.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Zelda\Zelda_Player.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Zelda\Zelda_Item.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Utility\tinyxml2.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\CupHead\Cup_Player.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Scence\BagicScene\CupHeadScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\CupHead\Cup_Ani.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\CupHead\Cup_Boss.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\CupHead\Cup_Bullet.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Scence\BagicScene\EffectScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Bagic\Effect.h">
@@ -213,16 +153,13 @@
     <ClInclude Include="Framework\Math\MyMath.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\CupHead\Cup_Track.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Utility\BinaryWriter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Utility\BinaryReader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\SceneManager.h">
+    <ClInclude Include="Scence\SceneManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\UI\Button.h">
@@ -231,7 +168,7 @@
     <ClInclude Include="Object\UI\HpBar.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\TestScene.h">
+    <ClInclude Include="Scence\TestScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -245,7 +182,7 @@
     <ClCompile Include="Program\Program.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\Scene.cpp">
+    <ClCompile Include="Scence\Scene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Device\Device.cpp">
@@ -266,9 +203,6 @@
     <ClCompile Include="Framework\TextureMapping\SampleState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scence\BagicScene\TutorialScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Object\Bagic\Quad.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -284,21 +218,6 @@
     <ClCompile Include="Framework\Math\Transform.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scence\BagicScene\SolarSystem.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\SolarSystem\Planet.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Scence\BagicScene\DungreedScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Dungreed\DunPlayer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Dungreed\DunBullet.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\TextureMapping\BlendState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -311,9 +230,6 @@
     <ClCompile Include="Framework\Utility\Timer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scence\BagicScene\ColliderScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Collider\RectCollider.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -321,12 +237,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Collider\Collider.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Dungreed\DunMonster.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Dungreed\DunPlayer_Advanced.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Render\ShaderManager.cpp">
@@ -341,43 +251,10 @@
     <ClCompile Include="Object\Bagic\Sprite.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scence\BagicScene\SpriteScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Scence\BagicScene\ActionScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Animation\Action.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Zelda\Link_Ani.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Zelda\Zelda_Player.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Zelda\Zelda_Item.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Utility\tinyxml2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\CupHead\Cup_Player.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Scence\BagicScene\CupHeadScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\CupHead\Cup_Ani.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\CupHead\Cup_Boss.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\CupHead\Cup_Bullet.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Scence\BagicScene\EffectScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Bagic\Effect.cpp">
@@ -395,16 +272,13 @@
     <ClCompile Include="Framework\Math\MyMath.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\CupHead\Cup_Track.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Utility\BinaryWriter.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Utility\BinaryReader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\SceneManager.cpp">
+    <ClCompile Include="Scence\SceneManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\UI\Button.cpp">
@@ -413,7 +287,7 @@
     <ClCompile Include="Object\UI\HpBar.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\TestScene.cpp">
+    <ClCompile Include="Scence\TestScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -429,100 +303,10 @@
     <Image Include="DX_1600.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resource\Goomba.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\Zelda.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\earth.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\moon.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\sun.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\DunResource\Bullet.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\DunResource\Bow.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\DunResource\Player.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\DunResource\Map1.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\zelda_sprite.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\Item_11x5.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Idle.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Run.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\track.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\AimStraightShot.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Jump.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\RunShot.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Bullet_Intro.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Bullet_Loop.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Clown_Page_Two_Die.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Clown_Page_Two_Idle.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Clown_Page_Two_Intro.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\BlueExplosion.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\GreenExplosion.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\hit_4x2.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Player_Ghost.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\CupHead\Player_Hit.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="Resource\UI\Button.png">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\Player\Player.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\Bow.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\Bullet.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Resource\Map1.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
@@ -541,27 +325,13 @@
     <FxCompile Include="Shader\HpBarPS.hlsl" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Resource\CupHead\Idle.xml" />
-    <Xml Include="Resource\CupHead\Run.xml" />
-    <Xml Include="Resource\CupHead\AimStraightShot.xml" />
-    <Xml Include="Resource\CupHead\Jump.xml" />
-    <Xml Include="Resource\CupHead\RunShot.xml" />
-    <Xml Include="Resource\CupHead\Bullet_Intro.xml" />
-    <Xml Include="Resource\CupHead\Bullet_Loop.xml" />
-    <Xml Include="Resource\CupHead\Clown_Page_Two_Die.xml" />
-    <Xml Include="Resource\CupHead\Clown_Page_Two_Idle.xml" />
-    <Xml Include="Resource\CupHead\Clown_Page_Two_Intro.xml" />
-    <Xml Include="Resource\CupHead\Player_Ghost.xml" />
-    <Xml Include="Resource\CupHead\Player_Hit.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Library\FMOD\fmod.dll" />
     <None Include="Library\FMOD\inc\fmod.cs" />
     <None Include="Library\FMOD\inc\fmod_dsp.cs" />
     <None Include="Library\FMOD\inc\fmod_errors.cs" />
-    <None Include="DX_1600.APS" />
-    <None Include="fmod.dll" />
     <None Include="imgui.ini" />
+    <None Include="fmod.dll" />
+    <None Include="Save\test.test" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Library\FMOD\fmod_vc.lib" />

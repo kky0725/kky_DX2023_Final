@@ -16,3 +16,7 @@ void TestScene::Update()
 void TestScene::Render()
 {
 }
+
+void TestScene::PostRender()
+{
+}

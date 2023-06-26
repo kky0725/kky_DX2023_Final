@@ -21,3 +21,4 @@ private:
 	UINT _maxHP = 100;
 	UINT _curHP = 100;
 };
+

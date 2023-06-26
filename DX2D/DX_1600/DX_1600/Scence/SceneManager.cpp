@@ -8,6 +8,7 @@ SceneManager* SceneManager::_instance = nullptr;
 SceneManager::SceneManager()
 {
 	_scenes.push_back(make_shared<TestScene>());
+
 }
 
 SceneManager::~SceneManager()
@@ -34,9 +35,9 @@ void SceneManager::PostRender()
 	if (ImGui::Button("PrevScene", { 50,30 }))
 		PrevScene();
 
-	//ImGui::SliderInt("SetScene", (int*)&_test, 0, 1);
+	ImGui::SliderInt("SetScene", (int*)&_test, 0, 2);
 
-	//if (ImGui::Button("SetSceneNumber", { 50,30 }))
+	if (ImGui::Button("SetSceneNumber", { 50,30 }))
 		SetScene(_test);
 }
 
