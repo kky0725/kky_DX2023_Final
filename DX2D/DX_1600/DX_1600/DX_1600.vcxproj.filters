@@ -171,6 +171,9 @@
     <ClInclude Include="Scence\TestScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\Creature.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX_1600.cpp">
@@ -288,6 +291,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scence\TestScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Creature.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
