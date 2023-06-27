@@ -1,4 +1,6 @@
 #pragma once
+class Player;
+
 class TestScene : public Scene
 {
 public:
@@ -10,5 +12,5 @@ public:
 	virtual void PostRender() override;
 
 private:
-
+	shared_ptr<Player> _player;
 };
