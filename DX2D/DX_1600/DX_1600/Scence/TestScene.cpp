@@ -5,7 +5,7 @@
 
 TestScene::TestScene()
 {
-	_player = make_shared<Player>(L"Resource/Player/Player.png", 5.0f);
+	_player = make_shared<Player>(L"Resource/Player/Player.png", 50.0f);
 }
 
 TestScene::~TestScene()

@@ -5,7 +5,7 @@ class TestScene : public Scene
 {
 public:
 	TestScene();
-	~TestScene();
+	virtual ~TestScene();
 
 	virtual void Update() override;
 	virtual void Render() override;
@@ -13,4 +13,5 @@ public:
 
 private:
 	shared_ptr<Player> _player;
+	//to do : 발판 추가
 };
