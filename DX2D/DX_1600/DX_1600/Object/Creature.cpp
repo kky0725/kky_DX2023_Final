@@ -19,6 +19,14 @@ Creature::Creature(wstring string, float radius)
 	_transform->SetParent(_collider->GetTransform());
 }
 
+Creature::Creature(float radius)
+{
+	_transform = make_shared<Transform>();
+	_collider = make_shared<CircleCollider>(radius);
+
+	_transform->SetParent(_collider->GetTransform());
+}
+
 Creature::~Creature()
 {
 }

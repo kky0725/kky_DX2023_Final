@@ -4,6 +4,7 @@ class Creature
 public:
 	Creature(wstring string, Vector2 size, float radius);
 	Creature(wstring string, float radius);
+	Creature(float radius);
 	virtual ~Creature();
 
 	virtual void Update() abstract;
@@ -20,6 +21,7 @@ public:
 	virtual void Damaged(int damge);
 
 	bool IsAtcive() { return _isActive; }
+
 
 protected:
 	shared_ptr<Quad>		_quad;

@@ -93,7 +93,7 @@ using namespace Microsoft::WRL;
 
 //Animation
 #include "Framework/Animation/Action.h"
-
+#include "Framework/Animation/Animation.h"
 
 //Object
 #include "Object/Bagic/Quad.h"
