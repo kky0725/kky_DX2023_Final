@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="PlayerRun.png" width="45" height="59" scale="1" format="RGBA8888">
+  <sprite n="CharRun1 #29311.png" x="0" y="0" w="14" h="20" pX="0.5" pY="0.5" oX="2" oY="2" oW="18" oH="22"/>
+  <sprite n="CharRun2 #27885.png" x="14" y="0" w="14" h="20" pX="0.5" pY="0.5" oX="2" oY="2" oW="18" oH="22"/>
+  <sprite n="CharRun5 #11016.png" x="0" y="20" w="13" h="20" pX="0.5" pY="0.5" oX="2" oY="2" oW="17" oH="22"/>
+  <sprite n="CharRun6 #28587.png" x="13" y="20" w="14" h="20" pX="0.5" pY="0.5" oX="2" oY="2" oW="18" oH="22"/>
+  <sprite n="CharRun0 #26015.png" x="28" y="0" w="17" h="19" pX="0.5" pY="0.5" oX="2" oY="2" oW="21" oH="21"/>
+  <sprite n="CharRun3 #23333.png" x="27" y="20" w="15" h="19" pX="0.5" pY="0.5" oX="2" oY="2" oW="19" oH="22"/>
+  <sprite n="CharRun4 #15107.png" x="0" y="40" w="15" h="19" pX="0.5" pY="0.5" oX="2" oY="2" oW="19" oH="21"/>
+  <sprite n="CharRun7 #27859.png" x="15" y="40" w="16" h="19" pX="0.5" pY="0.5" oX="2" oY="2" oW="20" oH="22"/>
+</TextureAtlas>

@@ -2,10 +2,11 @@
 #include "Player_Ani.h"
 
 Player_Ani::Player_Ani()
+	: Animation()
 {
-	CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Idle", Vector2(10.0f, 10.0f));
-	CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Run", Vector2(10.0f, 10.0f));
-	CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Atk", Vector2(10.0f, 10.0f));
+	CreateAction(L"Resource/Player/PlayerIdle.png", "Resource/PlayerPlayerIdle.xml", "Idle", Vector2(10.0f, 10.0f));
+	CreateAction(L"Resource/PlayerPlayerRun.png", "Resource/Player/PlayerIRun.xml", "Run", Vector2(10.0f, 10.0f));
+	//CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Atk", Vector2(10.0f, 10.0f));
 
 	SetRight();
 }

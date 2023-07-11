@@ -21,6 +21,7 @@ Creature::Creature(wstring string, float radius)
 
 Creature::Creature(float radius)
 {
+	_quad == nullptr;
 	_transform = make_shared<Transform>();
 	_collider = make_shared<CircleCollider>(radius);
 
@@ -43,8 +44,11 @@ void Creature::Render()
 {
 	if (!_isActive)
 		return;
-	_transform->SetBuffer(0);
-	_quad->Render();
+	if (_quad != nullptr)
+	{
+		_transform->SetBuffer(0);
+		_quad->Render();
+	}
 	_collider->Render();
 }
 

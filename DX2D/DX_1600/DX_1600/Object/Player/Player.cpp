@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "Player.h"
 #include "../Weapon/ShortSword.h"
+#include "Player_Ani.h"
 
 //Player::Player(wstring string, Vector2 size, float radius)
 //	:Creature(string, size, radius)
@@ -13,7 +14,7 @@
 //}
 
 Player::Player(wstring string, float radius)
-	:Creature(string, radius)
+	:Creature(radius)
 {
 	_slot = make_shared<Transform>();
 	_slot->SetParent(_transform);

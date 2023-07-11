@@ -23,6 +23,7 @@ public:
 	void Jump();
 private:
 	shared_ptr<Transform> _slot;
+	shared_ptr<class Player_Ani> _ani;
 	//to do 발판 콜라이더 추가
 
 	int def = 0;

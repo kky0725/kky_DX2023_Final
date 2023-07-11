@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="PlayerIdle.png" width="28" height="39" scale="1" format="RGBA8888">
+  <sprite n="CharIdle1.png" x="0" y="0" w="13" h="20" pX="0.5" pY="0.5" oX="2" oY="2" oW="17" oH="22"/>
+  <sprite n="CharIdle2 #962.png" x="13" y="0" w="14" h="20" pX="0.5" pY="0.5" oX="2" oY="2" oW="18" oH="22"/>
+  <sprite n="CharIdle0 #27462.png" x="0" y="20" w="13" h="19" pX="0.5" pY="0.5" oX="2" oY="2" oW="17" oH="21"/>
+  <sprite n="CharIdle3 #4205.png" x="13" y="20" w="15" h="19" pX="0.5" pY="0.5" oX="2" oY="2" oW="19" oH="21"/>
+</TextureAtlas>

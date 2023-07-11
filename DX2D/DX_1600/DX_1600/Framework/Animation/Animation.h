@@ -16,8 +16,8 @@ public:
 	Animation();
 	virtual ~Animation();
 
-	virtual void Update() abstract;
-	virtual void Render() abstract;
+	virtual void Update();
+	virtual void Render();
 	virtual void PostRender();
 
 	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
@@ -34,9 +34,8 @@ public:
 
 	void SetLeft();
 	void SetRight();
+
 protected:
-
-
 	vector<shared_ptr<Action>> _actions;
 	vector<shared_ptr<class Sprite>> _sprites;
 	shared_ptr<Transform> _transform;

@@ -274,6 +274,8 @@
   <ItemGroup>
     <Image Include="DX_1600.ico" />
     <Image Include="Resource\Player\Player.png" />
+    <Image Include="Resource\Player\PlayerIdle.png" />
+    <Image Include="Resource\Player\PlayerRun.png" />
     <Image Include="Resource\UI\Button.png" />
     <Image Include="small.ico" />
   </ItemGroup>
@@ -476,6 +478,10 @@
     <Media Include="Resource\Sound\BGM.mp3" />
     <Media Include="Resource\Sound\drumloop.wav" />
     <Media Include="Resource\Sound\jump.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resource\Player\PlayerIdle.xml" />
+    <Xml Include="Resource\Player\PlayerRun.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
