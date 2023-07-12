@@ -6,9 +6,8 @@ public:
 	{
 		IDLE,
 		RUN,
-		ATK,
 		JUMP,
-		RUN_SHOT,
+		ATK,
 		END,
 		NONE
 	};

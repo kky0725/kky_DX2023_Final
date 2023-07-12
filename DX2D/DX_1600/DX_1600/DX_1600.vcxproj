@@ -277,6 +277,7 @@
     <Image Include="Resource\Player\PlayerIdle.png" />
     <Image Include="Resource\Player\PlayerRun.png" />
     <Image Include="Resource\UI\Button.png" />
+    <Image Include="Resource\Weapon\ShortSword.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -357,6 +357,9 @@
     <Image Include="Resource\Player\PlayerRun.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Weapon\ShortSword.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />

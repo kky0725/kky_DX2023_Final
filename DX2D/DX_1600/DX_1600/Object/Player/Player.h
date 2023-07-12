@@ -6,8 +6,7 @@ class ShortSword;
 class Player : public Creature
 {
 public:
-	//Player(wstring string, Vector2 size, float radius);
-	Player(wstring string, float radius);
+	Player();
 	virtual ~Player();
 
 	virtual void Update() override;
@@ -22,11 +21,18 @@ public:
 	void Fire();
 	void Jump();
 
-	void RestJumpCount() { _jumpCount = 0; }
+	float GetAtk();
+
+	void SetWeaponDir();
+
+	void IsGround();
+
+
+	shared_ptr<Collider> GetFootHold() { return _footHold; }
 private:
 	shared_ptr<Transform> _slot;
 	shared_ptr<class Player_Ani> _ani;
-	//to do 발판 콜라이더 추가
+	shared_ptr<Collider> _footHold;
 
 	int def = 0;
 	shared_ptr<ShortSword> _shortSword;

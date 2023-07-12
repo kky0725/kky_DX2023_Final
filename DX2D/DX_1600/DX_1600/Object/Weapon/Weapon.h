@@ -8,8 +8,10 @@ public:
 	virtual void Update() abstract;
 	virtual void Render() abstract;
 	
+	const float& GetAtkPerSec() { return _atkPerSec; }
 	const int& GetAtk() {return MyMath::RandomInt(_minAtk, _maxAtk);}
-	shared_ptr<Transform> GetTransform() { return _collider->GetTransform(); }
+	shared_ptr<Transform> GetTransform() { return _transform; }
+	shared_ptr<Collider> GetCollider() { return _collider; }
 
 
 protected:

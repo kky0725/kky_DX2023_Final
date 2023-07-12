@@ -1,8 +1,6 @@
 #include "framework.h"
 #include "Animation.h"
 
-#include "../../Object/Bagic/Sprite.h"
-
 using namespace tinyxml2;
 
 Animation::Animation()
@@ -93,7 +91,20 @@ void Animation::CreateAction(wstring srvPath, string xmlPath, string actionName,
 
 void Animation::CreateAction(wstring srvPath, string actionName, Vector2 size)
 {
+	shared_ptr<SRV> srv = ADD_SRV(srvPath);
+	Vector2 imageSize = srv->GetImageSize();
+	vector<Action::Clip> clips;
+	clips.push_back(Action::Clip(0, 0, imageSize.x, imageSize.y, srv));
+	shared_ptr<Action> action = make_shared<Action>(clips, actionName, Action::Type::LOOP, 1.0f);
+	action->Play();
 
+	shared_ptr<Sprite> sprite = make_shared<Sprite>(srvPath, size);
+
+	action->Update();
+	sprite->Update();
+
+	_actions.push_back(action);
+	_sprites.push_back(sprite);
 }
 
 void Animation::SetLeft()

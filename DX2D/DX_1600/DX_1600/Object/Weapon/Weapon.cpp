@@ -7,8 +7,7 @@ Weapon::Weapon(wstring string)
 	_transform = make_shared<Transform>();
 	_collider = make_shared<RectCollider>(Vector2(10,10));
 
-	_transform->SetParent(_collider->GetTransform());
-	//_collider->GetTransform()->SetParent(_transform);
+	_collider->GetTransform()->SetParent(_transform);
 }
 
 Weapon::~Weapon()

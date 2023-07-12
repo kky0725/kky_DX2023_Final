@@ -3,18 +3,8 @@
 #include "../Weapon/ShortSword.h"
 #include "Player_Ani.h"
 
-//Player::Player(wstring string, Vector2 size, float radius)
-//	:Creature(string, size, radius)
-//{
-//	_slot = make_shared<Transform>();
-//	_slot->SetParent(_transform);
-//	_isActive = true;
-//
-//	_hp = 80;
-//}
-
-Player::Player(wstring string, float radius)
-	:Creature(radius)
+Player::Player()
+	:Creature(27.0f)
 {
 	_slot = make_shared<Transform>();
 	_slot->SetParent(_transform);
@@ -25,14 +15,16 @@ Player::Player(wstring string, float radius)
 
 	_hp = 80;
 
-	_shortSword = make_shared<ShortSword>(L"Resource/UI/Button.png");
+	_footHold = make_shared<RectCollider>(Vector2(27.0f, 10.0f));
+	_footHold->SetParent(_collider->GetTransform());
+	_footHold->SetPosition(Vector2(0.0f, -24.0f));
+
+	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
+	_shortSword = make_shared<ShortSword>();
 	_shortSword->GetTransform()->SetParent(_slot);
-	_shortSword->GetTransform()->SetPosition(Vector2(100, 0));
-	//_slot->AddAngle(2.0f);
-	//_slot->AddVector2(Vector2(10, 0));
-	//_slot->SetScale(Vector2(2.0f, 2.0f));
-	//_shortSword->GetTransform()->AddAngle(1.0f);
-	//_shortSword->GetTransform()->SetScale(Vector2(2.0f, 2.0f));
+	_shortSword->GetTransform()->SetPosition(Vector2(50, 0));
+
+	SetAtkSpeed(_shortSword->GetAtkPerSec());
 }
 
 Player::~Player()
@@ -42,11 +34,13 @@ Player::~Player()
 void Player::Update()
 {
 	Input();
+	SetWeaponDir();
 
 	Creature::Update();
 	_slot->Update();
 	_shortSword->Update();
 	_ani->Update();
+	_footHold->Update();
 }
 
 void Player::Render()
@@ -55,6 +49,7 @@ void Player::Render()
 	_slot->SetBuffer(0);
 	_shortSword->Render();
 	_ani->Render();
+	_footHold->Render();
 }
 
 void Player::PostRender()
@@ -113,12 +108,22 @@ void Player::Fire()
 	if (_atkCool)
 	{
 		_time += DELTA_TIME;
+		if(_time < 0.1f)
+			_slot->AddAngle(-20.0f * DELTA_TIME);
+
 		if (_time > _atkSpeed)
 		{
 			_time = 0.0f;
 			_atkCool = false;
 		}
+		
 		return;
+	}
+
+
+	if (KEY_PRESS(VK_LBUTTON))
+	{
+		_atkCool = true;
 	}
 }
 
@@ -131,5 +136,32 @@ void Player::Jump()
 	{
 		_jumpPower = 600.0f;
 		_jumpCount++;
+		_ani->SetIsGround(false);
+	}
+}
+
+float Player::GetAtk()
+{
+	return _shortSword->GetAtk();
+}
+
+void Player::SetWeaponDir()
+{
+	if (_time < 0.1f && _time > 0.0f)
+		return;
+	Vector2 startPos = _collider->GetTransform()->GetWorldPosition();
+	Vector2 Dir = W_MOUSE_POS - startPos;
+	_slot->SetAngel(atan(Dir.y / Dir.x));
+	
+}
+
+void Player::IsGround()
+{
+	_jumpCount = 0;
+	
+	if (!_ani->GetISGround() && _jumpPower < 0.0f)
+	{
+		_ani->SetIsGround(true);
+		_ani->SetStateIdle();
 	}
 }

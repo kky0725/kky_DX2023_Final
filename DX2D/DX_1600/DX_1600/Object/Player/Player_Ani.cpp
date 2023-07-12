@@ -6,9 +6,10 @@ Player_Ani::Player_Ani()
 {
 	CreateAction(L"Resource/Player/PlayerIdle.png", "Resource/Player/PlayerIdle.xml", "Idle", Vector2(10.0f, 10.0f), Action::LOOP, 0.2f);
 	CreateAction(L"Resource/Player/PlayerRun.png", "Resource/Player/PlayerRun.xml", "Run", Vector2(10.0f, 10.0f));
-	//CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Atk", Vector2(10.0f, 10.0f));
+	CreateAction(L"Resource/Player/PlayerJump.png", "Jump", Vector2(10.0f, 10.0f));
 
 	_transform->SetScale(Vector2(5.0f, 5.0f));
+	_transform->SetPosition(Vector2(0.0f, 10.0f));
 
 	SetRight();
 }
@@ -30,6 +31,13 @@ void Player_Ani::Render()
 
 void Player_Ani::StateControl()
 {
+	if (KEY_PRESS('W') || KEY_PRESS(VK_SPACE))
+	{
+		SetState(JUMP);
+	}
+
+	if (!_isGround)
+		return;
 
 	if (KEY_UP('A'))
 	{

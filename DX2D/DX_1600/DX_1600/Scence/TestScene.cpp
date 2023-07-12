@@ -5,7 +5,7 @@
 
 TestScene::TestScene()
 {
-	_player = make_shared<Player>(L"Resource/Player/Player.png", 50.0f);
+	_player = make_shared<Player>();
 	
 	_ground = make_shared<RectCollider>(Vector2(1280, 50));
 	_ground->GetTransform()->SetPosition(Vector2(0.0f, -250.0f));
@@ -23,7 +23,7 @@ void TestScene::Update()
 	_ground->Update();
 
 	if (_ground->Block(_player->GetCollider()))
-		_player->RestJumpCount();
+		_player->IsGround();
 }
 
 void TestScene::Render()
