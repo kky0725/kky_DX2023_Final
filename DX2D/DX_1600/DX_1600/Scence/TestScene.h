@@ -14,4 +14,5 @@ public:
 private:
 	shared_ptr<Player> _player;
 	//to do : 발판 추가
+	shared_ptr<Collider> _ground;
 };

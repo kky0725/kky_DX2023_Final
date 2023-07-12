@@ -21,6 +21,8 @@ public:
 	void Input();
 	void Fire();
 	void Jump();
+
+	void RestJumpCount() { _jumpCount = 0; }
 private:
 	shared_ptr<Transform> _slot;
 	shared_ptr<class Player_Ani> _ani;
@@ -28,5 +30,8 @@ private:
 
 	int def = 0;
 	shared_ptr<ShortSword> _shortSword;
+
+	float _jumpPower = 0.0f;
+	int _jumpCount = 0;
 };
 

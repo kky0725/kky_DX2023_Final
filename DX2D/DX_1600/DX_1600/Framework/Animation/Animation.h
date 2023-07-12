@@ -31,6 +31,7 @@ public:
 	bool GetIsRight() const { return _isRight; }
 
 	void CreateAction(wstring srvPath, string xmlPath, string actionName, Vector2 size, Action::Type type = Action::Type::LOOP, float speed = 0.1f, CallBack event = nullptr);
+	void CreateAction(wstring srvPath, string actionName, Vector2 size);
 
 	void SetLeft();
 	void SetRight();

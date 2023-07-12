@@ -20,6 +20,9 @@ Player::Player(wstring string, float radius)
 	_slot->SetParent(_transform);
 	_isActive = true;
 
+	_ani = make_shared<Player_Ani>();
+	_ani->SetParent(_collider->GetTransform());
+
 	_hp = 80;
 
 	_shortSword = make_shared<ShortSword>(L"Resource/UI/Button.png");
@@ -39,9 +42,11 @@ Player::~Player()
 void Player::Update()
 {
 	Input();
+
 	Creature::Update();
 	_slot->Update();
 	_shortSword->Update();
+	_ani->Update();
 }
 
 void Player::Render()
@@ -49,6 +54,7 @@ void Player::Render()
 	Creature::Render();
 	_slot->SetBuffer(0);
 	_shortSword->Render();
+	_ani->Render();
 }
 
 void Player::PostRender()
@@ -75,6 +81,15 @@ void Player::Input()
 {
 	if (!_isActive)
 		return;
+
+	{
+		_jumpPower -= 15.0f;
+
+		if (_jumpPower < -600.0f)
+			_jumpPower = -600.0f;
+
+		_collider->GetTransform()->AddVector2(Vector2(0.0f, 1.0f) * _jumpPower * DELTA_TIME);
+	}
 
 	if (KEY_PRESS('A'))
 	{
@@ -109,4 +124,12 @@ void Player::Fire()
 
 void Player::Jump()
 {
+	if (_jumpCount > 0)
+		return;
+
+	if (KEY_DOWN('W') || KEY_DOWN(VK_SPACE))
+	{
+		_jumpPower = 600.0f;
+		_jumpCount++;
+	}
 }

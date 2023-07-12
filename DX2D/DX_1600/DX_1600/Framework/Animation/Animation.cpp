@@ -91,6 +91,11 @@ void Animation::CreateAction(wstring srvPath, string xmlPath, string actionName,
 	_sprites.push_back(sprite);
 }
 
+void Animation::CreateAction(wstring srvPath, string actionName, Vector2 size)
+{
+
+}
+
 void Animation::SetLeft()
 {
 	for (auto sprite : _sprites)
