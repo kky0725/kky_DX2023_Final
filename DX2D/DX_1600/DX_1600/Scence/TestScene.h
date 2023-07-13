@@ -11,8 +11,11 @@ public:
 	virtual void Render() override;
 	virtual void PostRender() override;
 
+	void CheckAttack();
+
 private:
 	shared_ptr<Player> _player;
-	//to do : 발판 추가
 	shared_ptr<Collider> _ground;
+
+	shared_ptr<Creature> _bat;
 };

@@ -96,10 +96,11 @@ using namespace Microsoft::WRL;
 #include "Framework/Animation/Animation.h"
 
 //Object
-#include "Object/Bagic/Quad.h"
-#include "Object/Bagic/Sprite.h"
-#include "Object/Bagic/Effect.h"
-#include "Object/Bagic/EffectManager.h"
+#include "Object/Basic/Quad.h"
+#include "Object/Basic/Sprite.h"
+#include "Object/Basic/Effect.h"
+#include "Object/Basic/EffectManager.h"
+#include "Object/Creature.h"
 
 //UI
 #include "Object//UI/Button.h"

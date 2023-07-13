@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="Bat.png" width="54" height="42" scale="1" format="RGBA8888">
+  <sprite n="Bat0.png" x="0" y="0" w="27" h="7" pX="0.5" pY="0.5" oX="2" oY="2" oW="31" oH="11"/>
+  <sprite n="Bat1.png" x="0" y="7" w="27" h="8" pX="0.5" pY="0.5" oX="2" oY="2" oW="31" oH="12"/>
+  <sprite n="Bat2.png" x="0" y="15" w="27" h="12" pX="0.5" pY="0.5" oX="2" oY="2" oW="31" oH="16"/>
+  <sprite n="Bat5.png" x="27" y="0" w="27" h="14" pX="0.5" pY="0.5" oX="2" oY="2" oW="31" oH="18"/>
+  <sprite n="Bat3.png" x="27" y="14" w="26" h="13" pX="0.5" pY="0.5" oX="2" oY="2" oW="30" oH="17"/>
+  <sprite n="Bat4.png" x="0" y="27" w="24" h="15" pX="0.5" pY="0.5" oX="2" oY="2" oW="28" oH="19"/>
+</TextureAtlas>

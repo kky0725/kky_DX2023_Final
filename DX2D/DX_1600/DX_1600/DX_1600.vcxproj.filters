@@ -57,7 +57,7 @@
     <ClInclude Include="Framework\TextureMapping\SampleState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Bagic\Quad.h">
+    <ClInclude Include="Object\Basic\Quad.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Math\Vector2.h">
@@ -105,7 +105,7 @@
     <ClInclude Include="Framework\TextureMapping\SRVManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Bagic\Sprite.h">
+    <ClInclude Include="Object\Basic\Sprite.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Animation\Action.h">
@@ -114,10 +114,10 @@
     <ClInclude Include="Framework\Utility\tinyxml2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Bagic\Effect.h">
+    <ClInclude Include="Object\Basic\Effect.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Bagic\EffectManager.h">
+    <ClInclude Include="Object\Basic\EffectManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Library\FMOD\inc\fmod_output.h">
@@ -224,7 +224,7 @@
     <ClCompile Include="Framework\TextureMapping\SampleState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Bagic\Quad.cpp">
+    <ClCompile Include="Object\Basic\Quad.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Math\Vector2.cpp">
@@ -269,7 +269,7 @@
     <ClCompile Include="Framework\TextureMapping\SRVManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Bagic\Sprite.cpp">
+    <ClCompile Include="Object\Basic\Sprite.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Animation\Action.cpp">
@@ -278,10 +278,10 @@
     <ClCompile Include="Framework\Utility\tinyxml2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Bagic\Effect.cpp">
+    <ClCompile Include="Object\Basic\Effect.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Bagic\EffectManager.cpp">
+    <ClCompile Include="Object\Basic\EffectManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Utility\Sound.cpp">
@@ -360,6 +360,9 @@
     <Image Include="Resource\Weapon\ShortSword.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Monster\Bat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />
@@ -402,5 +405,6 @@
   <ItemGroup>
     <Xml Include="Resource\Player\PlayerIdle.xml" />
     <Xml Include="Resource\Player\PlayerRun.xml" />
+    <Xml Include="Resource\Monster\Bat.xml" />
   </ItemGroup>
 </Project>

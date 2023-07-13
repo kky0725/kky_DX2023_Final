@@ -1,26 +1,27 @@
 #include "framework.h"
 #include "Bat.h"
 
-Bat::Bat(wstring string)
+Bat::Bat(bool basic)
 	:Creature(5.0f)
 {
 	_ani = make_shared<Animation>();
+	_isActive = true;
 
-
-	if (string == L"puple") // 수정 예정
+	if (basic) 
 	{
 		_hp = 6;
-		_ani->CreateAction(string, "pupleBat.xml", "Idle", Vector2(10, 10));
+		_ani->CreateAction(L"Resource/Monster/Bat.png", "Resource/Monster/Bat.xml", "Idle", Vector2(10, 10), Action::LOOP, 0.1f);
 	}
 	else
 	{
 		_hp = 16;
-		_ani->CreateAction(string, "redBat.xml", "Idle", Vector2(10, 10));
+		_ani->CreateAction(L"Resource/Monster/RedBat.png", "Resource/Monster/RedBat.xml", "Idle", Vector2(10, 10));
 	}
 
 	_ani->SetParent(_collider->GetTransform());
+	_collider->GetTransform()->SetScale(Vector2(5.0f, 5.0f));
 
-	_speed = 10.0f; // 수정 예정
+	_speed = 100.0f;
 }
 
 Bat::~Bat()
@@ -29,25 +30,35 @@ Bat::~Bat()
 
 void Bat::Update()
 {
+	if (!_isActive)
+		return;
 	move();
+	_ani->Update();
 	Creature::Update();
 }
 
 void Bat::Render()
 {
+	if (!_isActive)
+		return;
+	_ani->Render();
 	Creature::Render();
 }
 
 void Bat::move()
 {
-	Vector2 dir;
-	dir.x = MyMath::RandomInt(-1, 1);
-	dir.y = MyMath::RandomInt(-1, 1);
+	_time += DELTA_TIME;
+	if (_time > 0.5f)
+	{
+		_time = 0.0f;
+		_dir.x = MyMath::RandomInt(-1, 1);
+		_dir.y = MyMath::RandomInt(-1, 1);
+	}
 
-	_collider->GetTransform()->AddVector2(dir * DELTA_TIME * _speed);
+	_collider->GetTransform()->AddVector2(_dir * DELTA_TIME * _speed);
 
-	if (dir.x == 1)
+	if (_dir.x == 1)
 		_ani->SetRight();
-	if (dir.x == -1)
+	if (_dir.x == -1)
 		_ani->SetLeft();
 }

@@ -12,7 +12,7 @@ Timer::Timer()
 
 	QueryPerformanceCounter((LARGE_INTEGER*)&_lastTime);// 프로그램이 시작할 때 지금까지 CPU의 진동수
 
-	_timeScale = 1.0 / (double)_periodFrequency;
+	_timeScale = 1.0 / (float)_periodFrequency;
 }
 
 Timer::~Timer()
@@ -22,14 +22,14 @@ Timer::~Timer()
 void Timer::Update()
 {
 	QueryPerformanceCounter((LARGE_INTEGER*)&_curTime);
-	_deltaTime = (double)(_curTime - _lastTime) * _timeScale;
+	_deltaTime = (float)(_curTime - _lastTime) * _timeScale;
 
 	if (_lockFPS != 0)
 	{
 		while (_deltaTime < (1.0 / _lockFPS))
 		{
 			QueryPerformanceCounter((LARGE_INTEGER*)&_curTime);
-			_deltaTime = (double)(_curTime - _lastTime) * _timeScale;
+			_deltaTime = (float)(_curTime - _lastTime) * _timeScale;
 		}
 	}
 

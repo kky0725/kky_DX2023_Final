@@ -24,17 +24,17 @@ public:
 	}
 
 	void Update();
-	void SetLockFPS(double value) { _lockFPS = value; }
+	void SetLockFPS(float value) { _lockFPS = value; }
 
 	int GetFPS() { return _frameRate; }
-	double GetDeltaTime() { if (_deltaTime > 1.0f) return 0.016666f; return _deltaTime; }
-	double GetRunTime() { return _runTime; }
+	float GetDeltaTime() { if (_deltaTime > 1.0f) return 0.016666f; return _deltaTime; }
+	float GetRunTime() { return _runTime; }
 
 private:
 	static Timer* _instance;
 
-	double _timeScale = 0.0;
-	double _deltaTime = 0.0; // 1번 업데이트하는데 걸리는 시간
+	float _timeScale = 0.0;
+	float _deltaTime = 0.0; // 1번 업데이트하는데 걸리는 시간
 
 	unsigned __int64 _curTime = 0;
 	unsigned __int64 _lastTime = 0;
@@ -43,9 +43,9 @@ private:
 	unsigned __int64 _frameRate = 0;
 	unsigned __int64 _frameCount = 0;
 
-	double _oneSecCount = 0.0;
-	double _runTime = 0.0;
-	double _lockFPS = 0.0;
+	float _oneSecCount = 0.0;
+	float _runTime = 0.0;
+	float _lockFPS = 0.0;
 
 };
 

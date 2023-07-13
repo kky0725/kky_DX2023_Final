@@ -1,10 +1,10 @@
 #pragma once
 #include "../Creature.h"
 
-class Bat : Creature
+class Bat : public Creature
 {
 public:
-	Bat(wstring string);
+	Bat(bool basic);
 	virtual ~Bat();
 
 	virtual void Update() override;
@@ -15,5 +15,7 @@ public:
 private:
 	shared_ptr<Animation> _ani;
 
-};
+	float _time = 0.0f;
+	Vector2 _dir = { 1.0f,1.0f };
 
+};

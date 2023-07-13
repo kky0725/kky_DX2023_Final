@@ -21,6 +21,7 @@ public:
 	virtual void Damaged(int damge);
 
 	bool IsAtcive() { return _isActive; }
+	void SetIsActive(bool value) { _isActive = value; }
 
 
 protected:

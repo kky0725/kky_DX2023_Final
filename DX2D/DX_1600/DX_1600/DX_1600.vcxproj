@@ -168,8 +168,8 @@
     <ClInclude Include="Library\FMOD\inc\fmod_errors.h" />
     <ClInclude Include="Library\FMOD\inc\fmod_output.h" />
     <ClInclude Include="Framework\Math\MyMath.h" />
-    <ClInclude Include="Object\Bagic\EffectManager.h" />
-    <ClInclude Include="Object\Bagic\Effect.h" />
+    <ClInclude Include="Object\Basic\EffectManager.h" />
+    <ClInclude Include="Object\Basic\Effect.h" />
     <ClInclude Include="Framework\Animation\Action.h" />
     <ClInclude Include="Framework\Utility\tinyxml2.h" />
     <ClInclude Include="Framework\Collider\Collider.h" />
@@ -189,7 +189,7 @@
     <ClInclude Include="Object\Player\Player.h" />
     <ClInclude Include="Object\Player\Player_Ani.h" />
     <ClInclude Include="Program\Program.h" />
-    <ClInclude Include="Object\Bagic\Quad.h" />
+    <ClInclude Include="Object\Basic\Quad.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Framework\TextureMapping\SampleState.h" />
     <ClInclude Include="Scence\Scene.h" />
@@ -198,7 +198,7 @@
     <ClInclude Include="Framework\Render\ShaderManager.h" />
     <ClInclude Include="Framework\Render\Shader.h" />
     <ClInclude Include="Framework\TextureMapping\SRVManager.h" />
-    <ClInclude Include="Object\Bagic\Sprite.h" />
+    <ClInclude Include="Object\Basic\Sprite.h" />
     <ClInclude Include="Framework\Utility\Sound.h" />
     <ClInclude Include="Scence\SceneManager.h" />
     <ClInclude Include="Object\Weapon\ShortSword.h" />
@@ -221,8 +221,8 @@
     <ClCompile Include="Framework\Utility\BinaryWriter.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
     <ClCompile Include="Framework\Math\MyMath.cpp" />
-    <ClCompile Include="Object\Bagic\EffectManager.cpp" />
-    <ClCompile Include="Object\Bagic\Effect.cpp" />
+    <ClCompile Include="Object\Basic\EffectManager.cpp" />
+    <ClCompile Include="Object\Basic\Effect.cpp" />
     <ClCompile Include="Framework\Animation\Action.cpp" />
     <ClCompile Include="Framework\Utility\tinyxml2.cpp" />
     <ClCompile Include="Framework\Collider\Collider.cpp" />
@@ -250,7 +250,7 @@
     <ClCompile Include="Object\Player\Player_Ani.cpp" />
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Framework\TextureMapping\SampleState.cpp" />
-    <ClCompile Include="Object\Bagic\Quad.cpp" />
+    <ClCompile Include="Object\Basic\Quad.cpp" />
     <ClCompile Include="Scence\Scene.cpp" />
     <ClCompile Include="Framework\Render\VertexBuffer.cpp" />
     <ClCompile Include="Framework\Render\VertexShader.cpp" />
@@ -261,7 +261,7 @@
     <ClCompile Include="Framework\Render\ShaderManager.cpp" />
     <ClCompile Include="Framework\Render\Shader.cpp" />
     <ClCompile Include="Framework\TextureMapping\SRVManager.cpp" />
-    <ClCompile Include="Object\Bagic\Sprite.cpp" />
+    <ClCompile Include="Object\Basic\Sprite.cpp" />
     <ClCompile Include="Framework\Utility\Sound.cpp" />
     <ClCompile Include="Scence\SceneManager.cpp" />
     <ClCompile Include="Scence\TestScene.cpp" />
@@ -273,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="DX_1600.ico" />
+    <Image Include="Resource\Monster\Bat.png" />
     <Image Include="Resource\Player\Player.png" />
     <Image Include="Resource\Player\PlayerIdle.png" />
     <Image Include="Resource\Player\PlayerRun.png" />
@@ -481,6 +482,7 @@
     <Media Include="Resource\Sound\jump.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Resource\Monster\Bat.xml" />
     <Xml Include="Resource\Player\PlayerIdle.xml" />
     <Xml Include="Resource\Player\PlayerRun.xml" />
   </ItemGroup>

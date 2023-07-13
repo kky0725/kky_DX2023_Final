@@ -65,5 +65,6 @@ void Creature::Damaged(int damge)
 	if (_hp < 1)
 	{
 		_hp = 0;
+		_isActive = false;
 	}
 }

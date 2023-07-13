@@ -56,7 +56,7 @@ void Player::PostRender()
 {
 }
 
-void Player::Damged(int damge)
+void Player::Damaged(int damge)
 {
 	if (!_isActive)
 		return;
@@ -110,6 +110,8 @@ void Player::Fire()
 		_time += DELTA_TIME;
 		if(_time < 0.1f)
 			_slot->AddAngle(-20.0f * DELTA_TIME);
+		if (_time > 0.1f)
+			_shortSword->SetIsActive(false);
 
 		if (_time > _atkSpeed)
 		{
@@ -120,10 +122,10 @@ void Player::Fire()
 		return;
 	}
 
-
 	if (KEY_PRESS(VK_LBUTTON))
 	{
 		_atkCool = true;
+		_shortSword->SetIsActive(true);
 	}
 }
 
@@ -140,6 +142,14 @@ void Player::Jump()
 	}
 }
 
+int Player::IsCollisionEnemy(shared_ptr<Collider>)
+{
+	if (!_shortSword->IsAtcive())
+		return 0;
+
+	return _shortSword->GetAtk();
+}
+
 float Player::GetAtk()
 {
 	return _shortSword->GetAtk();
@@ -151,7 +161,10 @@ void Player::SetWeaponDir()
 		return;
 	Vector2 startPos = _collider->GetTransform()->GetWorldPosition();
 	Vector2 Dir = W_MOUSE_POS - startPos;
-	_slot->SetAngel(atan(Dir.y / Dir.x));
+	float angle = atan(Dir.y / Dir.x);
+	if (Dir.x < 0)
+		angle += PI;
+	_slot->SetAngel(angle);
 	
 }
 

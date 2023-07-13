@@ -13,13 +13,15 @@ public:
 	virtual void Render() override;
 	virtual void PostRender() override;
 	
-	virtual void Damged(int damge);
+	virtual void Damaged(int damge);
 	void SetAtkSpeed(float atkPerSec) { _atkSpeed =  1/atkPerSec; }
 
 	void Move(Vector2 movePos) { _collider->GetTransform()->AddVector2(movePos); }
 	void Input();
 	void Fire();
 	void Jump();
+
+	int IsCollisionEnemy(shared_ptr<Collider>);
 
 	float GetAtk();
 
@@ -40,4 +42,3 @@ private:
 	float _jumpPower = 0.0f;
 	int _jumpCount = 0;
 };
-
