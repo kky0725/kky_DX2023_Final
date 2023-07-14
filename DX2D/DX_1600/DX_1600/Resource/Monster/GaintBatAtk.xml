@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="GaintBatAtk.png" width="103" height="135" scale="1" format="RGBA8888">
+  <sprite n="GiantBatAttack0.png" x="0" y="0" w="55" h="19" pX="0.5" pY="0.5" oX="2" oY="2" oW="59" oH="23"/>
+  <sprite n="GiantBatAttack1.png" x="0" y="19" w="54" h="21" pX="0.5" pY="0.5" oX="2" oY="2" oW="58" oH="25"/>
+  <sprite n="GiantBatAttack9.png" x="0" y="40" w="53" h="27" pX="0.5" pY="0.5" oX="2" oY="2" oW="57" oH="31"/>
+  <sprite n="GiantBatAttack2.png" x="55" y="0" w="48" h="23" pX="0.5" pY="0.5" oX="2" oY="2" oW="52" oH="27"/>
+  <sprite n="GiantBatAttack3.png" x="53" y="40" w="43" h="25" pX="0.5" pY="0.5" oX="2" oY="2" oW="47" oH="29"/>
+  <sprite n="GiantBatAttack8.png" x="0" y="67" w="38" h="34" pX="0.5" pY="0.5" oX="2" oY="2" oW="42" oH="38"/>
+  <sprite n="GiantBatAttack7.png" x="53" y="65" w="30" h="35" pX="0.5" pY="0.5" oX="2" oY="2" oW="34" oH="39"/>
+  <sprite n="GiantBatAttack5.png" x="0" y="101" w="30" h="34" pX="0.5" pY="0.5" oX="2" oY="2" oW="34" oH="38"/>
+  <sprite n="GiantBatAttack6.png" x="30" y="101" w="28" h="34" pX="0.5" pY="0.5" oX="2" oY="2" oW="32" oH="38"/>
+  <sprite n="GiantBatAttack4.png" x="58" y="100" w="33" h="29" pX="0.5" pY="0.5" oX="2" oY="2" oW="37" oH="33"/>
+</TextureAtlas>

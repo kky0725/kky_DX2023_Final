@@ -18,4 +18,5 @@ private:
 	shared_ptr<Collider> _ground;
 
 	shared_ptr<Creature> _bat;
+	shared_ptr<Creature> _gaintBat;
 };

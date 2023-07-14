@@ -151,7 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Monster\BatBullet.h" />
     <ClInclude Include="Framework\Animation\Animation.h" />
+    <ClInclude Include="Object\Monster\GaintBat.h" />
     <ClInclude Include="Object\Monster\Bat.h" />
     <ClInclude Include="Object\Creature.h" />
     <ClInclude Include="Object\UI\HpBar.h" />
@@ -212,7 +214,9 @@
     <ClInclude Include="Object\Weapon\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Monster\BatBullet.cpp" />
     <ClCompile Include="Framework\Animation\Animation.cpp" />
+    <ClCompile Include="Object\Monster\GaintBat.cpp" />
     <ClCompile Include="Object\Monster\Bat.cpp" />
     <ClCompile Include="Object\Creature.cpp" />
     <ClCompile Include="Object\UI\HpBar.cpp" />
@@ -274,6 +278,11 @@
   <ItemGroup>
     <Image Include="DX_1600.ico" />
     <Image Include="Resource\Monster\Bat.png" />
+    <Image Include="Resource\Monster\GaintBat.png" />
+    <Image Include="Resource\Monster\GaintBatAtk.png" />
+    <Image Include="Resource\Monster\GaintRedBat.png" />
+    <Image Include="Resource\Monster\GaintRedBatAtk.png" />
+    <Image Include="Resource\Monster\RedBat.png" />
     <Image Include="Resource\Player\Player.png" />
     <Image Include="Resource\Player\PlayerIdle.png" />
     <Image Include="Resource\Player\PlayerRun.png" />
@@ -483,6 +492,11 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resource\Monster\Bat.xml" />
+    <Xml Include="Resource\Monster\GaintBat.xml" />
+    <Xml Include="Resource\Monster\GaintBatAtk.xml" />
+    <Xml Include="Resource\Monster\GaintRedBat.xml" />
+    <Xml Include="Resource\Monster\GaintRedBatAtk.xml" />
+    <Xml Include="Resource\Monster\RedBat.xml" />
     <Xml Include="Resource\Player\PlayerIdle.xml" />
     <Xml Include="Resource\Player\PlayerRun.xml" />
   </ItemGroup>

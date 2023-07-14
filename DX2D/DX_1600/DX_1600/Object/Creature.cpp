@@ -38,6 +38,7 @@ void Creature::Update()
 		return;
 	_transform->Update();
 	_collider->Update();
+	CheckDamaged();
 }
 
 void Creature::Render()
@@ -60,11 +61,27 @@ void Creature::Damaged(int damge)
 {
 	if (!_isActive)
 		return;
+	if (_damaged)
+		return;
 	_hp -= damge;
+	_damaged = true;
 
 	if (_hp < 1)
 	{
 		_hp = 0;
 		_isActive = false;
+	}
+}
+
+void Creature::CheckDamaged()
+{
+	if (!_damaged)
+		return;
+
+	_DCtime += DELTA_TIME;
+	if (_DCtime > 0.1f)
+	{
+		_damaged = false;
+		_DCtime = 0.0f;
 	}
 }

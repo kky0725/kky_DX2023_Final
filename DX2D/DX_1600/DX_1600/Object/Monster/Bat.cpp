@@ -5,12 +5,11 @@ Bat::Bat(bool basic)
 	:Creature(5.0f)
 {
 	_ani = make_shared<Animation>();
-	_isActive = true;
 
 	if (basic) 
 	{
 		_hp = 6;
-		_ani->CreateAction(L"Resource/Monster/Bat.png", "Resource/Monster/Bat.xml", "Idle", Vector2(10, 10), Action::LOOP, 0.1f);
+		_ani->CreateAction(L"Resource/Monster/Bat.png", "Resource/Monster/Bat.xml", "Idle", Vector2(10, 10));
 	}
 	else
 	{
@@ -32,7 +31,7 @@ void Bat::Update()
 {
 	if (!_isActive)
 		return;
-	move();
+	Move();
 	_ani->Update();
 	Creature::Update();
 }
@@ -45,7 +44,7 @@ void Bat::Render()
 	Creature::Render();
 }
 
-void Bat::move()
+void Bat::Move()
 {
 	_time += DELTA_TIME;
 	if (_time > 0.5f)

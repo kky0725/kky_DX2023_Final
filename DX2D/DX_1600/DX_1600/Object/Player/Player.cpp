@@ -8,7 +8,6 @@ Player::Player()
 {
 	_slot = make_shared<Transform>();
 	_slot->SetParent(_transform);
-	_isActive = true;
 
 	_ani = make_shared<Player_Ani>();
 	_ani->SetParent(_collider->GetTransform());
@@ -58,18 +57,10 @@ void Player::PostRender()
 
 void Player::Damaged(int damge)
 {
-	if (!_isActive)
-		return;
 	damge -= def;
 	if (damge <= 0)
 		return;
-
-	_hp -= damge;
-
-	if (_hp < 1)
-	{
-		_hp = 0;
-	}
+	Creature::Damaged(damge);
 }
 
 void Player::Input()

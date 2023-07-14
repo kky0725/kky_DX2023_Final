@@ -1,0 +1,29 @@
+#pragma once
+class GaintBat : public Creature
+{
+public:
+	GaintBat(bool basic);
+	~GaintBat();
+
+	virtual void Update() override;
+	virtual void Render() override;
+
+	void Attack();
+	void RedAttack();
+	void TargetOn(Vector2 playerPos);
+	void TargetOff();
+
+	void Move();
+
+private:
+	bool _basic = true;
+	bool _targetOn = false;
+	float _range = 50.0f;
+
+	shared_ptr<Animation> _ani;
+
+	float _time = 0.0f;
+	Vector2 _dir = { 1.0f,1.0f };
+
+	vector<shared_ptr<class BatBullet>> _bullets;
+};

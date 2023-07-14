@@ -192,6 +192,12 @@
     <ClInclude Include="Object\Player\Player_Ani.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\Monster\GaintBat.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Monster\BatBullet.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX_1600.cpp">
@@ -332,6 +338,12 @@
     <ClCompile Include="Object\Player\Player_Ani.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\Monster\GaintBat.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Monster\BatBullet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1600.rc">
@@ -361,6 +373,21 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\Monster\Bat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\GaintBat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\GaintBatAtk.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\GaintRedBat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\GaintRedBatAtk.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\RedBat.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
@@ -406,5 +433,10 @@
     <Xml Include="Resource\Player\PlayerIdle.xml" />
     <Xml Include="Resource\Player\PlayerRun.xml" />
     <Xml Include="Resource\Monster\Bat.xml" />
+    <Xml Include="Resource\Monster\GaintBat.xml" />
+    <Xml Include="Resource\Monster\GaintBatAtk.xml" />
+    <Xml Include="Resource\Monster\GaintRedBat.xml" />
+    <Xml Include="Resource\Monster\GaintRedBatAtk.xml" />
+    <Xml Include="Resource\Monster\RedBat.xml" />
   </ItemGroup>
 </Project>

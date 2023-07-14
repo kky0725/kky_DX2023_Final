@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="GaintBat.png" width="108" height="88" scale="1" format="RGBA8888">
+  <sprite n="GiantBat0.png" x="0" y="0" w="55" h="16" pX="0.5" pY="0.5" oX="2" oY="2" oW="59" oH="20"/>
+  <sprite n="GiantBat1.png" x="0" y="16" w="55" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="59" oH="21"/>
+  <sprite n="GiantBat2.png" x="0" y="33" w="54" h="24" pX="0.5" pY="0.5" oX="2" oY="2" oW="58" oH="28"/>
+  <sprite n="GiantBat6.png" x="55" y="0" w="53" h="28" pX="0.5" pY="0.5" oX="2" oY="2" oW="57" oH="32"/>
+  <sprite n="GiantBat3.png" x="55" y="28" w="52" h="26" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="30"/>
+  <sprite n="GiantBat4.png" x="0" y="57" w="46" h="31" pX="0.5" pY="0.5" oX="2" oY="2" oW="50" oH="35"/>
+  <sprite n="GiantBat5.png" x="46" y="57" w="44" h="31" pX="0.5" pY="0.5" oX="2" oY="2" oW="48" oH="35"/>
+</TextureAtlas>

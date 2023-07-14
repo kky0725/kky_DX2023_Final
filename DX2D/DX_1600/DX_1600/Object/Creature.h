@@ -19,6 +19,7 @@ public:
 	shared_ptr<Transform> GetTransform() { return _collider->GetTransform(); }
 
 	virtual void Damaged(int damge);
+	void CheckDamaged();
 
 	bool IsAtcive() { return _isActive; }
 	void SetIsActive(bool value) { _isActive = value; }
@@ -30,11 +31,14 @@ protected:
 	shared_ptr<Collider>	_collider;
 
 	int _hp = 10;
-	bool _isActive = false;
+	bool _isActive = true;
 
 	float _speed = 200.0f;
 	float _time = 0.0f;
 	float _atkSpeed = 0.5f;
 	bool _atkCool = false;
+
+	float _DCtime = 0.0f;
+	bool _damaged = false;
 };
 
