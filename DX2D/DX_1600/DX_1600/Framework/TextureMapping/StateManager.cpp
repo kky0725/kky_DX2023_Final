@@ -13,6 +13,14 @@ StateManager::StateManager()
 	_additive->Additive();
 
 	_blendState = make_shared<BlendState>();
+
+	D3D11_RASTERIZER_DESC desc = {};
+	desc.CullMode = D3D11_CULL_NONE;
+	desc.FillMode = D3D11_FILL_SOLID;
+
+	DEVICE->CreateRasterizerState(&desc, &rasterizerState);
+
+	DC->RSSetState(rasterizerState);
 }
 
 StateManager::~StateManager()

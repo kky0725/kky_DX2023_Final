@@ -110,11 +110,17 @@ void Animation::CreateAction(wstring srvPath, string actionName, Vector2 size)
 void Animation::SetLeft()
 {
 	for (auto sprite : _sprites)
+	{
+		//_transform->SetScale(Vector2(-1.0f, 1.0f));
 		sprite->SetLeft();
+	}
 }
 
 void Animation::SetRight()
 {
 	for (auto sprite : _sprites)
+	{
+		//_transform->SetScale(Vector2(1.0f,1.0f));
 		sprite->SetRight();
+	}
 }

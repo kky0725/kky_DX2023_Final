@@ -30,5 +30,5 @@ private:
 	shared_ptr<Animation> _ani;
 
 	float _time = 0.0f;
-	float _lifeTime = 5.0f;
+	float _lifeTime = 15.0f;
 };

@@ -24,7 +24,6 @@ GaintBat::GaintBat(bool basic)
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(10, 10));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(10, 10));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBatAtk.png", "Resource/Monster/GaintRedBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.1f, std::bind(&GaintBat::TargetOff, this));
-		_basic = false;
 	}
 
 	_ani->SetParent(_collider->GetTransform());
@@ -48,10 +47,12 @@ void GaintBat::Update()
 {
 	if (!_isActive)
 		return;
-	Move();
 	Attack();
+	Move();
 	_ani->Update();
 	Creature::Update();
+	for (auto bullet : _bullets)
+		bullet->Update();
 }
 
 void GaintBat::Render()
@@ -60,6 +61,8 @@ void GaintBat::Render()
 		return;
 	_ani->Render();
 	Creature::Render();
+	for (auto bullet : _bullets)
+		bullet->Render();
 }
 
 void GaintBat::Attack()
@@ -70,24 +73,54 @@ void GaintBat::Attack()
 	if (_basic)
 	{
 		//3개씩 3줄로 공격
+		for (int i = 0; i < 9; i++)
+		{
+
+		}
 	}
 	else
 		RedAttack();
 }
 
+void GaintBat::SummonBullets(Vector2 direction)
+{
+	Vector2 startPos = _collider->GetTransform()->GetWorldPosition();
+	if (_basic)
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			_bullets[i]->Summon(startPos + direction.Rotation(PI/6 * (-1 + i%3)) * (100 + i/3));
+		}
+	}
+	else
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			_bullets[i]->Summon(startPos);
+		}
+	}
+}
+
 void GaintBat::RedAttack()
 {
 	//원 형 공격
+	for (int i = 0; i < 9; i++)
+	{
+
+	}
 }
 
 void GaintBat::TargetOn(Vector2 playerPos)
 {
+	if (_targetOn)
+		return;
 	Vector2 dir = playerPos-_collider->GetTransform()->GetWorldPosition();
 	if (dir.Length() < _range)
 	{
 		_ani->SetState(Animation::State::ATK);
 		_targetOn = true;
 	}
+	SummonBullets(dir.NormalVector2());
 }
 
 void GaintBat::TargetOff()

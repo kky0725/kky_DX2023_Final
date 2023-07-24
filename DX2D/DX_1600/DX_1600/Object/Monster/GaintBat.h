@@ -9,6 +9,7 @@ public:
 	virtual void Render() override;
 
 	void Attack();
+	void SummonBullets(Vector2 direction);
 	void RedAttack();
 	void TargetOn(Vector2 playerPos);
 	void TargetOff();

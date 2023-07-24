@@ -96,6 +96,16 @@ public:
         return result;
     }
 
+    Vector2 Rotation(float angle)
+    {
+        Vector2 result;
+        float x = result.x;
+        float y = result.y;
+        result.x = cos(angle) * x - sin(angle) * y;
+        result.y = sin(angle) * x + cos(angle) * y;
+        return result;
+    }
+
     bool IsBetween(Vector2 v1, Vector2 v2);
 
     Vector2 TransformCoord(XMMATRIX matrix);
