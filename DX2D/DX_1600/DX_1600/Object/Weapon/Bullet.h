@@ -1,16 +1,14 @@
 #pragma once
-class BatBullet
+class Bullet
 {
 public:
-	BatBullet();
-	~BatBullet();
+	Bullet();
+	virtual ~Bullet();
 
-	void Update();
-	void Render();
+	virtual void Update() abstract;
+	virtual void Render() abstract;
 
 	void SetPos(const Vector2& pos) { _collider->SetPosition(pos); }
-	void Summon(const Vector2 startPos, Vector2 dir);
-	void Shoot();
 
 	bool IsActive() { return _isActive; }
 	void SetActive(bool value) { _isActive = value; }
@@ -20,15 +18,16 @@ public:
 
 	void LifeTime();
 
-private:
+protected:
 	bool _isActive = false;
 	float _speed = 300.0f;
 	Vector2 _direction = Vector2(0.0f, 0.0f);
 
 	shared_ptr<CircleCollider> _collider;
-	
+
 	shared_ptr<Animation> _ani;
 
 	float _time = 0.0f;
 	float _lifeTime = 15.0f;
 };
+

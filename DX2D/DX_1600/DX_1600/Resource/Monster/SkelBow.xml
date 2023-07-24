@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="SkelBow.png" width="42" height="30" scale="1" format="RGBA8888">
+  <sprite n="GreatBow0.png" x="0" y="0" w="7" h="15" pX="0.5" pY="0.5" oX="4" oY="0" oW="17" oH="15"/>
+  <sprite n="GreatBow1.png" x="7" y="0" w="14" h="15" pX="0.5" pY="0.5" oX="3" oY="0" oW="17" oH="15"/>
+  <sprite n="GreatBow2.png" x="0" y="15" w="15" h="15" pX="0.5" pY="0.5" oX="1" oY="0" oW="17" oH="15"/>
+  <sprite n="GreatBow4.png" x="15" y="15" w="8" h="15" pX="0.5" pY="0.5" oX="4" oY="0" oW="17" oH="15"/>
+  <sprite n="GreatBow5.png" x="21" y="0" w="7" h="15" pX="0.5" pY="0.5" oX="3" oY="0" oW="17" oH="15"/>
+  <sprite n="GreatBow3.png" x="28" y="0" w="14" h="13" pX="0.5" pY="0.5" oX="0" oY="1" oW="17" oH="15"/>
+</TextureAtlas>

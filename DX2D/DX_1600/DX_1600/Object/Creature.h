@@ -19,6 +19,7 @@ public:
 	shared_ptr<Transform> GetTransform() { return _collider->GetTransform(); }
 
 	virtual void Damaged(int damge);
+	virtual int CheckAttack(shared_ptr<Collider> col) abstract;
 	void CheckDamaged();
 
 	bool IsAtcive() { return _isActive; }

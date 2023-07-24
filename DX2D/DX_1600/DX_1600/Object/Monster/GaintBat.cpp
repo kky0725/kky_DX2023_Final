@@ -4,7 +4,7 @@
 #include "BatBullet.h"
 
 GaintBat::GaintBat(bool basic)
-	:Creature(5.0f)
+	:Creature(50.0f), _basic(basic)
 {
 	_ani = make_shared<Animation>();
 	_isActive = true;
@@ -13,21 +13,21 @@ GaintBat::GaintBat(bool basic)
 	{
 		_hp = 46;
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "Idle", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "Idle", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "Idle", Vector2(10, 10));
+		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(10, 10));
+		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(10, 10));
 		_ani->CreateAction(L"Resource/Monster/GaintBatAtk.png", "Resource/Monster/GaintBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.1f, std::bind(&GaintBat::TargetOff, this));
 	}
 	else
 	{
 		_hp = 44;
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(10, 10));
+		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(10, 10));
+		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(10, 10));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBatAtk.png", "Resource/Monster/GaintRedBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.1f, std::bind(&GaintBat::TargetOff, this));
 	}
 
 	_ani->SetParent(_collider->GetTransform());
-	_collider->GetTransform()->SetScale(Vector2(10.0f, 10.0f));
+	_ani->SetScale(Vector2(10.0f, 10.0f));
 
 	_speed = 100.0f;
 
@@ -70,16 +70,11 @@ void GaintBat::Attack()
 	if (!_targetOn)
 		return;
 
-	if (_basic)
+	for (int i = 0; i < 9; i++)
 	{
-		//3개씩 3줄로 공격
-		for (int i = 0; i < 9; i++)
-		{
-
-		}
+		_bullets[i]->Shoot();
 	}
-	else
-		RedAttack();
+
 }
 
 void GaintBat::SummonBullets(Vector2 direction)
@@ -89,24 +84,15 @@ void GaintBat::SummonBullets(Vector2 direction)
 	{
 		for (int i = 0; i < 9; i++)
 		{
-			_bullets[i]->Summon(startPos + direction.Rotation(PI/6 * (-1 + i%3)) * (100 + i/3));
+			_bullets[i]->Summon(startPos + direction.Rotation(PI/6.0f * (-1 + i%3)) * (50.0f +  50.0f * (i/3)), direction.Rotation(PI / 6.0f * (-1 + i % 3)));
 		}
 	}
 	else
 	{
 		for (int i = 0; i < 9; i++)
 		{
-			_bullets[i]->Summon(startPos);
+			_bullets[i]->Summon(startPos + direction.Rotation(2.0f * PI/9.0f * i) * 50.0f, direction.Rotation(2.0f * PI / 9.0f * i));
 		}
-	}
-}
-
-void GaintBat::RedAttack()
-{
-	//원 형 공격
-	for (int i = 0; i < 9; i++)
-	{
-
 	}
 }
 
@@ -119,14 +105,32 @@ void GaintBat::TargetOn(Vector2 playerPos)
 	{
 		_ani->SetState(Animation::State::ATK);
 		_targetOn = true;
+		SummonBullets(dir.NormalVector2());
 	}
-	SummonBullets(dir.NormalVector2());
 }
 
 void GaintBat::TargetOff()
 {
 	_ani->SetState(Animation::State::IDLE);
 	_targetOn = false;
+	Attack();
+}
+
+int GaintBat::CheckAttack(shared_ptr<Collider> player)
+{
+	TargetOn(player->GetTransform()->GetWorldPosition());
+
+	for (auto bullet : _bullets)
+	{
+		if (!bullet->IsActive())
+			continue;
+		if (player->IsCollision(bullet->GetCollider()))
+		{
+			bullet->SetActive(false);
+			return _atk;
+		}
+	}
+	return 0;
 }
 
 

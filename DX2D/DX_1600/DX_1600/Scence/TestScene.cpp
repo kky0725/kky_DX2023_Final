@@ -12,7 +12,7 @@ TestScene::TestScene()
 	_ground = make_shared<RectCollider>(Vector2(1280, 50));
 	_ground->GetTransform()->SetPosition(Vector2(0.0f, -250.0f));
 
-	_gaintBat = make_shared<GaintBat>(true);
+	_gaintBat = make_shared<GaintBat>(false);
 	_bat = make_shared<Bat>(true);
 }
 
@@ -47,13 +47,14 @@ void TestScene::PostRender()
 {
 	ImGui::Text("W_M.x : %f, W_M.y : %f", W_MOUSE_POS.x, W_MOUSE_POS.y);
 
+	ImGui::Text("PlayerHp : %d", _player->GetHp());
 	ImGui::Text("BatHp : %d", _bat->GetHp());
 	ImGui::Text("GBatHp : %d", _gaintBat->GetHp());
 }
 
 void TestScene::CheckAttack()
 {
-	int damage = _player->IsCollisionEnemy(_bat->GetCollider());
-	_bat->Damaged(damage);
-	dynamic_pointer_cast<GaintBat>(_gaintBat)->TargetOn(_player->GetTransform()->GetWorldPosition());
+	_bat->Damaged(_player->CheckAttack(_bat->GetCollider()));
+	_gaintBat->Damaged(_player->CheckAttack(_gaintBat->GetCollider()));
+	_player->Damaged(_gaintBat->CheckAttack(_player->GetCollider()));
 }

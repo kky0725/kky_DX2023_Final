@@ -1,20 +1,19 @@
 #include "framework.h"
-#include "BatBullet.h"
+#include "Bullet.h"
 
-BatBullet::BatBullet()
+Bullet::Bullet()
 {
 	_collider = make_shared<CircleCollider>(5.0f);
 	_collider->SetPosition(Vector2(-1000, -1000));
 
 	_ani = make_shared<Animation>();
-	//_ani->CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Idle", Vector2(10.0f, 10.0f));
 }
 
-BatBullet::~BatBullet()
+Bullet::~Bullet()
 {
 }
 
-void BatBullet::Update()
+void Bullet::Update()
 {
 	LifeTime();
 	if (!_isActive)
@@ -23,27 +22,14 @@ void BatBullet::Update()
 	_collider->Update();
 }
 
-void BatBullet::Render()
+void Bullet::Render()
 {
 	if (!_isActive)
 		return;
 	_collider->Render();
 }
 
-void BatBullet::Summon(const Vector2 startPos, Vector2 dir)
-{
-	_isActive = true;
-	_collider->GetTransform()->SetPosition(startPos);
-	_direction = dir;
-	_speed = 0.0f;
-}
-
-void BatBullet::Shoot()
-{
-	_speed = 300.0f;
-}
-
-void BatBullet::LifeTime()
+void Bullet::LifeTime()
 {
 	if (!_isActive)
 	{

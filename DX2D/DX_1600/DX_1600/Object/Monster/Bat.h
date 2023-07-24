@@ -9,6 +9,7 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 
+	virtual int CheckAttack(shared_ptr<Collider> col) override;
 	void Move();
 
 private:

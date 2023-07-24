@@ -2,7 +2,7 @@
 #include "Bat.h"
 
 Bat::Bat(bool basic)
-	:Creature(5.0f)
+	:Creature(25.0f)
 {
 	_ani = make_shared<Animation>();
 
@@ -18,7 +18,7 @@ Bat::Bat(bool basic)
 	}
 
 	_ani->SetParent(_collider->GetTransform());
-	_collider->GetTransform()->SetScale(Vector2(5.0f, 5.0f));
+	_ani->SetScale(Vector2(5.0f, 5.0f));
 
 	_speed = 100.0f;
 }
@@ -60,4 +60,9 @@ void Bat::Move()
 		_ani->SetRight();
 	if (_dir.x == -1)
 		_ani->SetLeft();
+}
+
+int Bat::CheckAttack(shared_ptr<Collider> col)
+{
+	return 0;
 }

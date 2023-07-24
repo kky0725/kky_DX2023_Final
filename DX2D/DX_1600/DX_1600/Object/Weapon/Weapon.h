@@ -13,6 +13,8 @@ public:
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	shared_ptr<Collider> GetCollider() { return _collider; }
 
+	bool IsAtcive() { return _isActive; }
+	void SetIsActive(bool value) { _isActive = value; }
 
 protected:
 	shared_ptr<Quad> _quad;
@@ -22,5 +24,7 @@ protected:
 	int _maxAtk = 2;
 	int _minAtk = 1;
 	float _atkPerSec = 1.0f;
+
+	bool _isActive = false;
 };
 

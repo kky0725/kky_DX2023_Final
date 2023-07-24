@@ -10,10 +10,6 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 
-	bool IsAtcive() { return _isActive; }
-	void SetIsActive(bool value) { _isActive = value; }
-
 private:
-	bool _isActive = false;
 };
 

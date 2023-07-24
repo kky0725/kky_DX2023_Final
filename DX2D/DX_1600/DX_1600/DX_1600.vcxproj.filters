@@ -198,6 +198,12 @@
     <ClInclude Include="Object\Monster\BatBullet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\Monster\Skel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Weapon\Bullet.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX_1600.cpp">
@@ -344,6 +350,12 @@
     <ClCompile Include="Object\Monster\BatBullet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\Monster\Skel.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Weapon\Bullet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1600.rc">
@@ -388,6 +400,24 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\Monster\RedBat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\GraySkelDie.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\GraySkelIdle.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelSword.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelSword0.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBow.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelWalk.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
@@ -438,5 +468,7 @@
     <Xml Include="Resource\Monster\GaintRedBat.xml" />
     <Xml Include="Resource\Monster\GaintRedBatAtk.xml" />
     <Xml Include="Resource\Monster\RedBat.xml" />
+    <Xml Include="Resource\Monster\SkelBow.xml" />
+    <Xml Include="Resource\Monster\SkelWalk.xml" />
   </ItemGroup>
 </Project>

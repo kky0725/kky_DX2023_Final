@@ -21,7 +21,7 @@ public:
 	void Fire();
 	void Jump();
 
-	int IsCollisionEnemy(shared_ptr<Collider>);
+	virtual int CheckAttack(shared_ptr<Collider> enemy)  override;
 
 	float GetAtk();
 
@@ -36,7 +36,7 @@ private:
 	shared_ptr<class Player_Ani> _ani;
 	shared_ptr<Collider> _footHold;
 
-	int def = 0;
+	int _def = 0;
 	shared_ptr<ShortSword> _shortSword;
 
 	float _jumpPower = 0.0f;

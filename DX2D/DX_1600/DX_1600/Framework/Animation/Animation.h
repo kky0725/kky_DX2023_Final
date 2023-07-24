@@ -20,6 +20,7 @@ public:
 	virtual void PostRender();
 
 	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
+	void SetScale(Vector2 value) { _transform->SetScale(value); }
 
 	void SetState(State state);
 	State GetState() { return _curState; }

@@ -10,16 +10,17 @@ public:
 
 	void Attack();
 	void SummonBullets(Vector2 direction);
-	void RedAttack();
 	void TargetOn(Vector2 playerPos);
 	void TargetOff();
+	virtual int CheckAttack(shared_ptr<Collider> player) override;
 
 	void Move();
 
 private:
 	bool _basic = true;
 	bool _targetOn = false;
-	float _range = 50.0f;
+	float _range = 200.0f;
+	int _atk = 10;
 
 	shared_ptr<Animation> _ani;
 

@@ -12,7 +12,7 @@ Player::Player()
 	_ani = make_shared<Player_Ani>();
 	_ani->SetParent(_collider->GetTransform());
 
-	_hp = 80;
+	_hp = 1000;
 
 	_footHold = make_shared<RectCollider>(Vector2(27.0f, 10.0f));
 	_footHold->SetParent(_collider->GetTransform());
@@ -57,7 +57,7 @@ void Player::PostRender()
 
 void Player::Damaged(int damge)
 {
-	damge -= def;
+	damge -= _def;
 	if (damge <= 0)
 		return;
 	Creature::Damaged(damge);
@@ -133,12 +133,15 @@ void Player::Jump()
 	}
 }
 
-int Player::IsCollisionEnemy(shared_ptr<Collider>)
+int Player::CheckAttack(shared_ptr<Collider> enemy)
 {
 	if (!_shortSword->IsAtcive())
 		return 0;
 
-	return _shortSword->GetAtk();
+	if (!_shortSword->GetCollider()->IsCollision(enemy))
+		return 0;
+
+	return GetAtk();
 }
 
 float Player::GetAtk()
