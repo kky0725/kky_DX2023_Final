@@ -1,15 +1,6 @@
 #include "framework.h"
 #include "Creature.h"
 
-Creature::Creature(wstring string, Vector2 size, float radius)
-{
-	_quad = make_shared<Quad>(string, size);
-	_transform = make_shared<Transform>();
-	_collider = make_shared<CircleCollider>(radius);
-
-	_transform->SetParent(_collider->GetTransform());
-}
-
 Creature::Creature(wstring string, float radius)
 {
 	_quad = make_shared<Quad>(string);

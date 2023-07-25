@@ -2,7 +2,6 @@
 class Creature
 {
 public:
-	Creature(wstring string, Vector2 size, float radius);
 	Creature(wstring string, float radius);
 	Creature(float radius);
 	virtual ~Creature();

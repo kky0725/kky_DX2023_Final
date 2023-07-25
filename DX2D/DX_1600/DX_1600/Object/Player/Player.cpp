@@ -7,7 +7,7 @@ Player::Player()
 	:Creature(27.0f)
 {
 	_slot = make_shared<Transform>();
-	_slot->SetParent(_transform);
+	_slot->SetParent(_collider->GetTransform());
 
 	_ani = make_shared<Player_Ani>();
 	_ani->SetParent(_collider->GetTransform());
@@ -20,8 +20,8 @@ Player::Player()
 
 	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
 	_shortSword = make_shared<ShortSword>();
-	_shortSword->GetTransform()->SetParent(_slot);
-	_shortSword->GetTransform()->SetPosition(Vector2(50, 0));
+	_shortSword->GetCollider()->GetTransform()->SetParent(_slot);
+	_shortSword->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
 
 	SetAtkSpeed(_shortSword->GetAtkPerSec());
 }

@@ -101,6 +101,8 @@ using namespace Microsoft::WRL;
 #include "Object/Basic/Effect.h"
 #include "Object/Basic/EffectManager.h"
 #include "Object/Creature.h"
+#include "Object/Weapon/Bullet.h"
+#include "Object/Weapon/Weapon.h"
 
 //UI
 #include "Object//UI/Button.h"

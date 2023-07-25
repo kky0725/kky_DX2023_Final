@@ -1,14 +1,14 @@
 #pragma once
-
-class ShortSword : public Weapon
+class SkelSword : public Weapon
 {
 public:
-	ShortSword();
-	virtual ~ShortSword();
-	
+	SkelSword();
+	virtual ~SkelSword();
+
 	virtual void Update() override;
 	virtual void Render() override;
 
 private:
+
 };
 

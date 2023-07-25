@@ -1,8 +1,8 @@
 #include "framework.h"
-#include "ShortSword.h"
+#include "SkelSword.h"
 
-ShortSword::ShortSword()
-	:Weapon(L"Resource/Weapon/ShortSword.png", Vector2(65.0f, 18.0f))
+SkelSword::SkelSword()
+	:Weapon(L"Resource/Monster/SkelSword.png", Vector2(60.0f, 20.0f))
 {
 	_maxAtk = 10;
 	_minAtk = 8;
@@ -12,16 +12,16 @@ ShortSword::ShortSword()
 	_collider->SetPosition(Vector2(2.5f, 0.0f));
 }
 
-ShortSword::~ShortSword()
+SkelSword::~SkelSword()
 {
 }
 
-void ShortSword::Update()
+void SkelSword::Update()
 {
 	Weapon::Update();
 }
 
-void ShortSword::Render()
+void SkelSword::Render()
 {
 	Weapon::Render();
 }

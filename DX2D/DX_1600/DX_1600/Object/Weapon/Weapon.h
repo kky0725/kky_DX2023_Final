@@ -2,7 +2,8 @@
 class Weapon
 {
 public:
-	Weapon(wstring string);
+	Weapon(Vector2 size);
+	Weapon(wstring string, Vector2 size);
 	virtual ~Weapon();
 
 	virtual void Update() abstract;

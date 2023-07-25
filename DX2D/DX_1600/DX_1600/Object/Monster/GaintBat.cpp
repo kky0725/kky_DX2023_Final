@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "GaintBat.h"
 
-#include "BatBullet.h"
+#include "MonsterWeapon/BatBullet.h"
 
 GaintBat::GaintBat(bool basic)
 	:Creature(50.0f), _basic(basic)
@@ -9,13 +9,13 @@ GaintBat::GaintBat(bool basic)
 	_ani = make_shared<Animation>();
 	_isActive = true;
 
-	if (basic)
+	if (_basic)
 	{
 		_hp = 46;
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "Idle", Vector2(10, 10));
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(10, 10));
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintBatAtk.png", "Resource/Monster/GaintBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.1f, std::bind(&GaintBat::TargetOff, this));
+		_ani->CreateAction(L"Resource/Monster/GaintBatAtk.png", "Resource/Monster/GaintBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.15f, std::bind(&GaintBat::TargetOff, this));
 	}
 	else
 	{
@@ -23,7 +23,7 @@ GaintBat::GaintBat(bool basic)
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(10, 10));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(10, 10));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintRedBatAtk.png", "Resource/Monster/GaintRedBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.1f, std::bind(&GaintBat::TargetOff, this));
+		_ani->CreateAction(L"Resource/Monster/GaintRedBatAtk.png", "Resource/Monster/GaintRedBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.15f, std::bind(&GaintBat::TargetOff, this));
 	}
 
 	_ani->SetParent(_collider->GetTransform());
@@ -148,8 +148,8 @@ void GaintBat::Move()
 
 	_collider->GetTransform()->AddVector2(_dir * DELTA_TIME * _speed);
 
-	if (_dir.x == 1)
+	if (_dir.x > 0.0f)
 		_ani->SetRight();
-	if (_dir.x == -1)
+	if (_dir.x < 0.0f)
 		_ani->SetLeft();
 }

@@ -17,6 +17,8 @@ private:
 	shared_ptr<Player> _player;
 	shared_ptr<Collider> _ground;
 
+	vector<shared_ptr<Creature>> _creatures;
 	shared_ptr<Creature> _bat;
 	shared_ptr<Creature> _gaintBat;
+	
 };

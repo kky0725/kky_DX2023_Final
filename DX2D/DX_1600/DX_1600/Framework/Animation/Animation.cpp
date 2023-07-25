@@ -107,6 +107,11 @@ void Animation::CreateAction(wstring srvPath, string actionName, Vector2 size)
 	_sprites.push_back(sprite);
 }
 
+void Animation::SetEndEvent(State state, CallBack event)
+{
+	_actions[state]->SetEndEvent(event);
+}
+
 void Animation::SetLeft()
 {
 	for (auto sprite : _sprites)

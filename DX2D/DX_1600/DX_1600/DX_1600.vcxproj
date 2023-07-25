@@ -152,7 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Object\Weapon\Bullet.h" />
-    <ClInclude Include="Object\Monster\BatBullet.h" />
+    <ClInclude Include="Object\Monster\MonsterWeapon\BatBullet.h" />
     <ClInclude Include="Framework\Animation\Animation.h" />
     <ClInclude Include="Object\Monster\GaintBat.h" />
     <ClInclude Include="Object\Monster\Bat.h" />
@@ -206,6 +206,8 @@
     <ClInclude Include="Scence\SceneManager.h" />
     <ClInclude Include="Object\Weapon\ShortSword.h" />
     <ClInclude Include="Object\Monster\Skel.h" />
+    <ClInclude Include="Object\Monster\MonsterWeapon\SkelBow.h" />
+    <ClInclude Include="Object\Monster\MonsterWeapon\SkelSword.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Framework\Math\Transform.h" />
     <ClInclude Include="Framework\Utility\Timer.h" />
@@ -217,7 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Object\Weapon\Bullet.cpp" />
-    <ClCompile Include="Object\Monster\BatBullet.cpp" />
+    <ClCompile Include="Object\Monster\MonsterWeapon\BatBullet.cpp" />
     <ClCompile Include="Framework\Animation\Animation.cpp" />
     <ClCompile Include="Object\Monster\GaintBat.cpp" />
     <ClCompile Include="Object\Monster\Bat.cpp" />
@@ -275,6 +277,8 @@
     <ClCompile Include="Object\Weapon\Weapon.cpp" />
     <ClCompile Include="Object\Weapon\ShortSword.cpp" />
     <ClCompile Include="Object\Monster\Skel.cpp" />
+    <ClCompile Include="Object\Monster\MonsterWeapon\SkelBow.cpp" />
+    <ClCompile Include="Object\Monster\MonsterWeapon\SkelSword.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1600.rc" />

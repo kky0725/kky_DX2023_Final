@@ -195,13 +195,19 @@
     <ClInclude Include="Object\Monster\GaintBat.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Monster\BatBullet.h">
+    <ClInclude Include="Object\Monster\MonsterWeapon\BatBullet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Monster\Skel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Weapon\Bullet.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Monster\MonsterWeapon\SkelSword.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Monster\MonsterWeapon\SkelBow.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -347,13 +353,19 @@
     <ClCompile Include="Object\Monster\GaintBat.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Monster\BatBullet.cpp">
+    <ClCompile Include="Object\Monster\MonsterWeapon\BatBullet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Monster\Skel.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Weapon\Bullet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Monster\MonsterWeapon\SkelSword.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Monster\MonsterWeapon\SkelBow.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
