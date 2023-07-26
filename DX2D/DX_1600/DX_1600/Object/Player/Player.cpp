@@ -20,7 +20,7 @@ Player::Player()
 
 	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
 	_shortSword = make_shared<ShortSword>();
-	_shortSword->GetCollider()->GetTransform()->SetParent(_slot);
+	_shortSword->GetCollider()->SetParent(_slot);
 	_shortSword->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
 
 	SetAtkSpeed(_shortSword->GetAtkPerSec());

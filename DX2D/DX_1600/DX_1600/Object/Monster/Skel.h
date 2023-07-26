@@ -12,13 +12,15 @@ public:
 	void TargetOff();
 
 	virtual int CheckAttack(shared_ptr<Collider> col) override;
-	int CheckAttackSword();
-	int CheckAttackBow();
+	int CheckAttackSword(shared_ptr<Collider> col);
+	int CheckAttackBow(shared_ptr<Collider> col);
 	void SwordAttack();
 	void BowAttack();
 	void Move();
 	void Chase();
 	void EndAttack();
+
+	void Gravity();
 
 private:
 	shared_ptr<Animation> _ani;
@@ -29,6 +31,8 @@ private:
 	bool _targetOn = false;
 	float _range = 200.0f;
 	int _atk = 10;
+
+	float _jumpPower = 0.0f;
 
 	weak_ptr<Collider> _target;
 	shared_ptr<Weapon> _weapon;

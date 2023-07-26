@@ -17,7 +17,7 @@ Skel::Skel(bool basic)
 	_ani->CreateAction(L"Resource/Monster/GraySkelDie.png", "Die", Vector2(10, 10));
 
 	_slot = make_shared<Transform>();
-	_slot->SetParent(_transform);
+	_slot->SetParent(_collider->GetTransform());
 
 	if (_basic)//°Ë
 	{
@@ -32,10 +32,9 @@ Skel::Skel(bool basic)
 		_ani->SetEndEvent(Animation::State::ATK, std::bind(&Skel::TargetOff, this));
 	}
 
-	
-
+	_weapon->GetCollider()->SetParent(_slot);
 	_ani->SetParent(_collider->GetTransform());
-	_ani->SetScale(Vector2(10.0f, 10.0f));
+	_ani->SetScale(Vector2(5.0f, 5.0f));
 	_speed = 100.0f;
 }
 
@@ -47,9 +46,13 @@ void Skel::Update()
 {
 	if (!_isActive)
 		return;
+	Gravity();
 	Move();
 	Chase();
+	SwordAttack();
 	_ani->Update();
+	_slot->Update();
+	_weapon->Update();
 	Creature::Update();
 }
 
@@ -57,6 +60,8 @@ void Skel::Render()
 {
 	if (!_isActive)
 		return;
+	_slot->SetBuffer(0);
+	_weapon->Render();
 	_ani->Render();
 	Creature::Render();
 }
@@ -89,23 +94,66 @@ int Skel::CheckAttack(shared_ptr<Collider> col)
 	_target = col;
 
 	if (_basic)
-		return CheckAttackSword();
+		return CheckAttackSword(col);
 	else
-		return CheckAttackBow();
+		return CheckAttackBow(col);
 }
 
-int Skel::CheckAttackSword()
+int Skel::CheckAttackSword(shared_ptr<Collider> col)
 {
-	return 0;
+	if (!_weapon->IsAtcive())
+		return 0;
+
+	if (!_weapon->GetCollider()->IsCollision(col))
+		return 0;
+
+	return _weapon->GetAtk();
 }
 
-int Skel::CheckAttackBow()
+int Skel::CheckAttackBow(shared_ptr<Collider> col)
 {
 	return 0;
 }
 
 void Skel::SwordAttack()
 {
+	if (!_basic)
+		return;
+
+	if (_atkCool)
+	{
+		_time += DELTA_TIME;
+		if (_time < 0.1f)
+		{
+			if (_dir.x > 0.0f)
+				_slot->AddAngle(-25.0f * DELTA_TIME);
+			else
+				_slot->AddAngle(25.0f * DELTA_TIME);
+		}
+		if (_time > 0.1f)
+		{
+			_weapon->SetIsActive(false);
+			_ani->SetState(Animation::State::RUN);
+			if (_dir.x > 0.0f)
+				_slot->SetAngel(PI / 4.0f);
+			else
+				_slot->SetAngel(PI / 4.0f * 3.0f);
+		}
+
+		if (_time > _atkSpeed)
+		{
+			_time = 0.0f;
+			_atkCool = false;
+		}
+
+		return;
+	}
+
+	if (_ani->GetState() == Animation::State::ATK)
+	{
+		_atkCool = true;
+		_weapon->SetIsActive(true);
+	}
 }
 
 void Skel::BowAttack()
@@ -160,18 +208,25 @@ void Skel::Chase()
 	if (_dir.x < 0.0f)
 		_ani->SetLeft();
 
-	_collider->GetTransform()->AddVector2(_dir * DELTA_TIME * _speed);
-
 	if (abs(distance) < 50.0f)
 	{
 		_ani->SetState(Animation::State::ATK);
-		SwordAttack();
+		return;
 	}
 
+	_collider->GetTransform()->AddVector2(_dir * DELTA_TIME * _speed);
 }
 
 void Skel::EndAttack()
 {
 	_ani->SetState(Animation::State::RUN);
 
+}
+
+void Skel::Gravity()
+{
+	_jumpPower -= 15.0f;
+	if (_jumpPower < -600.0f)
+		_jumpPower = -600.0f;
+	_collider->GetTransform()->AddVector2(Vector2(0.0f, 1.0f) * _jumpPower * DELTA_TIME);
 }

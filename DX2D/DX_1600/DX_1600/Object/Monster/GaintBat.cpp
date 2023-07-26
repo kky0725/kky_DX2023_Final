@@ -47,7 +47,6 @@ void GaintBat::Update()
 {
 	if (!_isActive)
 		return;
-	Attack();
 	Move();
 	_ani->Update();
 	Creature::Update();
@@ -112,8 +111,8 @@ void GaintBat::TargetOn(Vector2 playerPos)
 void GaintBat::TargetOff()
 {
 	_ani->SetState(Animation::State::IDLE);
-	_targetOn = false;
 	Attack();
+	_targetOn = false;
 }
 
 int GaintBat::CheckAttack(shared_ptr<Collider> player)

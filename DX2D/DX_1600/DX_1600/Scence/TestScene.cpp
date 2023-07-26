@@ -4,6 +4,7 @@
 #include "../Object/Player/Player.h"
 #include "../Object/Monster/Bat.h"
 #include "../Object/Monster/GaintBat.h"
+#include "../Object/Monster/Skel.h"
 
 TestScene::TestScene()
 {
@@ -12,8 +13,13 @@ TestScene::TestScene()
 	_ground = make_shared<RectCollider>(Vector2(1280, 50));
 	_ground->GetTransform()->SetPosition(Vector2(0.0f, -250.0f));
 
-	_gaintBat = make_shared<GaintBat>(false);
-	_bat = make_shared<Bat>(true);
+	shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
+	shared_ptr<Creature> bat = make_shared<Bat>(true);
+	shared_ptr<Creature> skel = make_shared<Skel>(true);
+
+	_creatures.push_back(gaintBat);
+	_creatures.push_back(bat);
+	_creatures.push_back(skel);
 }
 
 TestScene::~TestScene()
@@ -24,20 +30,25 @@ void TestScene::Update()
 {
 	CheckAttack();
 
-	_bat->Update();
-	_gaintBat->Update();
+	for (auto creature : _creatures)
+	{
+		creature->Update();
+		_ground->Block(creature->GetCollider());
+	}
 	_player->Update();
 
 	_ground->Update();
 
 	if (_ground->Block(_player->GetCollider()))
 		_player->IsGround();
+
+	
 }
 
 void TestScene::Render()
 {
-	_bat->Render();
-	_gaintBat->Render();
+	for (auto creature : _creatures)
+		creature->Render();
 	_player->Render();
 
 	_ground->Render();
@@ -48,13 +59,16 @@ void TestScene::PostRender()
 	ImGui::Text("W_M.x : %f, W_M.y : %f", W_MOUSE_POS.x, W_MOUSE_POS.y);
 
 	ImGui::Text("PlayerHp : %d", _player->GetHp());
-	ImGui::Text("BatHp : %d", _bat->GetHp());
-	ImGui::Text("GBatHp : %d", _gaintBat->GetHp());
+	ImGui::Text("BatHp : %d", _creatures[0]->GetHp());
+	ImGui::Text("GBatHp : %d", _creatures[1]->GetHp());
 }
 
 void TestScene::CheckAttack()
 {
-	_bat->Damaged(_player->CheckAttack(_bat->GetCollider()));
-	_gaintBat->Damaged(_player->CheckAttack(_gaintBat->GetCollider()));
-	_player->Damaged(_gaintBat->CheckAttack(_player->GetCollider()));
+	for (auto creature : _creatures)
+		creature->Damaged(_player->CheckAttack(creature->GetCollider()));
+
+	for (auto creature : _creatures)
+		_player->Damaged(creature->CheckAttack(_player->GetCollider()));
+		
 }

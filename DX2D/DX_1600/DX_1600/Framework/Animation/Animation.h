@@ -38,6 +38,9 @@ public:
 	void SetLeft();
 	void SetRight();
 
+	void Play() { _actions[_curState]->Play(); }
+	void Reset() { _actions[_curState]->Reset(); }
+
 protected:
 	vector<shared_ptr<Action>> _actions;
 	vector<shared_ptr<class Sprite>> _sprites;
