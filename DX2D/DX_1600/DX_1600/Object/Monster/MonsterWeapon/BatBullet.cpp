@@ -21,7 +21,7 @@ void BatBullet::Render()
 	Bullet::Render();
 }
 
-void BatBullet::Summon(const Vector2 startPos, Vector2 dir)
+void BatBullet::Summon(Vector2 startPos, Vector2 dir)
 {
 	_isActive = true;
 	_collider->GetTransform()->SetPosition(startPos);

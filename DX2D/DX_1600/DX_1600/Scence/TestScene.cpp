@@ -15,7 +15,7 @@ TestScene::TestScene()
 
 	shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
 	shared_ptr<Creature> bat = make_shared<Bat>(true);
-	shared_ptr<Creature> skel = make_shared<Skel>(true);
+	shared_ptr<Creature> skel = make_shared<Skel>(false);
 
 	_creatures.push_back(gaintBat);
 	_creatures.push_back(bat);

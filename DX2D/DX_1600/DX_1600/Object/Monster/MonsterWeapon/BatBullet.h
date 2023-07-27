@@ -8,7 +8,7 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 
-	void Summon(const Vector2 startPos, Vector2 dir);
+	void Summon(Vector2 startPos, Vector2 dir);
 	void Shoot();
 
 private:

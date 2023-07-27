@@ -27,9 +27,11 @@ Skel::Skel(bool basic)
 	}
 	else//Ȱ
 	{
-		//_weapon = make_shared<SkelBow>();
+		_weapon = make_shared<SkelBow>();
 		_ani->SetState(Animation::State::IDLE);
 		_ani->SetEndEvent(Animation::State::ATK, std::bind(&Skel::TargetOff, this));
+		_atkSpeed = 3.0f;
+		_slot->SetPosition(Vector2(-10.0f, 0.0f));
 	}
 
 	_weapon->GetCollider()->SetParent(_slot);
@@ -50,6 +52,7 @@ void Skel::Update()
 	Move();
 	Chase();
 	SwordAttack();
+	BowAttack();
 	_ani->Update();
 	_slot->Update();
 	_weapon->Update();
@@ -61,8 +64,8 @@ void Skel::Render()
 	if (!_isActive)
 		return;
 	_slot->SetBuffer(0);
-	_weapon->Render();
 	_ani->Render();
+	_weapon->Render();
 	Creature::Render();
 }
 
@@ -112,7 +115,7 @@ int Skel::CheckAttackSword(shared_ptr<Collider> col)
 
 int Skel::CheckAttackBow(shared_ptr<Collider> col)
 {
-	return 0;
+	return dynamic_pointer_cast<SkelBow>(_weapon)->CheckAttack(col);
 }
 
 void Skel::SwordAttack()
@@ -158,6 +161,39 @@ void Skel::SwordAttack()
 
 void Skel::BowAttack()
 {
+	if (_basic)
+		return;
+	if (_atkCool)
+	{
+		_time += DELTA_TIME;
+
+		if (_time > _atkSpeed)
+		{
+			_time = 0.0f;
+			_atkCool = false;
+		}
+
+		return;
+	}
+
+	if (_ani->GetState() == Animation::State::ATK)
+	{
+		_atkCool = true;
+		_dir = _target.lock()->GetPos() - _slot->GetWorldPosition();
+		dynamic_pointer_cast<SkelBow>(_weapon)->Attack(_dir);
+		_slot->SetAngel(_dir.Angle() + PI);
+
+		if (_dir.x > 0.0f)
+		{
+			_ani->SetRight();
+			_slot->SetPosition(Vector2(10.0f, 0.0f));
+		}
+		if (_dir.x < 0.0f)
+		{
+			_ani->SetLeft();
+			_slot->SetPosition(Vector2(-10.0f, 0.0f));
+		}
+	}
 }
 
 void Skel::Move()

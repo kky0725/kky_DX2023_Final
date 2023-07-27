@@ -210,7 +210,7 @@
     <ClInclude Include="Object\Monster\MonsterWeapon\SkelBow.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="SkelBullet.h">
+    <ClInclude Include="Object\Monster\MonsterWeapon\SkelBullet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
