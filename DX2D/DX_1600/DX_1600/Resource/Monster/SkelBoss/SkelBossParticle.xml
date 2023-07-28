@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="SkelBossParticle.png" width="58" height="52" scale="1" format="RGBA8888">
+  <sprite n="SkellBossParticle0.png" x="0" y="0" w="30" h="30" pX="0.5" pY="0.5"/>
+  <sprite n="SkellBossParticle1.png" x="30" y="0" w="28" h="28" pX="0.5" pY="0.5" oX="1" oY="1" oW="30" oH="30"/>
+  <sprite n="SkellBossParticle2.png" x="0" y="30" w="22" h="22" pX="0.5" pY="0.5" oX="4" oY="4" oW="30" oH="30"/>
+  <sprite n="SkellBossParticle3.png" x="22" y="30" w="20" h="20" pX="0.5" pY="0.5" oX="5" oY="5" oW="30" oH="30"/>
+  <sprite n="SkellBossParticle6.png" x="42" y="28" w="14" h="14" pX="0.5" pY="0.5" oX="8" oY="8" oW="30" oH="30"/>
+  <sprite n="SkellBossParticle7.png" x="42" y="42" w="8" h="8" pX="0.5" pY="0.5" oX="11" oY="11" oW="30" oH="30"/>
+  <sprite n="SkellBossParticle4.png" x="30" y="0" w="28" h="28" pX="0.5" pY="0.5" oX="1" oY="1" oW="30" oH="30"/>
+  <sprite n="SkellBossParticle5.png" x="0" y="30" w="22" h="22" pX="0.5" pY="0.5" oX="4" oY="4" oW="30" oH="30"/>
+</TextureAtlas>

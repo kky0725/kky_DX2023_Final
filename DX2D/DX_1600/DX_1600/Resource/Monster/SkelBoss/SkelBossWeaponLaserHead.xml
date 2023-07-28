@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="SkelBossWeaponLaserHead.png" width="50" height="75" scale="1" format="RGBA8888">
+  <sprite n="SkellBossWeaponLaserHead0.png" x="0" y="0" w="27" h="25" pX="0.5" pY="0.5" oX="2" oY="0" oW="31" oH="27"/>
+  <sprite n="SkellBossWeaponLaserHead1.png" x="0" y="25" w="25" h="25" pX="0.5" pY="0.5" oX="2" oY="0" oW="29" oH="27"/>
+  <sprite n="SkellBossWeaponLaserHead2.png" x="25" y="25" w="25" h="25" pX="0.5" pY="0.5" oX="2" oY="0" oW="29" oH="27"/>
+  <sprite n="SkellBossWeaponLaserHead3.png" x="27" y="0" w="20" h="25" pX="0.5" pY="0.5" oX="2" oY="0" oW="24" oH="27"/>
+  <sprite n="SkellBossWeaponLaserHead4.png" x="0" y="50" w="9" h="25" pX="0.5" pY="0.5" oX="2" oY="0" oW="13" oH="27"/>
+  <sprite n="SkellBossWeaponLaserHead5.png" x="9" y="50" w="10" h="23" pX="0.5" pY="0.5" oX="2" oY="0" oW="14" oH="25"/>
+  <sprite n="SkellBossWeaponLaserHead6.png" x="19" y="50" w="12" h="20" pX="0.5" pY="0.5" oX="2" oY="0" oW="16" oH="22"/>
+</TextureAtlas>

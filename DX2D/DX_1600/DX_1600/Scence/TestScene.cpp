@@ -5,6 +5,7 @@
 #include "../Object/Monster/Bat.h"
 #include "../Object/Monster/GaintBat.h"
 #include "../Object/Monster/Skel.h"
+#include "../Object/Monster/Boss/SkelBoss.h"
 
 TestScene::TestScene()
 {
@@ -13,13 +14,17 @@ TestScene::TestScene()
 	_ground = make_shared<RectCollider>(Vector2(1280, 50));
 	_ground->GetTransform()->SetPosition(Vector2(0.0f, -250.0f));
 
-	shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
-	shared_ptr<Creature> bat = make_shared<Bat>(true);
-	shared_ptr<Creature> skel = make_shared<Skel>(false);
+	shared_ptr<Creature> skelBoss = make_shared<SkelBoss>();
+	//shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
+	//shared_ptr<Creature> bat = make_shared<Bat>(true);
+	//shared_ptr<Creature> skel = make_shared<Skel>(false);
+	//shared_ptr<Creature> skel2 = make_shared<Skel>(true);
 
-	_creatures.push_back(gaintBat);
-	_creatures.push_back(bat);
-	_creatures.push_back(skel);
+	_creatures.push_back(skelBoss);
+	//_creatures.push_back(gaintBat);
+	//_creatures.push_back(bat);
+	//_creatures.push_back(skel);
+	//_creatures.push_back(skel2);
 }
 
 TestScene::~TestScene()
@@ -59,8 +64,9 @@ void TestScene::PostRender()
 	ImGui::Text("W_M.x : %f, W_M.y : %f", W_MOUSE_POS.x, W_MOUSE_POS.y);
 
 	ImGui::Text("PlayerHp : %d", _player->GetHp());
-	ImGui::Text("BatHp : %d", _creatures[0]->GetHp());
-	ImGui::Text("GBatHp : %d", _creatures[1]->GetHp());
+	//ImGui::Text("BatHp : %d", _creatures[0]->GetHp());
+	//ImGui::Text("GBatHp : %d", _creatures[1]->GetHp());
+	_creatures[0]->PostRender();
 }
 
 void TestScene::CheckAttack()

@@ -209,6 +209,10 @@
     <ClInclude Include="Object\Monster\MonsterWeapon\SkelBow.h" />
     <ClInclude Include="Object\Monster\MonsterWeapon\SkelSword.h" />
     <ClInclude Include="Object\Monster\MonsterWeapon\SkelBullet.h" />
+    <ClInclude Include="Object\Monster\Boss\SkelBoss.h" />
+    <ClInclude Include="Object\Monster\Boss\SkelBossBullet.h" />
+    <ClInclude Include="Object\Monster\Boss\SkelBossSword.h" />
+    <ClInclude Include="Object\Monster\Boss\SkelBossHand.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Framework\Math\Transform.h" />
     <ClInclude Include="Framework\Utility\Timer.h" />
@@ -281,6 +285,10 @@
     <ClCompile Include="Object\Monster\MonsterWeapon\SkelBow.cpp" />
     <ClCompile Include="Object\Monster\MonsterWeapon\SkelSword.cpp" />
     <ClCompile Include="Object\Monster\MonsterWeapon\SkelBullet.cpp" />
+    <ClCompile Include="Object\Monster\Boss\SkelBoss.cpp" />
+    <ClCompile Include="Object\Monster\Boss\SkelBossBullet.cpp" />
+    <ClCompile Include="Object\Monster\Boss\SkelBossSword.cpp" />
+    <ClCompile Include="Object\Monster\Boss\SkelBossHand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1600.rc" />
@@ -294,6 +302,18 @@
     <Image Include="Resource\Monster\GaintRedBatAtk.png" />
     <Image Include="Resource\Monster\GraySkelDie.png" />
     <Image Include="Resource\Monster\GraySkelIdle.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossAtk.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossAtk1.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossAtk2.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossBack.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossIdle.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossLaserBody.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossLaserHead.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossLeftHandAttack.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossLeftHandIdle.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossParticle.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserBody.png" />
+    <Image Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserHead.png" />
     <Image Include="Resource\Monster\SkelSword.png" />
     <Image Include="Resource\Monster\SkelSword0.png" />
     <Image Include="Resource\Monster\RedBat.png" />
@@ -513,6 +533,18 @@
     <Xml Include="Resource\Monster\GaintRedBat.xml" />
     <Xml Include="Resource\Monster\GaintRedBatAtk.xml" />
     <Xml Include="Resource\Monster\RedBat.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossAtk.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossAtk1.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossAtk2.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossBack.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossIdle.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossLaserBody.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossLaserHead.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossLeftHandAttack.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossLeftHandIdle.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossParticle.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserBody.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserHead.xml" />
     <Xml Include="Resource\Monster\SkelBow.xml" />
     <Xml Include="Resource\Monster\SkelWalk.xml" />
     <Xml Include="Resource\Player\PlayerIdle.xml" />

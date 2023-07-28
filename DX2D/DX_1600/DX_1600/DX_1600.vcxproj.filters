@@ -213,6 +213,18 @@
     <ClInclude Include="Object\Monster\MonsterWeapon\SkelBullet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\Monster\Boss\SkelBoss.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Monster\Boss\SkelBossBullet.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Monster\Boss\SkelBossSword.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Monster\Boss\SkelBossHand.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX_1600.cpp">
@@ -374,6 +386,18 @@
     <ClCompile Include="Object\Monster\MonsterWeapon\SkelBullet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\Monster\Boss\SkelBoss.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Monster\Boss\SkelBossBullet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Monster\Boss\SkelBossSword.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Monster\Boss\SkelBossHand.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1600.rc">
@@ -438,6 +462,42 @@
     <Image Include="Resource\Monster\SkelWalk.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossAtk.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossBack.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossIdle.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossLaserBody.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossLaserHead.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossLeftHandAttack.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossLeftHandIdle.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossParticle.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserBody.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserHead.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossAtk1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Monster\SkelBoss\SkelBossAtk2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />
@@ -488,5 +548,17 @@
     <Xml Include="Resource\Monster\RedBat.xml" />
     <Xml Include="Resource\Monster\SkelBow.xml" />
     <Xml Include="Resource\Monster\SkelWalk.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossAtk.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossBack.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossIdle.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossLaserBody.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossLaserHead.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossLeftHandAttack.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossLeftHandIdle.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossParticle.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserBody.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserHead.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossAtk1.xml" />
+    <Xml Include="Resource\Monster\SkelBoss\SkelBossAtk2.xml" />
   </ItemGroup>
 </Project>
