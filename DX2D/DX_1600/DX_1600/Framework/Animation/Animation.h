@@ -23,6 +23,7 @@ public:
 	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
 	void SetScale(Vector2 value) { _transform->SetScale(value); }
 	void SetPosition(Vector2 value) { _transform->SetPosition(value); }
+	Vector2 GetWorldPosition() { return _transform->GetWorldPosition(); }
 
 	void SetState(State state);
 	State GetState() { return _curState; }

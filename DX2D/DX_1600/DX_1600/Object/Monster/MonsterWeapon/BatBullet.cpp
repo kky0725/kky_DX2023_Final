@@ -4,6 +4,7 @@
 BatBullet::BatBullet()
 	:Bullet()
 {
+	_ani = make_shared<Animation>();
 	//_ani->CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Idle", Vector2(10.0f, 10.0f));
 }
 

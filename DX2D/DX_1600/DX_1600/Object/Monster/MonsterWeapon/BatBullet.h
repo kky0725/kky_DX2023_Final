@@ -12,5 +12,5 @@ public:
 	void Shoot();
 
 private:
-
+	shared_ptr<Animation> _ani;
 };

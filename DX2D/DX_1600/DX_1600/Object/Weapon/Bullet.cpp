@@ -5,8 +5,12 @@ Bullet::Bullet()
 {
 	_collider = make_shared<CircleCollider>(5.0f);
 	_collider->SetPosition(Vector2(-1000, -1000));
+}
 
-	_ani = make_shared<Animation>();
+Bullet::Bullet(float size)
+{
+	_collider = make_shared<CircleCollider>(size);
+	_collider->SetPosition(Vector2(-1000, -1000));
 }
 
 Bullet::~Bullet()

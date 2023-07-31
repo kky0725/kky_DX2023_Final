@@ -3,6 +3,7 @@ class Bullet
 {
 public:
 	Bullet();
+	Bullet(float size);
 	virtual ~Bullet();
 
 	virtual void Update() abstract;
@@ -24,8 +25,6 @@ protected:
 	Vector2 _direction = Vector2(0.0f, 0.0f);
 
 	shared_ptr<CircleCollider> _collider;
-
-	shared_ptr<Animation> _ani;
 
 	float _time = 0.0f;
 	float _lifeTime = 15.0f;

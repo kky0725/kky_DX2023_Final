@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="BossBullet.png" width="24" height="13" scale="1" format="RGBA8888">
+  <sprite n="BossBullet000.png" x="0" y="0" w="13" h="13" pX="0.5" pY="0.5"/>
+  <sprite n="BossBullet001.png" x="13" y="0" w="11" h="11" pX="0.5" pY="0.5" oX="1" oY="1" oW="13" oH="13"/>
+</TextureAtlas>

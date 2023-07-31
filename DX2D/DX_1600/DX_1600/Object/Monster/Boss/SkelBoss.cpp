@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "SkelBoss.h"
+#include "SkelBossBullet.h"
 
 SkelBoss::SkelBoss()
 	:Creature(90.0f)
@@ -23,6 +24,14 @@ SkelBoss::SkelBoss()
 	_back->SetParent(_collider->GetTransform());
 	_back->SetPosition(Vector2(0.0f, -45.0f));
 
+	for (int i = 0; i < _poolCount * 4; i++)
+	{
+		shared_ptr<SkelBossBullet> bullet = make_shared<SkelBossBullet>();
+		_bullets.push_back(bullet);
+	}
+	_atkSpeed = 0.2f;
+
+	_bossState = ATKP1;
 }
 
 SkelBoss::~SkelBoss()
@@ -32,8 +41,11 @@ SkelBoss::~SkelBoss()
 void SkelBoss::Update()
 {
 	Creature::Update();
+	BossAtk();
 	_body->Update();
 	_back->Update();
+	for (auto bullet : _bullets)
+		bullet->Update();
 }
 
 void SkelBoss::Render()
@@ -42,17 +54,75 @@ void SkelBoss::Render()
 		return;
 	_back->Render();
 	_body->Render();
+	for (auto bullet : _bullets)
+		bullet->Render();
 	_collider->Render();
 }
 
 void SkelBoss::PostRender()
 {
-
+	if (ImGui::Button("ATK1", ImVec2(100, 100)))
+		_bossState = ATKP1;
 }
 
 void SkelBoss::EndAttack1()
 {
 	_body->SetState(Animation::State::ATK2);
+}
+
+void SkelBoss::BossAtk()
+{
+	switch (_bossState)
+	{
+	case SkelBoss::IDLE:
+		break;
+	case SkelBoss::ATKP1:
+	{
+		AttackP1();
+		break;
+	}
+	case SkelBoss::ATKP2:
+	{
+		AttackP2();
+		break;
+	}
+	case SkelBoss::ATKP3:
+	{
+		AttackP3();
+		break;
+	}
+	default:
+		break;
+	}
+}
+
+void SkelBoss::AttackP1()
+{
+	_time += DELTA_TIME;
+	if (_time > _atkSpeed)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			Vector2 StartPos = _back->GetWorldPosition();
+			Vector2 Dir = Vector2{ 1.0f, 0.0f };
+			_bullets[i + 4 * _bulletCount]->Shoot(StartPos, Dir.Rotation(PI / 2 * i + PI / 24 * _bulletCount));
+		}
+		_bulletCount++;
+		_time = 0.0f;
+	}
+	if (_bulletCount >= _poolCount)
+	{
+		_bossState = BossState::IDLE;
+		_bulletCount = 0;
+	}
+}
+
+void SkelBoss::AttackP2()
+{
+}
+
+void SkelBoss::AttackP3()
+{
 }
 
 int SkelBoss::CheckAttack(shared_ptr<Collider> col)
