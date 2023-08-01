@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "SkelBoss.h"
 #include "SkelBossBullet.h"
+#include "SkelBossHand.h"
 
 SkelBoss::SkelBoss()
 	:Creature(90.0f)
@@ -9,8 +10,6 @@ SkelBoss::SkelBoss()
 
 	_body = make_shared<Animation>();
 	_body->CreateAction(L"Resource/Monster/SkelBoss/SkelBossIdle.png", "Resource/Monster/SkelBoss/SkelBossIdle.xml", "Idle", Vector2(20.0f, 20.0f));
-	_body->CreateAction(L"Resource/Monster/SkelBoss/SkelBossIdle.png", "Resource/Monster/SkelBoss/SkelBossIdle.xml", "None", Vector2(20.0f, 20.0f));
-	_body->CreateAction(L"Resource/Monster/SkelBoss/SkelBossIdle.png", "Resource/Monster/SkelBoss/SkelBossIdle.xml", "None", Vector2(20.0f, 20.0f));
 	_body->CreateAction(L"Resource/Monster/SkelBoss/SkelBossAtk1.png", "Resource/Monster/SkelBoss/SkelBossAtk1.xml", "Atk1", Vector2(20.0f, 20.0f), Action::Type::END, 0.1f, std::bind(&SkelBoss::EndAttack1,this));
 	_body->CreateAction(L"Resource/Monster/SkelBoss/SkelBossAtk2.png", "Resource/Monster/SkelBoss/SkelBossAtk2.xml", "Atk2", Vector2(20.0f, 28.0f), Action::Type::LOOP);
 	_body->SetScale(Vector2(12.0f, 12.f));
@@ -31,7 +30,13 @@ SkelBoss::SkelBoss()
 	}
 	_atkSpeed = 0.2f;
 
-	_bossState = ATKP1;
+	_leftHand = make_shared<SkelBossHand>(true);
+	_rightHand = make_shared<SkelBossHand>(false);
+	_leftHand->GetTransform()->SetPosition(Vector2(-400.0f, -50.0f));
+	_rightHand->GetTransform()->SetPosition(Vector2(400.0f, -100.0f));
+
+
+	//_bossState = ATKP1;
 }
 
 SkelBoss::~SkelBoss()
@@ -46,6 +51,8 @@ void SkelBoss::Update()
 	_back->Update();
 	for (auto bullet : _bullets)
 		bullet->Update();
+	_leftHand->Update();
+	_rightHand->Update();
 }
 
 void SkelBoss::Render()
@@ -57,17 +64,22 @@ void SkelBoss::Render()
 	for (auto bullet : _bullets)
 		bullet->Render();
 	_collider->Render();
+	_leftHand->Render();
+	_rightHand->Render();
 }
 
 void SkelBoss::PostRender()
 {
-	if (ImGui::Button("ATK1", ImVec2(100, 100)))
+	if (ImGui::Button("ATK1", ImVec2(50, 20)))
+	{
 		_bossState = ATKP1;
+		_body->SetState((Animation::State)2);
+	}
 }
 
 void SkelBoss::EndAttack1()
 {
-	_body->SetState(Animation::State::ATK2);
+	_body->SetState((Animation::State)3);
 }
 
 void SkelBoss::BossAtk()
@@ -113,6 +125,7 @@ void SkelBoss::AttackP1()
 	if (_bulletCount >= _poolCount)
 	{
 		_bossState = BossState::IDLE;
+		_body->SetStateIdle();
 		_bulletCount = 0;
 	}
 }
@@ -127,5 +140,29 @@ void SkelBoss::AttackP3()
 
 int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 {
-	return 0;
+	_target = col;
+	switch (_bossState)
+	{
+	case SkelBoss::IDLE:
+	{
+		return 0;
+	}
+	case SkelBoss::ATKP1:
+	{
+		break;
+	}
+	case SkelBoss::ATKP2:
+	{
+		break;
+	}
+	case SkelBoss::ATKP3:
+	{
+		break;
+	}
+	default:
+	{
+		return 0;
+	}
+	}
+
 }

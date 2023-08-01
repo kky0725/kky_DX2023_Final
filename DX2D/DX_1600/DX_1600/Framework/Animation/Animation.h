@@ -8,7 +8,6 @@ public:
 		RUN,
 		JUMP,
 		ATK,
-		ATK2,
 		END,
 		NONE
 	};
@@ -24,6 +23,7 @@ public:
 	void SetScale(Vector2 value) { _transform->SetScale(value); }
 	void SetPosition(Vector2 value) { _transform->SetPosition(value); }
 	Vector2 GetWorldPosition() { return _transform->GetWorldPosition(); }
+	shared_ptr<Transform> GetTransform() { return _transform; }
 
 	void SetState(State state);
 	State GetState() { return _curState; }

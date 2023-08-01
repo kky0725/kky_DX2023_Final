@@ -312,8 +312,6 @@
     <Image Include="Resource\Monster\SkelBoss\SkelBossLeftHandAttack.png" />
     <Image Include="Resource\Monster\SkelBoss\SkelBossLeftHandIdle.png" />
     <Image Include="Resource\Monster\SkelBoss\SkelBossParticle.png" />
-    <Image Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserBody.png" />
-    <Image Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserHead.png" />
     <Image Include="Resource\Monster\SkelSword.png" />
     <Image Include="Resource\Monster\SkelSword0.png" />
     <Image Include="Resource\Monster\RedBat.png" />
@@ -543,8 +541,6 @@
     <Xml Include="Resource\Monster\SkelBoss\SkelBossLeftHandAttack.xml" />
     <Xml Include="Resource\Monster\SkelBoss\SkelBossLeftHandIdle.xml" />
     <Xml Include="Resource\Monster\SkelBoss\SkelBossParticle.xml" />
-    <Xml Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserBody.xml" />
-    <Xml Include="Resource\Monster\SkelBoss\SkelBossWeaponLaserHead.xml" />
     <Xml Include="Resource\Monster\SkelBow.xml" />
     <Xml Include="Resource\Monster\SkelWalk.xml" />
     <Xml Include="Resource\Player\PlayerIdle.xml" />

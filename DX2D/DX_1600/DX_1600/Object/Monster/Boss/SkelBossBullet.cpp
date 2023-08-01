@@ -9,7 +9,7 @@ SkelBossBullet::SkelBossBullet()
 	_ani->SetScale(Vector2(4.0f,4.0f));
 
 	_ani->SetParent(_collider->GetTransform());
-	_speed = 150.0f;
+	_speed = 200.0f;
 }
 
 SkelBossBullet::~SkelBossBullet()

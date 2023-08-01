@@ -10,6 +10,7 @@ public:
 
 	void Summon(Vector2 startPos, Vector2 dir);
 	void Shoot();
+	
 
 private:
 	shared_ptr<Animation> _ani;
