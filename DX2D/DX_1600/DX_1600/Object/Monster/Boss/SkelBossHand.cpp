@@ -12,6 +12,7 @@ SkelBossHand::SkelBossHand(bool isLeft)
 	_head->CreateAction(L"Resource/Monster/SkelBoss/SkelBossLaserHead.png", "Resource/Monster/SkelBoss/SkelBossLaserHead.xml", "Head", Vector2(100.0f, 100.0f), Action::Type::END, 0.2f, std::bind(&SkelBossHand::EndLaser, this));
 
 	_head->SetParent(_hand->GetTransform());
+	_hand->SetNumberEvent((Animation::State)1, std::bind(&SkelBossHand::Shoot, this), 8);
 
 
 	if (_isLeft)
@@ -39,8 +40,7 @@ SkelBossHand::SkelBossHand(bool isLeft)
 
 	
 	//delete
-	_hand->SetState((Animation::State)1);
-	_isActive = true;
+
 }
 
 SkelBossHand::~SkelBossHand()
@@ -74,12 +74,17 @@ void SkelBossHand::Render()
 void SkelBossHand::Shoot()
 {
 	_isActive = true;
+	_head->Reset();
+	_head->Play();
+	_head->Update();
 	if (_isLeft)
 	{
 		for (int i = 0; i < 10; i++)
 		{
 			Vector2 startPos = _head->GetWorldPosition() + Vector2(_bodySize.x * i + 90.0f, 0.0f);
 			_bodys[i]->SetPosition(startPos);
+			_bodys[i]->Reset();
+			_bodys[i]->Play();
 		}
 		_collider->SetPosition(Vector2(_bodySize.x * 5.0f, -10.0f));
 	}
@@ -89,6 +94,8 @@ void SkelBossHand::Shoot()
 		{
 			Vector2 startPos = _head->GetWorldPosition() - Vector2(_bodySize.x * i + 90.0f, 0.0f);
 			_bodys[i]->SetPosition(startPos);
+			_bodys[i]->Reset();
+			_bodys[i]->Play();
 		}
 		_collider->SetPosition(Vector2(-_bodySize.x * 5.0f, -10.0f));
 	}
@@ -102,11 +109,12 @@ void SkelBossHand::EndLaser()
 
 void SkelBossHand::Attack()
 {
-	Shoot();
+	_hand->SetState((Animation::State)1);
 	_attacking = true;
 }
 
 void SkelBossHand::EndAttack()
 {
 	_attacking = false;
+	_hand->SetState((Animation::State)0);
 }

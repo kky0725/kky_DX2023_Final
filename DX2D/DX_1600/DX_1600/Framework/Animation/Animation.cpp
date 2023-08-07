@@ -112,6 +112,11 @@ void Animation::SetEndEvent(State state, CallBack event)
 	_actions[state]->SetEndEvent(event);
 }
 
+void Animation::SetNumberEvent(State state, CallBack event, int eventNumber)
+{
+	_actions[state]->SetNumberEvent(event, eventNumber);
+}
+
 void Animation::SetLeft()
 {
 	for (auto sprite : _sprites)

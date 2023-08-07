@@ -20,6 +20,7 @@ public:
 	void EndAttack1();
 
 	void BossAtk();
+	void IdleTime();
 	void AttackP1();
 	void AttackP2();
 	void AttackP3();
@@ -39,4 +40,7 @@ private:
 	BossState _bossState = BossState::IDLE;
 
 	weak_ptr<Collider> _target;
+	Vector2 _targetPos;
+
+	float _idleTime = 1.0f;
 };

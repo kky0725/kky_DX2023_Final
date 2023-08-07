@@ -15,22 +15,22 @@ oW => original width
 oH => original height
 r => 'y' if sprite is rotated-->
 <TextureAtlas imagePath="SkelBossLeftHandAttack.png" width="229" height="251" scale="1" format="RGBA8888">
-  <sprite n="SkellBossLeftHandAttack10.png" x="0" y="0" w="59" h="67" pX="0.5" pY="0.5" oX="2" oY="2" oW="63" oH="71"/>
-  <sprite n="SkellBossLeftHandAttack12.png" x="59" y="0" w="59" h="67" pX="0.5" pY="0.5" oX="1" oY="2" oW="62" oH="71"/>
-  <sprite n="SkellBossLeftHandAttack13.png" x="0" y="67" w="59" h="67" pX="0.5" pY="0.5" oX="0" oY="2" oW="61" oH="71"/>
-  <sprite n="SkellBossLeftHandAttack01.png" x="59" y="67" w="59" h="66" pX="0.5" pY="0.5" oX="2" oY="2" oW="62" oH="70"/>
   <sprite n="SkellBossLeftHandAttack00.png" x="118" y="0" w="57" h="63" pX="0.5" pY="0.5" oX="2" oY="2" oW="59" oH="67"/>
-  <sprite n="SkellBossLeftHandAttack09.png" x="0" y="134" w="62" h="63" pX="0.5" pY="0.5" oX="2" oY="2" oW="65" oH="67"/>
-  <sprite n="SkellBossLeftHandAttack14.png" x="118" y="63" w="57" h="61" pX="0.5" pY="0.5" oX="2" oY="2" oW="61" oH="65"/>
-  <sprite n="SkellBossLeftHandAttack15.png" x="118" y="124" w="54" h="57" pX="0.5" pY="0.5" oX="2" oY="2" oW="58" oH="61"/>
-  <sprite n="SkellBossLeftHandAttack16.png" x="62" y="133" w="53" h="55" pX="0.5" pY="0.5" oX="2" oY="2" oW="57" oH="59"/>
+  <sprite n="SkellBossLeftHandAttack01.png" x="59" y="67" w="59" h="66" pX="0.5" pY="0.5" oX="2" oY="2" oW="62" oH="70"/>
+  <sprite n="SkellBossLeftHandAttack02.png" x="172" y="158" w="52" h="52" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="56"/>
   <sprite n="SkellBossLeftHandAttack03.png" x="175" y="0" w="54" h="50" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="54"/>
+  <sprite n="SkellBossLeftHandAttack04.png" x="115" y="181" w="52" h="52" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="56"/>
+  <sprite n="SkellBossLeftHandAttack05.png" x="52" y="197" w="52" h="53" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="57"/>
   <sprite n="SkellBossLeftHandAttack06.png" x="175" y="50" w="52" h="54" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="58"/>
   <sprite n="SkellBossLeftHandAttack07.png" x="175" y="104" w="52" h="54" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="58"/>
   <sprite n="SkellBossLeftHandAttack08.png" x="0" y="197" w="52" h="54" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="58"/>
-  <sprite n="SkellBossLeftHandAttack05.png" x="52" y="197" w="52" h="53" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="57"/>
-  <sprite n="SkellBossLeftHandAttack02.png" x="172" y="158" w="52" h="52" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="56"/>
-  <sprite n="SkellBossLeftHandAttack04.png" x="115" y="181" w="52" h="52" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="56"/>
+  <sprite n="SkellBossLeftHandAttack09.png" x="0" y="134" w="62" h="63" pX="0.5" pY="0.5" oX="2" oY="2" oW="65" oH="67"/>
+  <sprite n="SkellBossLeftHandAttack10.png" x="0" y="0" w="59" h="67" pX="0.5" pY="0.5" oX="2" oY="2" oW="63" oH="71"/>
   <sprite n="SkellBossLeftHandAttack11.png" x="0" y="0" w="59" h="67" pX="0.5" pY="0.5" oX="2" oY="2" oW="63" oH="71"/>
+  <sprite n="SkellBossLeftHandAttack12.png" x="59" y="0" w="59" h="67" pX="0.5" pY="0.5" oX="1" oY="2" oW="62" oH="71"/>
+  <sprite n="SkellBossLeftHandAttack13.png" x="0" y="67" w="59" h="67" pX="0.5" pY="0.5" oX="0" oY="2" oW="61" oH="71"/>
+  <sprite n="SkellBossLeftHandAttack14.png" x="118" y="63" w="57" h="61" pX="0.5" pY="0.5" oX="2" oY="2" oW="61" oH="65"/>
+  <sprite n="SkellBossLeftHandAttack15.png" x="118" y="124" w="54" h="57" pX="0.5" pY="0.5" oX="2" oY="2" oW="58" oH="61"/>
+  <sprite n="SkellBossLeftHandAttack16.png" x="62" y="133" w="53" h="55" pX="0.5" pY="0.5" oX="2" oY="2" oW="57" oH="59"/>
   <sprite n="SkellBossLeftHandAttack17.png" x="118" y="124" w="54" h="57" pX="0.5" pY="0.5" oX="2" oY="2" oW="58" oH="61"/>
 </TextureAtlas>

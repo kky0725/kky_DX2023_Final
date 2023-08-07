@@ -37,6 +37,7 @@ public:
 	void CreateAction(wstring srvPath, string actionName, Vector2 size);
 
 	void SetEndEvent(State state, CallBack event);
+	void SetNumberEvent(State state, CallBack event, int eventNumber);
 
 	void SetLeft();
 	void SetRight();

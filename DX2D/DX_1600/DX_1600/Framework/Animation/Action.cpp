@@ -32,6 +32,12 @@ void Action::Update()
 					_almostEnd();
 			}
 
+			if (_curClipIndex == _eventNumber)
+			{
+				if (_numberEvent != nullptr)
+					_numberEvent();
+			}
+
 			if (_curClipIndex >= _clips.size())
 				Stop();
 			break;

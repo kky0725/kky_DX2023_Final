@@ -18,8 +18,8 @@ r => 'y' if sprite is rotated-->
   <sprite n="RedGiantBat0.png" x="0" y="0" w="55" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="59" oH="21"/>
   <sprite n="RedGiantBat1.png" x="0" y="17" w="55" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="59" oH="21"/>
   <sprite n="RedGiantBat2.png" x="0" y="34" w="54" h="24" pX="0.5" pY="0.5" oX="2" oY="2" oW="58" oH="28"/>
-  <sprite n="RedGiantBat6.png" x="55" y="0" w="53" h="30" pX="0.5" pY="0.5" oX="2" oY="2" oW="57" oH="34"/>
   <sprite n="RedGiantBat3.png" x="55" y="30" w="52" h="27" pX="0.5" pY="0.5" oX="2" oY="2" oW="56" oH="31"/>
   <sprite n="RedGiantBat4.png" x="0" y="58" w="47" h="32" pX="0.5" pY="0.5" oX="2" oY="2" oW="51" oH="36"/>
   <sprite n="RedGiantBat5.png" x="47" y="58" w="45" h="32" pX="0.5" pY="0.5" oX="2" oY="2" oW="49" oH="36"/>
+  <sprite n="RedGiantBat6.png" x="55" y="0" w="53" h="30" pX="0.5" pY="0.5" oX="2" oY="2" oW="57" oH="34"/>
 </TextureAtlas>

@@ -75,6 +75,11 @@ void SkelBoss::PostRender()
 		_bossState = ATKP1;
 		_body->SetState((Animation::State)2);
 	}
+
+	if (ImGui::Button("ATK2", ImVec2(50, 20)))
+	{
+		_bossState = ATKP2;
+	}
 }
 
 void SkelBoss::EndAttack1()
@@ -108,6 +113,19 @@ void SkelBoss::BossAtk()
 	}
 }
 
+void SkelBoss::IdleTime()
+{
+	_time += DELTA_TIME;
+	if (_time > _idleTime)
+	{
+		_time = 0.0f;
+		_bossState = BossState::ATKP2;//랜덤하게 정해지도록 변경 예정
+
+		if (_bossState == BossState::ATKP2)
+			_targetPos = _target.lock()->GetPos();
+	}
+}
+
 void SkelBoss::AttackP1()
 {
 	_time += DELTA_TIME;
@@ -132,6 +150,13 @@ void SkelBoss::AttackP1()
 
 void SkelBoss::AttackP2()
 {
+	_time += DELTA_TIME;
+	//lerp 사용해서 손이 플레이어를 쫓아가는 코드 구현예정
+	if (_time > _idleTime)
+	{
+		_leftHand->Attack();
+	}
+	//_rightHand->Attack();
 }
 
 void SkelBoss::AttackP3()

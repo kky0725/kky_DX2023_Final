@@ -15,10 +15,10 @@ oW => original width
 oH => original height
 r => 'y' if sprite is rotated-->
 <TextureAtlas imagePath="SkelWalk.png" width="33" height="36" scale="1" format="RGBA8888">
+  <sprite n="GraySkelWalk0.png" x="22" y="0" w="11" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="15" oH="19"/>
   <sprite n="GraySkelWalk1.png" x="0" y="0" w="11" h="18" pX="0.5" pY="0.5" oX="2" oY="2" oW="15" oH="20"/>
   <sprite n="GraySkelWalk2.png" x="11" y="0" w="11" h="18" pX="0.5" pY="0.5" oX="2" oY="2" oW="15" oH="20"/>
+  <sprite n="GraySkelWalk3.png" x="22" y="17" w="11" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="15" oH="19"/>
   <sprite n="GraySkelWalk4.png" x="0" y="18" w="11" h="18" pX="0.5" pY="0.5" oX="2" oY="2" oW="15" oH="20"/>
   <sprite n="GraySkelWalk5.png" x="11" y="18" w="11" h="18" pX="0.5" pY="0.5" oX="2" oY="2" oW="15" oH="20"/>
-  <sprite n="GraySkelWalk0.png" x="22" y="0" w="11" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="15" oH="19"/>
-  <sprite n="GraySkelWalk3.png" x="22" y="17" w="11" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="15" oH="19"/>
 </TextureAtlas>
