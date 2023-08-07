@@ -6,7 +6,7 @@ SkelBossHand::SkelBossHand(bool isLeft)
 {
 	_hand = make_shared <Animation>();
 	_hand->CreateAction(L"Resource/Monster/SkelBoss/SkelBossLeftHandIdle.png", "Resource/Monster/SkelBoss/SkelBossLeftHandIdle.xml", "Idle", Vector2(150.0f, 150.0f));
-	_hand->CreateAction(L"Resource/Monster/SkelBoss/SkelBossLeftHandAttack.png", "Resource/Monster/SkelBoss/SkelBossLeftHandAttack.xml", "Atk", Vector2(150.0f, 150.0f), Action::Type::END, 0.2f);
+	_hand->CreateAction(L"Resource/Monster/SkelBoss/SkelBossLeftHandAttack.png", "Resource/Monster/SkelBoss/SkelBossLeftHandAttack.xml", "Atk", Vector2(150.0f, 150.0f), Action::Type::END, 0.2f, std::bind(&SkelBossHand::EndAttack, this));
 	
 	_head = make_shared <Animation>();
 	_head->CreateAction(L"Resource/Monster/SkelBoss/SkelBossLaserHead.png", "Resource/Monster/SkelBoss/SkelBossLaserHead.xml", "Head", Vector2(100.0f, 100.0f), Action::Type::END, 0.2f, std::bind(&SkelBossHand::EndLaser, this));
@@ -102,9 +102,11 @@ void SkelBossHand::EndLaser()
 
 void SkelBossHand::Attack()
 {
-	
+	Shoot();
+	_attacking = true;
 }
 
 void SkelBossHand::EndAttack()
 {
+	_attacking = false;
 }

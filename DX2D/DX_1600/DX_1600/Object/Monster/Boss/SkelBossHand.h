@@ -12,8 +12,10 @@ public:
 	void EndLaser();
 	void Attack();
 	void EndAttack();
+	bool Attacking() { return _attacking; }
 
 	shared_ptr<Transform> GetTransform() { return _hand->GetTransform(); }
+
 
 private:
 	shared_ptr<Animation> _hand;
