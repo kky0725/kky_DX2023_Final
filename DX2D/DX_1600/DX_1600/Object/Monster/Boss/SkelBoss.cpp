@@ -80,6 +80,11 @@ void SkelBoss::PostRender()
 	{
 		_bossState = ATKP2;
 	}
+
+	if (ImGui::Button("ATK2", ImVec2(50, 20)))
+	{
+		_bossState = ATKP2;
+	}
 }
 
 void SkelBoss::EndAttack1()
@@ -92,7 +97,10 @@ void SkelBoss::BossAtk()
 	switch (_bossState)
 	{
 	case SkelBoss::IDLE:
+	{
+		IdleTime();
 		break;
+	}
 	case SkelBoss::ATKP1:
 	{
 		AttackP1();
@@ -151,12 +159,29 @@ void SkelBoss::AttackP1()
 void SkelBoss::AttackP2()
 {
 	_time += DELTA_TIME;
-	//lerp 사용해서 손이 플레이어를 쫓아가는 코드 구현예정
+	//왼손과 오른손이 번갈아 가면서 공격하는 코드 구현예정.
 	if (_time > _idleTime)
 	{
+		count++;
 		_leftHand->Attack();
+		_time = 0.0f;
+	}
+	if (!_leftHand->Attacking())
+	{
+		if (count != 0)
+		{
+			count = 0;
+			_bossState = BossState::IDLE;
+			return;
+		}
+		float yy = _leftHand->GetTransform()->GetPos().y;
+		float position = LERP(yy, _targetPos.y, 0.05f);
+		float distance = position - yy;
+		_leftHand->GetTransform()->AddVector2(Vector2(0.0f, distance));
 	}
 	//_rightHand->Attack();
+
+
 }
 
 void SkelBoss::AttackP3()
@@ -174,15 +199,15 @@ int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 	}
 	case SkelBoss::ATKP1:
 	{
-		break;
+		return 0;
 	}
 	case SkelBoss::ATKP2:
 	{
-		break;
+		return 0;
 	}
 	case SkelBoss::ATKP3:
 	{
-		break;
+		return 0;
 	}
 	default:
 	{

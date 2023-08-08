@@ -14,6 +14,9 @@ TestScene::TestScene()
 	_ground = make_shared<RectCollider>(Vector2(1280, 50));
 	_ground->GetTransform()->SetPosition(Vector2(0.0f, -250.0f));
 
+	_ground2 = make_shared<RectCollider>(Vector2(1280, 50));
+	_ground2->GetTransform()->SetPosition(Vector2(640.0f, -50.0f));
+
 	shared_ptr<Creature> skelBoss = make_shared<SkelBoss>();
 	//shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
 	//shared_ptr<Creature> bat = make_shared<Bat>(true);
@@ -46,8 +49,10 @@ void TestScene::Update()
 
 	if (_ground->Block(_player->GetCollider()))
 		_player->IsGround();
-
 	
+	_ground2->Update();
+	if (_ground2->Block(_player->GetCollider()))
+		_player->IsGround();
 }
 
 void TestScene::Render()
@@ -57,6 +62,7 @@ void TestScene::Render()
 	_player->Render();
 
 	_ground->Render();
+	_ground2->Render();
 }
 
 void TestScene::PostRender()

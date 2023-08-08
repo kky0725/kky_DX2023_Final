@@ -43,4 +43,5 @@ private:
 	Vector2 _targetPos;
 
 	float _idleTime = 1.0f;
+	int count = 0;
 };

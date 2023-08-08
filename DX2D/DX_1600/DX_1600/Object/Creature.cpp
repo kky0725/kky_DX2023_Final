@@ -13,10 +13,7 @@ Creature::Creature(wstring string, float radius)
 Creature::Creature(float radius)
 {
 	_quad == nullptr;
-	_transform = make_shared<Transform>();
 	_collider = make_shared<CircleCollider>(radius);
-
-	_transform->SetParent(_collider->GetTransform());
 }
 
 Creature::~Creature()
@@ -27,7 +24,10 @@ void Creature::Update()
 {
 	if (!_isActive)
 		return;
-	_transform->Update();
+	if (_quad != nullptr)
+	{
+		_transform->Update();
+	}
 	_collider->Update();
 	CheckDamaged();
 }
