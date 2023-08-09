@@ -34,6 +34,8 @@ private:
 	shared_ptr<class SkelBossHand> _leftHand;
 	shared_ptr<class SkelBossHand> _rightHand;
 
+	vector<shared_ptr<class SkelBossSword>> _swords;
+
 	vector<shared_ptr<class SkelBossBullet>> _bullets;
 	int _bulletCount = 0;
 	int _poolCount = 25;

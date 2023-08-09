@@ -15,7 +15,7 @@ public:
 	void SetActive(bool value) { _isActive = value; }
 	void SetAngle(float value) { _collider->GetTransform()->SetAngel(value); }
 
-	const shared_ptr<CircleCollider>& GetCollider() { return _collider; }
+	const shared_ptr<Collider>& GetCollider() { return _collider; }
 
 	void LifeTime();
 
@@ -24,7 +24,7 @@ protected:
 	float _speed = 300.0f;
 	Vector2 _direction = Vector2(0.0f, 0.0f);
 
-	shared_ptr<CircleCollider> _collider;
+	shared_ptr<Collider> _collider;
 
 	float _time = 0.0f;
 	float _lifeTime = 15.0f;

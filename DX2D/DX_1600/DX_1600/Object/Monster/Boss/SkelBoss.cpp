@@ -2,6 +2,7 @@
 #include "SkelBoss.h"
 #include "SkelBossBullet.h"
 #include "SkelBossHand.h"
+#include "SkelBossSword.h"
 
 SkelBoss::SkelBoss()
 	:Creature(90.0f)
@@ -16,7 +17,6 @@ SkelBoss::SkelBoss()
 	_body->SetParent(_collider->GetTransform());
 	_body->SetPosition(Vector2(25.0f, 16.0f));
 
-
 	_back = make_shared<Animation>();
 	_back->CreateAction(L"Resource/Monster/SkelBoss/SkelBossBack.png", "Resource/Monster/SkelBoss/SkelBossBack.xml", "Idle", Vector2(10.0f, 10.0f));
 	_back->SetScale(Vector2(16.0f, 16.0f));
@@ -28,13 +28,19 @@ SkelBoss::SkelBoss()
 		shared_ptr<SkelBossBullet> bullet = make_shared<SkelBossBullet>();
 		_bullets.push_back(bullet);
 	}
-	_atkSpeed = 0.2f;
 
 	_leftHand = make_shared<SkelBossHand>(true);
 	_rightHand = make_shared<SkelBossHand>(false);
 	_leftHand->GetTransform()->SetPosition(Vector2(-400.0f, -50.0f));
 	_rightHand->GetTransform()->SetPosition(Vector2(400.0f, -100.0f));
+	_atkSpeed = 0.2f;
 
+	for (int i = 0; i < 6; i++)
+	{
+		shared_ptr<SkelBossSword> sword = make_shared<SkelBossSword>();
+		_swords.push_back(sword);
+	}
+	_swords[0]->SetPos(Vector2(0.0f, 0.0f));
 
 	//_bossState = ATKP1;
 }
@@ -51,6 +57,8 @@ void SkelBoss::Update()
 	_back->Update();
 	for (auto bullet : _bullets)
 		bullet->Update();
+	for (auto sword : _swords)
+		sword->Update();
 	_leftHand->Update();
 	_rightHand->Update();
 }
@@ -63,6 +71,8 @@ void SkelBoss::Render()
 	_body->Render();
 	for (auto bullet : _bullets)
 		bullet->Render();
+	for (auto sword : _swords)
+		sword->Render();
 	_collider->Render();
 	_leftHand->Render();
 	_rightHand->Render();
@@ -127,7 +137,7 @@ void SkelBoss::IdleTime()
 	if (_time > _idleTime)
 	{
 		_time = 0.0f;
-		_bossState = BossState::ATKP2;//랜덤하게 정해지도록 변경 예정
+		_bossState = BossState::ATKP3;//랜덤하게 정해지도록 변경 예정
 
 		if (_bossState == BossState::ATKP2)
 			_targetPos = _target.lock()->GetPos();
@@ -180,8 +190,6 @@ void SkelBoss::AttackP2()
 		_leftHand->GetTransform()->AddVector2(Vector2(0.0f, distance));
 	}
 	//_rightHand->Attack();
-
-
 }
 
 void SkelBoss::AttackP3()

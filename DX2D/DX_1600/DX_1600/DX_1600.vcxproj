@@ -302,6 +302,7 @@
     <Image Include="Resource\Monster\GaintRedBatAtk.png" />
     <Image Include="Resource\Monster\GraySkelDie.png" />
     <Image Include="Resource\Monster\GraySkelIdle.png" />
+    <Image Include="Resource\Monster\SkelBoss\BossSword.png" />
     <Image Include="Resource\Monster\SkelBoss\SkelBossAtk.png" />
     <Image Include="Resource\Monster\SkelBoss\SkelBossAtk1.png" />
     <Image Include="Resource\Monster\SkelBoss\SkelBossAtk2.png" />
