@@ -40,7 +40,7 @@ SkelBoss::SkelBoss()
 		shared_ptr<SkelBossSword> sword = make_shared<SkelBossSword>();
 		_swords.push_back(sword);
 	}
-	_swords[0]->SetPos(Vector2(0.0f, 0.0f));
+	//_swords[0]->SetPos(Vector2(0.0f, 0.0f));
 
 	//_bossState = ATKP1;
 }
@@ -194,6 +194,47 @@ void SkelBoss::AttackP2()
 
 void SkelBoss::AttackP3()
 {
+	_time += DELTA_TIME;
+	if (_atkP3SummonPase)
+	{
+		if (_time > 0.2f && count != 6)
+		{
+			_time = 0.0f;
+			Vector2 startPos = Vector2(-500.0f + count * 200.0f, 300.0f);
+ 			_swords[count]->Summon(startPos);
+			count++;
+		}
+		
+		for (auto sword : _swords)
+		{
+			Vector2 dir = _target.lock()->GetPos();
+			dir -= sword->GetCollider()->GetPos();
+			sword->Charge(dir);
+		}
+
+		if (count == 6 && _time > 2.0f)
+		{
+			_atkP3SummonPase = false;
+			count = 0;
+			_time = 0.0f;
+		}
+	}
+	else
+	{
+		if (_time > 0.2f && count != 6)
+		{
+			_time = 0.0f;
+			_swords[count]->Shoot();
+			count++;
+		}
+
+		if (count == 6 && _time > 10.0f)
+		{
+			_atkP3SummonPase = true;
+			count = 0;
+			_bossState = BossState::IDLE;
+		}
+	}
 }
 
 int SkelBoss::CheckAttack(shared_ptr<Collider> col)

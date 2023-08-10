@@ -46,4 +46,6 @@ private:
 
 	float _idleTime = 1.0f;
 	int count = 0;
+
+	bool _atkP3SummonPase = true;
 };

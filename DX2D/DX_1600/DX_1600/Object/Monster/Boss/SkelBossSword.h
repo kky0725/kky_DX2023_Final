@@ -8,8 +8,9 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 
-	void Summon(Vector2 startPos, Vector2 dir);
+	void Summon(Vector2 startPos);
 	void Shoot();
+	void Charge(Vector2 dir);
 
 	int GetAtk();
 
@@ -23,6 +24,6 @@ private:
 
 	bool _isActive = false;
 	bool _isAttack = false;
-	bool _isGround = true;
+	bool _isGround = false;
 	bool _isCharge = false;
 };
