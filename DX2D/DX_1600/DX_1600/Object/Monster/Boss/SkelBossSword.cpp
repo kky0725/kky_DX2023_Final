@@ -55,16 +55,19 @@ void SkelBossSword::Shoot()
 {
 	_isAttack = true;
 	_isCharge = false;
-	_speed = 100.0f;
+	_speed = 500.0f;
 }
 
 void SkelBossSword::Charge(Vector2 dir)
 {
 	if (!_isCharge)
 		return;
+	if (_isAttack)
+		return;
 	_direction = dir.NormalVector2();
 	float angle = atan(dir.y / dir.x);
-	//todo : 플레이어가 검보다 오른쪽에 있을 때 검이 뒤집히는 문제 해결 예정.
+	if (dir.x > 0)
+		angle = angle + PI;
 	SetAngle(angle + PI/2);
 }
 

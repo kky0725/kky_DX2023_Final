@@ -40,9 +40,9 @@ SkelBoss::SkelBoss()
 		shared_ptr<SkelBossSword> sword = make_shared<SkelBossSword>();
 		_swords.push_back(sword);
 	}
-	//_swords[0]->SetPos(Vector2(0.0f, 0.0f));
 
-	//_bossState = ATKP1;
+	//_idleTime = 10.0f // 보스전 도입부가 필요할 경우 생성자에서 idleTime 값을 키우고 주석 해제.
+
 }
 
 SkelBoss::~SkelBoss()
@@ -85,16 +85,6 @@ void SkelBoss::PostRender()
 		_bossState = ATKP1;
 		_body->SetState((Animation::State)2);
 	}
-
-	if (ImGui::Button("ATK2", ImVec2(50, 20)))
-	{
-		_bossState = ATKP2;
-	}
-
-	if (ImGui::Button("ATK2", ImVec2(50, 20)))
-	{
-		_bossState = ATKP2;
-	}
 }
 
 void SkelBoss::EndAttack1()
@@ -116,9 +106,14 @@ void SkelBoss::BossAtk()
 		AttackP1();
 		break;
 	}
-	case SkelBoss::ATKP2:
+	case SkelBoss::ATKP2L:
 	{
-		AttackP2();
+		AttackP2L();
+		break;
+	}
+	case SkelBoss::ATKP2R:
+	{
+		AttackP2R();
 		break;
 	}
 	case SkelBoss::ATKP3:
@@ -137,10 +132,22 @@ void SkelBoss::IdleTime()
 	if (_time > _idleTime)
 	{
 		_time = 0.0f;
-		_bossState = BossState::ATKP3;//랜덤하게 정해지도록 변경 예정
-
-		if (_bossState == BossState::ATKP2)
-			_targetPos = _target.lock()->GetPos();
+		int randomInt = MyMath::RandomInt(1, 3);
+		//int randomInt = 2;
+		if (randomInt == 1)
+		{
+			_bossState = BossState::ATKP1;
+			_body->SetState((Animation::State)2);
+		}
+		else if (randomInt == 2)
+		{
+			_bossState = BossState::ATKP2L;
+			_idleTime = 1.0f;
+		}
+		else
+		{
+			_bossState = BossState::ATKP3;
+		}
 	}
 }
 
@@ -162,39 +169,73 @@ void SkelBoss::AttackP1()
 	{
 		_bossState = BossState::IDLE;
 		_body->SetStateIdle();
+		_idleTime = 4.0f;
 		_bulletCount = 0;
 	}
 }
 
-void SkelBoss::AttackP2()
+void SkelBoss::AttackP2L()
 {
 	_time += DELTA_TIME;
-	//왼손과 오른손이 번갈아 가면서 공격하는 코드 구현예정.
 	if (_time > _idleTime)
 	{
 		count++;
 		_leftHand->Attack();
+
+		_targetPos = _target.lock()->GetPos();
 		_time = 0.0f;
 	}
+
 	if (!_leftHand->Attacking())
 	{
-		if (count != 0)
-		{
-			count = 0;
-			_bossState = BossState::IDLE;
-			return;
-		}
 		float yy = _leftHand->GetTransform()->GetPos().y;
 		float position = LERP(yy, _targetPos.y, 0.05f);
 		float distance = position - yy;
 		_leftHand->GetTransform()->AddVector2(Vector2(0.0f, distance));
 	}
-	//_rightHand->Attack();
+
+	if (!_leftHand->Attacking() && count != 0)
+	{
+		_bossState = BossState::ATKP2R;
+		count = 0;
+		_time = 0.0f;
+	}
+
+}
+
+void SkelBoss::AttackP2R()
+{
+	_time += DELTA_TIME;
+	if (_time > _idleTime)
+	{
+		count++;
+		_rightHand->Attack();
+
+		_targetPos = _target.lock()->GetPos();
+		_time = 0.0f;
+	}
+
+	if (!_rightHand->Attacking())
+	{
+		float yy = _rightHand->GetTransform()->GetPos().y;
+		float position = LERP(yy, _targetPos.y, 0.05f);
+		float distance = position - yy;
+		_rightHand->GetTransform()->AddVector2(Vector2(0.0f, distance));
+	}
+
+	if (!_rightHand->Attacking() && count != 0)
+	{
+		_bossState = BossState::IDLE;
+		count = 0;
+		_time = 0.0f;
+	}
+
 }
 
 void SkelBoss::AttackP3()
 {
 	_time += DELTA_TIME;
+
 	if (_atkP3SummonPase)
 	{
 		if (_time > 0.2f && count != 6)
@@ -205,13 +246,6 @@ void SkelBoss::AttackP3()
 			count++;
 		}
 		
-		for (auto sword : _swords)
-		{
-			Vector2 dir = _target.lock()->GetPos();
-			dir -= sword->GetCollider()->GetPos();
-			sword->Charge(dir);
-		}
-
 		if (count == 6 && _time > 2.0f)
 		{
 			_atkP3SummonPase = false;
@@ -221,21 +255,30 @@ void SkelBoss::AttackP3()
 	}
 	else
 	{
-		if (_time > 0.2f && count != 6)
+		if (_time > 0.5f && count != 6)
 		{
 			_time = 0.0f;
 			_swords[count]->Shoot();
 			count++;
 		}
 
-		if (count == 6 && _time > 10.0f)
+		if (count == 6 && _time > 5.0f)
 		{
 			_atkP3SummonPase = true;
 			count = 0;
 			_bossState = BossState::IDLE;
+			_idleTime = 2.0f;
 		}
 	}
+
+	for (auto sword : _swords)
+	{
+		Vector2 dir = _target.lock()->GetPos();
+		dir -= sword->GetCollider()->GetPos();
+		sword->Charge(dir);
+	}
 }
+
 
 int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 {
@@ -248,14 +291,36 @@ int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 	}
 	case SkelBoss::ATKP1:
 	{
+		for (auto bullet : _bullets)
+		{
+			if (!bullet->IsActive())
+				continue;
+			if (col->IsCollision(bullet->GetCollider()))
+			{
+				bullet->SetActive(false);
+				return _bulletAtk;
+			}
+		}
 		return 0;
 	}
-	case SkelBoss::ATKP2:
+	case SkelBoss::ATKP2L:
 	{
+		if(col->IsCollision(_leftHand->GetCollider()) && _leftHand->IsActive()) //다단히트 문제 해결해야함
+			return 10;
+		return 0;
+	}
+	case SkelBoss::ATKP2R:
+	{
+		if (col->IsCollision(_rightHand->GetCollider()) && _rightHand->IsActive())
+			return 10;
 		return 0;
 	}
 	case SkelBoss::ATKP3:
 	{
+		for (int i = 0; i < 6; i++)
+		{
+
+		}
 		return 0;
 	}
 	default:

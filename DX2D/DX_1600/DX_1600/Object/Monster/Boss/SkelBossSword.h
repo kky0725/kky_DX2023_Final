@@ -20,10 +20,10 @@ private:
 
 	int _maxAtk = 10;
 	int _minAtk = 8;
-	float _atkPerSec = 1.0f;
+	//float _atkPerSec = 1.0f;
 
 	bool _isActive = false;
-	bool _isAttack = false;
-	bool _isGround = false;
-	bool _isCharge = false;
+	bool _isAttack = false; // 날라가는 동안 이펙트 shader 만들어서 변경 예정
+	bool _isGround = false; // 땅에 박히는 이펙트 추가 안할거면 삭제 예정
+	bool _isCharge = false; // 차지 이펙트 추가 안할거면 삭제 예정
 };

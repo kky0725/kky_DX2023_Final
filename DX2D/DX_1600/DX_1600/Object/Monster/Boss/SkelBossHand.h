@@ -13,8 +13,10 @@ public:
 	void Attack();
 	void EndAttack();
 	bool Attacking() { return _attacking; }
+	bool IsActive() { return _isActive; }
 
 	shared_ptr<Transform> GetTransform() { return _hand->GetTransform(); }
+	shared_ptr<Collider> GetCollider() { return _collider; }
 
 
 private:
