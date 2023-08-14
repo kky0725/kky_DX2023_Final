@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="CrossBow.png" width="16" height="20" scale="1" format="RGBA8888">
+  <sprite n="Crossbow0.png" x="0" y="0" w="16" h="9" pX="0.5" pY="0.5" oX="0" oY="1" oW="18" oH="11"/>
+  <sprite n="Crossbow2.png" x="0" y="9" w="14" h="11" pX="0.5" pY="0.5" oX="0" oY="0" oW="18" oH="11"/>
+</TextureAtlas>

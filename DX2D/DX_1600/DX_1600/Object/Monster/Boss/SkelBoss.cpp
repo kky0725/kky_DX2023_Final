@@ -132,8 +132,8 @@ void SkelBoss::IdleTime()
 	if (_time > _idleTime)
 	{
 		_time = 0.0f;
-		int randomInt = MyMath::RandomInt(1, 3);
-		//int randomInt = 2;
+		//int randomInt = MyMath::RandomInt(1, 3);
+		int randomInt = 3;
 		if (randomInt == 1)
 		{
 			_bossState = BossState::ATKP1;
@@ -286,10 +286,8 @@ int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 	switch (_bossState)
 	{
 	case SkelBoss::IDLE:
-	{
-		return 0;
-	}
 	case SkelBoss::ATKP1:
+	case SkelBoss::ATKP3:
 	{
 		for (auto bullet : _bullets)
 		{
@@ -299,6 +297,17 @@ int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 			{
 				bullet->SetActive(false);
 				return _bulletAtk;
+			}
+		}
+	}
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			if (!_swords[i]->IsActive() || !_swords[i]->IsAttack())
+				continue;
+			if (col->IsCollision(_swords[i]->GetCollider()))
+			{
+				return _swords[i]->GetAtk();
 			}
 		}
 		return 0;
@@ -313,14 +322,6 @@ int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 	{
 		if (col->IsCollision(_rightHand->GetCollider()) && _rightHand->IsActive())
 			return 10;
-		return 0;
-	}
-	case SkelBoss::ATKP3:
-	{
-		for (int i = 0; i < 6; i++)
-		{
-
-		}
 		return 0;
 	}
 	default:

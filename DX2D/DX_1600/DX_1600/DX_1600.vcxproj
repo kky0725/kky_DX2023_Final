@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Weapon\CrossBowArrow.h" />
+    <ClInclude Include="Object\Weapon\CrossBow.h" />
     <ClInclude Include="Object\Weapon\Bullet.h" />
     <ClInclude Include="Object\Monster\MonsterWeapon\BatBullet.h" />
     <ClInclude Include="Framework\Animation\Animation.h" />
@@ -223,6 +225,8 @@
     <ClInclude Include="Object\Weapon\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Weapon\CrossBowArrow.cpp" />
+    <ClCompile Include="Object\Weapon\CrossBow.cpp" />
     <ClCompile Include="Object\Weapon\Bullet.cpp" />
     <ClCompile Include="Object\Monster\MonsterWeapon\BatBullet.cpp" />
     <ClCompile Include="Framework\Animation\Animation.cpp" />
@@ -322,6 +326,8 @@
     <Image Include="Resource\Player\PlayerIdle.png" />
     <Image Include="Resource\Player\PlayerRun.png" />
     <Image Include="Resource\UI\Button.png" />
+    <Image Include="Resource\Weapon\CrossBow.png" />
+    <Image Include="Resource\Weapon\CrossbowArrow.png" />
     <Image Include="Resource\Weapon\ShortSword.png" />
     <Image Include="small.ico" />
   </ItemGroup>
@@ -546,6 +552,7 @@
     <Xml Include="Resource\Monster\SkelWalk.xml" />
     <Xml Include="Resource\Player\PlayerIdle.xml" />
     <Xml Include="Resource\Player\PlayerRun.xml" />
+    <Xml Include="Resource\Weapon\CrossBow.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

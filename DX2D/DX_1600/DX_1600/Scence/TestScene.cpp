@@ -70,9 +70,8 @@ void TestScene::PostRender()
 	ImGui::Text("W_M.x : %f, W_M.y : %f", W_MOUSE_POS.x, W_MOUSE_POS.y);
 
 	ImGui::Text("PlayerHp : %d", _player->GetHp());
-	//ImGui::Text("BatHp : %d", _creatures[0]->GetHp());
-	//ImGui::Text("GBatHp : %d", _creatures[1]->GetHp());
-	_creatures[0]->PostRender();
+	ImGui::Text("BossHp : %d", _creatures[0]->GetHp());
+
 }
 
 void TestScene::CheckAttack()

@@ -225,6 +225,12 @@
     <ClInclude Include="Object\Monster\Boss\SkelBossHand.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\Weapon\CrossBow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Weapon\CrossBowArrow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX_1600.cpp">
@@ -398,6 +404,12 @@
     <ClCompile Include="Object\Monster\Boss\SkelBossHand.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\Weapon\CrossBow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Weapon\CrossBowArrow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1600.rc">
@@ -495,6 +507,12 @@
     <Image Include="Resource\Monster\SkelBoss\BossSword.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Weapon\CrossBow.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Weapon\CrossbowArrow.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />
@@ -555,5 +573,6 @@
     <Xml Include="Resource\Monster\SkelBoss\SkelBossParticle.xml" />
     <Xml Include="Resource\Monster\SkelBoss\SkelBossAtk1.xml" />
     <Xml Include="Resource\Monster\SkelBoss\SkelBossAtk2.xml" />
+    <Xml Include="Resource\Weapon\CrossBow.xml" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,11 @@
 #include "framework.h"
 #include "Weapon.h"
 
+Weapon::Weapon()
+{
+	_type = WeaponType::GUN;
+}
+
 Weapon::Weapon(Vector2 size)
 {
 	_quad = nullptr;
@@ -40,4 +45,12 @@ void Weapon::Render()
 		_quad->Render();
 	}
 	_collider->Render();
+}
+
+bool Weapon::WTIsSword()
+{
+	if (_type == WeaponType::SWORD)
+		return true;
+
+	return false;
 }

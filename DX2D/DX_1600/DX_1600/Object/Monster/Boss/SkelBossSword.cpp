@@ -25,7 +25,7 @@ SkelBossSword::~SkelBossSword()
 
 void SkelBossSword::Update()
 {
-	LifeTime();
+	//LifeTime();
 	if (!_isActive)
 		return;
 	_collider->GetTransform()->AddVector2(_direction * _speed * DELTA_TIME);
@@ -73,12 +73,12 @@ void SkelBossSword::Charge(Vector2 dir)
 
 int SkelBossSword::GetAtk()
 {
-	if (!_isAttack)
-		return 0;
-	else
+	if (_isAttack)
 	{
 		_isAttack = false;
 		return MyMath::RandomInt(_minAtk, _maxAtk);
 	}
+
+	return 0;
 }
 
