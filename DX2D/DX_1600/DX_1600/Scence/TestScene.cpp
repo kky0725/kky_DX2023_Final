@@ -36,6 +36,9 @@ TestScene::~TestScene()
 
 void TestScene::Update()
 {
+	if (_player->End()) // 여기서 삭제하고 각 크리쳐 별로 공격 부분에 넣어줄지 고민중
+		return;
+
 	CheckAttack();
 
 	for (auto creature : _creatures)

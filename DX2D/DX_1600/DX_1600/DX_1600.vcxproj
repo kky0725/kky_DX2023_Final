@@ -323,6 +323,7 @@
     <Image Include="Resource\Monster\SkelBow.png" />
     <Image Include="Resource\Monster\SkelWalk.png" />
     <Image Include="Resource\Player\Player.png" />
+    <Image Include="Resource\Player\PlayerDie.png" />
     <Image Include="Resource\Player\PlayerIdle.png" />
     <Image Include="Resource\Player\PlayerRun.png" />
     <Image Include="Resource\UI\Button.png" />

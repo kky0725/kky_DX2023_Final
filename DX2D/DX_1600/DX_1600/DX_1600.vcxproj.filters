@@ -513,6 +513,9 @@
     <Image Include="Resource\Weapon\CrossbowArrow.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Player\PlayerDie.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\TutorialShader.hlsl" />

@@ -7,6 +7,8 @@ Player_Ani::Player_Ani()
 	CreateAction(L"Resource/Player/PlayerIdle.png", "Resource/Player/PlayerIdle.xml", "Idle", Vector2(10.0f, 10.0f), Action::LOOP, 0.2f);
 	CreateAction(L"Resource/Player/PlayerRun.png", "Resource/Player/PlayerRun.xml", "Run", Vector2(10.0f, 10.0f));
 	CreateAction(L"Resource/Player/PlayerJump.png", "Jump", Vector2(10.0f, 10.0f));
+	CreateAction(L"Resource/Player/PlayerIdle.png", "Resource/Player/PlayerIdle.xml", "Idle", Vector2(10.0f, 10.0f), Action::LOOP, 0.2f);
+	CreateAction(L"Resource/Player/PlayerDie.png", "Die", Vector2(10.0f, 10.0f));
 
 	_transform->SetScale(Vector2(5.0f, 5.0f));
 	_transform->SetPosition(Vector2(0.0f, 10.0f));

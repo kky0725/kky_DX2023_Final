@@ -54,6 +54,8 @@ void Creature::Damaged(int damge)
 		return;
 	if (_damaged)
 		return;
+	if (damge <= 0)
+		return;
 	_hp -= damge;
 	_damaged = true;
 

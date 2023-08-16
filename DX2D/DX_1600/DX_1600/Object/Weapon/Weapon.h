@@ -35,7 +35,7 @@ protected:
 	int _minAtk = 1;
 	float _atkPerSec = 1.0f;
 
-	bool _isActive = false;
+	bool _isActive = true;
 
 	WeaponType _type = WeaponType::SWORD;
 };

@@ -4,7 +4,7 @@
 #include "SkelBullet.h"
 
 SkelBow::SkelBow()
-	: Weapon(Vector2(10.0f,10.0f))
+	: Weapon()
 {
 	_ani = make_shared<Animation>();
 	_ani->CreateAction(L"Resource/Monster/SkelBow.png", "Resource/Monster/SkelBow.xml", "BOW", Vector2(10.0f, 10.0f), Action::Type::END, 0.2f, std::bind(&SkelBow::Fire, this));

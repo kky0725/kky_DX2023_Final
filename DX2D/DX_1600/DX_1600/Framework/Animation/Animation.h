@@ -22,6 +22,7 @@ public:
 	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
 	void SetScale(Vector2 value) { _transform->SetScale(value); }
 	void SetPosition(Vector2 value) { _transform->SetPosition(value); }
+	void SetAngle(float value) { _transform->SetAngel(value); }
 	Vector2 GetWorldPosition() { return _transform->GetWorldPosition(); }
 	shared_ptr<Transform> GetTransform() { return _transform; }
 

@@ -8,7 +8,8 @@ CrossBowArrow::CrossBowArrow()
 	_transform = make_shared<Transform>();
 	
 	_transform->SetScale(Vector2(3.0f, 3.0f));
-	_transform->SetPosition(Vector2(0.0f, -20.0f));
+	_transform->SetPosition(Vector2(-10.0f, 0.0f));
+	_transform->SetAngel(-PI / 2);
 
 	_transform->SetParent(_collider->GetTransform());
 
@@ -35,5 +36,13 @@ void CrossBowArrow::Render()
 	_transform->SetBuffer(0);
 	_quad->Render();
 	_collider->Render();
+}
+
+void CrossBowArrow::Shoot(Vector2 startPos, Vector2 dir)
+{
+	_isActive = true;
+	_collider->GetTransform()->SetPosition(startPos);
+	_direction = dir;
+	_collider->GetTransform()->SetAngel(_direction.Angle());
 }
 

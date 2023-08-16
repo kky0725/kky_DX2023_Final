@@ -4,6 +4,7 @@
 Weapon::Weapon()
 {
 	_type = WeaponType::GUN;
+	_collider = make_shared<CircleCollider>(1.0f);
 }
 
 Weapon::Weapon(Vector2 size)
