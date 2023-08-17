@@ -7,6 +7,8 @@ public:
 
 	virtual void Update() override;
 	virtual void Render() override;
+	void BulletUpdate();
+	void BulletRender();
 
 	virtual shared_ptr<Transform> GetTransform() { return _ani->GetTransform(); }
 	virtual shared_ptr<Collider> GetCollider() { return _collider; }
@@ -14,6 +16,9 @@ public:
 	void Attack(Vector2 dir);
 	void Fire();
 	int CheckAttack(shared_ptr<Collider> col);
+
+	void SetLeft() { _ani->SetScale(Vector2(2.0f, 2.0f)); }
+	void SetRight() { _ani->SetScale(Vector2(2.0f, -2.0f)); }
 
 private:
 	shared_ptr<Animation> _ani;

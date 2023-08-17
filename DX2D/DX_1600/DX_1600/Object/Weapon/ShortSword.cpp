@@ -10,6 +10,8 @@ ShortSword::ShortSword()
 
 	_transform->SetScale(Vector2(5.0f, 5.0f));
 	_collider->SetPosition(Vector2(2.5f, 0.0f));
+	
+	_isActive = false;
 }
 
 ShortSword::~ShortSword()

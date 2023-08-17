@@ -104,6 +104,8 @@ using namespace Microsoft::WRL;
 #include "Object/Weapon/Bullet.h"
 #include "Object/Weapon/Weapon.h"
 
+#include "Object/Player/Inventory.h"
+
 //UI
 #include "Object//UI/Button.h"
 #include "Object/UI/HpBar.h"

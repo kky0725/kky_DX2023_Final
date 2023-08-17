@@ -13,7 +13,7 @@ Player::Player()
 	_ani = make_shared<Player_Ani>();
 	_ani->SetParent(_collider->GetTransform());
 
-	_hp = 10;
+	_hp = 100000;
 
 	_footHold = make_shared<RectCollider>(Vector2(27.0f, 10.0f));
 	_footHold->SetParent(_collider->GetTransform());
@@ -46,6 +46,7 @@ void Player::Update()
 	_ani->Update();
 	_weapon->Update();
 	_footHold->Update();
+	BulletUpdate();
 }
 
 void Player::Render()
@@ -56,11 +57,33 @@ void Player::Render()
 	_slot->SetBuffer(0);
 	_ani->Render();
 	_weapon->Render();
+	BulletRender();
+
 	_footHold->Render();
 }
 
 void Player::PostRender()
 {
+	ImGui::Text("PlayerDashCount : %d", _dashCount);
+}
+
+void Player::BulletUpdate()
+{
+	if (_weapon == _weapon1 && !_weapon2->WTIsSword())
+		dynamic_pointer_cast<CrossBow>(_weapon2)->BulletUpdate();
+
+	if(_weapon == _weapon2 && !_weapon1->WTIsSword())
+		dynamic_pointer_cast<CrossBow>(_weapon1)->BulletUpdate();
+
+}
+
+void Player::BulletRender()
+{
+	if (_weapon == _weapon1 && !_weapon2->WTIsSword())
+		dynamic_pointer_cast<CrossBow>(_weapon2)->BulletRender();
+
+	if (_weapon == _weapon2 && !_weapon1->WTIsSword())
+		dynamic_pointer_cast<CrossBow>(_weapon1)->BulletRender();
 }
 
 void Player::Damaged(int damge)
@@ -97,6 +120,7 @@ void Player::Input()
 
 	Fire();
 	Jump();
+	Dash();
 	SwapWeapon();
 
 }
@@ -122,13 +146,85 @@ void Player::Jump()
 	}
 }
 
+void Player::Dash()
+{
+	if (_dashCool)
+	{
+		if (KEY_PRESS('A'))
+		{
+			Vector2 movePos = Vector2(2.0f * -_speed, 0.0f) * DELTA_TIME;
+			Move(movePos);
+		}
+
+		if (KEY_PRESS('D'))
+		{
+			Vector2 movePos = Vector2(2.0f * _speed, 0.0f) * DELTA_TIME;
+			Move(movePos);
+		}
+
+		if (KEY_PRESS('W'))
+		{
+			Vector2 movePos = Vector2(0.0f, 2.0f * _speed) * DELTA_TIME;
+			Move(movePos);
+		}
+
+		if (KEY_PRESS('S'))
+		{
+			Vector2 movePos = Vector2(0.0f, 2.0f * -_speed) * DELTA_TIME;
+			Move(movePos);
+		}
+
+		_dashTime += DELTA_TIME;
+		if (_dashTime > 0.5f)
+		{
+			_dashCool = false;
+			_dashTime = 0.0f;
+			//_speed = 200.0f;
+		}
+	}
+
+	if (_dashCount < _maxDashCount)
+	{
+		_dashCT += DELTA_TIME;
+		if (_dashCT > 2.0f)
+		{
+			_dashCT = 0.0f;
+			_dashCount++;
+		}
+	}
+	else
+	{
+		_dashCount = _maxDashCount;
+		_dashCT = 0.0f;
+	}
+
+
+	if (_dashCount == 0)
+		return;
+
+	//if (KEY_DOWN(VK_RBUTTON) && !_dashCool)
+	if (KEY_DOWN(VK_XBUTTON2) && !_dashCool)
+	{
+		_dashCool = true;
+		//_speed = _dashSpeed;
+		_dashCount--;
+	}
+}
+
 void Player::SwordAtk()
 {
 	if (_atkCool)
 	{
 		_time += DELTA_TIME;
 		if (_time < 0.1f)
-			_slot->AddAngle(-20.0f * DELTA_TIME);
+		{
+			Vector2 startPos = _collider->GetTransform()->GetWorldPosition();
+			Vector2 dir = W_MOUSE_POS - startPos;
+			if(dir.x >0)
+				_slot->AddAngle(-20.0f * DELTA_TIME);
+			else
+				_slot->AddAngle(+20.0f * DELTA_TIME);
+		}
 		if (_time > 0.1f)
 			_weapon->SetIsActive(false);
 
@@ -213,7 +309,7 @@ int Player::CheckAttackBow(shared_ptr<Collider> enemy)
 	return dynamic_pointer_cast<CrossBow>(_weapon)->CheckAttack(enemy);
 }
 
-float Player::GetAtk()
+int Player::GetAtk()
 {
 	return _weapon->GetAtk();
 }
@@ -228,6 +324,14 @@ void Player::SetWeaponDir()
 	if (dir.x < 0)
 		angle += PI;
 	_slot->SetAngel(angle);
+
+	if (!_weapon->WTIsSword())
+	{
+		if (dir.x < 0)
+			dynamic_pointer_cast<CrossBow>(_weapon)->SetLeft();
+		else
+			dynamic_pointer_cast<CrossBow>(_weapon)->SetRight();
+	}
 	
 }
 

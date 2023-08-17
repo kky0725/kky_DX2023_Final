@@ -13,7 +13,9 @@ CrossBowArrow::CrossBowArrow()
 
 	_transform->SetParent(_collider->GetTransform());
 
-	_lifeTime = 15.0f;
+	_lifeTime = 5.0f;
+
+	
 }
 
 CrossBowArrow::~CrossBowArrow()
@@ -22,6 +24,7 @@ CrossBowArrow::~CrossBowArrow()
 
 void CrossBowArrow::Update()
 {
+	Bullet::LifeTime();
 	if (!_isActive)
 		return;
 	_collider->GetTransform()->AddVector2(_direction * _speed * DELTA_TIME);

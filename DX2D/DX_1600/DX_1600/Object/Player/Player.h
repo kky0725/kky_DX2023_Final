@@ -1,7 +1,5 @@
 #pragma once
 #include "../Creature.h"
-class Creature;
-class ShortSword;
 
 class Player : public Creature
 {
@@ -12,6 +10,9 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 	virtual void PostRender() override;
+
+	void BulletUpdate();
+	void BulletRender();
 	
 	virtual void Damaged(int damge);
 	void SetAtkSpeed(float atkPerSec) { _atkSpeed =  1/atkPerSec; }
@@ -20,6 +21,7 @@ public:
 	void Input();
 	void Fire();
 	void Jump();
+	void Dash();
 
 	void SwordAtk();
 	void BowAtk();
@@ -30,7 +32,7 @@ public:
 	int CheckAttackSword(shared_ptr<Collider> enemy);
 	int CheckAttackBow(shared_ptr<Collider> enemy);
 
-	float GetAtk();
+	int GetAtk();
 
 	void SetWeaponDir();
 
@@ -38,7 +40,6 @@ public:
 
 	void Die();
 	bool End() { return _end; }
-
 
 	shared_ptr<Collider> GetFootHold() { return _footHold; }
 private:
@@ -55,6 +56,13 @@ private:
 
 	float _jumpPower = 0.0f;
 	int _jumpCount = 0;
+
+	float _dashSpeed = 600.0f;
+	float _dashTime = 0.0f; //0.5f
+	float _dashCT = 0.0f; //2.0f
+	int _dashCount = 2;
+	int _maxDashCount = 2;
+	bool _dashCool = false;
 
 	bool _end = false;
 };

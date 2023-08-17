@@ -9,7 +9,7 @@ CrossBow::CrossBow()
 	_ani->CreateAction(L"Resource/Weapon/CrossBow.png", "Resource/Weapon/CrossBow.xml", "Bow", Vector2(14, 11), Action::Type::END, 0.2f, std::bind(&CrossBow::Fire, this));
 	_ani->Reset();
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 30; i++)
 	{
 		shared_ptr<Bullet> bullet = make_shared<CrossBowArrow>();
 		_bullets.push_back(bullet);
@@ -21,7 +21,7 @@ CrossBow::CrossBow()
 	
 	_maxAtk = 13;
 	_minAtk = 11;
-	_atkPerSec = 2.38;
+	_atkPerSec = 2.38f;
 }
 
 CrossBow::~CrossBow()
@@ -30,21 +30,31 @@ CrossBow::~CrossBow()
 
 void CrossBow::Update()
 {
+
 	if (!_isActive)
 		return;
 	_ani->Update();
 	_collider->Update();
-		
-	for (auto bullet : _bullets)
-		bullet->Update();
+	BulletUpdate();
 }
 
 void CrossBow::Render()
 {
+
 	if (!_isActive)
 		return;
 	_ani->Render();
+	BulletRender();
+}
 
+void CrossBow::BulletUpdate()
+{
+	for (auto bullet : _bullets)
+		bullet->Update();
+}
+
+void CrossBow::BulletRender()
+{
 	for (auto bullet : _bullets)
 		bullet->Render();
 }
