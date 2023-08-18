@@ -50,8 +50,8 @@ private:
 	int _def = 0;
 	shared_ptr<Weapon> _weapon;
 
+	shared_ptr<Weapon> _weapon0 = nullptr;
 	shared_ptr<Weapon> _weapon1 = nullptr;
-	shared_ptr<Weapon> _weapon2 = nullptr;
 	int _curIndex = 0;
 
 	float _jumpPower = 0.0f;

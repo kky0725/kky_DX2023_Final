@@ -132,8 +132,8 @@ void SkelBoss::IdleTime()
 	if (_time > _idleTime)
 	{
 		_time = 0.0f;
-		//int randomInt = MyMath::RandomInt(1, 3);
-		int randomInt = 3;
+		int randomInt = MyMath::RandomInt(1, 3);
+		//int randomInt = 3;
 		if (randomInt == 1)
 		{
 			_bossState = BossState::ATKP1;

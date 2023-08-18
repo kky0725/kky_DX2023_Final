@@ -20,9 +20,9 @@ Player::Player()
 	_footHold->SetPosition(Vector2(0.0f, -24.0f));
 
 	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
-	_weapon1 = make_shared<ShortSword>();
-	_weapon2 = make_shared<CrossBow>();
-	_weapon = _weapon1;
+	_weapon0 = make_shared<ShortSword>();
+	_weapon1 = make_shared<CrossBow>();
+	_weapon = _weapon0;
 	_weapon->GetCollider()->SetParent(_slot);
 	_weapon->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
 
@@ -47,6 +47,8 @@ void Player::Update()
 	_weapon->Update();
 	_footHold->Update();
 	BulletUpdate();
+
+	Inventory::GetInstance()->Update();
 }
 
 void Player::Render()
@@ -65,25 +67,27 @@ void Player::Render()
 void Player::PostRender()
 {
 	ImGui::Text("PlayerDashCount : %d", _dashCount);
+
+	Inventory::GetInstance()->PostRender();
 }
 
 void Player::BulletUpdate()
 {
-	if (_weapon == _weapon1 && !_weapon2->WTIsSword())
-		dynamic_pointer_cast<CrossBow>(_weapon2)->BulletUpdate();
-
-	if(_weapon == _weapon2 && !_weapon1->WTIsSword())
+	if (_weapon == _weapon0 && !_weapon1->WTIsSword())
 		dynamic_pointer_cast<CrossBow>(_weapon1)->BulletUpdate();
+
+	if(_weapon == _weapon1 && !_weapon0->WTIsSword())
+		dynamic_pointer_cast<CrossBow>(_weapon0)->BulletUpdate();
 
 }
 
 void Player::BulletRender()
 {
-	if (_weapon == _weapon1 && !_weapon2->WTIsSword())
-		dynamic_pointer_cast<CrossBow>(_weapon2)->BulletRender();
-
-	if (_weapon == _weapon2 && !_weapon1->WTIsSword())
+	if (_weapon == _weapon0 && !_weapon1->WTIsSword())
 		dynamic_pointer_cast<CrossBow>(_weapon1)->BulletRender();
+
+	if (_weapon == _weapon1 && !_weapon0->WTIsSword())
+		dynamic_pointer_cast<CrossBow>(_weapon0)->BulletRender();
 }
 
 void Player::Damaged(int damge)
@@ -123,6 +127,7 @@ void Player::Input()
 	Dash();
 	SwapWeapon();
 
+	Inventory::GetInstance()->Open();
 }
 
 void Player::Fire()
@@ -269,15 +274,15 @@ void Player::BowAtk()
 
 void Player::SwapWeapon()
 {
-	if (_weapon1 == nullptr || _weapon2 == nullptr)
+	if (_weapon0 == nullptr || _weapon1 == nullptr)
 		return;
 
 	if (KEY_DOWN(VK_XBUTTON1))
 	{
-		if (_weapon == _weapon1)
-			_weapon = _weapon2;
-		else
+		if (_weapon == _weapon0)
 			_weapon = _weapon1;
+		else
+			_weapon = _weapon0;
 
 		SetAtkSpeed(_weapon->GetAtkPerSec());
 		_weapon->GetCollider()->SetParent(_slot);
