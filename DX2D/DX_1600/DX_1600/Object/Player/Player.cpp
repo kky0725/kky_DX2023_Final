@@ -22,7 +22,9 @@ Player::Player()
 	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
 	_weapon0 = make_shared<ShortSword>();
 	_weapon1 = make_shared<CrossBow>();
-	_weapon = _weapon0;
+	Inventory::GetInstance()->SetWeapon(_weapon0, 0);
+	Inventory::GetInstance()->SetWeapon(_weapon1, 1);
+	_weapon = Inventory::GetInstance()->CurWeapon();
 	_weapon->GetCollider()->SetParent(_slot);
 	_weapon->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
 
@@ -279,10 +281,8 @@ void Player::SwapWeapon()
 
 	if (KEY_DOWN(VK_XBUTTON1))
 	{
-		if (_weapon == _weapon0)
-			_weapon = _weapon1;
-		else
-			_weapon = _weapon0;
+		Inventory::GetInstance()->ChangeWeapon();
+		_weapon = Inventory::GetInstance()->CurWeapon();
 
 		SetAtkSpeed(_weapon->GetAtkPerSec());
 		_weapon->GetCollider()->SetParent(_slot);
