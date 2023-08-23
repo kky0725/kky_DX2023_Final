@@ -1,7 +1,7 @@
 #pragma once
 #define KEY_MAX 255
 
-class InputManager
+class InputManager : public Singleton<InputManager>
 {
 	enum State
 	{
@@ -15,26 +15,6 @@ class InputManager
 	~InputManager();
 
 public:
-	static void Create()
-	{
-		if (_instance == nullptr)
-			_instance = new InputManager();
-	}
-
-	static void Delete()
-	{
-		if (_instance != nullptr)
-			delete _instance;
-	}
-
-	static InputManager* GetInstance()
-	{
-		if (_instance != nullptr)
-			return _instance;
-
-		return nullptr;
-	}
-
 	void Update();
 
 	bool Down(UINT key) { return _stateMap[key] == DOWN; }

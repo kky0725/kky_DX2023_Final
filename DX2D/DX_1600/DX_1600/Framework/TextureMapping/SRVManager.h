@@ -1,29 +1,9 @@
 #pragma once
-class SRVManager
+class SRVManager : public Singleton<SRVManager>
 {
 	SRVManager();
 	~SRVManager();
 public:
-	static void Create()
-	{
-		if (_instance == nullptr)
-			_instance = new SRVManager();
-	}
-
-	static void Delete()
-	{
-		if (_instance != nullptr)
-			delete _instance;
-	}
-
-	static SRVManager* GetInstance()
-	{
-		if (_instance != nullptr)
-			return _instance;
-
-		return nullptr;
-	}
-
 	shared_ptr<SRV> Add_SRV(wstring path);
 
 private:

@@ -1,28 +1,9 @@
 #pragma once
-class EffectManager
+class EffectManager : public Singleton<EffectManager>
 {
 	EffectManager();
 	~EffectManager();
 public:
-	static void Create()
-	{
-		if (_instance == nullptr)
-			_instance = new EffectManager();
-	}
-
-	static void Delete()
-	{
-		if (_instance != nullptr)
-			delete _instance;
-	}
-
-	static EffectManager* GetInstance()
-	{
-		if (_instance != nullptr)
-			return _instance;
-		return nullptr;
-	}
-
 	void Update();
 	void Render();
 

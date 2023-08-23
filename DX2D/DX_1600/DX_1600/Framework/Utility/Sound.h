@@ -1,5 +1,5 @@
 #pragma once
-class Sound
+class Sound : public Singleton<Sound>
 {
 	struct SoundInfo
 	{
@@ -13,25 +13,6 @@ class Sound
 	Sound();
 	~Sound();
 public:
-	static void Create()
-	{
-		if (_instance == nullptr)
-			_instance = new Sound();
-	}
-
-	static void Delete()
-	{
-		if (_instance != nullptr)
-			delete _instance;
-	}
-
-	static Sound* GetInstance()
-	{
-		if (_instance != nullptr)
-			return _instance;
-		return nullptr;
-	}
-
 	void Update();
 	void Add(string key, string file, bool bgm = false);
 	void Play(string key, float volume = 1.0f);

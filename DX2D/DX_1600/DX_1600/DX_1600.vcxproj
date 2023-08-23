@@ -151,10 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Utility\Singleton.h" />
+    <ClInclude Include="Framework\Utility\ItemList.h" />
+    <ClInclude Include="Object\Item.h" />
     <ClInclude Include="Object\Player\Inventory.h" />
     <ClInclude Include="Object\UI\BossHpBar.h" />
     <ClInclude Include="Object\Weapon\CrossBowArrow.h" />
-    <ClInclude Include="Object\Weapon\CrossBow.h" />
+    <ClInclude Include="Object\Weapon\Gun.h" />
     <ClInclude Include="Object\Weapon\Bullet.h" />
     <ClInclude Include="Object\Monster\MonsterWeapon\BatBullet.h" />
     <ClInclude Include="Framework\Animation\Animation.h" />
@@ -209,7 +212,7 @@
     <ClInclude Include="Object\Basic\Sprite.h" />
     <ClInclude Include="Framework\Utility\Sound.h" />
     <ClInclude Include="Scence\SceneManager.h" />
-    <ClInclude Include="Object\Weapon\ShortSword.h" />
+    <ClInclude Include="Object\Weapon\Sword.h" />
     <ClInclude Include="Object\Monster\Skel.h" />
     <ClInclude Include="Object\Monster\MonsterWeapon\SkelBow.h" />
     <ClInclude Include="Object\Monster\MonsterWeapon\SkelSword.h" />
@@ -228,10 +231,12 @@
     <ClInclude Include="Object\Weapon\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Utility\ItemList.cpp" />
+    <ClCompile Include="Object\Item.cpp" />
     <ClCompile Include="Object\Player\Inventory.cpp" />
     <ClCompile Include="Object\UI\BossHpBar.cpp" />
     <ClCompile Include="Object\Weapon\CrossBowArrow.cpp" />
-    <ClCompile Include="Object\Weapon\CrossBow.cpp" />
+    <ClCompile Include="Object\Weapon\Gun.cpp" />
     <ClCompile Include="Object\Weapon\Bullet.cpp" />
     <ClCompile Include="Object\Monster\MonsterWeapon\BatBullet.cpp" />
     <ClCompile Include="Framework\Animation\Animation.cpp" />
@@ -290,7 +295,7 @@
     <ClCompile Include="Scence\SceneManager.cpp" />
     <ClCompile Include="Scence\TestScene.cpp" />
     <ClCompile Include="Object\Weapon\Weapon.cpp" />
-    <ClCompile Include="Object\Weapon\ShortSword.cpp" />
+    <ClCompile Include="Object\Weapon\Sword.cpp" />
     <ClCompile Include="Object\Monster\Skel.cpp" />
     <ClCompile Include="Object\Monster\MonsterWeapon\SkelBow.cpp" />
     <ClCompile Include="Object\Monster\MonsterWeapon\SkelSword.cpp" />

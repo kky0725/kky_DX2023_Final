@@ -49,6 +49,8 @@ using namespace Microsoft::WRL;
 //Types
 #include "Types.h"
 
+#include "Framework/Utility/Singleton.h"
+
 // Framework
 #include "Framework/Device/Device.h"
 
@@ -101,9 +103,13 @@ using namespace Microsoft::WRL;
 #include "Object/Basic/Effect.h"
 #include "Object/Basic/EffectManager.h"
 #include "Object/Creature.h"
+#include "Object/Item.h"
 #include "Object/Weapon/Bullet.h"
 #include "Object/Weapon/Weapon.h"
+#include "Object/Weapon/Sword.h"
+#include "Object/Weapon/Gun.h"
 
+#include "Framework/Utility/ItemList.h"
 #include "Object/Player/Inventory.h"
 
 //UI

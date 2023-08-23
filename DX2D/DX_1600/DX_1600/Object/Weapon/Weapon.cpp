@@ -1,13 +1,15 @@
 #include "framework.h"
 #include "Weapon.h"
 
-Weapon::Weapon()
+Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec)
+	:Item(type, name, price, itmeDesc, iconSrvfile, ID), _minAtk(minAtk), _maxAtk(maxAtk), _atkPerSec(atkPerSec)
 {
 	_type = WeaponType::GUN;
 	_collider = make_shared<CircleCollider>(1.0f);
 }
 
-Weapon::Weapon(Vector2 size)
+Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec, Vector2 size)
+	:Item(type, name, price, itmeDesc, iconSrvfile, ID), _minAtk(minAtk), _maxAtk(maxAtk), _atkPerSec(atkPerSec)
 {
 	_quad = nullptr;
 
@@ -17,7 +19,8 @@ Weapon::Weapon(Vector2 size)
 	_transform->SetParent(_collider->GetTransform());
 }
 
-Weapon::Weapon(wstring string, Vector2 size)
+Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec, wstring string, Vector2 size)
+	:Item(type, name, price, itmeDesc, iconSrvfile, ID), _minAtk(minAtk), _maxAtk(maxAtk), _atkPerSec(atkPerSec)
 {
 	_quad = make_shared<Quad>(string);
 	_transform = make_shared<Transform>();

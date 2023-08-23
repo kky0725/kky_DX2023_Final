@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "Sound.h"
 
-Sound* Sound::_instance = nullptr;
 Sound::Sound()
 {
 	FMOD::System_Create(&_soundSysyetm);

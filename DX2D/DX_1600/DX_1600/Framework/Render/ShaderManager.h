@@ -1,27 +1,7 @@
 #pragma once
-class ShaderManager
+class ShaderManager : public Singleton<ShaderManager>
 {
 public:
-	static void Create()
-	{
-		if (_instance == nullptr)
-			_instance = new ShaderManager();
-	}
-
-	static void Delete()
-	{
-		if (_instance != nullptr)
-			delete _instance;
-	}
-
-	static ShaderManager* GetInstnace()
-	{
-		if (_instance != nullptr)
-			return _instance;
-
-		return nullptr;
-	}
-
 	shared_ptr<VertexShader> AddVS(wstring path);
 	shared_ptr<PixelShader> AddPS(wstring path);
 

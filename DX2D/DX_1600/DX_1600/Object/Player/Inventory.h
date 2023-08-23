@@ -1,24 +1,9 @@
 #pragma once
-class Inventory
+class Inventory : public Singleton<Inventory>
 {
 	Inventory();
 	~Inventory();
 public:
-
-	static void Delete()
-	{
-		if (_instance != nullptr)
-			delete _instance;
-	}
-
-	static Inventory* GetInstance()
-	{
-		if (_instance == nullptr)
-			_instance = new Inventory;
-		return _instance;
-	}
-
-
 	void Update();
 	void PostRender();
 

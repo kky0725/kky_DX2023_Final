@@ -180,7 +180,7 @@
     <ClInclude Include="Object\Weapon\Weapon.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Weapon\ShortSword.h">
+    <ClInclude Include="Object\Weapon\Sword.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Monster\Bat.h">
@@ -225,7 +225,7 @@
     <ClInclude Include="Object\Monster\Boss\SkelBossHand.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Weapon\CrossBow.h">
+    <ClInclude Include="Object\Weapon\Gun.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Weapon\CrossBowArrow.h">
@@ -238,6 +238,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Player\Inventory.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Item.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utility\ItemList.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utility\Singleton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -368,7 +377,7 @@
     <ClCompile Include="Object\Weapon\Weapon.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Weapon\ShortSword.cpp">
+    <ClCompile Include="Object\Weapon\Sword.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Monster\Bat.cpp">
@@ -413,7 +422,7 @@
     <ClCompile Include="Object\Monster\Boss\SkelBossHand.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Weapon\CrossBow.cpp">
+    <ClCompile Include="Object\Weapon\Gun.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Weapon\CrossBowArrow.cpp">
@@ -426,6 +435,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Player\Inventory.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Item.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utility\ItemList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

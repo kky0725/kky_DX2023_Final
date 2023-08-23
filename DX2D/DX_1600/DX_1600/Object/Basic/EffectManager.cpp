@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "EffectManager.h"
 
-EffectManager* EffectManager::_instance = nullptr;
 EffectManager::EffectManager()
 {
 }

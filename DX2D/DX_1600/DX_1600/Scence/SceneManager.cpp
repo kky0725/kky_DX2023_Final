@@ -3,8 +3,6 @@
 
 #include "TestScene.h"
 
-
-SceneManager* SceneManager::_instance = nullptr;
 SceneManager::SceneManager()
 {
 	_scenes.push_back(make_shared<TestScene>());

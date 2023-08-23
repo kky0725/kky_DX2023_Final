@@ -51,16 +51,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ImGui_ImplWin32_Init(hWnd);
     ImGui_ImplDX11_Init(DEVICE.Get(), DC.Get());
 
-    InputManager::Create();
-    Timer::Create();
-    StateManager::Create();
-    ShaderManager::Create();
-    SRVManager::Create();
-    EffectManager::Create();
-    Sound::Create();
-    Camera::Create();
-    SceneManager::Create();
+    InputManager::GetInstance();
+    Timer::GetInstance();
+    StateManager::GetInstance();
+    ShaderManager::GetInstance();
+    SRVManager::GetInstance();
+    EffectManager::GetInstance();
+    Sound::GetInstance();
+    Camera::GetInstance();
+    SceneManager::GetInstance();
     Inventory::GetInstance();
+    ItemList::GetInstance();
 
     shared_ptr<Program> program = make_shared<Program>();
 
@@ -85,6 +86,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // 삭제
+    ItemList::Delete();
     Inventory::Delete();
     SceneManager::Delete();
     Camera::Delete();

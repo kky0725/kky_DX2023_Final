@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "StateManager.h"
 
-StateManager* StateManager::_instance = nullptr;
 StateManager::StateManager()
 {
 	_sampler = make_shared<SampleState>();

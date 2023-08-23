@@ -1,27 +1,9 @@
 #pragma once
-class Timer
+class Timer : public Singleton<Timer>
 {
 	Timer();
 	~Timer();
 public:
-	static void Create()
-	{
-		if (_instance == nullptr)
-			_instance = new Timer();
-	}
-
-	static void Delete()
-	{
-		if (_instance != nullptr)
-			delete _instance;
-	}
-
-	static Timer* GetInstance()
-	{
-		if (_instance != nullptr)
-			return _instance;
-		return nullptr;
-	}
 
 	void Update();
 	void SetLockFPS(float value) { _lockFPS = value; }

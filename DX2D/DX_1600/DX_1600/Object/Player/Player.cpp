@@ -1,7 +1,5 @@
 #include "framework.h"
 #include "Player.h"
-#include "../Weapon/ShortSword.h"
-#include "../Weapon/CrossBow.h"
 #include "Player_Ani.h"
 
 Player::Player()
@@ -20,11 +18,9 @@ Player::Player()
 	_footHold->SetPosition(Vector2(0.0f, -24.0f));
 
 	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
-	_weapon0 = make_shared<ShortSword>();
-	_weapon1 = make_shared<CrossBow>();
-	Inventory::GetInstance()->SetWeapon(_weapon0, 0);
-	Inventory::GetInstance()->SetWeapon(_weapon1, 1);
-	_weapon = Inventory::GetInstance()->CurWeapon();
+	_weapon0 = make_shared<Sword>();
+	_weapon1 = make_shared<Bow>();
+	_weapon = _weapon0;
 	_weapon->GetCollider()->SetParent(_slot);
 	_weapon->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
 
@@ -281,8 +277,12 @@ void Player::SwapWeapon()
 
 	if (KEY_DOWN(VK_XBUTTON1))
 	{
-		Inventory::GetInstance()->ChangeWeapon();
-		_weapon = Inventory::GetInstance()->CurWeapon();
+		//Inventory::GetInstance()->ChangeWeapon();
+		//_weapon = Inventory::GetInstance()->CurWeapon();
+		if (_weapon == _weapon0)
+			_weapon = _weapon1;
+		else
+			_weapon = _weapon0;
 
 		SetAtkSpeed(_weapon->GetAtkPerSec());
 		_weapon->GetCollider()->SetParent(_slot);

@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "Timer.h"
 
-Timer* Timer::_instance = nullptr;
 Timer::Timer()
 {
 	// 오른쪽으로 1만큼 이동
