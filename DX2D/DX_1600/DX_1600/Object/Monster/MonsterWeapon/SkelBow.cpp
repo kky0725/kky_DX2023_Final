@@ -4,7 +4,7 @@
 #include "SkelBullet.h"
 
 SkelBow::SkelBow()
-	: Weapon()
+	: Weapon(Item::ItemType::WEAPON, "해골활", 0, "해골 궁수가 사용하는 활", L"Resource/Monster/SkelBow.png", 100, 5, 6, 2.0f)//생성자 Weapon말고 Gun으로 수정예정
 {
 	_ani = make_shared<Animation>();
 	_ani->CreateAction(L"Resource/Monster/SkelBow.png", "Resource/Monster/SkelBow.xml", "BOW", Vector2(10.0f, 10.0f), Action::Type::END, 0.2f, std::bind(&SkelBow::Fire, this));

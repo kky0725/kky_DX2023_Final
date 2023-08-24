@@ -37,8 +37,8 @@
 #define MOUSE_POS InputManager::GetInstance()->GetMousePos()
 #define W_MOUSE_POS Camera::GetInstance()->GetWorldMousePos()
 
-#define ADD_VS(k) ShaderManager::GetInstnace()->AddVS(k)
-#define ADD_PS(k) ShaderManager::GetInstnace()->AddPS(k)
+#define ADD_VS(k) ShaderManager::GetInstance()->AddVS(k)
+#define ADD_PS(k) ShaderManager::GetInstance()->AddPS(k)
 
 #define ADD_SRV(k) SRVManager::GetInstance()->Add_SRV(k)
 

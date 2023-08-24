@@ -3,6 +3,8 @@
 
 class InputManager : public Singleton<InputManager>
 {
+	friend class Singleton;
+
 	enum State
 	{
 		NONE,

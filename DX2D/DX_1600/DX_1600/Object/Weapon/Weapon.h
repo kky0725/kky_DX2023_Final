@@ -8,9 +8,9 @@ public:
 		GUN
 	};
 
-	Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec);
-	Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec, Vector2 size);
-	Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec, wstring string, Vector2 size);
+	Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, float atkPerSec);
+	Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, float atkPerSec, Vector2 size);
+	Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, float atkPerSec, wstring string, Vector2 size);
 	virtual ~Weapon();
 
 	virtual void Update() abstract;

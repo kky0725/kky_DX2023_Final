@@ -1,14 +1,14 @@
 #include "framework.h"
 #include "Weapon.h"
 
-Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec)
+Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, float atkPerSec)
 	:Item(type, name, price, itmeDesc, iconSrvfile, ID), _minAtk(minAtk), _maxAtk(maxAtk), _atkPerSec(atkPerSec)
 {
 	_type = WeaponType::GUN;
 	_collider = make_shared<CircleCollider>(1.0f);
 }
 
-Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec, Vector2 size)
+Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, float atkPerSec, Vector2 size)
 	:Item(type, name, price, itmeDesc, iconSrvfile, ID), _minAtk(minAtk), _maxAtk(maxAtk), _atkPerSec(atkPerSec)
 {
 	_quad = nullptr;
@@ -19,7 +19,7 @@ Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring i
 	_transform->SetParent(_collider->GetTransform());
 }
 
-Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, int atkPerSec, wstring string, Vector2 size)
+Weapon::Weapon(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, float atkPerSec, wstring string, Vector2 size)
 	:Item(type, name, price, itmeDesc, iconSrvfile, ID), _minAtk(minAtk), _maxAtk(maxAtk), _atkPerSec(atkPerSec)
 {
 	_quad = make_shared<Quad>(string);

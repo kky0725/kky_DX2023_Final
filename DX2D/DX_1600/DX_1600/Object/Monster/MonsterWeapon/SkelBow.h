@@ -1,5 +1,5 @@
 #pragma once
-class SkelBow : public Weapon
+class SkelBow : public Weapon//weapon말고 Gun으로 수정 예정
 {
 public:
 	SkelBow();

@@ -1,12 +1,13 @@
 #include "framework.h"
-#include "CrossBow.h"
+#include "Gun.h"
 #include "CrossBowArrow.h"
 
-CrossBow::CrossBow()
-	:Weapon()
+Gun::Gun(ItemType type, string name, int price, string itemDesc, wstring iconSrvFile, int ID, int minAtk, int maxAtk, float atkPerSec, wstring srvFile, string xmlFile)
+	:Weapon(type, name, price, itemDesc, iconSrvFile, ID, minAtk, maxAtk, atkPerSec)
 {
 	_ani = make_shared<Animation>();
-	_ani->CreateAction(L"Resource/Weapon/CrossBow.png", "Resource/Weapon/CrossBow.xml", "Bow", Vector2(14, 11), Action::Type::END, 0.2f, std::bind(&CrossBow::Fire, this));
+	//_ani->CreateAction(L"Resource/Weapon/CrossBow.png", "Resource/Weapon/CrossBow.xml", "Bow", Vector2(14, 11), Action::Type::END, 0.2f, std::bind(&Gun::Fire, this));
+	_ani->CreateAction(srvFile, xmlFile, "Bow", Vector2(14, 11), Action::Type::END, 0.2f, std::bind(&Gun::Fire, this));
 	_ani->Reset();
 
 	for (int i = 0; i < 30; i++)
@@ -24,11 +25,11 @@ CrossBow::CrossBow()
 	_atkPerSec = 2.38f;
 }
 
-CrossBow::~CrossBow()
+Gun::~Gun()
 {
 }
 
-void CrossBow::Update()
+void Gun::Update()
 {
 
 	if (!_isActive)
@@ -38,7 +39,7 @@ void CrossBow::Update()
 	BulletUpdate();
 }
 
-void CrossBow::Render()
+void Gun::Render()
 {
 
 	if (!_isActive)
@@ -47,25 +48,25 @@ void CrossBow::Render()
 	BulletRender();
 }
 
-void CrossBow::BulletUpdate()
+void Gun::BulletUpdate()
 {
 	for (auto bullet : _bullets)
 		bullet->Update();
 }
 
-void CrossBow::BulletRender()
+void Gun::BulletRender()
 {
 	for (auto bullet : _bullets)
 		bullet->Render();
 }
 
-void CrossBow::Attack(Vector2 dir)
+void Gun::Attack(Vector2 dir)
 {
 	_ani->Play();
 	_direction = dir.NormalVector2();
 }
 
-void CrossBow::Fire()
+void Gun::Fire()
 {
 	_ani->Reset();
 
@@ -80,7 +81,7 @@ void CrossBow::Fire()
 	dynamic_pointer_cast<CrossBowArrow>(*bulletIter)->Shoot(startPos, _direction);
 }
 
-int CrossBow::CheckAttack(shared_ptr<Collider> col)
+int Gun::CheckAttack(shared_ptr<Collider> col)
 {
 	for (auto bullet : _bullets)
 	{

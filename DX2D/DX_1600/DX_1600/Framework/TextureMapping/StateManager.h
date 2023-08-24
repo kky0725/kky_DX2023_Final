@@ -1,6 +1,8 @@
 #pragma once
 class StateManager : public Singleton<StateManager>
 {
+	friend class Singleton;
+
 	StateManager();
 	~StateManager();
 public:
@@ -10,7 +12,7 @@ public:
 	shared_ptr<BlendState> GetBlendState() { return _blendState; }
 
 private:
-	static StateManager* _instance;
+	//static StateManager* _instance;
 
 	shared_ptr<SampleState> _sampler;
 	shared_ptr<BlendState> _alpha;

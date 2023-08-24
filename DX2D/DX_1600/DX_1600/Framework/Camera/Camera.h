@@ -1,6 +1,8 @@
 #pragma once
 class Camera : public Singleton<Camera>
 {
+	friend class Singleton;
+
 	Camera();
 	~Camera();
 public:
@@ -34,7 +36,7 @@ private:
 	void FreeMode();
 	void Shake();
 
-	static Camera* _instance;
+	//static Camera* _instance;
 
 	shared_ptr<Transform>		_view;
 	shared_ptr<Transform>		_uiView;

@@ -1,6 +1,8 @@
 #pragma once
 class Timer : public Singleton<Timer>
 {
+	friend class Singleton;
+
 	Timer();
 	~Timer();
 public:
@@ -13,7 +15,7 @@ public:
 	float GetRunTime() { return _runTime; }
 
 private:
-	static Timer* _instance;
+	//static Timer* _instance;
 
 	float _timeScale = 0.0;
 	float _deltaTime = 0.0; // 1번 업데이트하는데 걸리는 시간

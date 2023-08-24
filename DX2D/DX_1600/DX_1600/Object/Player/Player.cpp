@@ -18,8 +18,8 @@ Player::Player()
 	_footHold->SetPosition(Vector2(0.0f, -24.0f));
 
 	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
-	_weapon0 = make_shared<Sword>();
-	_weapon1 = make_shared<Bow>();
+	_weapon0 = ItemList::GetInstance()->GetWeapon(0);
+	_weapon1 = ItemList::GetInstance()->GetWeapon(1);
 	_weapon = _weapon0;
 	_weapon->GetCollider()->SetParent(_slot);
 	_weapon->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
@@ -72,20 +72,20 @@ void Player::PostRender()
 void Player::BulletUpdate()
 {
 	if (_weapon == _weapon0 && !_weapon1->WTIsSword())
-		dynamic_pointer_cast<CrossBow>(_weapon1)->BulletUpdate();
+		dynamic_pointer_cast<Gun>(_weapon1)->BulletUpdate();
 
 	if(_weapon == _weapon1 && !_weapon0->WTIsSword())
-		dynamic_pointer_cast<CrossBow>(_weapon0)->BulletUpdate();
+		dynamic_pointer_cast<Gun>(_weapon0)->BulletUpdate();
 
 }
 
 void Player::BulletRender()
 {
 	if (_weapon == _weapon0 && !_weapon1->WTIsSword())
-		dynamic_pointer_cast<CrossBow>(_weapon1)->BulletRender();
+		dynamic_pointer_cast<Gun>(_weapon1)->BulletRender();
 
 	if (_weapon == _weapon1 && !_weapon0->WTIsSword())
-		dynamic_pointer_cast<CrossBow>(_weapon0)->BulletRender();
+		dynamic_pointer_cast<Gun>(_weapon0)->BulletRender();
 }
 
 void Player::Damaged(int damge)
@@ -266,7 +266,7 @@ void Player::BowAtk()
 		_atkCool = true;
 		Vector2 startPos = _collider->GetTransform()->GetWorldPosition();
 		Vector2 dir = W_MOUSE_POS - startPos;
-		dynamic_pointer_cast<CrossBow>(_weapon)->Attack(dir);
+		dynamic_pointer_cast<Gun>(_weapon)->Attack(dir);
 	}
 }
 
@@ -311,7 +311,7 @@ int Player::CheckAttackSword(shared_ptr<Collider> enemy)
 
 int Player::CheckAttackBow(shared_ptr<Collider> enemy)
 {
-	return dynamic_pointer_cast<CrossBow>(_weapon)->CheckAttack(enemy);
+	return dynamic_pointer_cast<Gun>(_weapon)->CheckAttack(enemy);
 }
 
 int Player::GetAtk()
@@ -333,9 +333,9 @@ void Player::SetWeaponDir()
 	if (!_weapon->WTIsSword())
 	{
 		if (dir.x < 0)
-			dynamic_pointer_cast<CrossBow>(_weapon)->SetLeft();
+			dynamic_pointer_cast<Gun>(_weapon)->SetLeft();
 		else
-			dynamic_pointer_cast<CrossBow>(_weapon)->SetRight();
+			dynamic_pointer_cast<Gun>(_weapon)->SetRight();
 	}
 	
 }

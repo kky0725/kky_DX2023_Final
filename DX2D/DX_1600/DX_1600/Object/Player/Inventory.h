@@ -1,6 +1,8 @@
 #pragma once
 class Inventory : public Singleton<Inventory>
 {
+	friend class Singleton;
+
 	Inventory();
 	~Inventory();
 public:
@@ -16,7 +18,7 @@ public:
 	shared_ptr<Weapon> CurWeapon();
 
 private:
-	static Inventory* _instance;
+	//static Inventory* _instance;
 	int _curWeapon = 0;
 	bool _opened = false;
 	shared_ptr<Weapon> _weaponSlot0 = nullptr;

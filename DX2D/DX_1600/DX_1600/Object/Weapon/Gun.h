@@ -1,17 +1,17 @@
 #pragma once
-class CrossBow : public Weapon
+class Gun : public Weapon
 {
 public:
-	CrossBow();
-	~CrossBow();
+	Gun(ItemType type, string name, int price, string itmeDesc, wstring iconSrvfile, int ID, int minAtk, int maxAtk, float atkPerSec, wstring srvFile, string xmlFile);
+	virtual ~Gun();
 
 	virtual void Update() override;
 	virtual void Render() override;
 	void BulletUpdate();
 	void BulletRender();
 
-	virtual shared_ptr<Transform> GetTransform() { return _ani->GetTransform(); }
-	virtual shared_ptr<Collider> GetCollider() { return _collider; }
+	virtual shared_ptr<Transform> GetTransform() override { return _ani->GetTransform(); }
+	virtual shared_ptr<Collider> GetCollider() override { return _collider; }
 
 	void Attack(Vector2 dir);
 	void Fire();

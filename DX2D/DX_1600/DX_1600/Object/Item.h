@@ -11,7 +11,7 @@ public:
 	Item(ItemType type, string name, int price, string itmeDesc, wstring srvfile, int ID);
 	virtual ~Item();
 
-	virtual void RenderIcon() abstract;
+	void RenderIcon();
 
 protected:
 	ItemType _type = WEAPON;

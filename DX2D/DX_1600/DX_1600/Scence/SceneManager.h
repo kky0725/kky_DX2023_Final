@@ -1,6 +1,8 @@
 #pragma once
 class SceneManager : public Singleton<SceneManager>
 {
+	friend class Singleton;
+
 	SceneManager();
 	~SceneManager();
 public:
@@ -13,7 +15,7 @@ public:
 	void SetScene(int number);
 
 private:
-	static SceneManager* _instance;
+	//static SceneManager* _instance;
 
 	vector<shared_ptr<Scene>> _scenes;
 	UINT _curScene = 0;

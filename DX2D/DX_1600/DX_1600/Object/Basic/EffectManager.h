@@ -1,6 +1,8 @@
 #pragma once
 class EffectManager : public Singleton<EffectManager>
 {
+	friend class Singleton;
+
 	EffectManager();
 	~EffectManager();
 public:

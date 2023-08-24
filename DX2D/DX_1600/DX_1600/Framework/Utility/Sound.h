@@ -1,6 +1,8 @@
 #pragma once
 class Sound : public Singleton<Sound>
 {
+	friend class Singleton;
+
 	struct SoundInfo
 	{
 		FMOD::Sound* _sound = nullptr;
@@ -24,7 +26,7 @@ public:
 	bool IsPlaySound(string key);
 
 private:
-	static Sound* _instance;
+	//static Sound* _instance;
 
 	FMOD::System* _soundSysyetm = nullptr;
 
