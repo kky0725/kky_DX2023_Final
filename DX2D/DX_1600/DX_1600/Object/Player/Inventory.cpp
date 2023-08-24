@@ -4,6 +4,18 @@
 Inventory::Inventory()
 {
 	CreateQuad();
+	SetWeapon(SHORTSWORD, 0);
+	SetWeapon(CROSSBOW, 1);
+
+	_weaponIcon0 = make_shared<Transform>();
+	_weaponIcon1 = make_shared<Transform>();
+	_weaponIcon0->SetParent(_baseTransform);
+	_weaponIcon1->SetParent(_baseTransform);
+	_weaponIcon0->SetPosition(Vector2(-36.0f, 50.0f));
+	_weaponIcon1->SetPosition(Vector2(19.0f, 50.0f));
+
+	_weaponIcon0->Update();
+	_weaponIcon1->Update();
 }
 
 Inventory::~Inventory()
@@ -46,10 +58,26 @@ void Inventory::PostRender()
 		//_selectedIcon->Render();
 	}
 
+	WeaponRender();
 	
 
-	ImGui::SliderFloat2("invetory", &aa.x, -50.0f, 70.0f);
+	//ImGui::SliderFloat2("invetory", &aa.x, -50.0f, 70.0f);
 	//_iconTransform->SetPosition(aa);
+}
+
+void Inventory::WeaponRender()
+{
+	if (_weaponSlot0 != nullptr)
+	{
+		_weaponIcon0->SetBuffer(0);
+		_weaponSlot0->RenderIcon();
+	}
+
+	if(_weaponSlot1 != nullptr)
+	{
+		_weaponIcon1->SetBuffer(0);
+		_weaponSlot1->RenderIcon();
+	}
 }
 
 void Inventory::CreateQuad()
@@ -112,9 +140,9 @@ void Inventory::SetWeapon(shared_ptr<Weapon> weapon, int slot)
 		return;
 
 	if (slot == 0)
-		_weaponSlot0 == weapon;
+		_weaponSlot0 = weapon;
 	else
-		_weaponSlot1 == weapon;
+		_weaponSlot1 = weapon;
 }
 
 void Inventory::ChangeWeapon()
@@ -128,6 +156,14 @@ void Inventory::ChangeWeapon()
 shared_ptr<Weapon> Inventory::CurWeapon()
 {
 	if (_curWeapon == 0)
+		return _weaponSlot0;
+	else
+		return _weaponSlot1;
+}
+
+shared_ptr<Weapon> Inventory::AnotherWeapon()
+{
+	if (_curWeapon == 1)
 		return _weaponSlot0;
 	else
 		return _weaponSlot1;

@@ -59,9 +59,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     EffectManager::GetInstance();
     Sound::GetInstance();
     Camera::GetInstance();
-    SceneManager::GetInstance();
-    Inventory::GetInstance();
     ItemList::GetInstance();
+    Inventory::GetInstance();
+    SceneManager::GetInstance();
 
     shared_ptr<Program> program = make_shared<Program>();
 
@@ -86,9 +86,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // 삭제
-    ItemList::Delete();
-    Inventory::Delete();
     SceneManager::Delete();
+    Inventory::Delete();
+    ItemList::Delete();
     Camera::Delete();
     Sound::Delete();
     EffectManager::Delete();

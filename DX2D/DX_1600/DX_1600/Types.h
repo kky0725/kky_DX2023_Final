@@ -54,6 +54,11 @@
 
 using CallBack = function<void(void)>;
 
+//
+#define SHORTSWORD ItemList::GetInstance()->GetWeapon(0)
+#define CROSSBOW ItemList::GetInstance()->GetWeapon(1)
+
+
 //struct Hit_Result
 //{
 //	bool isCollision = false;
