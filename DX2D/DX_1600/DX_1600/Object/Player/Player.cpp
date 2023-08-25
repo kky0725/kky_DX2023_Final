@@ -44,7 +44,7 @@ void Player::Update()
 	_slot->Update();
 	_ani->Update();
 	_weapon->Update();
-	_footHold->Update();
+	//_footHold->Update();
 	BulletUpdate();
 
 	Inventory::GetInstance()->Update();
@@ -60,7 +60,7 @@ void Player::Render()
 	_weapon->Render();
 	BulletRender();
 
-	_footHold->Render();
+	//_footHold->Render();
 }
 
 void Player::PostRender()

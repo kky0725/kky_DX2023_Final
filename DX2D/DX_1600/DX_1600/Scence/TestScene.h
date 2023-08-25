@@ -19,4 +19,6 @@ private:
 	shared_ptr<Collider> _ground2;
 
 	vector<shared_ptr<Creature>> _creatures;
+
+	vector<shared_ptr<Tile>> _tiles;
 };

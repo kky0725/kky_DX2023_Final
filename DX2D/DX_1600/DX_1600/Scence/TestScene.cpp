@@ -28,6 +28,24 @@ TestScene::TestScene()
 	//_creatures.push_back(bat);
 	//_creatures.push_back(skel);
 	//_creatures.push_back(skel2);
+
+	for (int i = 0; i < 15; i++)
+	{
+		shared_ptr<Tile> tile;
+		if (i < 5)
+		{
+			tile = make_shared<Tile>(L"Resource/Ground/LastStage.png", Tile::TileType::IMPASSABLE, "바닥", Vector2(- i * 32.0f - 150.0f, -50.0f), Vector2(1,1), Tile::TileDir::WIDTH, Vector2(16.0f, 16.0f));
+		}
+		else if (i < 10)
+		{
+			tile = make_shared<Tile>(L"Resource/Ground/OneWay.png", Tile::TileType::PASSABLE, "반벽", Vector2(i * 32.0f + 100.0f, 20.0f), Vector2(1, 1), Tile::TileDir::WIDTH, Vector2(16.0f, 16.0f));
+		}
+		else
+		{
+			tile = make_shared<Tile>(L"Resource/Ground/Wall.png", Tile::TileType::BACKGROUND, "배경", Vector2(i * 32.0f + 50.0f, 100.0f), Vector2(1, 1));
+		}
+		_tiles.push_back(tile);
+	}
 }
 
 TestScene::~TestScene()
@@ -56,16 +74,29 @@ void TestScene::Update()
 	_ground2->Update();
 	if (_ground2->Block(_player->GetCollider()))
 		_player->IsGround();
+
+	for (auto tile : _tiles)
+	{
+		tile->Update();
+		if(tile->Block(_player))
+			_player->IsGround();
+	}
 }
 
 void TestScene::Render()
 {
+	for (auto tile : _tiles)
+	{
+		tile->Render();
+	}
+
 	for (auto creature : _creatures)
 		creature->Render();
 	_player->Render();
 
 	_ground->Render();
 	_ground2->Render();
+
 }
 
 void TestScene::PostRender()

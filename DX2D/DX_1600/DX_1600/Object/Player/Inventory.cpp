@@ -35,9 +35,9 @@ void Inventory::PostRender()
 	if (!_opened)
 		return;
 
-	_baseTransform			->SetBuffer(0);
+	_baseTransform		->SetBuffer(0);
 	_base->Render();
-	_accessoryTransform		->SetBuffer(0);
+	_accessoryTransform	->SetBuffer(0);
 	_accessory->Render();
 	if (_curWeapon == 0)
 	{
@@ -49,7 +49,7 @@ void Inventory::PostRender()
 		_select1Transform->SetBuffer(0);
 		_select1->Render();
 	}
-
+	
 
 	for (int i = 0; i < 15; i++)
 	{
