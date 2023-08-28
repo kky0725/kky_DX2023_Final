@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Framework\Utility\Singleton.h" />
     <ClInclude Include="Framework\Utility\ItemList.h" />
+    <ClInclude Include="Scence\MapEditor.h" />
     <ClInclude Include="Object\Item.h" />
     <ClInclude Include="Object\Player\Inventory.h" />
     <ClInclude Include="Object\UI\BossHpBar.h" />
@@ -226,6 +227,7 @@
     <ClInclude Include="Framework\Utility\Timer.h" />
     <ClInclude Include="Scence\TestScene.h" />
     <ClInclude Include="Object\Tile\Tile.h" />
+    <ClInclude Include="TileMap.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Framework\Render\VertexBuffer.h" />
     <ClInclude Include="Framework\Render\VertexShader.h" />
@@ -233,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Utility\ItemList.cpp" />
+    <ClCompile Include="Scence\MapEditor.cpp" />
     <ClCompile Include="Object\Item.cpp" />
     <ClCompile Include="Object\Player\Inventory.cpp" />
     <ClCompile Include="Object\UI\BossHpBar.cpp" />
@@ -306,6 +309,7 @@
     <ClCompile Include="Object\Monster\Boss\SkelBossSword.cpp" />
     <ClCompile Include="Object\Monster\Boss\SkelBossHand.cpp" />
     <ClCompile Include="Object\Tile\Tile.cpp" />
+    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1600.rc" />

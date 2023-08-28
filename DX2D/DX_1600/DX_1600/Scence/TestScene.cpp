@@ -68,17 +68,17 @@ void TestScene::Update()
 
 	_ground->Update();
 
-	if (_ground->Block(_player->GetCollider()))
+	if (_ground->Block(_player->GetFootHold()))
 		_player->IsGround();
 	
 	_ground2->Update();
-	if (_ground2->Block(_player->GetCollider()))
+	if (_ground2->Block(_player->GetFootHold()))
 		_player->IsGround();
 
 	for (auto tile : _tiles)
 	{
 		tile->Update();
-		if(tile->Block(_player))
+		if(tile->Block(_player->GetFootHold()))
 			_player->IsGround();
 	}
 }

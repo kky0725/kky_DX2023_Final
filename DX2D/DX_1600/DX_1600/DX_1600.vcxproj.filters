@@ -252,6 +252,12 @@
     <ClInclude Include="Object\Tile\Tile.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scence\MapEditor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX_1600.cpp">
@@ -447,6 +453,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Tile\Tile.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scence\MapEditor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

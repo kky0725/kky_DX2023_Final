@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "Tile.h"
+#include "../Player/Player.h"
 
 Tile::Tile(wstring srvFile, TileType type, string name, Vector2 pos, Vector2 tileSize, TileDir tileDir, Vector2 colSize, Vector2 colPos)
 	:_tileType(type), _name(name), _tileSize(tileSize), _tileDir(tileDir), _colSize(colSize)
@@ -47,33 +48,36 @@ void Tile::Render()
 		_collider->Render();
 }
 
-bool Tile::Block(shared_ptr<Creature> creature)
+bool Tile::Block(shared_ptr<Collider> collider)
 {
 	if (_tileType == TileType::BACKGROUND)
 		return false;
 	else if (_tileType == TileType::IMPASSABLE)
-		return TileBlock(creature);
+		return TileBlock(collider);
 	else if (_tileType == TileType::PASSABLE)
-		return PassableBlock(creature);
+		return PassableBlock(collider);
 }
 
-bool Tile::PassableBlock(shared_ptr<Creature> creature)
+bool Tile::PassableBlock(shared_ptr<Collider> collider)
 {
 	if (KEY_PRESS('S'))
 		return false;
 
-	return TileBlock(creature);
+	if (KEY_PRESS('W') || KEY_PRESS(VK_SPACE))
+		return false;
+
+	return TileBlock(collider);
 }
 
-bool Tile::TileBlock(shared_ptr<Creature> creature)
+bool Tile::TileBlock(shared_ptr<Collider> collider)
 {
 	if (_tileDir == TileDir::NONE)
 		return false;
 
-	if (!_collider->IsCollision(creature->GetCollider()))
+	if (!_collider->IsCollision(collider))
 		return false;
 
-	shared_ptr<CircleCollider> moveable = dynamic_pointer_cast<CircleCollider>(creature->GetCollider());
+	shared_ptr<CircleCollider> moveable = dynamic_pointer_cast<CircleCollider>(collider);
 
 	Vector2 moveableCenter = moveable->GetTransform()->GetWorldPosition();
 	Vector2 blockCenter = _collider->GetTransform()->GetWorldPosition();
@@ -93,8 +97,11 @@ bool Tile::TileBlock(shared_ptr<Creature> creature)
 	case Tile::WIDTH:
 	{
 		float scalar = overlap.y;
-		if (dir.y < 0)
+		if (_tileType != TileType::PASSABLE && dir.y < 0)
+		{
 			scalar *= -1;
+		}
+
 		fixedPos.y += scalar;
 		break;
 	}

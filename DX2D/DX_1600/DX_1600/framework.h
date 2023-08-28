@@ -108,6 +108,7 @@ using namespace Microsoft::WRL;
 #include "Object/Weapon/Weapon.h"
 #include "Object/Weapon/Sword.h"
 #include "Object/Weapon/Gun.h"
+#include "Object/Player/Player.h"
 
 #include "Framework/Utility/ItemList.h"
 #include "Object/Player/Inventory.h"

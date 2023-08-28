@@ -17,7 +17,7 @@ public:
 	virtual void Damaged(int damge);
 	void SetAtkSpeed(float atkPerSec) { _atkSpeed =  1/atkPerSec; }
 
-	void Move(Vector2 movePos) { _collider->GetTransform()->AddVector2(movePos); }
+	void Move(Vector2 movePos) { _footHold->GetTransform()->AddVector2(movePos); }
 	void Input();
 	void Fire();
 	void Jump();

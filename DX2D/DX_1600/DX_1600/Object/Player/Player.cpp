@@ -13,9 +13,12 @@ Player::Player()
 
 	_hp = 100000;
 
-	_footHold = make_shared<RectCollider>(Vector2(27.0f, 10.0f));
-	_footHold->SetParent(_collider->GetTransform());
-	_footHold->SetPosition(Vector2(0.0f, -24.0f));
+	//_footHold = make_shared<RectCollider>(Vector2(27.0f, 10.0f));
+	//_footHold->SetParent(_collider->GetTransform());
+	//_footHold->SetPosition(Vector2(0.0f, -24.0f));
+	_footHold = make_shared<CircleCollider>(12.0f);
+	_collider->SetParent(_footHold->GetTransform());
+	_collider->SetPosition(Vector2(0.0f, 5.0f));
 
 	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
 	//_weapon0 = ItemList::GetInstance()->GetWeapon(0);
@@ -44,7 +47,7 @@ void Player::Update()
 	_slot->Update();
 	_ani->Update();
 	_weapon->Update();
-	//_footHold->Update();
+	_footHold->Update();
 	BulletUpdate();
 
 	Inventory::GetInstance()->Update();
@@ -60,7 +63,7 @@ void Player::Render()
 	_weapon->Render();
 	BulletRender();
 
-	//_footHold->Render();
+	_footHold->Render();
 }
 
 void Player::PostRender()
@@ -100,7 +103,8 @@ void Player::Input()
 		if (_jumpPower < -600.0f)
 			_jumpPower = -600.0f;
 
-		_collider->GetTransform()->AddVector2(Vector2(0.0f, 1.0f) * _jumpPower * DELTA_TIME);
+		//_collider->GetTransform()->AddVector2(Vector2(0.0f, 1.0f) * _jumpPower * DELTA_TIME);
+		_footHold->GetTransform()->AddVector2(Vector2(0.0f, 1.0f) * _jumpPower * DELTA_TIME);
 	}
 
 	if (KEY_PRESS('A'))

@@ -23,9 +23,9 @@ public:
 	void Update();
 	void Render();
 
-	bool Block(shared_ptr<Creature> creature);
-	bool PassableBlock(shared_ptr<Creature> creature);
-	bool TileBlock(shared_ptr<Creature> creature);
+	bool Block(shared_ptr<Collider> collider);
+	bool PassableBlock(shared_ptr<Collider> collider);
+	bool TileBlock(shared_ptr<Collider> collider);
 	
 
 private:
