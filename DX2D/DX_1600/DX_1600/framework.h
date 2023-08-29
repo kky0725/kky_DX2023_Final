@@ -113,6 +113,7 @@ using namespace Microsoft::WRL;
 #include "Framework/Utility/ItemList.h"
 #include "Object/Player/Inventory.h"
 #include "Object/Tile/Tile.h"
+#include "Object/Tile/TileMap.h"
 
 //UI
 #include "Object//UI/Button.h"

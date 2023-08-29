@@ -227,7 +227,7 @@
     <ClInclude Include="Framework\Utility\Timer.h" />
     <ClInclude Include="Scence\TestScene.h" />
     <ClInclude Include="Object\Tile\Tile.h" />
-    <ClInclude Include="TileMap.h" />
+    <ClInclude Include="Object\Tile\TileMap.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Framework\Render\VertexBuffer.h" />
     <ClInclude Include="Framework\Render\VertexShader.h" />
@@ -309,7 +309,7 @@
     <ClCompile Include="Object\Monster\Boss\SkelBossSword.cpp" />
     <ClCompile Include="Object\Monster\Boss\SkelBossHand.cpp" />
     <ClCompile Include="Object\Tile\Tile.cpp" />
-    <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="Object\Tile\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX_1600.rc" />

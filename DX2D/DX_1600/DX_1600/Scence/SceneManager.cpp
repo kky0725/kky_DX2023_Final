@@ -2,11 +2,12 @@
 #include "SceneManager.h"
 
 #include "TestScene.h"
+#include "MapEditor.h"
 
 SceneManager::SceneManager()
 {
+	_scenes.push_back(make_shared<MapEditor>());
 	_scenes.push_back(make_shared<TestScene>());
-
 }
 
 SceneManager::~SceneManager()
