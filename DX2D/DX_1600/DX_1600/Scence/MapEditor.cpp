@@ -85,6 +85,10 @@ void MapEditor::Create()
 			SetCurType(TileMap::ObjectType::CREATURE, TileMap::CreatureType::GAINTBAT);
 		if (ImGui::Button("GATINREDBAT", { 50.0f,50.0f }))
 			SetCurType(TileMap::ObjectType::CREATURE, TileMap::CreatureType::REDGAINTBAT);
+		if (ImGui::Button("SEKLSWORD", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::CREATURE, TileMap::CreatureType::SKELSWORD);
+		if (ImGui::Button("SKELBOW", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::CREATURE, TileMap::CreatureType::SKELBOW);
 		ImGui::EndMenu();
 	}
 

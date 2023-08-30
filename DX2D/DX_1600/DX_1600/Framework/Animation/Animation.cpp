@@ -5,10 +5,6 @@ using namespace tinyxml2;
 
 Animation::Animation()
 {
-	//CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Idle", Vector2(10.0f, 10.0f));
-	//CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Run", Vector2(10.0f, 10.0f));
-	//CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Atk", Vector2(10.0f, 10.0f));
-
 	_transform = make_shared<Transform>();
 }
 

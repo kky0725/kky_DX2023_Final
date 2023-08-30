@@ -16,7 +16,11 @@ public:
 
 	enum GroundType
 	{
-		NOGROUND
+		NOGROUND,
+		PASSABLE_WIDTH,
+		IMPASSABLE_WIDTH,
+		IMPASSABLE_HEIGHT,
+		IMPASSABLE_BOTH
 	};
 
 	enum CreatureType
@@ -25,7 +29,9 @@ public:
 		BAT,
 		REDBAT,
 		GAINTBAT,
-		REDGAINTBAT
+		REDGAINTBAT,
+		SKELSWORD,
+		SKELBOW
 	};
 
 	TileMap();

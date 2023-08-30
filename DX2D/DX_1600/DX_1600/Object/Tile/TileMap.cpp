@@ -93,8 +93,18 @@ void TileMap::CreateCreature(CreatureType type)
 	}
 	case TileMap::REDGAINTBAT:
 	{
-		_creature = make_shared<GaintBat>(true);
+		_creature = make_shared<GaintBat>(false);
 		break;
+	}
+	case TileMap::SKELSWORD:
+	{
+		_creature =	make_shared<Skel>(true);
+		return;
+	}
+	case TileMap::SKELBOW:
+	{
+		_creature = make_shared<Skel>(false);
+		return;
 	}
 	default:
 		break;
