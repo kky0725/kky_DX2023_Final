@@ -10,11 +10,11 @@ Skel::Skel(bool basic)
 	_ani = make_shared<Animation>();
 	_isActive = true;
 
-	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Idle", Vector2(10, 10));
+	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Idle", Vector2(50, 50));
 	_ani->CreateAction(L"Resource/Monster/SkelWalk.png", "Resource/Monster/SkelWalk.xml", "Walk", Vector2(10, 10));
-	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Jump", Vector2(10, 10));
-	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Atk", Vector2(10, 10));
-	_ani->CreateAction(L"Resource/Monster/GraySkelDie.png", "Die", Vector2(10, 10));
+	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Jump", Vector2(50, 50));
+	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Atk", Vector2(50, 50));
+	_ani->CreateAction(L"Resource/Monster/GraySkelDie.png", "Die", Vector2(50, 50));
 
 	_slot = make_shared<Transform>();
 	_slot->SetParent(_collider->GetTransform());
@@ -36,7 +36,6 @@ Skel::Skel(bool basic)
 
 	_weapon->GetCollider()->SetParent(_slot);
 	_ani->SetParent(_collider->GetTransform());
-	_ani->SetScale(Vector2(5.0f, 5.0f));
 	_speed = 100.0f;
 }
 

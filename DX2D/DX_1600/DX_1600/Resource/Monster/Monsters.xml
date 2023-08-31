@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="Monsters.png" width="55" height="58" scale="1" format="RGBA8888">
+  <sprite n="Bat0.png" x="12" y="50" w="27" h="7" pX="0.5" pY="0.5" oX="2" oY="2" oW="31" oH="11"/>
+  <sprite n="Bat_Red0.png" x="12" y="33" w="27" h="8" pX="0.5" pY="0.5" oX="2" oY="2" oW="31" oH="12"/>
+  <sprite n="GiantBat0.png" x="0" y="17" w="55" h="16" pX="0.5" pY="0.5" oX="2" oY="2" oW="59" oH="20"/>
+  <sprite n="RedGiantBat0.png" x="0" y="0" w="55" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="59" oH="21"/>
+  <sprite n="SkelSword.png" x="0" y="33" w="12" h="25" pX="0.5" pY="0.5" oX="2" oY="0" oW="14" oH="26"/>
+  <sprite n="SkelBow.png" x="39" y="33" w="12" h="17" pX="0.5" pY="0.5" oX="2" oY="2" oW="14" oH="19"/>
+</TextureAtlas>

@@ -9,16 +9,15 @@ Bat::Bat(bool basic)
 	if (basic) 
 	{
 		_hp = 6;
-		_ani->CreateAction(L"Resource/Monster/Bat.png", "Resource/Monster/Bat.xml", "Idle", Vector2(10, 10));
+		_ani->CreateAction(L"Resource/Monster/Bat.png", "Resource/Monster/Bat.xml", "Idle", Vector2(50, 50));
 	}
 	else
 	{
 		_hp = 16;
-		_ani->CreateAction(L"Resource/Monster/RedBat.png", "Resource/Monster/RedBat.xml", "Idle", Vector2(10, 10));
+		_ani->CreateAction(L"Resource/Monster/RedBat.png", "Resource/Monster/RedBat.xml", "Idle", Vector2(50, 50));
 	}
 
 	_ani->SetParent(_collider->GetTransform());
-	_ani->SetScale(Vector2(5.0f, 5.0f));
 
 	_speed = 100.0f;
 }

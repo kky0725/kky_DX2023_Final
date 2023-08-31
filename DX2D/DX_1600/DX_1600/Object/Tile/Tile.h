@@ -17,7 +17,12 @@ public:
 		BOTH
 	};
 
-	Tile(wstring srvFile, TileType type, string name, Vector2 pos ,Vector2 tileSize, TileDir tileDir = NONE, Vector2 colSize = Vector2(1.0f, 1.0f), Vector2 colPos = Vector2(0.0f, 0.0f));
+	enum TileImage
+	{
+		BASIC
+	};
+
+	Tile(TileImage tileImage, Vector2 pos);
 	~Tile();
 
 	void Update();
@@ -27,17 +32,15 @@ public:
 	bool PassableBlock(shared_ptr<Collider> collider);
 	bool TileBlock(shared_ptr<Collider> collider);
 	
-
 private:
+	void SetTileType();
+
 	shared_ptr<Collider> _collider;
-	shared_ptr<Quad> _quad;
+	shared_ptr<Sprite> _ground;
 	shared_ptr<Transform> _transform;
 
-	TileType _tileType;
-	string _name;
+	Vector2 _colSize = Vector2(16.0f, 16.0f);
 
-	Vector2 _colSize;
-	Vector2 _tileSize;
-
-	TileDir _tileDir;
+	TileType _tileType = TileType::IMPASSABLE;
+	TileDir _tileDir = TileDir::NONE;
 };

@@ -8,13 +8,16 @@
 TileMap::TileMap()
 {
 	_collider = make_shared<RectCollider>(Vector2(_size, _size));
+	_creatureSprite = make_shared<Sprite>(L"Resource/Monster/Monsters.png", "Resource/Monster/Monsters.xml", Vector2(50.0f, 50.0f));
+	_creatureTransform = make_shared<Transform>();
 }
 
 TileMap::TileMap(float size, Vector2 pos)
 	:_size(size), _pos(pos)
 {
 	_collider = make_shared<RectCollider>(Vector2(_size, _size));
-
+	_creatureSprite = make_shared<Sprite>(L"Resource/Monster/Monsters.png", "Resource/Monster/Monsters.xml", Vector2(50.0f, 50.0f));
+	_creatureTransform = make_shared<Transform>();
 }
 
 TileMap::~TileMap()
@@ -24,7 +27,6 @@ TileMap::~TileMap()
 void TileMap::Update()
 {
 	_collider->Update();
-
 
 }
 
@@ -38,8 +40,11 @@ void TileMap::Render()
 	if (_ground)
 		_ground->Render();
 
-	if (_creature)
-		_creature->Render();
+	if (_tileInfo._CreatureType != CreatureType::NONE)
+	{
+		_creatureTransform->SetBuffer(0);
+		_creatureSprite->Render();
+	}
 }
 
 void TileMap::Set(ObjectType objectType, int type)
@@ -48,12 +53,12 @@ void TileMap::Set(ObjectType objectType, int type)
 	{
 	case TileMap::BACKGROUND:
 	{
-		_backGroundType = (BackGroundType)type;
+		_backGroundType = (BackGroundImage)type;
 		break;
 	}
 	case TileMap::GROUND:
 	{
-		_groundType = (GroundType)type;
+		_groundType = (GroundImage)type;
 		break;
 	}
 	case TileMap::CREATURE:
@@ -67,49 +72,28 @@ void TileMap::Set(ObjectType objectType, int type)
 	}
 }
 
+void TileMap::CreateBackGround(Tile::TileImage tileImage)
+{
+}
+
+void TileMap::CreateGround(Tile::TileImage tileImage)
+{
+}
+
 void TileMap::CreateCreature(CreatureType type)
 {
-	switch (type)
+	_tileInfo._CreatureType = type;
+	if (type != CreatureType::NONE)
 	{
-	case TileMap::NONE:
-	{
-		_creature = nullptr;
-		return;
+		_creatureSprite->SetCurClip(type - 1);
+		_creatureTransform->SetScale({ 1.0f, 1.0f });
 	}
-	case TileMap::BAT:
-	{
-		_creature = make_shared<Bat>(true);
-		break;
-	}
-	case TileMap::REDBAT:
-	{
-		_creature = make_shared<Bat>(false);
-		break; 
-	}
-	case TileMap::GAINTBAT:
-	{
-		_creature = make_shared<GaintBat>(true);
-		break;
-	}
-	case TileMap::REDGAINTBAT:
-	{
-		_creature = make_shared<GaintBat>(false);
-		break;
-	}
-	case TileMap::SKELSWORD:
-	{
-		_creature =	make_shared<Skel>(true);
-		return;
-	}
-	case TileMap::SKELBOW:
-	{
-		_creature = make_shared<Skel>(false);
-		return;
-	}
-	default:
-		break;
-	}
-	_creature->SetPosition(_pos);
-	_creature->Update();
+
+	if (type == CreatureType::GAINTBAT || type == CreatureType::REDGAINTBAT)
+		_creatureTransform->SetScale({2.0f, 2.0f});
+
+	_creatureTransform->SetPosition(_pos);
+	_creatureSprite->Update();
+	_creatureTransform->Update();
 }
 

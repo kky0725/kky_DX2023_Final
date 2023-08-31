@@ -3,7 +3,7 @@
 
 #include "MonsterWeapon/BatBullet.h"
 
-GaintBat::GaintBat(bool basic)
+GaintBat::GaintBat(bool basic)//공격 쿨타임 설정하기
 	:Creature(50.0f), _basic(basic)
 {
 	_ani = make_shared<Animation>();
@@ -12,22 +12,21 @@ GaintBat::GaintBat(bool basic)
 	if (_basic)
 	{
 		_hp = 46;
-		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "Idle", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintBatAtk.png", "Resource/Monster/GaintBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.15f, std::bind(&GaintBat::TargetOff, this));
+		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "Idle", Vector2(100, 100));
+		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(100, 100));
+		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(100, 100));
+		_ani->CreateAction(L"Resource/Monster/GaintBatAtk.png", "Resource/Monster/GaintBatAtk.xml", "Atk", Vector2(100, 100), Action::END, 0.15f, std::bind(&GaintBat::TargetOff, this));
 	}
 	else
 	{
 		_hp = 44;
-		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(10, 10));
-		_ani->CreateAction(L"Resource/Monster/GaintRedBatAtk.png", "Resource/Monster/GaintRedBatAtk.xml", "Atk", Vector2(10, 10), Action::END, 0.15f, std::bind(&GaintBat::TargetOff, this));
+		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(100, 100));
+		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(100, 100));
+		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(100, 100));
+		_ani->CreateAction(L"Resource/Monster/GaintRedBatAtk.png", "Resource/Monster/GaintRedBatAtk.xml", "Atk", Vector2(100, 100), Action::END, 0.15f, std::bind(&GaintBat::TargetOff, this));
 	}
 
 	_ani->SetParent(_collider->GetTransform());
-	_ani->SetScale(Vector2(10.0f, 10.0f));
 
 	_speed = 100.0f;
 

@@ -65,18 +65,22 @@ void MapEditor::Create()
 {
 	if (ImGui::BeginMenu("BackGround"))
 	{
-		
+		if (ImGui::Button("BASIC", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, TileMap::BackGroundImage::BASIC);
 		ImGui::EndMenu();
 	}
 
 	if (ImGui::BeginMenu("Ground"))
 	{
-
+		if (ImGui::Button("DELETE_GROUND", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, TileMap::GroundImage::NOGROUND);
 		ImGui::EndMenu();
 	}
 
 	if (ImGui::BeginMenu("Creature"))
 	{
+		if (ImGui::Button("DELETE_CREATURE", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::CREATURE, TileMap::CreatureType::NONE);
 		if (ImGui::Button("BAT", { 50.0f,50.0f }))
 			SetCurType(TileMap::ObjectType::CREATURE, TileMap::CreatureType::BAT);
 		if (ImGui::Button("REDBAT", { 50.0f,50.0f }))

@@ -18,34 +18,17 @@ TestScene::TestScene()
 	_ground2->GetTransform()->SetPosition(Vector2(640.0f, -50.0f));
 
 	shared_ptr<Creature> skelBoss = make_shared<SkelBoss>();
-	//shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
+	shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
 	//shared_ptr<Creature> bat = make_shared<Bat>(true);
 	//shared_ptr<Creature> skel = make_shared<Skel>(false);
 	//shared_ptr<Creature> skel2 = make_shared<Skel>(true);
 
 	_creatures.push_back(skelBoss);
-	//_creatures.push_back(gaintBat);
+	_creatures.push_back(gaintBat);
 	//_creatures.push_back(bat);
 	//_creatures.push_back(skel);
 	//_creatures.push_back(skel2);
 
-	for (int i = 0; i < 15; i++)
-	{
-		shared_ptr<Tile> tile;
-		if (i < 5)
-		{
-			tile = make_shared<Tile>(L"Resource/Ground/LastStage.png", Tile::TileType::IMPASSABLE, "바닥", Vector2(- i * 32.0f - 150.0f, -50.0f), Vector2(1,1), Tile::TileDir::WIDTH, Vector2(16.0f, 16.0f));
-		}
-		else if (i < 10)
-		{
-			tile = make_shared<Tile>(L"Resource/Ground/OneWay.png", Tile::TileType::PASSABLE, "반벽", Vector2(i * 32.0f + 100.0f, 20.0f), Vector2(1, 1), Tile::TileDir::WIDTH, Vector2(16.0f, 16.0f));
-		}
-		else
-		{
-			tile = make_shared<Tile>(L"Resource/Ground/Wall.png", Tile::TileType::BACKGROUND, "배경", Vector2(i * 32.0f + 50.0f, 100.0f), Vector2(1, 1));
-		}
-		_tiles.push_back(tile);
-	}
 }
 
 TestScene::~TestScene()
@@ -75,21 +58,10 @@ void TestScene::Update()
 	if (_ground2->Block(_player->GetFootHold()))
 		_player->IsGround();
 
-	for (auto tile : _tiles)
-	{
-		tile->Update();
-		if(tile->Block(_player->GetFootHold()))
-			_player->IsGround();
-	}
 }
 
 void TestScene::Render()
 {
-	for (auto tile : _tiles)
-	{
-		tile->Render();
-	}
-
 	for (auto creature : _creatures)
 		creature->Render();
 	_player->Render();

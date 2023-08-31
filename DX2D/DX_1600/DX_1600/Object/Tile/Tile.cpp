@@ -2,29 +2,24 @@
 #include "Tile.h"
 #include "../Player/Player.h"
 
-Tile::Tile(wstring srvFile, TileType type, string name, Vector2 pos, Vector2 tileSize, TileDir tileDir, Vector2 colSize, Vector2 colPos)
-	:_tileType(type), _name(name), _tileSize(tileSize), _tileDir(tileDir), _colSize(colSize)
+Tile::Tile(TileImage tileImage, Vector2 pos)
 {
-	_quad = make_shared<Quad>(srvFile);
+	_ground = make_shared<Sprite>(Vector2(40.0f,40.0f));//여기 채워야함
 	_transform = make_shared<Transform>();
 
-	if (_tileType == TileType::IMPASSABLE)
-	{
-		_collider = make_shared<RectCollider>(_colSize);
-		_collider->SetParent(_transform);
-		_collider->SetPosition(colPos);
-	}
-	else if(_tileType == TileType::PASSABLE)
-	{
-		_collider = make_shared<RectCollider>(_colSize);
-		_collider->SetParent(_transform);
-		_collider->SetPosition(colPos);
-	}
-	else if(_tileType == TileType::BACKGROUND)
+	if(_tileType == TileType::BACKGROUND)
 		_collider = nullptr;
+	else
+	{
+		_collider = make_shared<RectCollider>(_colSize);
+		_collider->SetParent(_transform);
+	}
 
 	_transform->SetPosition(pos);
-	_transform->SetScale(Vector2(2.0f, 2.0f));
+
+	_ground->SetCurClip(tileImage);
+
+	SetTileType();
 }
 
 Tile::~Tile()
@@ -42,7 +37,7 @@ void Tile::Update()
 void Tile::Render()
 {
 	_transform->SetBuffer(0);
-	_quad->Render();
+	_ground->Render();
 
 	if (_tileType != TileType::BACKGROUND)
 		_collider->Render();
@@ -140,4 +135,10 @@ bool Tile::TileBlock(shared_ptr<Collider> collider)
 	moveable->SetPosition(fixedPos);
 
 	return true;
+}
+
+void Tile::SetTileType()
+{
+	_tileType = TileType::IMPASSABLE;
+	_tileDir = TileDir::NONE;
 }
