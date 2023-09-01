@@ -25,17 +25,18 @@ void MapEditor::Update()
 	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
 	{
 		for (shared_ptr<TileMap> tileMap : tileMapY)
-			tileMap->Update();
-	}
-
-	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
-	{
-		for (shared_ptr<TileMap> tileMap : tileMapY)
 		{
 			if (tileMap->GetCollider()->IsCollision(W_MOUSE_POS) && KEY_PRESS(VK_LBUTTON))
 				tileMap->Set(_objectType, _type);
 		}
 	}
+
+	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
+	{
+		for (shared_ptr<TileMap> tileMap : tileMapY)
+			tileMap->Update();
+	}
+
 }
 
 void MapEditor::Render()
@@ -65,15 +66,80 @@ void MapEditor::Create()
 {
 	if (ImGui::BeginMenu("BackGround"))
 	{
-		if (ImGui::Button("BASIC", { 50.0f,50.0f }))
-			SetCurType(TileMap::ObjectType::BACKGROUND, TileMap::BackGroundImage::BASIC);
+		if (ImGui::Button("LT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC0);
+		if (ImGui::Button("MT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC1);
+		if (ImGui::Button("RT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC2);
+		if (ImGui::Button("LM", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC3);
+		if (ImGui::Button("MM", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC4);
+		if (ImGui::Button("RM", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC5);
+		if (ImGui::Button("LB", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC12);
+		if (ImGui::Button("MB", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC13);
+		if (ImGui::Button("RB", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC14);
+		if (ImGui::Button("BLACK", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC11);
 		ImGui::EndMenu();
 	}
 
 	if (ImGui::BeginMenu("Ground"))
 	{
 		if (ImGui::Button("DELETE_GROUND", { 50.0f,50.0f }))
-			SetCurType(TileMap::ObjectType::GROUND, TileMap::GroundImage::NOGROUND);
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::NOGROUND);
+		if (ImGui::Button("LT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H0);
+		if (ImGui::Button("MT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H1);
+		if (ImGui::Button("RT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H2);
+		if (ImGui::Button("LM", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H3);
+		if (ImGui::Button("MM", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H4);
+		if (ImGui::Button("RM", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H5);
+		if (ImGui::Button("LB", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H6);
+		if (ImGui::Button("MB", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H7);
+		if (ImGui::Button("RB", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H8);
+		if (ImGui::Button("LT_CORNER", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H9);
+		if (ImGui::Button("RT_CORNER", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H10);
+		if (ImGui::Button("LB_CORNER", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H11);
+		if (ImGui::Button("RB_CORNER", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H12);
+		ImGui::EndMenu();
+	}
+
+	if (ImGui::BeginMenu("FootHoldGround"))
+	{
+		if (ImGui::Button("DELETE_GROUND", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::NOGROUND);
+		if (ImGui::Button("ONEWAY_L", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::ONE_WAY0);
+		if (ImGui::Button("ONEWAY_M1", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::ONE_WAY1);
+		if (ImGui::Button("ONEWAY_M2", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::ONE_WAY2);
+		if (ImGui::Button("ONEWAY_R", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::ONE_WAY3);
+		if (ImGui::Button("LT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H13);//midle //tile 이 한줄 밀린듯
+		if (ImGui::Button("MT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H14);//left
+		if (ImGui::Button("RT", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H15);
 		ImGui::EndMenu();
 	}
 

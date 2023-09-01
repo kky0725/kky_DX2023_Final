@@ -4,8 +4,17 @@
 
 Tile::Tile(TileImage tileImage, Vector2 pos)
 {
-	_ground = make_shared<Sprite>(Vector2(40.0f,40.0f));//여기 채워야함
+	_ground = make_shared<Sprite>(L"Resource/Ground/tileSprite.png", "Resource/Ground/tileSprite.xml", Vector2(40.0f, 40.0f));
 	_transform = make_shared<Transform>();
+
+	if (tileImage <= TileImage::WALL_CHAIN)
+		_tileType = TileType::BACKGROUND;
+	else if (tileImage <= TileImage::ONE_WAY0)
+		_tileType = TileType::PASSABLE;
+	else
+		_tileType = TileType::IMPASSABLE;
+
+	SetTileDir(tileImage);
 
 	if(_tileType == TileType::BACKGROUND)
 		_collider = nullptr;
@@ -19,7 +28,7 @@ Tile::Tile(TileImage tileImage, Vector2 pos)
 
 	_ground->SetCurClip(tileImage);
 
-	SetTileType();
+	_ground->Update();
 }
 
 Tile::~Tile()
@@ -137,8 +146,37 @@ bool Tile::TileBlock(shared_ptr<Collider> collider)
 	return true;
 }
 
-void Tile::SetTileType()
+void Tile::SetTileDir(TileImage tileImage)
 {
-	_tileType = TileType::IMPASSABLE;
-	_tileDir = TileDir::NONE;
+	switch (tileImage)
+	{
+	case Tile::ONE_WAY0: case Tile::ONE_WAY1: case Tile::ONE_WAY2: case Tile::ONE_WAY3:
+		_tileDir = TileDir::WIDTH;
+		break;
+	case Tile::H0:	case Tile::H1:	case Tile::H2:	case Tile::H4: case Tile::H6:
+	case Tile::H7:	case Tile::H8:	case Tile::H9:	case Tile::H10:	case Tile::H11:	case Tile::H12:
+		_tileDir = TileDir::BOTH;
+		break;
+	case Tile::H3: case Tile::H5:
+		_tileDir = TileDir::HEIGHT;
+		break;
+	case Tile::H13:	case Tile::H14:	case Tile::H15:
+		_tileDir = TileDir::WIDTH;
+		break;
+	case Tile::STAIR_BOTTOM_LEFT:
+		_tileDir = TileDir::WIDTH;
+		break;
+	case Tile::STAIR_BOTTOM_RIGHT:
+		_tileDir = TileDir::WIDTH;
+		break;
+	case Tile::STAIR_TOP_LEFT:
+		_tileDir = TileDir::WIDTH;
+		break;
+	case Tile::STAIR_TOP_RIGHT:
+		_tileDir = TileDir::WIDTH;
+		break;
+	default:
+		_tileDir = TileDir::NONE;
+		break;
+	}
 }

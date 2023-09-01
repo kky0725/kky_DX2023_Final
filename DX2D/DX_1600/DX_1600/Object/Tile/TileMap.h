@@ -9,20 +9,6 @@ public:
 		CREATURE
 	};
 
-	enum BackGroundImage
-	{
-		BASIC
-	};
-
-	enum GroundImage
-	{
-		NOGROUND,
-		PASSABLE_WIDTH,
-		IMPASSABLE_WIDTH,
-		IMPASSABLE_HEIGHT,
-		IMPASSABLE_BOTH
-	};
-
 	enum CreatureType
 	{
 		NONE,
@@ -36,8 +22,8 @@ public:
 
 	struct TileInfo
 	{
-		BackGroundImage _backGroundImage = BASIC;
-		GroundImage _groundImage = NOGROUND;
+		Tile::TileImage _backGroundImage = Tile::TileImage::WALL_BASIC0;
+		Tile::TileImage _groundImage = Tile::TileImage::NOGROUND;
 		CreatureType _CreatureType = NONE;
 	};
 
@@ -58,8 +44,6 @@ public:
 
 private:
 	shared_ptr<Collider>	_collider	= nullptr;
-	BackGroundImage			_backGroundType	= BackGroundImage::BASIC;
-	GroundImage				_groundType = GroundImage::NOGROUND;
 	CreatureType			_creatureType	= CreatureType::NONE;
 
 	shared_ptr<Tile>		_backGround = nullptr;

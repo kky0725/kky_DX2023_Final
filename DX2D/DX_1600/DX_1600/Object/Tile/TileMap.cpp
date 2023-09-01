@@ -18,6 +18,9 @@ TileMap::TileMap(float size, Vector2 pos)
 	_collider = make_shared<RectCollider>(Vector2(_size, _size));
 	_creatureSprite = make_shared<Sprite>(L"Resource/Monster/Monsters.png", "Resource/Monster/Monsters.xml", Vector2(50.0f, 50.0f));
 	_creatureTransform = make_shared<Transform>();
+
+	CreateBackGround(Tile::TileImage::WALL_BASIC4);
+	_backGround->Update();
 }
 
 TileMap::~TileMap()
@@ -27,7 +30,6 @@ TileMap::~TileMap()
 void TileMap::Update()
 {
 	_collider->Update();
-
 }
 
 void TileMap::Render()
@@ -37,7 +39,7 @@ void TileMap::Render()
 	if (_backGround)
 		_backGround->Render();
 
-	if (_ground)
+	if (_ground && _tileInfo._groundImage != Tile::TileImage::NOGROUND)
 		_ground->Render();
 
 	if (_tileInfo._CreatureType != CreatureType::NONE)
@@ -53,12 +55,16 @@ void TileMap::Set(ObjectType objectType, int type)
 	{
 	case TileMap::BACKGROUND:
 	{
-		_backGroundType = (BackGroundImage)type;
+		CreateBackGround((Tile::TileImage)type);
+		_backGround->Update();
+
 		break;
 	}
 	case TileMap::GROUND:
 	{
-		_groundType = (GroundImage)type;
+		CreateGround((Tile::TileImage)type);
+		_ground->Update();
+
 		break;
 	}
 	case TileMap::CREATURE:
@@ -74,10 +80,14 @@ void TileMap::Set(ObjectType objectType, int type)
 
 void TileMap::CreateBackGround(Tile::TileImage tileImage)
 {
+	_tileInfo._backGroundImage = tileImage;
+	_backGround = make_shared<Tile>(tileImage, _pos);
 }
 
 void TileMap::CreateGround(Tile::TileImage tileImage)
 {
+	_tileInfo._groundImage = tileImage;
+	_ground = make_shared<Tile>(tileImage, _pos);
 }
 
 void TileMap::CreateCreature(CreatureType type)

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="tileSprite.png" width="128" height="112" scale="1" format="RGBA8888">
+  <sprite n="Wall_Basic_0.png" x="80" y="16" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_1.png" x="80" y="32" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_2.png" x="80" y="80" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_3.png" x="96" y="0" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_4.png" x="96" y="16" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_5.png" x="96" y="32" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_6.png" x="96" y="48" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_8.png" x="96" y="64" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_9.png" x="96" y="80" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_10.png" x="80" y="48" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_11.png" x="80" y="64" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_12.png" x="32" y="74" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_13.png" x="0" y="80" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_14.png" x="48" y="80" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_15.png" x="16" y="80" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_16.png" x="64" y="80" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Ceiling_0.png" x="32" y="90" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Ceiling_1.png" x="0" y="96" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Ceiling_2.png" x="48" y="96" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Ceiling_3.png" x="16" y="96" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Ceiling_4.png" x="64" y="96" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Ceiling_5.png" x="80" y="96" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Ceiling_6.png" x="96" y="96" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Statue_Bottom_0.png" x="0" y="0" w="16" h="32" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Statue_Middle_0.png" x="112" y="0" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Basic_Statue_Top_0.png" x="112" y="16" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Wall_Chain.png" x="16" y="0" w="16" h="32" pX="0.5" pY="0.5"/>
+  <sprite n="SecondFloor_OneWay_0.png" x="112" y="32" w="14" h="13" pX="0.5" pY="0.5" oX="2" oY="0" oW="16" oH="16"/>
+  <sprite n="SecondFloor_OneWay_1.png" x="32" y="0" w="16" h="13" pX="0.5" pY="0.5" oX="0" oY="0" oW="16" oH="16"/>
+  <sprite n="SecondFloor_OneWay_2.png" x="32" y="13" w="16" h="13" pX="0.5" pY="0.5" oX="0" oY="0" oW="16" oH="16"/>
+  <sprite n="SecondFloor_OneWay_3.png" x="112" y="45" w="13" h="13" pX="0.5" pY="0.5" oX="0" oY="0" oW="16" oH="16"/>
+  <sprite n="Tile_H0.png" x="32" y="26" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H1.png" x="0" y="32" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H2.png" x="48" y="48" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H3.png" x="16" y="48" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H4.png" x="64" y="0" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H5.png" x="64" y="16" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H6.png" x="64" y="32" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H7.png" x="64" y="48" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H8.png" x="32" y="58" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H9.png" x="0" y="64" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H10.png" x="16" y="32" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H11.png" x="48" y="0" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H12.png" x="48" y="16" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H13.png" x="48" y="32" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H14.png" x="32" y="42" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_H15.png" x="0" y="48" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_Stair_BottomLeft.png" x="48" y="64" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_Stair_BottomRight.png" x="16" y="64" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_Stair_TopLeft.png" x="64" y="64" w="16" h="16" pX="0.5" pY="0.5"/>
+  <sprite n="Tile_Stair_TopRight.png" x="80" y="0" w="16" h="16" pX="0.5" pY="0.5"/>
+</TextureAtlas>
