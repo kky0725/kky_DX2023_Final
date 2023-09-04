@@ -3,11 +3,13 @@
 
 #include "TestScene.h"
 #include "MapEditor.h"
+#include "BattleScene.h"
 
 SceneManager::SceneManager()
 {
 	_scenes.push_back(make_shared<MapEditor>());
 	_scenes.push_back(make_shared<TestScene>());
+	_scenes.push_back(make_shared<BattleScene>());
 }
 
 SceneManager::~SceneManager()

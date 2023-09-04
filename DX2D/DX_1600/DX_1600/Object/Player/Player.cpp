@@ -13,17 +13,10 @@ Player::Player()
 
 	_hp = 100000;
 
-	//_footHold = make_shared<RectCollider>(Vector2(27.0f, 10.0f));
-	//_footHold->SetParent(_collider->GetTransform());
-	//_footHold->SetPosition(Vector2(0.0f, -24.0f));
 	_footHold = make_shared<CircleCollider>(12.0f);
 	_collider->SetParent(_footHold->GetTransform());
 	_collider->SetPosition(Vector2(0.0f, 5.0f));
 
-	//나중에 함수 새로 만들어서 생성자에서 꺼낼 부분
-	//_weapon0 = ItemList::GetInstance()->GetWeapon(0);
-	//_weapon1 = ItemList::GetInstance()->GetWeapon(1);
-	//_weapon = _weapon0;
 	_weapon = Inventory::GetInstance()->CurWeapon();
 	_weapon->GetCollider()->SetParent(_slot);
 	_weapon->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
@@ -278,10 +271,6 @@ void Player::SwapWeapon()
 	{
 		Inventory::GetInstance()->ChangeWeapon();
 		_weapon = Inventory::GetInstance()->CurWeapon();
-		//if (_weapon == _weapon0)
-		//	_weapon = _weapon1;
-		//else
-		//	_weapon = _weapon0;
 
 		SetAtkSpeed(_weapon->GetAtkPerSec());
 		_weapon->GetCollider()->SetParent(_slot);

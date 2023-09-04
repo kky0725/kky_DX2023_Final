@@ -24,7 +24,7 @@ public:
 	{
 		Tile::TileImage _backGroundImage = Tile::TileImage::WALL_BASIC0;
 		Tile::TileImage _groundImage = Tile::TileImage::NOGROUND;
-		CreatureType _CreatureType = NONE;
+		CreatureType _creatureType = NONE;
 	};
 
 	TileMap();
@@ -41,6 +41,8 @@ public:
 
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	TileInfo GetTileInfo() { return _tileInfo; }
+
+	shared_ptr<Collider> GetTileCollider() { return _ground->GetCollider(); }
 
 private:
 	shared_ptr<Collider>	_collider	= nullptr;

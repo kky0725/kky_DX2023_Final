@@ -16,6 +16,9 @@ public:
 
 	void SetCurType(TileMap::ObjectType objectType, int type) { _objectType = objectType; _type = type; };
 
+	void Save(wstring file);
+	void Load(wstring file);
+
 private:
 	vector<vector<shared_ptr<TileMap>>> _tileMaps;
 

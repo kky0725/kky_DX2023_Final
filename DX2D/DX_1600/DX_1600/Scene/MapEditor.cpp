@@ -165,13 +165,14 @@ void MapEditor::Create()
 	if (ImGui::BeginMenu("Save"))
 	{
 		if (ImGui::Button("1-1", { 50.0f,50.0f }))
-			int i = 1;
+			Save(L"1 - 1.map");
 		ImGui::EndMenu();
 	}
 
 	if (ImGui::BeginMenu("Load"))
 	{
-		ImGui::Button("1-1", { 50.0f,50.0f });
+		if (ImGui::Button("1-1", { 50.0f,50.0f }))
+			Load(L"1 - 1.map");
 		ImGui::Button("1-2", { 50.0f,50.0f });
 		ImGui::Button("1-3", { 50.0f,50.0f });
 		ImGui::Button("1-4", { 50.0f,50.0f });
@@ -180,6 +181,41 @@ void MapEditor::Create()
 		ImGui::Button("2-3", { 50.0f,50.0f });
 		ImGui::Button("2-4", { 50.0f,50.0f });
 		ImGui::EndMenu();
+	}
+}
+
+void MapEditor::Save(wstring file)
+{
+	wstring filePath = L"MapInfo/" + file;
+	BinaryWriter writer = BinaryWriter(filePath);
+
+	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
+	{
+		for (shared_ptr<TileMap> tileMap : tileMapY)
+		{
+			TileMap::TileInfo tileInfo = tileMap->GetTileInfo();
+			writer.Byte(&tileInfo, sizeof(TileMap::TileInfo));
+		}
+	}
+}
+
+void MapEditor::Load(wstring file)
+{
+	wstring filePath = L"MapInfo/" + file;
+	BinaryReader reader = BinaryReader(filePath);
+
+	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
+	{
+		for (shared_ptr<TileMap> tileMap : tileMapY)
+		{
+			TileMap::TileInfo tileInfo;
+			TileMap::TileInfo* ptr = &tileInfo;
+			reader.Byte((void**)&ptr, sizeof(TileMap::TileInfo));
+
+			tileMap->Set(TileMap::ObjectType::BACKGROUND, tileInfo._backGroundImage);
+			tileMap->Set(TileMap::ObjectType::GROUND, tileInfo._groundImage);
+			tileMap->Set(TileMap::ObjectType::CREATURE, tileInfo._creatureType);
+		}
 	}
 }
 

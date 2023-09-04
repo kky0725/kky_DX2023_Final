@@ -42,7 +42,7 @@ void TileMap::Render()
 	if (_ground && _tileInfo._groundImage != Tile::TileImage::NOGROUND)
 		_ground->Render();
 
-	if (_tileInfo._CreatureType != CreatureType::NONE)
+	if (_tileInfo._creatureType != CreatureType::NONE)
 	{
 		_creatureTransform->SetBuffer(0);
 		_creatureSprite->Render();
@@ -92,7 +92,7 @@ void TileMap::CreateGround(Tile::TileImage tileImage)
 
 void TileMap::CreateCreature(CreatureType type)
 {
-	_tileInfo._CreatureType = type;
+	_tileInfo._creatureType = type;
 	if (type != CreatureType::NONE)
 	{
 		_creatureSprite->SetCurClip(type - 1);

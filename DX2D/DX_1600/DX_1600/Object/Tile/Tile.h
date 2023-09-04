@@ -26,7 +26,6 @@ public:
 		WALL_BASIC4,
 		WALL_BASIC5,
 		WALL_BASIC6,
-		WALL_BASIC7,
 		WALL_BASIC8,
 		WALL_BASIC9,
 		WALL_BASIC10,
@@ -72,6 +71,7 @@ public:
 	bool PassableBlock(shared_ptr<Collider> collider);
 	bool TileBlock(shared_ptr<Collider> collider);
 
+	shared_ptr<Collider> GetCollider() { return _collider; }
 	
 private:
 	void SetTileDir(TileImage tileImage);
@@ -80,7 +80,7 @@ private:
 	shared_ptr<Sprite> _ground;
 	shared_ptr<Transform> _transform;
 
-	Vector2 _colSize = Vector2(16.0f, 16.0f);
+	Vector2 _colSize = Vector2(40.0f, 40.0f);
 
 	TileType _tileType = TileType::IMPASSABLE;
 	TileDir _tileDir = TileDir::NONE;

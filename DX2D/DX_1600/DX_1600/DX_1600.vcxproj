@@ -151,9 +151,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\BattleScene.h" />
     <ClInclude Include="Framework\Utility\Singleton.h" />
     <ClInclude Include="Framework\Utility\ItemList.h" />
-    <ClInclude Include="Scence\MapEditor.h" />
+    <ClInclude Include="Scene\MapEditor.h" />
     <ClInclude Include="Object\Item.h" />
     <ClInclude Include="Object\Player\Inventory.h" />
     <ClInclude Include="Object\UI\BossHpBar.h" />
@@ -204,7 +205,7 @@
     <ClInclude Include="Object\Basic\Quad.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Framework\TextureMapping\SampleState.h" />
-    <ClInclude Include="Scence\Scene.h" />
+    <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Framework\TextureMapping\SRV.h" />
     <ClInclude Include="Framework\TextureMapping\StateManager.h" />
     <ClInclude Include="Framework\Render\ShaderManager.h" />
@@ -212,7 +213,7 @@
     <ClInclude Include="Framework\TextureMapping\SRVManager.h" />
     <ClInclude Include="Object\Basic\Sprite.h" />
     <ClInclude Include="Framework\Utility\Sound.h" />
-    <ClInclude Include="Scence\SceneManager.h" />
+    <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Object\Weapon\Sword.h" />
     <ClInclude Include="Object\Monster\Skel.h" />
     <ClInclude Include="Object\Monster\MonsterWeapon\SkelBow.h" />
@@ -225,7 +226,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Framework\Math\Transform.h" />
     <ClInclude Include="Framework\Utility\Timer.h" />
-    <ClInclude Include="Scence\TestScene.h" />
+    <ClInclude Include="Scene\TestScene.h" />
     <ClInclude Include="Object\Tile\Tile.h" />
     <ClInclude Include="Object\Tile\TileMap.h" />
     <ClInclude Include="Types.h" />
@@ -234,8 +235,9 @@
     <ClInclude Include="Object\Weapon\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\BattleScene.cpp" />
     <ClCompile Include="Framework\Utility\ItemList.cpp" />
-    <ClCompile Include="Scence\MapEditor.cpp" />
+    <ClCompile Include="Scene\MapEditor.cpp" />
     <ClCompile Include="Object\Item.cpp" />
     <ClCompile Include="Object\Player\Inventory.cpp" />
     <ClCompile Include="Object\UI\BossHpBar.cpp" />
@@ -284,7 +286,7 @@
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Framework\TextureMapping\SampleState.cpp" />
     <ClCompile Include="Object\Basic\Quad.cpp" />
-    <ClCompile Include="Scence\Scene.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Framework\Render\VertexBuffer.cpp" />
     <ClCompile Include="Framework\Render\VertexShader.cpp" />
     <ClCompile Include="Framework\TextureMapping\SRV.cpp" />
@@ -296,8 +298,8 @@
     <ClCompile Include="Framework\TextureMapping\SRVManager.cpp" />
     <ClCompile Include="Object\Basic\Sprite.cpp" />
     <ClCompile Include="Framework\Utility\Sound.cpp" />
-    <ClCompile Include="Scence\SceneManager.cpp" />
-    <ClCompile Include="Scence\TestScene.cpp" />
+    <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Scene\TestScene.cpp" />
     <ClCompile Include="Object\Weapon\Weapon.cpp" />
     <ClCompile Include="Object\Weapon\Sword.cpp" />
     <ClCompile Include="Object\Monster\Skel.cpp" />

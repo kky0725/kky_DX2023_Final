@@ -120,8 +120,8 @@ using namespace Microsoft::WRL;
 #include "Object/UI/HpBar.h"
 
 //Scence
-#include "Scence/Scene.h"
-#include "Scence/SceneManager.h"
+#include "Scene/Scene.h"
+#include "Scene/SceneManager.h"
 
 //Program
 #include "Program/Program.h"

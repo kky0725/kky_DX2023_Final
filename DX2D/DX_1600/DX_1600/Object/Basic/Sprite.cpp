@@ -12,6 +12,8 @@ Sprite::Sprite(wstring path, string xmlPath, Vector2 size)
 	_actionBuffer = make_shared<ActionBuffer>();
 	_actionBuffer->_data.imageSize = _srv.lock()->GetImageSize();
 
+	SetRight();
+
 	CreateClips(path, xmlPath);
 }
 

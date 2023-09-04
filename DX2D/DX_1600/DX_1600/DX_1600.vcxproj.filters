@@ -30,7 +30,7 @@
     <ClInclude Include="Program\Program.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scence\Scene.h">
+    <ClInclude Include="Scene\Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Device\Device.h">
@@ -159,7 +159,7 @@
     <ClInclude Include="Framework\Utility\BinaryReader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scence\SceneManager.h">
+    <ClInclude Include="Scene\SceneManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\UI\Button.h">
@@ -168,7 +168,7 @@
     <ClInclude Include="Object\UI\HpBar.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scence\TestScene.h">
+    <ClInclude Include="Scene\TestScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Creature.h">
@@ -252,10 +252,13 @@
     <ClInclude Include="Object\Tile\Tile.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scence\MapEditor.h">
+    <ClInclude Include="Scene\MapEditor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Tile\TileMap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\BattleScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -269,7 +272,7 @@
     <ClCompile Include="Program\Program.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scence\Scene.cpp">
+    <ClCompile Include="Scene\Scene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Device\Device.cpp">
@@ -365,7 +368,7 @@
     <ClCompile Include="Framework\Utility\BinaryReader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scence\SceneManager.cpp">
+    <ClCompile Include="Scene\SceneManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\UI\Button.cpp">
@@ -374,7 +377,7 @@
     <ClCompile Include="Object\UI\HpBar.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scence\TestScene.cpp">
+    <ClCompile Include="Scene\TestScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Creature.cpp">
@@ -455,10 +458,13 @@
     <ClCompile Include="Object\Tile\Tile.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scence\MapEditor.cpp">
+    <ClCompile Include="Scene\MapEditor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Tile\TileMap.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\BattleScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
