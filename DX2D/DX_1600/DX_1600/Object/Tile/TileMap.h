@@ -42,7 +42,7 @@ public:
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	TileInfo GetTileInfo() { return _tileInfo; }
 
-	shared_ptr<Collider> GetTileCollider() { return _ground->GetCollider(); }
+	bool Block(shared_ptr<Collider> collider);
 
 private:
 	shared_ptr<Collider>	_collider	= nullptr;

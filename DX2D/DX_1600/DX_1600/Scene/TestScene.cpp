@@ -18,16 +18,16 @@ TestScene::TestScene()
 	_ground2->GetTransform()->SetPosition(Vector2(640.0f, -50.0f));
 
 	shared_ptr<Creature> skelBoss = make_shared<SkelBoss>();
-	shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
+	//shared_ptr<Creature> gaintBat = make_shared<GaintBat>(false);
 	//shared_ptr<Creature> bat = make_shared<Bat>(true);
 	//shared_ptr<Creature> skel = make_shared<Skel>(false);
-	//shared_ptr<Creature> skel2 = make_shared<Skel>(true);
+	shared_ptr<Creature> skel2 = make_shared<Skel>(true);
 
 	_creatures.push_back(skelBoss);
-	_creatures.push_back(gaintBat);
+	//_creatures.push_back(gaintBat);
 	//_creatures.push_back(bat);
 	//_creatures.push_back(skel);
-	//_creatures.push_back(skel2);
+	_creatures.push_back(skel2);
 
 }
 
@@ -76,6 +76,8 @@ void TestScene::PostRender()
 	ImGui::Text("W_M.x : %f, W_M.y : %f", W_MOUSE_POS.x, W_MOUSE_POS.y);
 
 	ImGui::Text("PlayerHp : %d", _player->GetHp());
+	ImGui::Text("PlayerPos : %f, %f", _player->GetPosition().x, _player->GetPosition().y);
+
 	ImGui::Text("BossHp : %d", _creatures[0]->GetHp());
 
 	_player->PostRender();

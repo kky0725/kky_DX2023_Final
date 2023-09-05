@@ -107,3 +107,12 @@ void TileMap::CreateCreature(CreatureType type)
 	_creatureTransform->Update();
 }
 
+bool TileMap::Block(shared_ptr<Collider> collider)
+{
+	if(!_ground)
+		return false;
+
+	if (_ground->Block(collider))
+		return true;
+}
+

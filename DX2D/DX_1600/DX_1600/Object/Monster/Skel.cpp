@@ -11,7 +11,7 @@ Skel::Skel(bool basic)
 	_isActive = true;
 
 	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Idle", Vector2(50, 50));
-	_ani->CreateAction(L"Resource/Monster/SkelWalk.png", "Resource/Monster/SkelWalk.xml", "Walk", Vector2(10, 10));
+	_ani->CreateAction(L"Resource/Monster/SkelWalk.png", "Resource/Monster/SkelWalk.xml", "Walk", Vector2(50, 50));
 	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Jump", Vector2(50, 50));
 	_ani->CreateAction(L"Resource/Monster/GraySkelIdle.png", "Atk", Vector2(50, 50));
 	_ani->CreateAction(L"Resource/Monster/GraySkelDie.png", "Die", Vector2(50, 50));
@@ -72,8 +72,8 @@ void Skel::TargetOn(Vector2 playerPos)
 {
 	if (_targetOn)
 		return;
-	Vector2 dir = playerPos - _collider->GetTransform()->GetWorldPosition();
-	if (dir.Length() < _range)
+	_dir = playerPos - _collider->GetTransform()->GetWorldPosition();
+	if (_dir.Length() < _range)
 	{
 		_targetOn = true;
 		if (!_basic)
@@ -87,12 +87,12 @@ void Skel::TargetOff()
 {
 	_targetOn = false;
 	_ani->SetState(Animation::State::IDLE);
-	BowAttack();
 }
 
 int Skel::CheckAttack(shared_ptr<Collider> col)
 {
 	TargetOn(col->GetTransform()->GetWorldPosition());
+	Vector2 pos = col->GetTransform()->GetWorldPosition();
 	_target = col;
 
 	if (_basic)
@@ -178,7 +178,7 @@ void Skel::BowAttack()
 	if (_ani->GetState() == Animation::State::ATK)
 	{
 		_atkCool = true;
-		_dir = _target.lock()->GetPos() - _slot->GetWorldPosition();
+		//_dir = _target.lock()->GetPos() - _slot->GetWorldPosition();
 		dynamic_pointer_cast<SkelBow>(_weapon)->Attack(_dir);
 		_slot->SetAngel(_dir.Angle() + PI);
 
@@ -232,18 +232,25 @@ void Skel::Chase()
 	if (_ani->GetState() != Animation::State::RUN)
 		return;
 
-	float distance = _target.lock()->GetTransform()->GetWorldPosition().x - _collider->GetTransform()->GetWorldPosition().x;
-	if (distance > 0.0f)
+	float distanceX = _target.lock()->GetTransform()->GetWorldPosition().x - _collider->GetTransform()->GetWorldPosition().x;
+	float distanceY = _target.lock()->GetTransform()->GetWorldPosition().y - _collider->GetTransform()->GetWorldPosition().y;
+	if (distanceX > 0.0f)
 		_dir.x = 1.0f;
-	else if (distance < 0.0f)
+	else if (distanceX < 0.0f)
 		_dir.x = -1.0f;
 
-	if (_dir.x > 0.0f)
+	if (_dir.x > 0.0f)//검 위치 정해주는 식 추가
+	{
 		_ani->SetRight();
+		_slot->SetAngel(PI / 4.0f);
+	}
 	if (_dir.x < 0.0f)
+	{
 		_ani->SetLeft();
+		_slot->SetAngel(PI / 4.0f * 3.0f);
+	}
 
-	if (abs(distance) < 50.0f)
+	if (abs(distanceX) < 60.0f && abs(distanceY) < 60.0f)
 	{
 		_ani->SetState(Animation::State::ATK);
 		return;
@@ -255,7 +262,6 @@ void Skel::Chase()
 void Skel::EndAttack()
 {
 	_ani->SetState(Animation::State::RUN);
-
 }
 
 void Skel::Gravity()

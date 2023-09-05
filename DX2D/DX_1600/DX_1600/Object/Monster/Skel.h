@@ -29,7 +29,7 @@ private:
 
 	bool _basic = true;
 	bool _targetOn = false;
-	float _range = 200.0f;
+	float _range = 500.0f;
 	int _atk = 10;
 
 	float _jumpPower = 0.0f;

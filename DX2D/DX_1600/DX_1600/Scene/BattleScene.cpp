@@ -61,6 +61,14 @@ void BattleScene::PostRender()
 		_player = make_shared<Player>();
 		Init(L"1 - 1.map");
 	}
+
+	if (ImGui::Button("End", { 50.0f,50.0f }))
+	{
+		End();
+	}
+
+	ImGui::Text("PlayerHp : %d", _player->GetHp());
+	ImGui::Text("PlayerPos : %f, %f", _player->GetPosition().x, _player->GetPosition().y);
 }
 
 void BattleScene::Block()
@@ -69,15 +77,11 @@ void BattleScene::Block()
 	{
 		for (shared_ptr<TileMap> tileMap : tileMapY)
 		{
-			if (tileMap->GetTileCollider())
+			if (tileMap->Block(_player->GetFootHold()))
+				_player->IsGround();
+			for (auto creature : _creatures)
 			{
-				if (tileMap->GetTileCollider()->Block(_player->GetFootHold()))
-					_player->IsGround();
-
-				for (auto creature : _creatures)
-				{
-					tileMap->GetTileCollider()->Block(creature->GetCollider());
-				}
+				tileMap->Block(creature->GetCollider());
 			}
 		}
 	}
@@ -94,6 +98,8 @@ void BattleScene::CheckAttack()
 
 void BattleScene::Init(wstring file)
 {
+	End();
+
 	wstring filePath = L"MapInfo/" + file;
 	BinaryReader reader = BinaryReader(filePath);
 
@@ -161,5 +167,5 @@ void BattleScene::Init(wstring file)
 
 void BattleScene::End()
 {
+	_creatures.resize(0);
 }
-

@@ -182,7 +182,7 @@ void SkelBoss::AttackP2L()
 		count++;
 		_leftHand->Attack();
 
-		_targetPos = _target.lock()->GetPos();
+		_targetPos = _target.lock()->GetTransform()->GetWorldPosition();
 		_time = 0.0f;
 	}
 
@@ -211,7 +211,7 @@ void SkelBoss::AttackP2R()
 		count++;
 		_rightHand->Attack();
 
-		_targetPos = _target.lock()->GetPos();
+		_targetPos = _target.lock()->GetTransform()->GetWorldPosition();
 		_time = 0.0f;
 	}
 
@@ -273,7 +273,7 @@ void SkelBoss::AttackP3()
 
 	for (auto sword : _swords)
 	{
-		Vector2 dir = _target.lock()->GetPos();
+		Vector2 dir = _target.lock()->GetTransform()->GetWorldPosition();
 		dir -= sword->GetCollider()->GetPos();
 		sword->Charge(dir);
 	}
