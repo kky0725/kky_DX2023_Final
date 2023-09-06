@@ -60,6 +60,12 @@ void Gun::BulletRender()
 		bullet->Render();
 }
 
+void Gun::DeleteBullet()
+{
+	for (auto bullet : _bullets)
+		bullet->SetActive(false);
+}
+
 void Gun::Attack(Vector2 dir)
 {
 	_ani->Play();

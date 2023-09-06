@@ -256,7 +256,7 @@ void Skel::Chase()
 		return;
 	}
 
-	_collider->GetTransform()->AddVector2(_dir * DELTA_TIME * _speed);
+	_collider->GetTransform()->AddVector2(Vector2(_dir.x, 0.0f) * DELTA_TIME * _speed);
 }
 
 void Skel::EndAttack()

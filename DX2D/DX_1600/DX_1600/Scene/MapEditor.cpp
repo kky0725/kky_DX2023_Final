@@ -3,10 +3,10 @@
 
 MapEditor::MapEditor()
 {
-	for (int i = 0; i < _poolCountX; i++)
+	for (int i = 0; i < MAP_SIZE_X; i++)
 	{
 		vector<shared_ptr<TileMap>> tileMapY;
-		for (int j = 0; j < _poolCountY; j++)
+		for (int j = 0; j < MAP_SIZE_Y; j++)
 		{
 			shared_ptr<TileMap> tileMap = make_shared<TileMap>(40.0f, Vector2(i * 40.0f - 60.0f, j * 40.0f - 60.0f));
 			tileMap->GetCollider()->GetTransform()->SetPosition(Vector2(i * 40.0f - 60.0f, j * 40.0f - 60.0f));
@@ -14,6 +14,13 @@ MapEditor::MapEditor()
 		}
 		_tileMaps.push_back(tileMapY);
 	}
+
+	_portals.resize(4);
+
+	_portals[Portal::PortalDir::UP] = make_shared<Portal>();
+	_portals[Portal::PortalDir::DOWN] = make_shared<Portal>();
+	_portals[Portal::PortalDir::RIGHT] = make_shared<Portal>();
+	_portals[Portal::PortalDir::LEFT] = make_shared<Portal>();
 }
 
 MapEditor::~MapEditor()
@@ -27,7 +34,14 @@ void MapEditor::Update()
 		for (shared_ptr<TileMap> tileMap : tileMapY)
 		{
 			if (tileMap->GetCollider()->IsCollision(W_MOUSE_POS) && KEY_PRESS(VK_LBUTTON))
-				tileMap->Set(_objectType, _type);
+			{
+				if (_objectType == TileMap::ObjectType::PORTAL)
+				{
+					SetPortal();
+				}
+				else
+					tileMap->Set(_objectType, _type);
+			}
 		}
 	}
 
@@ -36,6 +50,10 @@ void MapEditor::Update()
 		for (shared_ptr<TileMap> tileMap : tileMapY)
 			tileMap->Update();
 	}
+
+
+	for (auto portal : _portals)
+		portal->Update();
 
 }
 
@@ -46,20 +64,14 @@ void MapEditor::Render()
 		for (shared_ptr<TileMap> tileMap : tileMapY)
 			tileMap->Render();
 	}
+
+	for (auto portal : _portals)
+		portal->Render();
 }
 
 void MapEditor::PostRender()
 {
 	Create();
-}
-
-void MapEditor::Init()
-{
-
-}
-
-void MapEditor::End()
-{
 }
 
 void MapEditor::Create()
@@ -162,6 +174,19 @@ void MapEditor::Create()
 		ImGui::EndMenu();
 	}
 
+	if (ImGui::BeginMenu("Portal"))
+	{
+		if (ImGui::Button("Up", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::PORTAL, Portal::PortalDir::UP);
+		if (ImGui::Button("Down", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::PORTAL, Portal::PortalDir::DOWN);
+		if (ImGui::Button("Right", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::PORTAL, Portal::PortalDir::RIGHT);
+		if (ImGui::Button("Left", { 50.0f,50.0f }))
+			SetCurType(TileMap::ObjectType::PORTAL, Portal::PortalDir::LEFT);
+		ImGui::EndMenu();
+	}
+
 	if (ImGui::BeginMenu("Save"))
 	{
 		if (ImGui::Button("1-1", { 50.0f,50.0f }))
@@ -197,6 +222,12 @@ void MapEditor::Save(wstring file)
 			writer.Byte(&tileInfo, sizeof(TileMap::TileInfo));
 		}
 	}
+
+	for (auto portal : _portals)
+	{
+		Vector2 pos = portal->GetPos();
+		writer.Byte(&pos, sizeof(Vector2));
+	}
 }
 
 void MapEditor::Load(wstring file)
@@ -216,6 +247,36 @@ void MapEditor::Load(wstring file)
 			tileMap->Set(TileMap::ObjectType::GROUND, tileInfo._groundImage);
 			tileMap->Set(TileMap::ObjectType::CREATURE, tileInfo._creatureType);
 		}
+	}
+
+	for (auto prtral : _portals)
+	{
+		Vector2 pos;
+		Vector2* ptr = &pos;
+		reader.Byte((void**)ptr, sizeof(Vector2));
+
+		prtral->SetPosition(pos);
+	}
+}
+
+void MapEditor::SetPortal()//ÀÛ¼ºÁß
+{
+	switch (_type)
+	{
+	case Portal::UP:
+		_portals[Portal::PortalDir::LEFT]->SetPosition();
+		break;
+	case Portal::DOWN:
+		_portals[Portal::PortalDir::LEFT]->SetPosition();
+		break;
+	case Portal::RIGHT:
+		_portals[Portal::PortalDir::LEFT]->SetPosition();
+		break;
+	case Portal::LEFT:
+		_portals[Portal::PortalDir::LEFT]->SetPosition();
+		break;
+	default:
+		break;
 	}
 }
 

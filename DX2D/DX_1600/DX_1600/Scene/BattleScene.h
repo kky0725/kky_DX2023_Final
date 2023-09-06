@@ -16,12 +16,16 @@ public:
 	void Init(wstring file);
 	void End();
 
+	void ChangeScene();
+
 private:
 	vector<vector<shared_ptr<TileMap>>> _tileMaps;
 
-	int _poolCountX = 10;
-	int _poolCountY = 10;
-
 	vector<shared_ptr<Creature>> _creatures;
 	shared_ptr<Player> _player;
+
+	vector<shared_ptr<Portal>> _portals;
+
+	Vector2 _curIndex = Vector2(1, 1);
+	Vector2 _oldIndex = Vector2(1, 1);
 };

@@ -6,7 +6,8 @@ public:
 	{
 		BACKGROUND,
 		GROUND,
-		CREATURE
+		CREATURE,
+		PORTAL
 	};
 
 	enum CreatureType

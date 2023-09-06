@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Portal.h" />
     <ClInclude Include="Scene\BattleScene.h" />
     <ClInclude Include="Framework\Utility\Singleton.h" />
     <ClInclude Include="Framework\Utility\ItemList.h" />
@@ -235,6 +236,7 @@
     <ClInclude Include="Object\Weapon\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Portal.cpp" />
     <ClCompile Include="Scene\BattleScene.cpp" />
     <ClCompile Include="Framework\Utility\ItemList.cpp" />
     <ClCompile Include="Scene\MapEditor.cpp" />

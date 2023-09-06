@@ -6,6 +6,9 @@
 #define PI 3.141592
 #define GRAVITY 1.0f
 
+#define MAP_SIZE_X 10
+#define MAP_SIZE_Y 10
+
 #define CENTER Vector2(WIN_WIDTH * 0.5f, WIN_HEIGHT * 0.5f)
 
 #define UP_VECTOR		Vector2(0.0f, 1.0f)

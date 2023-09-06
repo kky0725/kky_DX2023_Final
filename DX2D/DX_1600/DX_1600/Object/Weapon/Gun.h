@@ -9,6 +9,7 @@ public:
 	virtual void Render() override;
 	void BulletUpdate();
 	void BulletRender();
+	void DeleteBullet();
 
 	virtual shared_ptr<Transform> GetTransform() override { return _ani->GetTransform(); }
 	virtual shared_ptr<Collider> GetCollider() override { return _collider; }

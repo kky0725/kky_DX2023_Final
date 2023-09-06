@@ -13,6 +13,7 @@ public:
 
 	void BulletUpdate();
 	void BulletRender();
+	void DeleteBullet();
 	
 	virtual void Damaged(int damge);
 	void SetAtkSpeed(float atkPerSec) { _atkSpeed =  1/atkPerSec; }

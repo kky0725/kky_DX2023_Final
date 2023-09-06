@@ -70,13 +70,21 @@ void Player::BulletUpdate()
 {
 	if (Inventory::GetInstance()->CurWeapon()->WTIsSword() && !Inventory::GetInstance()->AnotherWeapon()->WTIsSword())
 		dynamic_pointer_cast<Gun>(Inventory::GetInstance()->AnotherWeapon())->BulletUpdate();
-
 }
 
 void Player::BulletRender()
 {
 	if (Inventory::GetInstance()->CurWeapon()->WTIsSword() && !Inventory::GetInstance()->AnotherWeapon()->WTIsSword())
 		dynamic_pointer_cast<Gun>(Inventory::GetInstance()->AnotherWeapon())->BulletRender();
+}
+
+void Player::DeleteBullet()
+{
+	if (!Inventory::GetInstance()->CurWeapon()->WTIsSword())
+		dynamic_pointer_cast<Gun>(_weapon)->DeleteBullet();
+
+	if (Inventory::GetInstance()->CurWeapon()->WTIsSword() && !Inventory::GetInstance()->AnotherWeapon()->WTIsSword())
+		dynamic_pointer_cast<Gun>(Inventory::GetInstance()->AnotherWeapon())->DeleteBullet();
 }
 
 void Player::Damaged(int damge)
