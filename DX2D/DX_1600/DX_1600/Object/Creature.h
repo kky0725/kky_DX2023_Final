@@ -13,7 +13,7 @@ public:
 	const int& GetHp() const { return _hp; }
 
 	Vector2 GetPosition() { return _collider->GetTransform()->GetWorldPosition(); }
-	void SetPosition(Vector2 pos) { _collider->SetPosition(pos); }
+	virtual void SetPosition(Vector2 pos) { _collider->SetPosition(pos); }
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	shared_ptr<Transform> GetTransform() { return _collider->GetTransform(); }
 

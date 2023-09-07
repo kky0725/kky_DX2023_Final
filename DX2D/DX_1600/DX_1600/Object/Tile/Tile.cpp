@@ -9,7 +9,7 @@ Tile::Tile(TileImage tileImage, Vector2 pos)
 
 	if (tileImage <= TileImage::WALL_CHAIN)
 		_tileType = TileType::BACKGROUND;
-	else if (tileImage <= TileImage::ONE_WAY0)
+	else if (tileImage <= TileImage::ONE_WAY3)
 		_tileType = TileType::PASSABLE;
 	else
 		_tileType = TileType::IMPASSABLE;
@@ -52,14 +52,19 @@ void Tile::Render()
 		_collider->Render();
 }
 
-bool Tile::Block(shared_ptr<Collider> collider)
+bool Tile::Block(shared_ptr<Collider> collider, bool monster)
 {
 	if (_tileType == TileType::BACKGROUND)
 		return false;
 	else if (_tileType == TileType::IMPASSABLE)
 		return TileBlock(collider);
 	else if (_tileType == TileType::PASSABLE)
+	{
+		if (monster)
+			return TileBlock(collider);//여기 문제 있음
+
 		return PassableBlock(collider);
+	}
 }
 
 bool Tile::PassableBlock(shared_ptr<Collider> collider)

@@ -8,8 +8,7 @@ MapEditor::MapEditor()
 		vector<shared_ptr<TileMap>> tileMapY;
 		for (int j = 0; j < MAP_SIZE_Y; j++)
 		{
-			shared_ptr<TileMap> tileMap = make_shared<TileMap>(40.0f, Vector2(i * 40.0f - 60.0f, j * 40.0f - 60.0f));
-			tileMap->GetCollider()->GetTransform()->SetPosition(Vector2(i * 40.0f - 60.0f, j * 40.0f - 60.0f));
+			shared_ptr<TileMap> tileMap = make_shared<TileMap>(40.0f, Vector2(i * 40.0f - CORRECTION_VALUE_WIDTH, j * 40.0f - CORRECTION_VALUE_HEIGHT));
 			tileMapY.push_back(tileMap);
 		}
 		_tileMaps.push_back(tileMapY);
@@ -17,10 +16,10 @@ MapEditor::MapEditor()
 
 	_portals.resize(4);
 
-	_portals[Portal::PortalDir::UP] = make_shared<Portal>();
-	_portals[Portal::PortalDir::DOWN] = make_shared<Portal>();
-	_portals[Portal::PortalDir::RIGHT] = make_shared<Portal>();
-	_portals[Portal::PortalDir::LEFT] = make_shared<Portal>();
+	_portals[Portal::PortalDir::UP] = make_shared<Portal>(Portal::PortalDir::UP);
+	_portals[Portal::PortalDir::DOWN] = make_shared<Portal>(Portal::PortalDir::DOWN);
+	_portals[Portal::PortalDir::RIGHT] = make_shared<Portal>(Portal::PortalDir::RIGHT);
+	_portals[Portal::PortalDir::LEFT] = make_shared<Portal>(Portal::PortalDir::LEFT);
 }
 
 MapEditor::~MapEditor()
@@ -37,7 +36,8 @@ void MapEditor::Update()
 			{
 				if (_objectType == TileMap::ObjectType::PORTAL)
 				{
-					SetPortal();
+					Vector2 pos = tileMap->GetCollider()->GetPos();
+					SetPortal(pos);
 				}
 				else
 					tileMap->Set(_objectType, _type);
@@ -191,6 +191,8 @@ void MapEditor::Create()
 	{
 		if (ImGui::Button("1-1", { 50.0f,50.0f }))
 			Save(L"1 - 1.map");
+		if (ImGui::Button("1-2", { 50.0f,50.0f }))
+			Save(L"1 - 2.map");
 		ImGui::EndMenu();
 	}
 
@@ -198,7 +200,8 @@ void MapEditor::Create()
 	{
 		if (ImGui::Button("1-1", { 50.0f,50.0f }))
 			Load(L"1 - 1.map");
-		ImGui::Button("1-2", { 50.0f,50.0f });
+		if(ImGui::Button("1-2", { 50.0f,50.0f }))
+			Load(L"1 - 2.map");
 		ImGui::Button("1-3", { 50.0f,50.0f });
 		ImGui::Button("1-4", { 50.0f,50.0f });
 		ImGui::Button("2-1", { 50.0f,50.0f });
@@ -214,6 +217,14 @@ void MapEditor::Save(wstring file)
 	wstring filePath = L"MapInfo/" + file;
 	BinaryWriter writer = BinaryWriter(filePath);
 
+
+	for (int i = 0; i < 4; i++)
+	{
+		Vector2 pos = _portals[i]->GetPos();
+		writer.Float(pos.x);
+		writer.Float(pos.y);
+	}
+
 	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
 	{
 		for (shared_ptr<TileMap> tileMap : tileMapY)
@@ -223,17 +234,27 @@ void MapEditor::Save(wstring file)
 		}
 	}
 
-	for (auto portal : _portals)
-	{
-		Vector2 pos = portal->GetPos();
-		writer.Byte(&pos, sizeof(Vector2));
-	}
+	//for (auto portal : _portals)
+	//{
+	//	Vector2 pos = portal->GetPos();
+	//	writer.Byte(&pos, sizeof(Vector2));
+	//}
+
 }
 
 void MapEditor::Load(wstring file)
 {
 	wstring filePath = L"MapInfo/" + file;
 	BinaryReader reader = BinaryReader(filePath);
+
+	for (int i = 0; i < 4; i++)
+	{
+		Vector2 pos;
+		pos.x = reader.Float();
+		pos.y = reader.Float();
+
+		_portals[i]->SetPosition(pos);
+	}
 
 	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
 	{
@@ -249,31 +270,34 @@ void MapEditor::Load(wstring file)
 		}
 	}
 
-	for (auto prtral : _portals)
-	{
-		Vector2 pos;
-		Vector2* ptr = &pos;
-		reader.Byte((void**)ptr, sizeof(Vector2));
+	//for (auto portal : _portals)
+	//{
+	//	Vector2 pos;
+	//	Vector2* ptr = &pos;
+	//	reader.Byte((void**)ptr, sizeof(Vector2));
 
-		prtral->SetPosition(pos);
-	}
+	//	portal->SetPosition(pos);
+	//}
+
+
+
 }
 
-void MapEditor::SetPortal()//작성중
+void MapEditor::SetPortal(Vector2 pos)//작성중
 {
 	switch (_type)
 	{
 	case Portal::UP:
-		_portals[Portal::PortalDir::LEFT]->SetPosition();
+		_portals[Portal::PortalDir::UP]->SetPosition(pos + Vector2(20.0f, 0.0f));
 		break;
 	case Portal::DOWN:
-		_portals[Portal::PortalDir::LEFT]->SetPosition();
+		_portals[Portal::PortalDir::DOWN]->SetPosition(pos + Vector2(20.0f, 0.0f));
 		break;
 	case Portal::RIGHT:
-		_portals[Portal::PortalDir::LEFT]->SetPosition();
+		_portals[Portal::PortalDir::RIGHT]->SetPosition(pos + Vector2(0.0f, 20.0f));
 		break;
 	case Portal::LEFT:
-		_portals[Portal::PortalDir::LEFT]->SetPosition();
+		_portals[Portal::PortalDir::LEFT]->SetPosition(pos + Vector2(0.0f, 20.0f));
 		break;
 	default:
 		break;

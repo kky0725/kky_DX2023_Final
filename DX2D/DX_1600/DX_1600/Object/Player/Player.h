@@ -29,6 +29,8 @@ public:
 
 	void SwapWeapon();
 
+	virtual void SetPosition(Vector2 pos) override { _footHold->SetPosition(pos); }
+
 	virtual int CheckAttack(shared_ptr<Collider> enemy)  override;
 	int CheckAttackSword(shared_ptr<Collider> enemy);
 	int CheckAttackBow(shared_ptr<Collider> enemy);
@@ -41,6 +43,8 @@ public:
 
 	void Die();
 	bool End() { return _end; }
+
+	void RestJump() { _jumpPower = 0; }
 
 	shared_ptr<Collider> GetFootHold() { return _footHold; }
 private:

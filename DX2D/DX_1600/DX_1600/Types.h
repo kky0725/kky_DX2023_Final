@@ -6,8 +6,12 @@
 #define PI 3.141592
 #define GRAVITY 1.0f
 
-#define MAP_SIZE_X 10
-#define MAP_SIZE_Y 10
+#define MAP_SIZE_X 20 
+//50으로 수정 예정
+#define MAP_SIZE_Y 20
+
+#define CORRECTION_VALUE_WIDTH  700.0f
+#define CORRECTION_VALUE_HEIGHT 360.0f
 
 #define CENTER Vector2(WIN_WIDTH * 0.5f, WIN_HEIGHT * 0.5f)
 

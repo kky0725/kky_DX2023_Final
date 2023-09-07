@@ -21,6 +21,8 @@ TileMap::TileMap(float size, Vector2 pos)
 
 	CreateBackGround(Tile::TileImage::WALL_BASIC4);
 	_backGround->Update();
+
+	_collider->SetPosition(pos);
 }
 
 TileMap::~TileMap()
@@ -107,12 +109,12 @@ void TileMap::CreateCreature(CreatureType type)
 	_creatureTransform->Update();
 }
 
-bool TileMap::Block(shared_ptr<Collider> collider)
+bool TileMap::Block(shared_ptr<Collider> collider, bool monster)
 {
 	if(!_ground)
 		return false;
 
-	if (_ground->Block(collider))
+	if (_ground->Block(collider), monster)
 		return true;
 }
 

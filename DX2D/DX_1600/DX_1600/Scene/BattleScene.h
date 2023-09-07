@@ -26,6 +26,8 @@ private:
 
 	vector<shared_ptr<Portal>> _portals;
 
-	Vector2 _curIndex = Vector2(1, 1);
-	Vector2 _oldIndex = Vector2(1, 1);
+	int _curIndex_x = 1;
+	int _curIndex_y = 1;
+	int _oldIndex_x = 1;
+	int _oldIndex_y = 1;
 };

@@ -16,7 +16,7 @@ public:
 	void Save(wstring file);
 	void Load(wstring file);
 
-	void SetPortal();
+	void SetPortal(Vector2 pos);
 
 private:
 	vector<vector<shared_ptr<TileMap>>> _tileMaps;

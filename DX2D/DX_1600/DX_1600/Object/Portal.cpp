@@ -7,6 +7,8 @@ Portal::Portal(PortalDir type)
 	_ani = make_shared<Animation>();
 	_col = make_shared<RectCollider>(Vector2(40.0f, 80.0f));
 
+	//_ani->CreateAction();
+
 	_ani->SetParent(_col->GetTransform());
 
 	_col->SetPosition(Vector2(-1000.0f, -1000.0f));
@@ -36,13 +38,13 @@ Portal::~Portal()
 
 void Portal::Update()
 {
-	_ani->Update();
+	//_ani->Update();
 	_col->Update();
 }
 
 void Portal::Render()
 {
-	_ani->Render();
+	//_ani->Render();
 	_col->Render();
 }
 

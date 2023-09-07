@@ -67,7 +67,7 @@ public:
 	void Update();
 	void Render();
 
-	bool Block(shared_ptr<Collider> collider);
+	bool Block(shared_ptr<Collider> collider, bool monster = true);
 	bool PassableBlock(shared_ptr<Collider> collider);
 	bool TileBlock(shared_ptr<Collider> collider);
 
