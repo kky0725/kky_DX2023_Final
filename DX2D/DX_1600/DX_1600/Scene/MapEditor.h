@@ -18,6 +18,8 @@ public:
 
 	void SetPortal(Vector2 pos);
 
+	virtual void Init();
+
 private:
 	vector<vector<shared_ptr<TileMap>>> _tileMaps;
 

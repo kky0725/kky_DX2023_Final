@@ -3,6 +3,7 @@
 
 class Player : public Creature
 {
+	friend class Tile;
 public:
 	Player();
 	virtual ~Player();
@@ -14,6 +15,8 @@ public:
 	void BulletUpdate();
 	void BulletRender();
 	void DeleteBullet();
+
+	void UpdateWeapon();
 	
 	virtual void Damaged(int damge);
 	void SetAtkSpeed(float atkPerSec) { _atkSpeed =  1/atkPerSec; }

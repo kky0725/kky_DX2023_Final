@@ -17,11 +17,7 @@ Player::Player()
 	_collider->SetParent(_footHold->GetTransform());
 	_collider->SetPosition(Vector2(0.0f, 5.0f));
 
-	_weapon = Inventory::GetInstance()->CurWeapon();
-	_weapon->GetCollider()->SetParent(_slot);
-	_weapon->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
-
-	SetAtkSpeed(_weapon->GetAtkPerSec());
+	UpdateWeapon();
 }
 
 Player::~Player()
@@ -85,6 +81,15 @@ void Player::DeleteBullet()
 
 	if (Inventory::GetInstance()->CurWeapon()->WTIsSword() && !Inventory::GetInstance()->AnotherWeapon()->WTIsSword())
 		dynamic_pointer_cast<Gun>(Inventory::GetInstance()->AnotherWeapon())->DeleteBullet();
+}
+
+void Player::UpdateWeapon()
+{
+	_weapon = Inventory::GetInstance()->CurWeapon();
+	_weapon->GetCollider()->SetParent(_slot);
+	_weapon->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
+
+	SetAtkSpeed(_weapon->GetAtkPerSec());
 }
 
 void Player::Damaged(int damge)
@@ -278,11 +283,7 @@ void Player::SwapWeapon()
 	if (KEY_DOWN(VK_XBUTTON1))
 	{
 		Inventory::GetInstance()->ChangeWeapon();
-		_weapon = Inventory::GetInstance()->CurWeapon();
-
-		SetAtkSpeed(_weapon->GetAtkPerSec());
-		_weapon->GetCollider()->SetParent(_slot);
-		_weapon->GetCollider()->GetTransform()->SetPosition(Vector2(50, 0));
+		UpdateWeapon();
 	}
 }
 

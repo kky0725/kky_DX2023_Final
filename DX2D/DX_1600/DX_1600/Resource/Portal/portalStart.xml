@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+Format:
+n  => name
+x  => x pos
+y  => y pos
+w  => width
+h  => height
+pX => x pos of the pivot point
+pY => y pos of the pivot point
+oX => x-corner offset
+oY => y-corner offset
+oW => original width
+oH => original height
+r => 'y' if sprite is rotated-->
+<TextureAtlas imagePath="portalStart.png" width="130" height="70" scale="1" format="RGBA8888">
+  <sprite n="Stele00.png" x="0" y="0" w="66" h="16" pX="0.5" pY="0.5" oX="0" oY="2" oW="66" oH="20"/>
+  <sprite n="Stele01.png" x="0" y="16" w="66" h="16" pX="0.5" pY="0.5" oX="0" oY="2" oW="66" oH="20"/>
+  <sprite n="Stele02.png" x="0" y="32" w="66" h="18" pX="0.5" pY="0.5" oX="0" oY="1" oW="66" oH="20"/>
+  <sprite n="Stele03.png" x="0" y="50" w="64" h="20" pX="0.5" pY="0.5" oX="1" oY="0" oW="66" oH="20"/>
+  <sprite n="Stele04.png" x="66" y="0" w="64" h="16" pX="0.5" pY="0.5" oX="1" oY="2" oW="66" oH="20"/>
+  <sprite n="Stele05.png" x="66" y="16" w="64" h="16" pX="0.5" pY="0.5" oX="1" oY="2" oW="66" oH="20"/>
+  <sprite n="Stele06.png" x="66" y="32" w="64" h="16" pX="0.5" pY="0.5" oX="1" oY="2" oW="66" oH="20"/>
+  <sprite n="Stele07.png" x="66" y="48" w="64" h="16" pX="0.5" pY="0.5" oX="1" oY="2" oW="66" oH="20"/>
+</TextureAtlas>

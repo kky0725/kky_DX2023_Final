@@ -62,8 +62,8 @@ bool Tile::Block(shared_ptr<Collider> collider, bool monster)
 	{
 		if (monster)
 			return TileBlock(collider);//여기 문제 있음
-
-		return PassableBlock(collider);
+		else
+			return PassableBlock(collider);
 	}
 }
 

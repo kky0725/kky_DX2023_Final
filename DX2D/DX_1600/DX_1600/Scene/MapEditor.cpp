@@ -193,6 +193,8 @@ void MapEditor::Create()
 			Save(L"1 - 1.map");
 		if (ImGui::Button("1-2", { 50.0f,50.0f }))
 			Save(L"1 - 2.map");
+		if (ImGui::Button("1-3", { 50.0f,50.0f }))
+			Save(L"1 - 3.map");
 		ImGui::EndMenu();
 	}
 
@@ -202,7 +204,8 @@ void MapEditor::Create()
 			Load(L"1 - 1.map");
 		if(ImGui::Button("1-2", { 50.0f,50.0f }))
 			Load(L"1 - 2.map");
-		ImGui::Button("1-3", { 50.0f,50.0f });
+		if (ImGui::Button("1-3", { 50.0f,50.0f }))
+			Load(L"1 - 3.map");
 		ImGui::Button("1-4", { 50.0f,50.0f });
 		ImGui::Button("2-1", { 50.0f,50.0f });
 		ImGui::Button("2-2", { 50.0f,50.0f });
@@ -302,5 +305,10 @@ void MapEditor::SetPortal(Vector2 pos)//ÀÛ¼ºÁß
 	default:
 		break;
 	}
+}
+
+void MapEditor::Init()
+{
+	CAMERA->SetTarget(nullptr);
 }
 

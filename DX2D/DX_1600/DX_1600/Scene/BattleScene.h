@@ -17,6 +17,7 @@ public:
 	void End();
 
 	void ChangeScene();
+	void ClearCheck();
 
 private:
 	vector<vector<shared_ptr<TileMap>>> _tileMaps;
@@ -30,4 +31,6 @@ private:
 	int _curIndex_y = 1;
 	int _oldIndex_x = 1;
 	int _oldIndex_y = 1;
+
+	vector<vector<bool>> _cleared;
 };

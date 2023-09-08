@@ -114,7 +114,7 @@ bool TileMap::Block(shared_ptr<Collider> collider, bool monster)
 	if(!_ground)
 		return false;
 
-	if (_ground->Block(collider), monster)
+	if (_ground->Block(collider, monster))
 		return true;
 }
 
