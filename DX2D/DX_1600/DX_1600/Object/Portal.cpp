@@ -109,3 +109,11 @@ void Portal::Collison(shared_ptr<Collider> col, int& curIndex_x, int& curIndex_y
 		}
 	}
 }
+
+void Portal::Block(shared_ptr<Collider> col)
+{
+	if (_isActive)
+		return;
+
+	_col->Block(col);
+}

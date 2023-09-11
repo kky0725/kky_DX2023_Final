@@ -22,6 +22,7 @@ public:
 	void OnActive();
 	void OffActive();
 	void Collison(shared_ptr<Collider> col, int& curIndex_x, int& curIndex_y);
+	void Block(shared_ptr<Collider> col);
 
 	void SetPosition(Vector2 pos) {	_col->SetPosition(pos);	}
 	Vector2 GetPos() { return _col->GetPos(); }

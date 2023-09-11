@@ -1,5 +1,10 @@
 #pragma once
-class BossHpBar
+class BossHpBar : public HpBar
 {
-};
+public:
+	BossHpBar();
+	~BossHpBar();
 
+private:
+
+};

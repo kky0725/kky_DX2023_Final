@@ -11,6 +11,8 @@ public:
 	virtual void PostRender();
 
 	const int& GetHp() const { return _hp; }
+	void SetHpBar();
+
 
 	Vector2 GetPosition() { return _collider->GetTransform()->GetWorldPosition(); }
 	virtual void SetPosition(Vector2 pos) { _collider->SetPosition(pos); }
@@ -30,7 +32,11 @@ protected:
 	shared_ptr<Transform>	_transform;
 	shared_ptr<Collider>	_collider;
 
-	int _hp = 10;
+	shared_ptr<class HpBar> _hpBar;
+
+	UINT _maxHp = 10;
+	UINT _hp = 10;
+
 	bool _isActive = true;
 
 	float _speed = 200.0f;

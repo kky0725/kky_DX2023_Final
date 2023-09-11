@@ -115,6 +115,12 @@ void BattleScene::PostRender()
 
 	ImGui::Text("PlayerHp : %d", _player->GetHp());
 	ImGui::Text("PlayerPos : %f, %f", _player->GetPosition().x, _player->GetPosition().y);
+
+	/////////////////////
+
+	for (auto creature : _creatures)
+		creature->PostRender();
+	_player->PostRender();
 }
 
 void BattleScene::Block()
@@ -131,6 +137,19 @@ void BattleScene::Block()
 			}
 		}
 	}
+
+	for (auto portal : _portals)
+	{
+		portal->Block(_player->GetFootHold());
+
+		for (auto creature : _creatures)
+		{
+			portal->Block(creature->GetCollider());
+		}
+
+	}
+
+
 }
 
 void BattleScene::CheckAttack()

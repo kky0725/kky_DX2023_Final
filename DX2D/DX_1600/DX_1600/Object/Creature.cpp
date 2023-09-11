@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "Creature.h"
 
+#include "UI/HpBar.h"
+
 Creature::Creature(wstring string, float radius)
 {
 	_quad = make_shared<Quad>(string);
@@ -8,11 +10,15 @@ Creature::Creature(wstring string, float radius)
 	_collider = make_shared<CircleCollider>(radius);
 
 	_transform->SetParent(_collider->GetTransform());
+
+	_hpBar = make_shared<HpBar>(Vector2(50.0f, 10.0f));
+
+	_hpBar->SetParent(_collider->GetTransform());
 }
 
 Creature::Creature(float radius)
 {
-	_quad == nullptr;
+	_quad = nullptr;
 	_collider = make_shared<CircleCollider>(radius);
 }
 
@@ -30,6 +36,9 @@ void Creature::Update()
 	}
 	_collider->Update();
 	CheckDamaged();
+
+	_hpBar->Update();
+	SetHpBar();
 }
 
 void Creature::Render()
@@ -46,6 +55,13 @@ void Creature::Render()
 
 void Creature::PostRender()
 {
+	_hpBar->PostRender();
+}
+
+void Creature::SetHpBar()
+{
+	_hpBar->SetMaxHp(_maxHp);
+	_hpBar->SetCurHp(_hp);
 }
 
 void Creature::Damaged(int damge)

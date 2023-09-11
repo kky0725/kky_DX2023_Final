@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Player_Ani.h"
 
+#include "../UI/PlayerHpBar.h"
+
 Player::Player()
 	:Creature(27.0f)
 {
@@ -11,7 +13,10 @@ Player::Player()
 	_ani = make_shared<Player_Ani>();
 	_ani->SetParent(_collider->GetTransform());
 
-	_hp = 100000;
+	_hpBar = make_shared<PlayerHpBar>();
+
+	_maxHp = 100;
+	_hp = _maxHp;
 
 	_footHold = make_shared<CircleCollider>(12.0f);
 	_collider->SetParent(_footHold->GetTransform());
@@ -40,6 +45,8 @@ void Player::Update()
 	BulletUpdate();
 
 	Inventory::GetInstance()->Update();
+
+	SetHpBar();
 }
 
 void Player::Render()
@@ -60,6 +67,8 @@ void Player::PostRender()
 	ImGui::Text("PlayerDashCount : %d", _dashCount);
 
 	Inventory::GetInstance()->PostRender();
+
+	_hpBar->PostRender();
 }
 
 void Player::BulletUpdate()

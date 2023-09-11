@@ -1,13 +1,24 @@
 #include "framework.h"
 #include "HpBar.h"
 
-HpBar::HpBar(wstring path, Vector2 size)
+HpBar::HpBar(Vector2 size)
+	:_size(size)
 {
-	_transform = make_shared<Transform>();
-	_quad = make_shared<Quad>(path, size);
-	_quad->SetPS(ADD_PS(L"Shader/HpBarPS.hlsl"));
+	_baseTransform = make_shared<Transform>();
+	_lifeTransform = make_shared<Transform>();
+	_base = nullptr;
+	_back = make_shared<Quad>(L"Resource/UI/BossLifeBack.png");
+	_life = make_shared<Quad>(L"Resource/UI/LifeBar.png", size);
+	_life->SetPS(ADD_PS(L"Shader/HpBarPS.hlsl"));
 
 	_intBuffer = make_shared<IntBuffer>();
+
+	_baseTransform->SetPosition(Vector2(0.0f, -10.0f));
+	_lifeTransform->SetPosition(Vector2(0.0f, 0.0f));
+
+	_baseTransform->SetScale(Vector2(2.0f, 2.0f));
+
+	_lifeTransform->SetParent(_baseTransform);
 }
 
 HpBar::~HpBar()
@@ -16,13 +27,20 @@ HpBar::~HpBar()
 
 void HpBar::Update()
 {
-	_transform->Update();
-	_intBuffer->Update();
+	_baseTransform->Update();
+	_lifeTransform->Update();
+		_intBuffer->Update();
 }
 
 void HpBar::PostRender()
 {
+	if (_maxHP == _curHP)
+		return;
+
 	_intBuffer->SetPsBuffer(0);
-	_transform->SetBuffer(0);
-	_quad->Render();
+	_baseTransform->SetBuffer(0);
+	_back->Render();
+
+	_lifeTransform->SetBuffer(0);
+	_life->Render();
 }
