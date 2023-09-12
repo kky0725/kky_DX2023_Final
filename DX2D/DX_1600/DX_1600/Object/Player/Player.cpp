@@ -3,6 +3,7 @@
 #include "Player_Ani.h"
 
 #include "../UI/PlayerHpBar.h"
+#include "../UI/DashCount.h"
 
 Player::Player()
 	:Creature(27.0f)
@@ -15,12 +16,14 @@ Player::Player()
 
 	_hpBar = make_shared<PlayerHpBar>();
 
-	_maxHp = 100;
+	_maxHp = 1000;
 	_hp = _maxHp;
 
 	_footHold = make_shared<CircleCollider>(12.0f);
 	_collider->SetParent(_footHold->GetTransform());
 	_collider->SetPosition(Vector2(0.0f, 5.0f));
+
+	_dashCountUI = make_shared<DashCount>();
 
 	UpdateWeapon();
 }
@@ -37,6 +40,7 @@ void Player::Update()
 	Input();
 	SetWeaponDir();
 
+	SetHpBar();
 	Creature::Update();
 	_slot->Update();
 	_ani->Update();
@@ -46,14 +50,13 @@ void Player::Update()
 
 	Inventory::GetInstance()->Update();
 
-	SetHpBar();
 }
 
 void Player::Render()
 {
 	if (_end)
 		return;
-	Creature::Render();
+	_collider->Render();
 	_slot->SetBuffer(0);
 	_ani->Render();
 	_weapon->Render();
@@ -69,6 +72,7 @@ void Player::PostRender()
 	Inventory::GetInstance()->PostRender();
 
 	_hpBar->PostRender();
+	_dashCountUI->PostRender();
 }
 
 void Player::BulletUpdate()
@@ -226,6 +230,9 @@ void Player::Dash()
 		//_speed = _dashSpeed;
 		_dashCount--;
 	}
+
+	_dashCountUI->SetCount(_maxDashCount, _dashCount);
+	_dashCountUI->Update();
 }
 
 void Player::SwordAtk()

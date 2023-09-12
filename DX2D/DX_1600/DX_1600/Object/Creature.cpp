@@ -20,6 +20,10 @@ Creature::Creature(float radius)
 {
 	_quad = nullptr;
 	_collider = make_shared<CircleCollider>(radius);
+
+	_hpBar = make_shared<HpBar>(Vector2(50.0f, 10.0f));
+
+	_hpBar->SetParent(_collider->GetTransform());
 }
 
 Creature::~Creature()
@@ -37,8 +41,8 @@ void Creature::Update()
 	_collider->Update();
 	CheckDamaged();
 
-	_hpBar->Update();
 	SetHpBar();
+	_hpBar->Update();
 }
 
 void Creature::Render()
@@ -51,11 +55,11 @@ void Creature::Render()
 		_quad->Render();
 	}
 	_collider->Render();
+	_hpBar->PostRender();
 }
 
 void Creature::PostRender()
 {
-	_hpBar->PostRender();
 }
 
 void Creature::SetHpBar()

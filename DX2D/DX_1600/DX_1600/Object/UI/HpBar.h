@@ -9,8 +9,8 @@ public:
 	virtual void PostRender();
 
 	void SetPosition(Vector2 pos) { _baseTransform->SetPosition(pos); }
-	void SetMaxHp(UINT value) { _maxHP = value; _intBuffer->_data.value1 = (int)value;}
-	void SetCurHp(UINT value) { _curHP = value; _intBuffer->_data.value2 = (int)value;}
+	void SetMaxHp(int value) { _maxHP = value; _intBuffer->_data.value1 = value;}
+	void SetCurHp(int value) { _curHP = value; _intBuffer->_data.value2 = value;}
 
 	void SetParent(shared_ptr<Transform> parent) { _baseTransform->SetParent(parent); }
 

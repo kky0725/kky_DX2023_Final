@@ -13,10 +13,11 @@ HpBar::HpBar(Vector2 size)
 
 	_intBuffer = make_shared<IntBuffer>();
 
-	_baseTransform->SetPosition(Vector2(0.0f, -10.0f));
+	_baseTransform->SetPosition(Vector2(0.0f, -25.0f));
 	_lifeTransform->SetPosition(Vector2(0.0f, 0.0f));
 
-	_baseTransform->SetScale(Vector2(2.0f, 2.0f));
+	_baseTransform->SetScale(Vector2(0.5f, 0.5f));
+	_lifeTransform->SetScale(Vector2(2.1f, 1.0f));
 
 	_lifeTransform->SetParent(_baseTransform);
 }

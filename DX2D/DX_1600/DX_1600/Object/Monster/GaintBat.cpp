@@ -11,7 +11,8 @@ GaintBat::GaintBat(bool basic)//공격 쿨타임 설정하기
 
 	if (_basic)
 	{
-		_hp = 46;
+		_maxHp = 46;
+		_hp = _maxHp;
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "Idle", Vector2(100, 100));
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(100, 100));
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(100, 100));
@@ -19,7 +20,8 @@ GaintBat::GaintBat(bool basic)//공격 쿨타임 설정하기
 	}
 	else
 	{
-		_hp = 44;
+		_maxHp = 44;
+		_hp = _maxHp;
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(100, 100));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(100, 100));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(100, 100));
@@ -35,6 +37,8 @@ GaintBat::GaintBat(bool basic)//공격 쿨타임 설정하기
 		shared_ptr<BatBullet> bullet = make_shared<BatBullet>();
 		_bullets.push_back(bullet);
 	}
+
+	_hpBar->SetPosition(Vector2(0.0f, -50.0f));
 }
 
 GaintBat::~GaintBat()

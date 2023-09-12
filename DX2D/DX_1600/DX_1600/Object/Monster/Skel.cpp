@@ -21,12 +21,18 @@ Skel::Skel(bool basic)
 
 	if (_basic)//검
 	{
+		_maxHp = 56;//수정예정
+		_hp = _maxHp;
+
 		_weapon = make_shared<SkelSword>();
 		_ani->SetState(Animation::State::RUN);
 		_ani->SetEndEvent(Animation::State::ATK, std::bind(&Skel::EndAttack, this));
 	}
 	else//활
 	{
+		_maxHp = 56;//수정예정
+		_hp = _maxHp;
+
 		_weapon = make_shared<SkelBow>();
 		_ani->SetState(Animation::State::IDLE);
 		_ani->SetEndEvent(Animation::State::ATK, std::bind(&Skel::TargetOff, this));

@@ -4,10 +4,13 @@
 #include "SkelBossHand.h"
 #include "SkelBossSword.h"
 
+#include "../../UI/BossHpBar.h"
+
 SkelBoss::SkelBoss()
 	:Creature(90.0f)
 {
-	_hp = 5000;//수치 수정 예정
+	_maxHp = 100;//수치 수정 예정
+	_hp = _maxHp;
 
 	_body = make_shared<Animation>();
 	_body->CreateAction(L"Resource/Monster/SkelBoss/SkelBossIdle.png", "Resource/Monster/SkelBoss/SkelBossIdle.xml", "Idle", Vector2(20.0f, 20.0f));
@@ -43,6 +46,7 @@ SkelBoss::SkelBoss()
 
 	//_idleTime = 10.0f // 보스전 도입부가 필요할 경우 생성자에서 idleTime 값을 키우고 주석 해제.
 
+	_hpBar = make_shared<BossHpBar>();
 }
 
 SkelBoss::~SkelBoss()
@@ -85,6 +89,11 @@ void SkelBoss::PostRender()
 		_bossState = ATKP1;
 		_body->SetState((Animation::State)2);
 	}
+
+	if (!_isActive)
+		return;
+
+	_hpBar->PostRender();
 }
 
 void SkelBoss::EndAttack1()

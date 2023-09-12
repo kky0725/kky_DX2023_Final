@@ -34,8 +34,8 @@ protected:
 
 	shared_ptr<class HpBar> _hpBar;
 
-	UINT _maxHp = 10;
-	UINT _hp = 10;
+	int _maxHp = 10;
+	int _hp = 10;
 
 	bool _isActive = true;
 

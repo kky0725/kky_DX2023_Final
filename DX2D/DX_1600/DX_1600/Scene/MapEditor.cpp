@@ -28,22 +28,26 @@ MapEditor::~MapEditor()
 
 void MapEditor::Update()
 {
-	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
+	if (!ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow))
 	{
-		for (shared_ptr<TileMap> tileMap : tileMapY)
+		for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
 		{
-			if (tileMap->GetCollider()->IsCollision(W_MOUSE_POS) && KEY_PRESS(VK_LBUTTON))
+			for (shared_ptr<TileMap> tileMap : tileMapY)
 			{
-				if (_objectType == TileMap::ObjectType::PORTAL)
+				if (tileMap->GetCollider()->IsCollision(W_MOUSE_POS) && KEY_PRESS(VK_LBUTTON))
 				{
-					Vector2 pos = tileMap->GetCollider()->GetPos();
-					SetPortal(pos);
+					if (_objectType == TileMap::ObjectType::PORTAL)
+					{
+						Vector2 pos = tileMap->GetCollider()->GetPos();
+						SetPortal(pos);
+					}
+					else
+						tileMap->Set(_objectType, _type);
 				}
-				else
-					tileMap->Set(_objectType, _type);
 			}
 		}
 	}
+	
 
 	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
 	{

@@ -81,6 +81,8 @@ void TestScene::PostRender()
 	ImGui::Text("BossHp : %d", _creatures[0]->GetHp());
 
 	_player->PostRender();
+
+	_creatures[0]->PostRender();
 }
 
 void TestScene::CheckAttack()

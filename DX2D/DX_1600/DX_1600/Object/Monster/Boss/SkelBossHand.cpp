@@ -104,7 +104,7 @@ void SkelBossHand::Shoot()
 
 void SkelBossHand::EndLaser()
 {
-	_isActive = false;
+ 	_isActive = false;
 }
 
 void SkelBossHand::Attack()

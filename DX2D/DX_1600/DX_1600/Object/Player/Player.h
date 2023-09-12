@@ -65,6 +65,8 @@ private:
 	float _jumpPower = 0.0f;
 	int _jumpCount = 0;
 
+	shared_ptr<class DashCount> _dashCountUI;
+
 	float _dashSpeed = 600.0f;
 	float _dashTime = 0.0f; //0.5f
 	float _dashCT = 0.0f; //2.0f
