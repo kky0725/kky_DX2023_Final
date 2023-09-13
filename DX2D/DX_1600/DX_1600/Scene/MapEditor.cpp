@@ -151,9 +151,9 @@ void MapEditor::Create()
 		if (ImGui::Button("ONEWAY_R", { 50.0f,50.0f }))
 			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::ONE_WAY3);
 		if (ImGui::Button("LT", { 50.0f,50.0f }))
-			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H13);//midle //tile 이 한줄 밀린듯
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H13);
 		if (ImGui::Button("MT", { 50.0f,50.0f }))
-			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H14);//left
+			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H14);
 		if (ImGui::Button("RT", { 50.0f,50.0f }))
 			SetCurType(TileMap::ObjectType::GROUND, Tile::TileImage::H15);
 		ImGui::EndMenu();
@@ -188,6 +188,31 @@ void MapEditor::Create()
 			SetCurType(TileMap::ObjectType::PORTAL, Portal::PortalDir::RIGHT);
 		if (ImGui::Button("Left", { 50.0f,50.0f }))
 			SetCurType(TileMap::ObjectType::PORTAL, Portal::PortalDir::LEFT);
+		ImGui::EndMenu();
+	}
+
+	if (ImGui::BeginMenu("DeletePortal"))
+	{
+		if (ImGui::Button("Up", { 50.0f,50.0f }))
+		{
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC4);
+			_portals[Portal::PortalDir::UP]->SetPosition(Vector2(-10000.0f, -10000.0f));
+		}
+		if (ImGui::Button("Down", { 50.0f,50.0f }))
+		{
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC4);
+			_portals[Portal::PortalDir::DOWN]->SetPosition(Vector2(-10000.0f, -10000.0f));
+		}
+		if (ImGui::Button("Right", { 50.0f,50.0f }))
+		{
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC4);
+			_portals[Portal::PortalDir::RIGHT]->SetPosition(Vector2(-10000.0f, -10000.0f));
+		}
+		if (ImGui::Button("Left", { 50.0f,50.0f }))
+		{
+			SetCurType(TileMap::ObjectType::BACKGROUND, Tile::TileImage::WALL_BASIC4);
+			_portals[Portal::PortalDir::LEFT]->SetPosition(Vector2(-10000.0f, -10000.0f));
+		}
 		ImGui::EndMenu();
 	}
 

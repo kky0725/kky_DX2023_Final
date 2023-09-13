@@ -1,4 +1,7 @@
 #pragma once
+class Coin;
+class HpBar;
+
 class Creature
 {
 public:
@@ -26,13 +29,16 @@ public:
 	bool IsAtcive() { return _isActive; }
 	void SetIsActive(bool value) { _isActive = value; }
 
+	vector<shared_ptr<Coin>> GetCoins() { return _coins; }
 
 protected:
 	shared_ptr<Quad>		_quad;
 	shared_ptr<Transform>	_transform;
 	shared_ptr<Collider>	_collider;
 
-	shared_ptr<class HpBar> _hpBar;
+	shared_ptr<HpBar> _hpBar;
+
+	vector<shared_ptr<Coin>> _coins;
 
 	int _maxHp = 10;
 	int _hp = 10;

@@ -52,9 +52,9 @@ void GaintBat::Update()
 		return;
 	Move();
 	_ani->Update();
-	Creature::Update();
 	for (auto bullet : _bullets)
 		bullet->Update();
+	Creature::Update();
 }
 
 void GaintBat::Render()
@@ -62,9 +62,9 @@ void GaintBat::Render()
 	if (!_isActive)
 		return;
 	_ani->Render();
-	Creature::Render();
 	for (auto bullet : _bullets)
 		bullet->Render();
+	Creature::Render();
 }
 
 void GaintBat::Attack()

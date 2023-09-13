@@ -146,10 +146,7 @@ void BattleScene::Block()
 		{
 			portal->Block(creature->GetCollider());
 		}
-
 	}
-
-
 }
 
 void BattleScene::CheckAttack()

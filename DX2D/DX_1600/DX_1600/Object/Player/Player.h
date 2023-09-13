@@ -71,7 +71,7 @@ private:
 	float _dashTime = 0.0f; //0.5f
 	float _dashCT = 0.0f; //2.0f
 	int _dashCount = 2;
-	int _maxDashCount = 2;
+	int _maxDashCount = 2;//최대 5까지 가능
 	bool _dashCool = false;
 
 	bool _end = false;

@@ -13,7 +13,7 @@ Portal::Portal(PortalDir type)
 
 	_ani->SetParent(_col->GetTransform());
 
-	_col->SetPosition(Vector2(-1000.0f, -1000.0f));
+	_col->SetPosition(Vector2(-10000.0f, -10000.0f));
 
 	switch (_type)
 	{

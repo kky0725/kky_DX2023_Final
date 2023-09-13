@@ -26,6 +26,8 @@ Player::Player()
 	_dashCountUI = make_shared<DashCount>();
 
 	UpdateWeapon();
+
+	_coins.resize(0);
 }
 
 Player::~Player()

@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Coin.h" />
     <ClInclude Include="Object\UI\DashCount.h" />
     <ClInclude Include="Object\Portal.h" />
     <ClInclude Include="Scene\BattleScene.h" />
@@ -237,6 +238,7 @@
     <ClInclude Include="Object\Weapon\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Coin.cpp" />
     <ClCompile Include="Object\UI\DashCount.cpp" />
     <ClCompile Include="Object\Portal.cpp" />
     <ClCompile Include="Scene\BattleScene.cpp" />

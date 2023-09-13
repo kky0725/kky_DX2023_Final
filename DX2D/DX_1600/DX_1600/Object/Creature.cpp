@@ -2,6 +2,7 @@
 #include "Creature.h"
 
 #include "UI/HpBar.h"
+#include "Coin.h"
 
 Creature::Creature(wstring string, float radius)
 {
@@ -32,6 +33,11 @@ Creature::~Creature()
 
 void Creature::Update()
 {
+	for (auto coin : _coins)
+	{
+		coin->AppearCoin(_collider->GetPos());
+	}
+
 	if (!_isActive)
 		return;
 	if (_quad != nullptr)
@@ -83,6 +89,11 @@ void Creature::Damaged(int damge)
 	{
 		_hp = 0;
 		_isActive = false;
+
+		for (auto coin : _coins)
+		{
+			coin->AppearCoin(_collider->GetPos());
+		}
 	}
 }
 

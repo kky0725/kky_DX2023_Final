@@ -47,6 +47,8 @@ SkelBoss::SkelBoss()
 	//_idleTime = 10.0f // 보스전 도입부가 필요할 경우 생성자에서 idleTime 값을 키우고 주석 해제.
 
 	_hpBar = make_shared<BossHpBar>();
+
+	_coins.resize(0);
 }
 
 SkelBoss::~SkelBoss()
