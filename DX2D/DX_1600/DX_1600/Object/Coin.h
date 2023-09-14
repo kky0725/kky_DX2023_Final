@@ -10,6 +10,7 @@ public:
 
 	bool IsCollison(shared_ptr<Collider> col);
 	void AppearCoin(Vector2 value);
+	shared_ptr<Collider> GetCollider() { return _col; }
 
 private:
 	shared_ptr<Animation> _ani;

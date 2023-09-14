@@ -30,6 +30,10 @@ Bat::~Bat()
 
 void Bat::Update()
 {
+	for (auto coin : _coins)
+	{
+		coin->Update();
+	}
 	if (!_isActive)
 		return;
 	Move();
@@ -39,6 +43,10 @@ void Bat::Update()
 
 void Bat::Render()
 {
+	for (auto coin : _coins)
+	{
+		coin->Render();
+	}
 	if (!_isActive)
 		return;
 	_ani->Render();

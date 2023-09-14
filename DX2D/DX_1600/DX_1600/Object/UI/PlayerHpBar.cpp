@@ -16,6 +16,16 @@ PlayerHpBar::PlayerHpBar()
 	_lifeTransform->SetScale(Vector2(1.0f, 1.0f));
 
 	_baseTransform->SetParent(nullptr);
+
+	_maxTen = make_shared<NumFont>(_fontSize);
+	_maxOne = make_shared<NumFont>(_fontSize);
+	_curTen = make_shared<NumFont>(_fontSize);
+	_curOne = make_shared<NumFont>(_fontSize);
+
+	_maxTen->SetPosition(Vector2(-540.0f - 50.0f, 340.0f));
+	_maxOne->SetPosition(Vector2(-540.0f - 40.0f, 340.0f));
+	_curTen->SetPosition(Vector2(-540.0f - 10.0f, 340.0f));
+	_curOne->SetPosition(Vector2(-540.0f -  0.0f, 340.0f));
 }
 
 PlayerHpBar::~PlayerHpBar()
@@ -25,6 +35,7 @@ PlayerHpBar::~PlayerHpBar()
 void PlayerHpBar::Update()
 {
 	HpBar::Update();
+	SetNumber();
 }
 
 void PlayerHpBar::PostRender()
@@ -38,4 +49,17 @@ void PlayerHpBar::PostRender()
 
 	_baseTransform->SetBuffer(0);
 	_base->Render();
+
+	_maxTen->Render();
+	_maxOne->Render();
+	_curTen->Render();
+	_curOne->Render();
+}
+
+void PlayerHpBar::SetNumber()
+{
+	_maxTen->SetNumber(0);
+	_maxOne->SetNumber(0);
+	_curTen->SetNumber(0);
+	_curOne->SetNumber(0);
 }

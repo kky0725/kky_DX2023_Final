@@ -100,6 +100,7 @@ using namespace Microsoft::WRL;
 //Object
 #include "Object/Basic/Quad.h"
 #include "Object/Basic/Sprite.h"
+#include "Object/Basic/NumFont.h"
 #include "Object/Basic/Effect.h"
 #include "Object/Basic/EffectManager.h"
 #include "Object/Creature.h"

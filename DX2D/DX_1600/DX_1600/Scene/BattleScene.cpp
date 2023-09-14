@@ -134,7 +134,21 @@ void BattleScene::Block()
 			for (auto creature : _creatures)
 			{
 				tileMap->Block(creature->GetCollider());
+
+				for (auto coin : creature->GetCoins())
+				{
+					tileMap->Block(coin->GetCollider());
+				}
 			}
+		}
+	}
+
+	for (auto creature : _creatures)
+	{
+		for (auto coin : creature->GetCoins())
+		{
+			if (coin->IsCollison(_player->GetCollider()))
+				Inventory::GetInstance()->GetCoin();
 		}
 	}
 

@@ -25,6 +25,13 @@ Creature::Creature(float radius)
 	_hpBar = make_shared<HpBar>(Vector2(50.0f, 10.0f));
 
 	_hpBar->SetParent(_collider->GetTransform());
+
+	int count = MyMath::RandomInt(2, 3);
+	for (int i = 0; i < count; i++)
+	{
+		shared_ptr<Coin> coin = make_shared<Coin>();
+		_coins.push_back(coin);
+	}
 }
 
 Creature::~Creature()
@@ -33,11 +40,6 @@ Creature::~Creature()
 
 void Creature::Update()
 {
-	for (auto coin : _coins)
-	{
-		coin->AppearCoin(_collider->GetPos());
-	}
-
 	if (!_isActive)
 		return;
 	if (_quad != nullptr)

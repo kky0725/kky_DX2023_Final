@@ -19,6 +19,8 @@ public:
 	shared_ptr<Weapon> CurWeapon();
 	shared_ptr<Weapon> AnotherWeapon();
 
+	void GetCoin() { _curCoin++; }
+
 	//icon 슬롯에 무기 및 악세사리 넣을 수 있는 기능 만들고, 장착중인 무기 및 액세서리와 아이콘 슬롯에 있는 아이템 교환 하는 기능 추가 예정
 
 private:

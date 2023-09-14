@@ -51,6 +51,10 @@ Skel::~Skel()
 
 void Skel::Update()
 {
+	for (auto coin : _coins)
+	{
+		coin->Update();
+	}
 	if (!_isActive)
 		return;
 	Gravity();
@@ -66,6 +70,10 @@ void Skel::Update()
 
 void Skel::Render()
 {
+	for (auto coin : _coins)
+	{
+		coin->Render();
+	}
 	if (!_isActive)
 		return;
 	_slot->SetBuffer(0);
