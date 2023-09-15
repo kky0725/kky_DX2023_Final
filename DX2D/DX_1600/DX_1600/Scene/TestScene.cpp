@@ -63,12 +63,12 @@ void TestScene::Update()
 
 void TestScene::Render()
 {
-	//for (auto creature : _creatures)
-		//creature->Render();
-	//_player->Render();
+	for (auto creature : _creatures)
+		creature->Render();
+	_player->Render();
 
-	//_ground->Render();
-	//_ground2->Render();
+	_ground->Render();
+	_ground2->Render();
 
 
 	wstring str = L"aaabbc : 123";

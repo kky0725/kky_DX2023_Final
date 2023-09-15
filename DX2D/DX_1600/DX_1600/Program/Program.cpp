@@ -40,6 +40,8 @@ void Program::Render()
 	CAMERA->SetCameraBuffer();
 	CAMERA->SetProjectionBuffer();
 
+	Font::GetInstance()->GetDC()->BeginDraw();
+
 	ALPHA->SetState();
 
 	SCENE->Render();
@@ -50,6 +52,8 @@ void Program::Render()
 	CAMERA->SetUICameraBuffer();
 	CAMERA->PostRender();
 	SCENE->PostRender();
+
+	Font::GetInstance()->GetDC()->EndDraw();
 
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
