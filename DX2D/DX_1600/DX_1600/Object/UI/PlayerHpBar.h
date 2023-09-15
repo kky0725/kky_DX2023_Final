@@ -11,13 +11,11 @@ public:
 	void SetNumber();
 
 private:
-	shared_ptr<NumFont> _maxTen;
-	shared_ptr<NumFont> _maxOne;
-	shared_ptr<NumFont> _curTen;
-	shared_ptr<NumFont> _curOne;
+	shared_ptr<NumFont> _maxHpFont;
+	shared_ptr<NumFont> _curHpFont;
 
-	shared_ptr<Quad> _quad;
-	shared_ptr<Transform> _transform;
+	shared_ptr<Quad> _slice;
+	shared_ptr<Transform> _sliceTransform;
 
 	Vector2 _fontSize = Vector2(10.0f, 10.0f);
 };

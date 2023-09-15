@@ -17,15 +17,15 @@ PlayerHpBar::PlayerHpBar()
 
 	_baseTransform->SetParent(nullptr);
 
-	_maxTen = make_shared<NumFont>(_fontSize);
-	_maxOne = make_shared<NumFont>(_fontSize);
-	_curTen = make_shared<NumFont>(_fontSize);
-	_curOne = make_shared<NumFont>(_fontSize);
+	_maxHpFont = make_shared<NumFont>(_fontSize);
+	_curHpFont = make_shared<NumFont>(_fontSize);
 
-	_maxTen->SetPosition(Vector2(-540.0f - 50.0f, 340.0f));
-	_maxOne->SetPosition(Vector2(-540.0f - 40.0f, 340.0f));
-	_curTen->SetPosition(Vector2(-540.0f - 10.0f, 340.0f));
-	_curOne->SetPosition(Vector2(-540.0f -  0.0f, 340.0f));
+	_maxHpFont->SetPosition(Vector2(-540.0f + 30.0f, 340.0f));
+	_curHpFont->SetPosition(Vector2(-540.0f - 20.0f, 340.0f));
+
+	_slice = make_shared<Quad>(L"Resource/UI/slice.png", _fontSize);
+	_sliceTransform = make_shared<Transform>();
+	_sliceTransform->SetPosition(Vector2(-540.0f + 5.0f, 340.0f));
 }
 
 PlayerHpBar::~PlayerHpBar()
@@ -50,16 +50,12 @@ void PlayerHpBar::PostRender()
 	_baseTransform->SetBuffer(0);
 	_base->Render();
 
-	_maxTen->Render();
-	_maxOne->Render();
-	_curTen->Render();
-	_curOne->Render();
+	_maxHpFont->Render();
+	_curHpFont->Render();
 }
 
 void PlayerHpBar::SetNumber()
 {
-	_maxTen->SetNumber(0);
-	_maxOne->SetNumber(0);
-	_curTen->SetNumber(0);
-	_curOne->SetNumber(0);
+	_maxHpFont->SetNumber(_maxHP);
+	_curHpFont->SetNumber(_curHP);
 }

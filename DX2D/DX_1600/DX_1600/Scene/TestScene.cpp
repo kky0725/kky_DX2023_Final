@@ -57,7 +57,6 @@ void TestScene::Update()
 	_ground2->Update();
 	if (_ground2->Block(_player->GetFootHold()))
 		_player->IsGround();
-
 }
 
 void TestScene::Render()
