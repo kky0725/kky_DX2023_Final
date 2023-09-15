@@ -32,6 +32,7 @@ private:
 	//vector 사용해서 악세사리 슬롯 생성 예정
 
 	UINT _curCoin = 0;
+	shared_ptr<NumFont> _curCoinFont;
 
 	//인벤토리 이미지
 	shared_ptr<Quad> _base;

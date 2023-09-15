@@ -25,7 +25,9 @@ PlayerHpBar::PlayerHpBar()
 
 	_slice = make_shared<Quad>(L"Resource/UI/slice.png", _fontSize);
 	_sliceTransform = make_shared<Transform>();
-	_sliceTransform->SetPosition(Vector2(-540.0f + 5.0f, 340.0f));
+	_sliceTransform->SetPosition(Vector2(-540.0f - 10.0f, 340.0f));
+	_sliceTransform->SetScale(Vector2(0.8f, 1.2f));
+	_sliceTransform->Update();
 }
 
 PlayerHpBar::~PlayerHpBar()
@@ -52,6 +54,9 @@ void PlayerHpBar::PostRender()
 
 	_maxHpFont->Render();
 	_curHpFont->Render();
+
+	_sliceTransform->SetBuffer(0);
+	_slice->Render();
 }
 
 void PlayerHpBar::SetNumber()

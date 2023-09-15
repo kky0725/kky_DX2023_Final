@@ -29,6 +29,8 @@ TestScene::TestScene()
 	//_creatures.push_back(skel);
 	_creatures.push_back(skel2);
 
+	Font::GetInstance()->Add("D2Coding", L"D2Coding");
+
 }
 
 TestScene::~TestScene()
@@ -61,13 +63,16 @@ void TestScene::Update()
 
 void TestScene::Render()
 {
-	for (auto creature : _creatures)
-		creature->Render();
-	_player->Render();
+	//for (auto creature : _creatures)
+		//creature->Render();
+	//_player->Render();
 
-	_ground->Render();
-	_ground2->Render();
+	//_ground->Render();
+	//_ground2->Render();
 
+
+	wstring str = L"aaabbc : 123";
+	Font::GetInstance()->RenderText(str, "D2Coding", Vector2(200.0f, 200.0f));
 }
 
 void TestScene::PostRender()
@@ -79,9 +84,9 @@ void TestScene::PostRender()
 
 	ImGui::Text("BossHp : %d", _creatures[0]->GetHp());
 
-	_player->PostRender();
+	//_player->PostRender();
 
-	_creatures[0]->PostRender();
+	//_creatures[0]->PostRender();
 }
 
 void TestScene::CheckAttack()

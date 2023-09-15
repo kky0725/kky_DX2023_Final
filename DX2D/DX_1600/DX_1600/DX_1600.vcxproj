@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Utility\Font.h" />
     <ClInclude Include="Object\Basic\NumFont.h" />
     <ClInclude Include="Object\Coin.h" />
     <ClInclude Include="Object\UI\DashCount.h" />
@@ -239,6 +240,7 @@
     <ClInclude Include="Object\Weapon\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Utility\Font.cpp" />
     <ClCompile Include="Object\Basic\NumFont.cpp" />
     <ClCompile Include="Object\Coin.cpp" />
     <ClCompile Include="Object\UI\DashCount.cpp" />

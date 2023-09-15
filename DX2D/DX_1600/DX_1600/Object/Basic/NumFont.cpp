@@ -1,7 +1,8 @@
 #include "framework.h"
 #include "NumFont.h"
 
-NumFont::NumFont(Vector2 size)
+NumFont::NumFont(Vector2 size, float spacing)
+	:_spacing(spacing)
 {
 	_sprite = make_shared<Sprite>(L"Resource/UI/NumFont.png", "Resource/UI/NumFont.xml", size);
 	for (int i = 0; i < 4; i++)
@@ -19,7 +20,7 @@ NumFont::~NumFont()
 
 void NumFont::Render()
 {
-	for (int i = 0; i < length; i++)
+	for (int i = 0; i < _length; i++)
 	{
 		_transforms[i]->SetBuffer(0);
 		_sprite->SetCurClip(_num[i]);
@@ -32,14 +33,14 @@ void NumFont::SetNumber(UINT value)
 {
 	if (value == 0)
 	{
-		length = 1;
+		_length = 1;
 		_sprite->SetCurClip(0);
 		_sprite->Update();
 		return;
 	}
 
-	length = to_string(value).length();
-	for (int i = 0; i < length; i++)
+	_length = to_string(value).length();
+	for (int i = 0; i < _length; i++)
 	{
 		if (value / 10 == 0 && value % 10 == 0)
 			continue;
@@ -52,7 +53,7 @@ void NumFont::SetPosition(Vector2 pos)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		_transforms[i]->SetPosition(pos + Vector2(-10.0f * i, 0.0f));
+		_transforms[i]->SetPosition(pos - Vector2(_spacing * i, 0.0f));
 		_transforms[i]->Update();
 	}
 }

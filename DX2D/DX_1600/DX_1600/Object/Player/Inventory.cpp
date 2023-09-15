@@ -16,6 +16,9 @@ Inventory::Inventory()
 
 	_weaponIcon0->Update();
 	_weaponIcon1->Update();
+
+	_curCoinFont = make_shared<NumFont>(Vector2(20.0f, 20.0f), 20.0f);
+	_curCoinFont->SetPosition(Vector2(545.0f, -270.0f));
 }
 
 Inventory::~Inventory()
@@ -28,6 +31,7 @@ void Inventory::Update()
 	{
 		_iconTransforms[i]->Update();
 	}
+	_curCoinFont->SetNumber(_curCoin);
 }
 
 void Inventory::PostRender()
@@ -60,6 +64,7 @@ void Inventory::PostRender()
 
 	WeaponRender();
 	
+	_curCoinFont->Render();
 
 	//ImGui::SliderFloat2("invetory", &aa.x, -50.0f, 70.0f);
 	//_iconTransform->SetPosition(aa);

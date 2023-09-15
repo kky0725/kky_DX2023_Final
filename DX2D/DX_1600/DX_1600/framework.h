@@ -15,6 +15,7 @@
 #include <tchar.h>
 #include <vector>
 #include <unordered_map>
+#include <map>
 #include <algorithm>
 #include <string>
 #include <memory>
@@ -46,6 +47,12 @@ using namespace std;
 using namespace DirectX;
 using namespace Microsoft::WRL;
 
+#include <d2d1_2.h>
+#include <dwrite.h>
+
+#pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "dwrite.lib")
+
 //Types
 #include "Types.h"
 
@@ -66,6 +73,7 @@ using namespace Microsoft::WRL;
 #include "Framework/Utility/Sound.h"
 #include "Framework/Utility/BinaryWriter.h"
 #include "Framework/Utility/BinaryReader.h"
+#include "Framework/Utility/Font.h"
 
 //Render
 #include "Framework/Render/ConstantBuffer.h"
