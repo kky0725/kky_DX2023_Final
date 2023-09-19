@@ -4,8 +4,10 @@
 BatBullet::BatBullet()
 	:Bullet()
 {
-	_ani = make_shared<Animation>();
-	//_ani->CreateAction(L"Resource/Player/~~.png", "Resource/Player/~~.xml", "Idle", Vector2(10.0f, 10.0f));
+	_quad = make_shared<Quad>(L"Resource/Monster/BatBullet.png");
+	_transform = make_shared<Transform>();
+
+	_transform->SetParent(_collider->GetTransform());
 }
 
 BatBullet::~BatBullet()
@@ -15,11 +17,16 @@ BatBullet::~BatBullet()
 void BatBullet::Update()
 {
 	Bullet::Update();
+	_transform->Update();
 }
 
 void BatBullet::Render()
 {
-	Bullet::Render();
+	if (!_isActive)
+		return;
+	_collider->Render();
+	_transform->SetBuffer(0);
+	_quad->Render();
 }
 
 void BatBullet::Summon(Vector2 startPos, Vector2 dir)

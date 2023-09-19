@@ -617,6 +617,7 @@
     <FxCompile Include="Shader\MosaicActionPS.hlsl" />
     <FxCompile Include="Shader\ButtonPS.hlsl" />
     <FxCompile Include="Shader\HpBarPS.hlsl" />
+    <FxCompile Include="Shader\HittedPS.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\FMOD\fmod.dll" />

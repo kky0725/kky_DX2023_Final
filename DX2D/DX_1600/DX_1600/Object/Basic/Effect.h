@@ -10,6 +10,7 @@ public:
 
 	void Play(Vector2 pos);
 	void End();
+	void SetAngle(float angle) { _transform->SetAngel(angle); }
 
 	bool _isActive = false;
 private:

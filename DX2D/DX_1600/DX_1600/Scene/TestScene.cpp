@@ -6,6 +6,7 @@
 #include "../Object/Monster/GaintBat.h"
 #include "../Object/Monster/Skel.h"
 #include "../Object/Monster/Boss/SkelBoss.h"
+#include "../Object/Monster/Boss/SkelBossSword.h"
 
 TestScene::TestScene()
 {
@@ -54,7 +55,14 @@ void TestScene::Update()
 	_ground->Update();
 
 	if (_ground->Block(_player->GetFootHold()))
+	{
 		_player->IsGround();
+		for (auto sword : dynamic_pointer_cast<SkelBoss>(_creatures[0])->GetSkelBossSword())
+		{
+			if(sword->GetCollider()->IsCollision(_ground))
+				//to do
+		}
+	}
 	
 	_ground2->Update();
 	if (_ground2->Block(_player->GetFootHold()))

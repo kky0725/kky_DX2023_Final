@@ -51,6 +51,11 @@ SkelBoss::SkelBoss()
 	_hpBar = make_shared<BossHpBar>();
 
 	_coins.resize(0);
+
+	_intBuffer = make_shared<IntBuffer>();
+
+	_body->SetPS(ADD_PS(L"Shader/HittedPS.hlsl"));
+	_back->SetPS(ADD_PS(L"Shader/HittedPS.hlsl"));
 }
 
 SkelBoss::~SkelBoss()
@@ -69,12 +74,14 @@ void SkelBoss::Update()
 		sword->Update();
 	_leftHand->Update();
 	_rightHand->Update();
+	Hitted();
 }
 
 void SkelBoss::Render()
 {
 	if (!_isActive)
 		return;
+	_intBuffer->SetPsBuffer(1);
 	_back->Render();
 	_body->Render();
 	for (auto bullet : _bullets)
@@ -140,7 +147,7 @@ void SkelBoss::IdleTime()
 	{
 		_time = 0.0f;
 		int randomInt = MyMath::RandomInt(1, 3);
-		//int randomInt = 3;
+		randomInt = 3;
 		if (randomInt == 1)
 		{
 			_bossState = BossState::ATKP1;
@@ -286,7 +293,6 @@ void SkelBoss::AttackP3()
 	}
 }
 
-
 int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 {
 	_target = col;
@@ -336,5 +342,16 @@ int SkelBoss::CheckAttack(shared_ptr<Collider> col)
 		return 0;
 	}
 	}
+
+}
+
+void SkelBoss::Hitted()
+{
+	if (_curHp < 1)
+		_intBuffer->_data.value1 = 0;
+	else
+		_intBuffer->_data.value1 = _damaged;
+
+	_intBuffer->Update();
 
 }

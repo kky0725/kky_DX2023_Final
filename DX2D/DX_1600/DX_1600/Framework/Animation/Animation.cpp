@@ -130,3 +130,15 @@ void Animation::SetRight()
 		sprite->SetRight();
 	}
 }
+
+void Animation::SetPS(shared_ptr<PixelShader> ps)
+{
+	for (auto sprite : _sprites) 
+		sprite->SetPS(ps);
+}
+
+void Animation::SetVS(shared_ptr<VertexShader> vs)
+{
+	for (auto sprite : _sprites)
+		sprite->SetVS(vs);
+}

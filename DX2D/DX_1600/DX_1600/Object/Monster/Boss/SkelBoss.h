@@ -27,7 +27,11 @@ public:
 	void AttackP2R();
 	void AttackP3();
 
+	vector<shared_ptr<class SkelBossSword>> GetSkelBossSword() { return _swords; }
+
 	virtual int CheckAttack(shared_ptr<Collider> col) override;
+
+	void Hitted();
 
 private:
 	shared_ptr<Animation> _body;
@@ -51,4 +55,6 @@ private:
 	int count = 0;
 
 	bool _atkP3SummonPase = true;
+
+	shared_ptr<IntBuffer> _intBuffer;
 };

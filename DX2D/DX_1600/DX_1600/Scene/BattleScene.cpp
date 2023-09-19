@@ -156,7 +156,7 @@ void BattleScene::CheckAttack()
 {
 	for (auto creature : _creatures)
 	{
-		if (creature->IsAtcive())
+		if (creature->IsAtcive() && _player->IsAtcive())
 		{
 			creature->Damaged(_player->CheckAttack(creature->GetCollider()));
 			_player->Damaged(creature->CheckAttack(_player->GetCollider()));
@@ -401,7 +401,7 @@ void BattleScene::ReturnHome()
 	if (_player->GetHp() < 1)
 		_time += DELTA_TIME;
 
-	if (_time > 10.0f)
+	if (_time > 5.0f)
 	{
 		Rest();
 		_time = 0.0f;

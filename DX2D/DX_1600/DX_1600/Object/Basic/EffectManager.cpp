@@ -43,7 +43,7 @@ void EffectManager::AddEffect(string name, wstring file, Vector2 maxFrame, Vecto
 	}
 }
 
-void EffectManager::Play(string name, Vector2 pos)
+void EffectManager::Play(string name, Vector2 pos, float angle)
 {
 	if (_effectTable.count(name) == 0)
 		return;
@@ -53,6 +53,7 @@ void EffectManager::Play(string name, Vector2 pos)
 		if (!effect->_isActive)
 		{
 			effect->Play(pos);
+			effect->SetAngle(angle);
 			return;
 		}
 	}

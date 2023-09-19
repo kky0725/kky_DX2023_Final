@@ -13,5 +13,6 @@ public:
 	
 
 private:
-	shared_ptr<Animation> _ani;
+	shared_ptr<Quad> _quad;
+	shared_ptr<Transform> _transform;
 };

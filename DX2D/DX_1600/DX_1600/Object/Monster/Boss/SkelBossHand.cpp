@@ -39,7 +39,7 @@ SkelBossHand::SkelBossHand(bool isLeft)
 	_collider->SetParent(_hand->GetTransform());
 
 	
-	//delete
+	_hand->SetPS(ADD_PS(L"Shader/HittedPS.hlsl"));
 
 }
 

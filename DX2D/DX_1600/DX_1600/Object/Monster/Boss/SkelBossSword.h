@@ -16,6 +16,8 @@ public:
 
 	bool IsAttack() { return _isAttack; }
 
+	void IsGround();
+
 private:
 	shared_ptr<Quad> _quad;
 	shared_ptr<Transform> _transform;

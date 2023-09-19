@@ -46,6 +46,9 @@ public:
 	void Play() { _actions[_curState]->Play(); }
 	void Reset() { _actions[_curState]->Reset(); }
 
+	void SetPS(shared_ptr<PixelShader> ps);
+	void SetVS(shared_ptr<VertexShader> vs);
+
 protected:
 	vector<shared_ptr<Action>> _actions;
 	vector<shared_ptr<class Sprite>> _sprites;

@@ -16,7 +16,7 @@ Player::Player()
 
 	_hpBar = make_shared<PlayerHpBar>();
 
-	_maxHp = 100;
+	_maxHp = 500;
 	_curHp = _maxHp;
 
 	_footHold = make_shared<CircleCollider>(12.0f);
@@ -28,6 +28,10 @@ Player::Player()
 	UpdateWeapon();
 
 	_coins.resize(0);
+
+
+	EffectManager::GetInstance()->AddEffect("Jump", L"Resource/Player/JumpFX.png", Vector2(1, 5), Vector2(30.0f, 30.0f));
+	EffectManager::GetInstance()->AddEffect("DoubleJump", L"Resource/Player/DoubleJumpFX.png", Vector2(1, 6), Vector2(30.0f, 30.0f));
 }
 
 Player::~Player()
@@ -165,9 +169,16 @@ void Player::Jump()
 
 	if (KEY_DOWN('W') || KEY_DOWN(VK_SPACE))
 	{
+		if(_ani->GetISGround())
+			EFFECT_PLAY("Jump", _footHold->GetPos());
+
+		if(!_ani->GetISGround())
+			EFFECT_PLAY("DoubleJump", _footHold->GetPos());
+
 		_jumpPower = 600.0f;
 		_jumpCount++;
 		_ani->SetIsGround(false);
+
 	}
 }
 
