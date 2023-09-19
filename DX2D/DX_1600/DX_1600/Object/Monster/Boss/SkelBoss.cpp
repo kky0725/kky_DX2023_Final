@@ -9,8 +9,10 @@
 SkelBoss::SkelBoss()
 	:Creature(90.0f)
 {
+	_collider->SetPosition(Vector2(80.0f, 0.0f));
+
 	_maxHp = 100;//수치 수정 예정
-	_hp = _maxHp;
+	_curHp = _maxHp;
 
 	_body = make_shared<Animation>();
 	_body->CreateAction(L"Resource/Monster/SkelBoss/SkelBossIdle.png", "Resource/Monster/SkelBoss/SkelBossIdle.xml", "Idle", Vector2(20.0f, 20.0f));
@@ -86,12 +88,6 @@ void SkelBoss::Render()
 
 void SkelBoss::PostRender()
 {
-	if (ImGui::Button("ATK1", ImVec2(50, 20)))
-	{
-		_bossState = ATKP1;
-		_body->SetState((Animation::State)2);
-	}
-
 	if (!_isActive)
 		return;
 

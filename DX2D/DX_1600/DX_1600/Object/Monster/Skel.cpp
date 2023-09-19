@@ -22,7 +22,7 @@ Skel::Skel(bool basic)
 	if (_basic)//검
 	{
 		_maxHp = 56;//수정예정
-		_hp = _maxHp;
+		_curHp = _maxHp;
 
 		_weapon = make_shared<SkelSword>();
 		_ani->SetState(Animation::State::RUN);
@@ -31,7 +31,7 @@ Skel::Skel(bool basic)
 	else//활
 	{
 		_maxHp = 56;//수정예정
-		_hp = _maxHp;
+		_curHp = _maxHp;
 
 		_weapon = make_shared<SkelBow>();
 		_ani->SetState(Animation::State::IDLE);

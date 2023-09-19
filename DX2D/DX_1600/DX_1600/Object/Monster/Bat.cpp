@@ -9,13 +9,13 @@ Bat::Bat(bool basic)
 	if (basic) 
 	{
 		_maxHp = 6;
-		_hp = _maxHp;
+		_curHp = _maxHp;
 		_ani->CreateAction(L"Resource/Monster/Bat.png", "Resource/Monster/Bat.xml", "Idle", Vector2(50, 50));
 	}
 	else
 	{
 		_maxHp = 16;
-		_hp = _maxHp;
+		_curHp = _maxHp;
 		_ani->CreateAction(L"Resource/Monster/RedBat.png", "Resource/Monster/RedBat.xml", "Idle", Vector2(50, 50));
 	}
 

@@ -220,10 +220,16 @@ void MapEditor::Create()
 	{
 		if (ImGui::Button("1-1", { 50.0f,50.0f }))
 			Save(L"1 - 1.map");
-		if (ImGui::Button("1-2", { 50.0f,50.0f }))
-			Save(L"1 - 2.map");
-		if (ImGui::Button("1-3", { 50.0f,50.0f }))
-			Save(L"1 - 3.map");
+		if (ImGui::Button("2-1", { 50.0f,50.0f }))
+			Save(L"2 - 1.map");
+		if (ImGui::Button("3-1", { 50.0f,50.0f }))
+			Save(L"3 - 1.map");
+		if (ImGui::Button("4-1", { 50.0f,50.0f }))
+			Save(L"4 - 1.map");
+		if (ImGui::Button("3-2", { 50.0f,50.0f }))
+			Save(L"3 - 2.map");
+		if (ImGui::Button("TEST", { 50.0f,50.0f }))
+			Save(L"test.map");
 		ImGui::EndMenu();
 	}
 
@@ -231,15 +237,16 @@ void MapEditor::Create()
 	{
 		if (ImGui::Button("1-1", { 50.0f,50.0f }))
 			Load(L"1 - 1.map");
-		if(ImGui::Button("1-2", { 50.0f,50.0f }))
-			Load(L"1 - 2.map");
-		if (ImGui::Button("1-3", { 50.0f,50.0f }))
-			Load(L"1 - 3.map");
-		ImGui::Button("1-4", { 50.0f,50.0f });
-		ImGui::Button("2-1", { 50.0f,50.0f });
-		ImGui::Button("2-2", { 50.0f,50.0f });
-		ImGui::Button("2-3", { 50.0f,50.0f });
-		ImGui::Button("2-4", { 50.0f,50.0f });
+		if (ImGui::Button("2-1", { 50.0f,50.0f }))
+			Load(L"2 - 1.map");
+		if (ImGui::Button("3-1", { 50.0f,50.0f }))
+			Load(L"3 - 1.map");
+		if (ImGui::Button("4-1", { 50.0f,50.0f }))
+			Load(L"4 - 1.map");
+		if (ImGui::Button("3-2", { 50.0f,50.0f }))
+			Load(L"3 - 2.map");
+		if (ImGui::Button("TEST", { 50.0f,50.0f }))
+			Load(L"test.map");
 		ImGui::EndMenu();
 	}
 }

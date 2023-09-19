@@ -18,7 +18,6 @@ public:
 	shared_ptr<Transform> GetTransform() { return _hand->GetTransform(); }
 	shared_ptr<Collider> GetCollider() { return _collider; }
 
-
 private:
 	shared_ptr<Animation> _hand;
 

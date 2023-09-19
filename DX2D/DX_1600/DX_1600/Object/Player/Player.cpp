@@ -16,8 +16,8 @@ Player::Player()
 
 	_hpBar = make_shared<PlayerHpBar>();
 
-	_maxHp = 1000;
-	_hp = _maxHp;
+	_maxHp = 100;
+	_curHp = _maxHp;
 
 	_footHold = make_shared<CircleCollider>(12.0f);
 	_collider->SetParent(_footHold->GetTransform());
@@ -43,8 +43,10 @@ void Player::Update()
 	SetWeaponDir();
 
 	SetHpBar();
-	Creature::Update();
-	_slot->Update();
+	_hpBar->Update();
+	_collider->Update();
+	CheckDamaged();	_slot->Update();
+
 	_ani->Update();
 	_weapon->Update();
 	_footHold->Update();
@@ -69,7 +71,7 @@ void Player::Render()
 
 void Player::PostRender()
 {
-	ImGui::Text("PlayerDashCount : %d", _dashCount);
+	//ImGui::Text("PlayerDashCount : %d", _dashCount);
 
 	Inventory::GetInstance()->PostRender();
 
@@ -121,8 +123,8 @@ void Player::Input()
 	{
 		_jumpPower -= 15.0f;
 
-		if (_jumpPower < -600.0f)
-			_jumpPower = -600.0f;
+		if (_jumpPower < -400.0f)
+			_jumpPower = -400.0f;
 
 		//_collider->GetTransform()->AddVector2(Vector2(0.0f, 1.0f) * _jumpPower * DELTA_TIME);
 		_footHold->GetTransform()->AddVector2(Vector2(0.0f, 1.0f) * _jumpPower * DELTA_TIME);
@@ -336,6 +338,8 @@ int Player::GetAtk()
 
 void Player::SetWeaponDir()
 {
+	if (!_isActive)
+		return;
 	if (_time < 0.1f && _time > 0.0f)
 		return;
 	Vector2 startPos = _collider->GetTransform()->GetWorldPosition();
@@ -377,4 +381,14 @@ void Player::Die()
 
 	if (_time > 5.0f)
 		_end = true;
+}
+
+void Player::Rest()
+{
+	_curHp = _maxHp;
+	_isActive = true;
+	_end = false;
+	_ani->SetStateIdle();
+	_jumpCount = 0;
+	_dashCount = 2;
 }

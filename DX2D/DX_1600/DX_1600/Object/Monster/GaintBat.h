@@ -11,10 +11,11 @@ public:
 	void Attack();
 	void SummonBullets(Vector2 direction);
 	void TargetOn(Vector2 playerPos);
-	void TargetOff();
+	void AttackStart();
 	virtual int CheckAttack(shared_ptr<Collider> player) override;
 
 	void Move();
+	void TargetOff();
 
 private:
 	bool _basic = true;

@@ -14,11 +14,14 @@ public:
 	void CheckAttack();
 
 	void Init(wstring file);
+	void InitBoss();
 	void End();
+	void Rest();
 
 	void ChangeScene();
 	void ClearCheck();
 
+	void ReturnHome();
 private:
 	vector<vector<shared_ptr<TileMap>>> _tileMaps;
 
@@ -33,4 +36,6 @@ private:
 	int _oldIndex_y = 1;
 
 	vector<vector<bool>> _cleared;
+
+	float _time = 0.0f;
 };

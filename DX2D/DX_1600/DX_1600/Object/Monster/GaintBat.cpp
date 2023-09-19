@@ -12,20 +12,20 @@ GaintBat::GaintBat(bool basic)//공격 쿨타임 설정하기
 	if (_basic)
 	{
 		_maxHp = 46;
-		_hp = _maxHp;
+		_curHp = _maxHp;
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "Idle", Vector2(100, 100));
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(100, 100));
 		_ani->CreateAction(L"Resource/Monster/GaintBat.png", "Resource/Monster/GaintBat.xml", "none", Vector2(100, 100));
-		_ani->CreateAction(L"Resource/Monster/GaintBatAtk.png", "Resource/Monster/GaintBatAtk.xml", "Atk", Vector2(100, 100), Action::END, 0.15f, std::bind(&GaintBat::TargetOff, this));
+		_ani->CreateAction(L"Resource/Monster/GaintBatAtk.png", "Resource/Monster/GaintBatAtk.xml", "Atk", Vector2(100, 100), Action::END, 0.15f, std::bind(&GaintBat::AttackStart, this));
 	}
 	else
 	{
 		_maxHp = 44;
-		_hp = _maxHp;
+		_curHp = _maxHp;
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "Idle", Vector2(100, 100));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(100, 100));
 		_ani->CreateAction(L"Resource/Monster/GaintRedBat.png", "Resource/Monster/GaintRedBat.xml", "none", Vector2(100, 100));
-		_ani->CreateAction(L"Resource/Monster/GaintRedBatAtk.png", "Resource/Monster/GaintRedBatAtk.xml", "Atk", Vector2(100, 100), Action::END, 0.15f, std::bind(&GaintBat::TargetOff, this));
+		_ani->CreateAction(L"Resource/Monster/GaintRedBatAtk.png", "Resource/Monster/GaintRedBatAtk.xml", "Atk", Vector2(100, 100), Action::END, 0.15f, std::bind(&GaintBat::AttackStart, this));
 	}
 
 	_ani->SetParent(_collider->GetTransform());
@@ -59,6 +59,7 @@ void GaintBat::Update()
 	for (auto bullet : _bullets)
 		bullet->Update();
 	Creature::Update();
+	TargetOff();
 }
 
 void GaintBat::Render()
@@ -119,11 +120,10 @@ void GaintBat::TargetOn(Vector2 playerPos)
 	}
 }
 
-void GaintBat::TargetOff()
+void GaintBat::AttackStart()
 {
 	_ani->SetState(Animation::State::IDLE);
 	Attack();
-	_targetOn = false;
 }
 
 int GaintBat::CheckAttack(shared_ptr<Collider> player)
@@ -162,4 +162,17 @@ void GaintBat::Move()
 		_ani->SetRight();
 	if (_dir.x < 0.0f)
 		_ani->SetLeft();
+}
+
+void GaintBat::TargetOff()
+{
+	if (!_targetOn)
+		return;
+	_time += DELTA_TIME;
+
+	if (_time > 3.0f)
+	{
+		_targetOn = false;
+		_time = 0.0f;
+	}
 }

@@ -46,6 +46,7 @@ public:
 
 	void Die();
 	bool End() { return _end; }
+	void Rest();
 
 	void RestJump() { _jumpPower = 0; }
 

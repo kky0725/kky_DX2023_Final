@@ -73,7 +73,7 @@ void Creature::PostRender()
 void Creature::SetHpBar()
 {
 	_hpBar->SetMaxHp(_maxHp);
-	_hpBar->SetCurHp(_hp);
+	_hpBar->SetCurHp(_curHp);
 }
 
 void Creature::Damaged(int damge)
@@ -84,12 +84,12 @@ void Creature::Damaged(int damge)
 		return;
 	if (damge <= 0)
 		return;
-	_hp -= damge;
+	_curHp -= damge;
 	_damaged = true;
 
-	if (_hp < 1)
+	if (_curHp < 1)
 	{
-		_hp = 0;
+		_curHp = 0;
 		_isActive = false;
 
 		for (auto coin : _coins)

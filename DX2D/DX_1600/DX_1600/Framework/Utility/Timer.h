@@ -11,7 +11,7 @@ public:
 	void SetLockFPS(float value) { _lockFPS = value; }
 
 	int GetFPS() { return _frameRate; }
-	float GetDeltaTime() { if (_deltaTime > 1.0f) return 0.016666f; return _deltaTime; }
+	float GetDeltaTime() { if (_deltaTime > 0.02f) return 0.016666f; return _deltaTime; }
 	float GetRunTime() { return _runTime; }
 
 private:

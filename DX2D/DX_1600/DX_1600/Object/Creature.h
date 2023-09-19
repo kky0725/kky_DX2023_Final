@@ -13,7 +13,7 @@ public:
 	virtual void Render() abstract;
 	virtual void PostRender();
 
-	const int& GetHp() const { return _hp; }
+	const int& GetHp() const { return _curHp; }
 	void SetHpBar();
 
 
@@ -41,7 +41,7 @@ protected:
 	vector<shared_ptr<Coin>> _coins;
 
 	int _maxHp = 10;
-	int _hp = 10;
+	int _curHp = 10;
 
 	bool _isActive = true;
 

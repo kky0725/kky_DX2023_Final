@@ -74,6 +74,7 @@ void BattleScene::Update()
 	}
 	ChangeScene();
 	ClearCheck();
+	ReturnHome();
 }
 
 void BattleScene::Render()
@@ -94,30 +95,6 @@ void BattleScene::Render()
 
 void BattleScene::PostRender()
 {
-	if (ImGui::Button("1-1", { 50.0f,50.0f }))
-		Init(L"1 - 1.map");
-	if (ImGui::Button("1-2", { 50.0f,50.0f }))
-		Init(L"1 - 2.map");
-
-	if (ImGui::Button("1-1 => 1-2", { 50.0f,50.0f }))
-	{
-		_curIndex_y = 2;
-	}
-	if (ImGui::Button("1-2 => 1-1", { 50.0f,50.0f }))
-	{
-		_curIndex_y = 1;
-	}
-
-	if (ImGui::Button("End", { 50.0f,50.0f }))
-	{
-		End();
-	}
-
-	ImGui::Text("PlayerHp : %d", _player->GetHp());
-	ImGui::Text("PlayerPos : %f, %f", _player->GetPosition().x, _player->GetPosition().y);
-
-	/////////////////////
-
 	for (auto creature : _creatures)
 		creature->PostRender();
 	_player->PostRender();
@@ -133,18 +110,27 @@ void BattleScene::Block()
 				_player->IsGround();
 			for (auto creature : _creatures)
 			{
-				tileMap->Block(creature->GetCollider());
-
-				for (auto coin : creature->GetCoins())
+				if (creature->IsAtcive())
+					tileMap->Block(creature->GetCollider());
+				else
 				{
-					tileMap->Block(coin->GetCollider());
+					for (auto coin : creature->GetCoins())
+					{
+						if (!coin->IsActive())
+							continue;
+						tileMap->Block(coin->GetCollider());
+					}
 				}
+
 			}
 		}
 	}
 
 	for (auto creature : _creatures)
 	{
+		if (creature->IsAtcive())
+			continue;
+
 		for (auto coin : creature->GetCoins())
 		{
 			if (coin->IsCollison(_player->GetCollider()))
@@ -158,6 +144,9 @@ void BattleScene::Block()
 
 		for (auto creature : _creatures)
 		{
+			if (!creature->IsAtcive())
+				continue;
+
 			portal->Block(creature->GetCollider());
 		}
 	}
@@ -180,6 +169,8 @@ void BattleScene::Init(wstring file)
 	End();
 
 	CAMERA->SetTarget(_player->GetTransform());
+	CAMERA->SetLeftBottom(Vector2(-CORRECTION_VALUE_WIDTH -20.0f, -CORRECTION_VALUE_HEIGHT -20.0f));
+	CAMERA->SetRightTop(Vector2(MAP_SIZE_X * 40.0f -CORRECTION_VALUE_WIDTH - 20.0f, MAP_SIZE_Y * 40.0f -CORRECTION_VALUE_HEIGHT -20.0f));
 
 	_player->UpdateWeapon();
 
@@ -268,7 +259,7 @@ void BattleScene::Init(wstring file)
 	if (_curIndex_x == _oldIndex_x && _curIndex_y == _oldIndex_y)
 	{
 		if (_curIndex_x == 1 && _curIndex_y == 1)
-			_player->SetPosition(Vector2(0.0f, 0.0f));
+			_player->SetPosition(Vector2(120.0f -CORRECTION_VALUE_WIDTH, 120.0f - CORRECTION_VALUE_HEIGHT));
 		return;
 	}
 
@@ -283,27 +274,113 @@ void BattleScene::Init(wstring file)
 
 }
 
+void BattleScene::InitBoss()
+{
+	End();
+
+	CAMERA->SetTarget(_player->GetTransform());
+
+	_player->UpdateWeapon();
+
+	wstring filePath = L"MapInfo/4 - 1.map";
+	BinaryReader reader = BinaryReader(filePath);
+
+	for (int i = 0; i < 4; i++)
+	{
+		Vector2 pos;
+		pos.x = reader.Float();
+		pos.y = reader.Float();
+
+		_portals[i]->SetPosition(pos);
+		if (!_cleared[_curIndex_x - 1][_curIndex_y - 1])
+			_portals[i]->OffActive();
+	}
+
+	for (int i = 0; i < MAP_SIZE_X; i++)
+	{
+		for (int j = 0; j < MAP_SIZE_Y; j++)
+		{
+			TileMap::TileInfo tileInfo;
+			TileMap::TileInfo* ptr = &tileInfo;
+			reader.Byte((void**)&ptr, sizeof(TileMap::TileInfo));
+
+			_tileMaps[i][j]->Set(TileMap::ObjectType::BACKGROUND, tileInfo._backGroundImage);
+			_tileMaps[i][j]->Set(TileMap::ObjectType::GROUND, tileInfo._groundImage);
+		}
+	}
+
+	shared_ptr<Creature> creature = make_shared<SkelBoss>();
+	_creatures.push_back(creature);
+
+	_player->RestJump();
+
+	if (_curIndex_x == _oldIndex_x && _curIndex_y == _oldIndex_y)
+	{
+		if (_curIndex_x == 1 && _curIndex_y == 1)
+			_player->SetPosition(Vector2(0.0f, 0.0f));
+		return;
+	}
+
+	if (_curIndex_x - _oldIndex_x == 1)
+		_player->SetPosition(_portals[Portal::PortalDir::LEFT]->GetPos() + Vector2(80.0f, 0.0f));
+	else if (_curIndex_x - _oldIndex_x == -1)
+		_player->SetPosition(_portals[Portal::PortalDir::RIGHT]->GetPos() + Vector2(-80.0f, 0.0f));
+	else if (_curIndex_y - _oldIndex_y == 1)
+		_player->SetPosition(_portals[Portal::PortalDir::DOWN]->GetPos() + Vector2(0.0f, 80.0f));
+	else if (_curIndex_y - _oldIndex_y == -1)
+		_player->SetPosition(_portals[Portal::PortalDir::UP]->GetPos() + Vector2(0.0f, -80.0f));
+
+}
+
 void BattleScene::End()
 {
 	_creatures.resize(0);
 	_player->DeleteBullet();
 }
 
+void BattleScene::Rest()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		vector<bool> clearedY;
+		for (int j = 0; j < 4; j++)
+		{
+			_cleared[i][j] = false;
+		}
+	}
+
+	_curIndex_x = 1;
+	_curIndex_y = 1;
+	_oldIndex_x = 1;
+	_oldIndex_y = 1;
+
+	_player->Rest();
+
+	Init(L"1 - 1.map");
+}
+
 void BattleScene::ChangeScene()
 {
-	if (_curIndex_y == _oldIndex_y)
+	if (_curIndex_y == _oldIndex_y && _curIndex_x == _oldIndex_x)
 		return;
 
 	wstring filePath = L"";
 	filePath = filePath + to_wstring(_curIndex_x) + L" - " + to_wstring(_curIndex_y) + L".map";
 
-	Init(filePath);
+	if (_curIndex_x == 4 && _curIndex_y == 1)
+		InitBoss();
+	else
+		Init(filePath);
 
 	_oldIndex_y = _curIndex_y;
+	_oldIndex_x = _curIndex_x;
 }
 
 void BattleScene::ClearCheck()
 {
+	if (_curIndex_x == 4 && _curIndex_y == 1)
+		return;
+	
 	for (auto creature : _creatures)
 	{
 		if (creature->GetHp() > 0)
@@ -313,4 +390,20 @@ void BattleScene::ClearCheck()
 	_cleared[_curIndex_x-1][_curIndex_y-1] = true;
 	for (auto portal : _portals)
 		portal->ClearScene();
+}
+
+void BattleScene::ReturnHome()
+{
+	if (_curIndex_x == 4 && _curIndex_y == 1)
+		if (!_creatures[0]->IsAtcive())
+			_time += DELTA_TIME;
+
+	if (_player->GetHp() < 1)
+		_time += DELTA_TIME;
+
+	if (_time > 10.0f)
+	{
+		Rest();
+		_time = 0.0f;
+	}
 }
