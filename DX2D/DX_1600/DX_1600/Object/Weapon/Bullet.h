@@ -14,6 +14,7 @@ public:
 	bool IsActive() { return _isActive; }
 	void SetActive(bool value) { _isActive = value; }
 	void SetAngle(float value) { _collider->GetTransform()->SetAngel(value); }
+	//float GetAnlge()
 
 	const shared_ptr<Collider>& GetCollider() { return _collider; }
 

@@ -57,11 +57,6 @@ void TestScene::Update()
 	if (_ground->Block(_player->GetFootHold()))
 	{
 		_player->IsGround();
-		for (auto sword : dynamic_pointer_cast<SkelBoss>(_creatures[0])->GetSkelBossSword())
-		{
-			if(sword->GetCollider()->IsCollision(_ground))
-				//to do
-		}
 	}
 	
 	_ground2->Update();

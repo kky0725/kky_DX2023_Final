@@ -148,6 +148,28 @@ public:
 private:
 };
 
+class FloatBuffer : public ConstantBuffer
+{
+public:
+	struct Data
+	{
+		float	value1 = 0;
+		float	value2 = 0;
+		float	value3 = 0;
+		float	value4 = 0;
+	};
+
+	FloatBuffer()
+		: ConstantBuffer(&_data, sizeof(_data))
+	{
+
+	}
+	virtual ~FloatBuffer() {}
+
+	Data _data;
+private:
+};
+
 class ButtonBuffer : public ConstantBuffer
 {
 public:

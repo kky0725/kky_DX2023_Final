@@ -8,8 +8,8 @@
 SceneManager::SceneManager()
 {
 	//_scenes.push_back(make_shared<MapEditor>());
-	//_scenes.push_back(make_shared<BattleScene>());
-	_scenes.push_back(make_shared<TestScene>());
+	_scenes.push_back(make_shared<BattleScene>());
+	//_scenes.push_back(make_shared<TestScene>());
 }
 
 SceneManager::~SceneManager()

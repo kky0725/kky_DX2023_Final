@@ -6,7 +6,6 @@ Gun::Gun(ItemType type, string name, int price, string itemDesc, wstring iconSrv
 	:Weapon(type, name, price, itemDesc, iconSrvFile, ID, minAtk, maxAtk, atkPerSec)
 {
 	_ani = make_shared<Animation>();
-	//_ani->CreateAction(L"Resource/Weapon/CrossBow.png", "Resource/Weapon/CrossBow.xml", "Bow", Vector2(14, 11), Action::Type::END, 0.2f, std::bind(&Gun::Fire, this));
 	_ani->CreateAction(srvFile, xmlFile, "Bow", Vector2(14, 11), Action::Type::END, 0.2f, std::bind(&Gun::Fire, this));
 	_ani->Reset();
 
@@ -23,6 +22,8 @@ Gun::Gun(ItemType type, string name, int price, string itemDesc, wstring iconSrv
 	_maxAtk = 13;
 	_minAtk = 11;
 	_atkPerSec = 2.38f;
+
+	EffectManager::GetInstance()->AddEffect("ArrowHit", L"Resource/Weapon/ArrowHitFX.png", Vector2(6, 1),Vector2(30.0f, 30.0f));
 }
 
 Gun::~Gun()
@@ -95,6 +96,7 @@ int Gun::CheckAttack(shared_ptr<Collider> col)
 			continue;
 		if (col->IsCollision(bullet->GetCollider()))
 		{
+			EffectManager::GetInstance()->Play("ArrowHit", bullet->GetCollider()->GetPos(), bullet->GetCollider()->GetTransform()->GetAngle());
 			bullet->SetActive(false);
 			return GetAtk();
 		}

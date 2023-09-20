@@ -22,6 +22,8 @@ public:
 	void ClearCheck();
 
 	void ReturnHome();
+
+	void Loading();
 private:
 	vector<vector<shared_ptr<TileMap>>> _tileMaps;
 
@@ -38,4 +40,9 @@ private:
 	vector<vector<bool>> _cleared;
 
 	float _time = 0.0f;
+
+	shared_ptr<Quad> _quad;
+	shared_ptr<Transform> _transform;
+	shared_ptr<FloatBuffer> _floatBuffer;
+	bool _loading = false;
 };

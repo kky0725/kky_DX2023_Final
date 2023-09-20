@@ -618,6 +618,7 @@
     <FxCompile Include="Shader\ButtonPS.hlsl" />
     <FxCompile Include="Shader\HpBarPS.hlsl" />
     <FxCompile Include="Shader\HittedPS.hlsl" />
+    <FxCompile Include="Shader\ScreenPS.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\FMOD\fmod.dll" />

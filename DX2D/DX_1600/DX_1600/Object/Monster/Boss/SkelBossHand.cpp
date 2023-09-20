@@ -37,10 +37,6 @@ SkelBossHand::SkelBossHand(bool isLeft)
 
 	_collider = make_shared<RectCollider>(Vector2(_bodySize.x * 10.0f, _bodySize.y - 30.0f));
 	_collider->SetParent(_hand->GetTransform());
-
-	
-	_hand->SetPS(ADD_PS(L"Shader/HittedPS.hlsl"));
-
 }
 
 SkelBossHand::~SkelBossHand()

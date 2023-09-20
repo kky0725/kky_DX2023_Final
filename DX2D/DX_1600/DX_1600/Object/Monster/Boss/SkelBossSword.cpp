@@ -14,12 +14,8 @@ SkelBossSword::SkelBossSword()
 
 	_lifeTime = 30.0f;
 	_speed = 0.0f;
-	//delet
-	//_isActive = true;
-	_collider->SetPosition(Vector2(-100.0f, 50.0f));
 
-	EffectManager::GetInstance()->AddEffect("BossSwordCharge", L"Resource/Monster/SkelBoss/BossSwordChargeFX.png", Vector2(1, 8), Vector2(100.0f, 100.0f));
-	EffectManager::GetInstance()->AddEffect("BossSwordHit", L"Resource/Monster/SkelBoss/BossSwordHitFX.png", Vector2(1, 5), Vector2(100.0f, 100.0f));
+	_collider->SetPosition(Vector2(-100.0f, 50.0f));
 }
 
 SkelBossSword::~SkelBossSword()
@@ -28,7 +24,6 @@ SkelBossSword::~SkelBossSword()
 
 void SkelBossSword::Update()
 {
-	//LifeTime();
 	if (!_isActive)
 		return;
 	if (_isGround)
@@ -54,6 +49,7 @@ void SkelBossSword::Summon(Vector2 startPos)
 	_isActive = true;
 	_isAttack = false;
 	_isCharge = true;
+	_isGround = false;
 }
 
 void SkelBossSword::Shoot()
@@ -74,8 +70,6 @@ void SkelBossSword::Charge(Vector2 dir)
 	if (dir.x > 0)
 		angle = angle + PI;
 	SetAngle(angle + PI/2);
-	EffectManager::GetInstance()->Play("BossSwordCharge", _transform->GetWorldPosition(), angle);
-
 }
 
 int SkelBossSword::GetAtk()
@@ -87,14 +81,5 @@ int SkelBossSword::GetAtk()
 	}
 
 	return 0;
-}
-
-void SkelBossSword::IsGround()
-{
-	if (_isGround)
-		return;
-
-	_isGround = true;
-	EFFECT_PLAY("BossSwordHit", _transform->GetWorldPosition());
 }
 

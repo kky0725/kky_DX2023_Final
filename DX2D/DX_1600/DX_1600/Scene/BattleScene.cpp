@@ -45,6 +45,12 @@ BattleScene::BattleScene()
 	}
 
 	Init(L"1 - 1.map");
+
+	_quad = make_shared<Quad>(L"Resource/UI/Screen.png");
+	_transform = make_shared<Transform>();
+	_transform->SetScale(Vector2(100.0f, 100.0f));
+	_floatBuffer = make_shared<FloatBuffer>();
+	_quad->SetPS(ADD_PS(L"Shader/ScreenPS.hlsl"));
 }
 
 BattleScene::~BattleScene()
@@ -53,6 +59,12 @@ BattleScene::~BattleScene()
 
 void BattleScene::Update()
 {
+	if (_loading)
+	{
+		Loading();
+		return;
+	}
+
 	for (auto creature : _creatures)
 		creature->Update();
 
@@ -79,6 +91,13 @@ void BattleScene::Update()
 
 void BattleScene::Render()
 {
+	if (_loading)
+	{
+		_floatBuffer->SetPsBuffer(0);
+		_transform->SetBuffer(0);
+		_quad->Render();
+	}
+
 	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
 	{
 		for (shared_ptr<TileMap> tileMap : tileMapY)
@@ -336,6 +355,7 @@ void BattleScene::End()
 {
 	_creatures.resize(0);
 	_player->DeleteBullet();
+	//_loading = true;
 }
 
 void BattleScene::Rest()
@@ -406,4 +426,17 @@ void BattleScene::ReturnHome()
 		Rest();
 		_time = 0.0f;
 	}
+}
+
+void BattleScene::Loading()
+{
+	_time += DELTA_TIME;
+	_floatBuffer->_data.value1 = _time;
+	_transform->Update();
+	if (_time > 5.0f)
+	{
+		_time = 0.0f;
+		_loading = false;
+	}
+
 }
