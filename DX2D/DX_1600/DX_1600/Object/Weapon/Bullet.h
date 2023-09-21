@@ -20,6 +20,8 @@ public:
 
 	void LifeTime();
 
+	void DeleteBullet();
+
 protected:
 	bool _isActive = false;
 	float _speed = 300.0f;

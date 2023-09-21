@@ -13,6 +13,7 @@ public:
 
 	virtual shared_ptr<Transform> GetTransform() override { return _ani->GetTransform(); }
 	virtual shared_ptr<Collider> GetCollider() override { return _collider; }
+	vector<shared_ptr<Bullet>> GetBullets() { return _bullets; }
 
 	void Attack(Vector2 dir);
 	void Fire();

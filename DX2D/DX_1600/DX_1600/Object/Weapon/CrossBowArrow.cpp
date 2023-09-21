@@ -24,12 +24,9 @@ CrossBowArrow::~CrossBowArrow()
 
 void CrossBowArrow::Update()
 {
-	Bullet::LifeTime();
-	if (!_isActive)
-		return;
-	_collider->GetTransform()->AddVector2(_direction * _speed * DELTA_TIME);
-	_collider->Update();
+	Bullet::Update();
 	_transform->Update();
+
 }
 
 void CrossBowArrow::Render()

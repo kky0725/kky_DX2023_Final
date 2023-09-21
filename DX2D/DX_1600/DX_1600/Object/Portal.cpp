@@ -5,33 +5,33 @@ Portal::Portal(PortalDir type)
 	:_type(type)
 {
 	_ani = make_shared<Animation>();
-	_col = make_shared<RectCollider>(Vector2(80.0f, 40.0f));
 
 	_ani->CreateAction(L"Resource/Portal/portalIdle.png", "Resource/Portal/portalIdle.xml", "idle", Vector2(80.0f, 40.0f), Action::Type::LOOP, 0.2f);
 	_ani->CreateAction(L"Resource/Portal/portalStart.png", "Resource/Portal/portalStart.xml", "start", Vector2(80.0f, 40.0f), Action::Type::END, 0.2f, std::bind(&Portal::SetIdle, this));
 	_ani->CreateAction(L"Resource/Portal/portalEnd.png", "Resource/Portal/portalEnd.xml", "end", Vector2(80.0f, 40.0f), Action::Type::END, 0.2f, std::bind(&Portal::OnActive, this));
 
-	_ani->SetParent(_col->GetTransform());
-
-	_col->SetPosition(Vector2(-10000.0f, -10000.0f));
-
 	switch (_type)
 	{
 	case Portal::UP:
-		_col->GetTransform()->SetAngel(0.0f);
-		break;
 	case Portal::DOWN:
-		_col->GetTransform()->SetAngel(0.0f);
+;		_col = make_shared<RectCollider>(Vector2(80.0f, 40.0f));
 		break;
 	case Portal::RIGHT:
-		_col->GetTransform()->SetAngel(PI/2);
+		_col = make_shared<RectCollider>(Vector2(40.0f, 80.0f));
+		_ani->GetTransform()->SetAngel(PI/2);
 		break;
 	case Portal::LEFT:
-		_col->GetTransform()->SetAngel(-PI/2);
+		_col = make_shared<RectCollider>(Vector2(40.0f, 80.0f));
+		_ani->GetTransform()->SetAngel(-PI/2);
 		break;
 	default:
 		break;
 	}
+
+	_ani->SetParent(_col->GetTransform());
+
+	_col->SetPosition(Vector2(-10000.0f, -10000.0f));
+
 }
 
 Portal::~Portal()
@@ -59,7 +59,6 @@ void Portal::ClearScene()
 void Portal::SetIdle()
 {
 	_ani->SetStateIdle();
-	_isOpen = false;
 }
 
 void Portal::OnActive()
@@ -71,6 +70,7 @@ void Portal::OnActive()
 void Portal::OffActive()
 {
 	_isActive = false;
+	_isOpen = false;
 	_ani->SetState((Animation::State)1);
 }
 

@@ -111,10 +111,12 @@ void TileMap::CreateCreature(CreatureType type)
 
 bool TileMap::Block(shared_ptr<Collider> collider, bool monster)
 {
-	if(!_ground)
+	if(_ground == nullptr)
 		return false;
 
 	if (_ground->Block(collider, monster))
 		return true;
+	else
+		return false;
 }
 

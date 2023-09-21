@@ -48,9 +48,14 @@ BattleScene::BattleScene()
 
 	_quad = make_shared<Quad>(L"Resource/UI/Screen.png");
 	_transform = make_shared<Transform>();
-	_transform->SetScale(Vector2(100.0f, 100.0f));
+	_transform->SetScale(Vector2(1000.0f, 1000.0f));
 	_floatBuffer = make_shared<FloatBuffer>();
 	_quad->SetPS(ADD_PS(L"Shader/ScreenPS.hlsl"));
+
+
+	CAMERA->SetTarget(_player->GetTransform());
+	CAMERA->SetLeftBottom(Vector2(-CORRECTION_VALUE_WIDTH - 20.0f, -CORRECTION_VALUE_HEIGHT - 20.0f));
+	CAMERA->SetRightTop(Vector2(MAP_SIZE_X * 40.0f - CORRECTION_VALUE_WIDTH - 20.0f, MAP_SIZE_Y * 40.0f - CORRECTION_VALUE_HEIGHT - 20.0f));
 }
 
 BattleScene::~BattleScene()
@@ -91,13 +96,6 @@ void BattleScene::Update()
 
 void BattleScene::Render()
 {
-	if (_loading)
-	{
-		_floatBuffer->SetPsBuffer(0);
-		_transform->SetBuffer(0);
-		_quad->Render();
-	}
-
 	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
 	{
 		for (shared_ptr<TileMap> tileMap : tileMapY)
@@ -117,6 +115,13 @@ void BattleScene::PostRender()
 	for (auto creature : _creatures)
 		creature->PostRender();
 	_player->PostRender();
+
+	if (_loading)
+	{
+		_floatBuffer->SetPsBuffer(0);
+		_transform->SetBuffer(0);
+		_quad->Render();
+	}
 }
 
 void BattleScene::Block()
@@ -127,6 +132,11 @@ void BattleScene::Block()
 		{
 			if (tileMap->Block(_player->GetFootHold(), false))
 				_player->IsGround();
+			//if (!Inventory::GetInstance()->CurWeapon()->WTIsSword())
+			//	for (auto bullet : dynamic_pointer_cast<Gun>(Inventory::GetInstance()->CurWeapon())->GetBullets())
+			//		if (tileMap->Block(bullet->GetCollider()))
+			//			bullet->SetActive(false);
+
 			for (auto creature : _creatures)
 			{
 				if (creature->IsAtcive())
@@ -186,10 +196,6 @@ void BattleScene::CheckAttack()
 void BattleScene::Init(wstring file)
 {
 	End();
-
-	CAMERA->SetTarget(_player->GetTransform());
-	CAMERA->SetLeftBottom(Vector2(-CORRECTION_VALUE_WIDTH -20.0f, -CORRECTION_VALUE_HEIGHT -20.0f));
-	CAMERA->SetRightTop(Vector2(MAP_SIZE_X * 40.0f -CORRECTION_VALUE_WIDTH - 20.0f, MAP_SIZE_Y * 40.0f -CORRECTION_VALUE_HEIGHT -20.0f));
 
 	_player->UpdateWeapon();
 
@@ -278,18 +284,35 @@ void BattleScene::Init(wstring file)
 	if (_curIndex_x == _oldIndex_x && _curIndex_y == _oldIndex_y)
 	{
 		if (_curIndex_x == 1 && _curIndex_y == 1)
-			_player->SetPosition(Vector2(120.0f -CORRECTION_VALUE_WIDTH, 120.0f - CORRECTION_VALUE_HEIGHT));
+		{
+			_player->SetPosition(Vector2(120.0f - CORRECTION_VALUE_WIDTH, 120.0f - CORRECTION_VALUE_HEIGHT));
+			_loading = false;
+		}
 		return;
 	}
 
 	if (_curIndex_x - _oldIndex_x == 1)
-		_player->SetPosition(_portals[Portal::PortalDir::LEFT]->GetPos() + Vector2(80.0f, 0.0f));
+		_player->SetPosition(_portals[Portal::PortalDir::LEFT]->GetPos() + Vector2(80.0f, -25.0f));
 	else if(_curIndex_x - _oldIndex_x == -1)
-		_player->SetPosition(_portals[Portal::PortalDir::RIGHT]->GetPos() + Vector2(-80.0f, 0.0f));
+		_player->SetPosition(_portals[Portal::PortalDir::RIGHT]->GetPos() + Vector2(-80.0f, -25.0f));
 	else if(_curIndex_y - _oldIndex_y == 1)
 		_player->SetPosition(_portals[Portal::PortalDir::DOWN]->GetPos() + Vector2(0.0f, 80.0f));
 	else if(_curIndex_y - _oldIndex_y == -1)
 		_player->SetPosition(_portals[Portal::PortalDir::UP]->GetPos() + Vector2(0.0f, -80.0f));
+
+	for (auto creature : _creatures)
+		creature->Update();
+
+	for (auto portal : _portals)
+		portal->Update();
+
+	_player->Update();
+
+	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
+	{
+		for (shared_ptr<TileMap> tileMap : tileMapY)
+			tileMap->Update();
+	}
 
 }
 
@@ -341,21 +364,34 @@ void BattleScene::InitBoss()
 	}
 
 	if (_curIndex_x - _oldIndex_x == 1)
-		_player->SetPosition(_portals[Portal::PortalDir::LEFT]->GetPos() + Vector2(80.0f, 0.0f));
+		_player->SetPosition(_portals[Portal::PortalDir::LEFT]->GetPos() + Vector2(80.0f, -25.0f));
 	else if (_curIndex_x - _oldIndex_x == -1)
-		_player->SetPosition(_portals[Portal::PortalDir::RIGHT]->GetPos() + Vector2(-80.0f, 0.0f));
+		_player->SetPosition(_portals[Portal::PortalDir::RIGHT]->GetPos() + Vector2(-80.0f, -25.0f));
 	else if (_curIndex_y - _oldIndex_y == 1)
 		_player->SetPosition(_portals[Portal::PortalDir::DOWN]->GetPos() + Vector2(0.0f, 80.0f));
 	else if (_curIndex_y - _oldIndex_y == -1)
 		_player->SetPosition(_portals[Portal::PortalDir::UP]->GetPos() + Vector2(0.0f, -80.0f));
 
+	_creatures[0]->Update();
+
+	for (auto portal : _portals)
+		portal->Update();
+
+
+	_player->Update();
+
+	for (vector<shared_ptr<TileMap>> tileMapY : _tileMaps)
+	{
+		for (shared_ptr<TileMap> tileMap : tileMapY)
+			tileMap->Update();
+	}
 }
 
 void BattleScene::End()
 {
 	_creatures.resize(0);
 	_player->DeleteBullet();
-	//_loading = true;
+	_loading = true;
 }
 
 void BattleScene::Rest()
@@ -431,12 +467,13 @@ void BattleScene::ReturnHome()
 void BattleScene::Loading()
 {
 	_time += DELTA_TIME;
-	_floatBuffer->_data.value1 = _time;
+	_floatBuffer->_data.value1 = 1.0f - _time/1;
+	_floatBuffer->Update();
 	_transform->Update();
-	if (_time > 5.0f)
+	if (_time > 1.0f)
 	{
 		_time = 0.0f;
 		_loading = false;
+		_player->SetIdle();
 	}
-
 }

@@ -24,6 +24,7 @@ void Bullet::Update()
 		return;
 	_collider->GetTransform()->AddVector2(_direction * _speed * DELTA_TIME);
 	_collider->Update();
+	DeleteBullet();
 }
 
 void Bullet::Render()
@@ -42,5 +43,14 @@ void Bullet::LifeTime()
 	}
 	_time += DELTA_TIME;
 	if (_time > _lifeTime)
+		_isActive = false;
+}
+
+void Bullet::DeleteBullet()
+{
+	if (_collider->GetPos().x < -CORRECTION_VALUE_WIDTH - 20.0f + 120.0f ||
+		_collider->GetPos().x > MAP_SIZE_X * 40.0f - CORRECTION_VALUE_WIDTH - 20.0f - 120.0f||
+		_collider->GetPos().y < -CORRECTION_VALUE_HEIGHT - 20.0f + 120.0f ||
+		_collider->GetPos().y > MAP_SIZE_Y * 40.0f - CORRECTION_VALUE_HEIGHT - 20.0f - 120.0f)
 		_isActive = false;
 }

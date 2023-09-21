@@ -403,3 +403,8 @@ void Player::Rest()
 	_jumpCount = 0;
 	_dashCount = 2;
 }
+
+void Player::SetIdle()
+{
+	_ani->SetStateIdle();
+}
