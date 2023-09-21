@@ -56,6 +56,8 @@ BattleScene::BattleScene()
 	CAMERA->SetTarget(_player->GetTransform());
 	CAMERA->SetLeftBottom(Vector2(-CORRECTION_VALUE_WIDTH - 20.0f, -CORRECTION_VALUE_HEIGHT - 20.0f));
 	CAMERA->SetRightTop(Vector2(MAP_SIZE_X * 40.0f - CORRECTION_VALUE_WIDTH - 20.0f, MAP_SIZE_Y * 40.0f - CORRECTION_VALUE_HEIGHT - 20.0f));
+
+	_cursor = make_shared<ShootingCursor>();
 }
 
 BattleScene::~BattleScene()
@@ -92,6 +94,8 @@ void BattleScene::Update()
 	ChangeScene();
 	ClearCheck();
 	ReturnHome();
+
+	_cursor->Update();
 }
 
 void BattleScene::Render()
@@ -115,6 +119,7 @@ void BattleScene::PostRender()
 	for (auto creature : _creatures)
 		creature->PostRender();
 	_player->PostRender();
+	_cursor->PostRender();
 
 	if (_loading)
 	{

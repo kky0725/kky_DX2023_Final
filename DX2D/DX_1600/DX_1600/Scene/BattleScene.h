@@ -45,4 +45,6 @@ private:
 	shared_ptr<Transform> _transform;
 	shared_ptr<FloatBuffer> _floatBuffer;
 	bool _loading = false;
+
+	shared_ptr<ShootingCursor> _cursor;
 };

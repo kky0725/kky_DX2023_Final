@@ -4,9 +4,9 @@
 Coin::Coin()
 {
 	_ani = make_shared<Animation>();
-	_col = make_shared<CircleCollider>(4.0f);
+	_col = make_shared<CircleCollider>(8.0f);
 
-	_ani->CreateAction(L"Resource/Coin.png", "Resource/Coin.xml", "Coin", Vector2(10.0f, 10.0f));
+	_ani->CreateAction(L"Resource/Coin.png", "Resource/Coin.xml", "Coin", Vector2(20.0f, 20.0f));
 	_ani->SetParent(_col->GetTransform());
 }
 
