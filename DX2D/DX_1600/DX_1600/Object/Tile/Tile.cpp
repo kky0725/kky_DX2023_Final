@@ -110,6 +110,11 @@ bool Tile::TileBlock(shared_ptr<Collider> collider)
 		{
 			scalar *= -1;
 		}
+		else if (_tileType == TileType::PASSABLE)
+		{
+			if (dir.y < 20.0f)
+				return false;
+		}
 
 		fixedPos.y += scalar;
 		break;

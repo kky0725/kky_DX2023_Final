@@ -129,6 +129,7 @@ using namespace Microsoft::WRL;
 //UI
 #include "Object//UI/Button.h"
 #include "Object/UI/HpBar.h"
+#include "Object/UI/ShootingCursor.h"
 
 //Scence
 #include "Scene/Scene.h"
