@@ -28,6 +28,8 @@ void Sound::Add(string key, string file, bool bgm)
 		return;
 
 	SoundInfo info;
+
+	file = "Resource/Sound/" + file;
 	
 	if (bgm)
 		_soundSysyetm->createStream(file.c_str(), FMOD_LOOP_NORMAL, nullptr, &info._sound);
@@ -108,7 +110,7 @@ bool Sound::IsPlaySound(string key)
 		return false;
 
 	bool isPlay = false;
-	_soundMap[key]._channel->isPlaying(IN & isPlay);
+	_soundMap[key]._channel->isPlaying(IN &isPlay);
 
 	return isPlay;
 }

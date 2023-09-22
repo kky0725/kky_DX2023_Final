@@ -10,6 +10,7 @@ public:
 
 	virtual void PostRender();
 
+private:
 	void Block();
 	void CheckAttack();
 
@@ -20,10 +21,10 @@ public:
 
 	void ChangeScene();
 	void ClearCheck();
-
 	void ReturnHome();
-
 	void Loading();
+	void CreateSound();
+
 private:
 	vector<vector<shared_ptr<TileMap>>> _tileMaps;
 

@@ -49,7 +49,8 @@ void Player::Update()
 	SetHpBar();
 	_hpBar->Update();
 	_collider->Update();
-	CheckDamaged();	_slot->Update();
+	CheckDamaged();
+	_slot->Update();
 
 	_ani->Update();
 	_weapon->Update();

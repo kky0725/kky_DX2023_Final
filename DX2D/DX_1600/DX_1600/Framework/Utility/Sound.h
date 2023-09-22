@@ -26,8 +26,6 @@ public:
 	bool IsPlaySound(string key);
 
 private:
-	//static Sound* _instance;
-
 	FMOD::System* _soundSysyetm = nullptr;
 
 	unordered_map<string, SoundInfo> _soundMap;

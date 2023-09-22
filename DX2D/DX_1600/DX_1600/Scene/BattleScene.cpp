@@ -9,6 +9,8 @@
 
 BattleScene::BattleScene()
 {
+	CreateSound();
+
 	for (int i = 0; i < MAP_SIZE_X; i++)
 	{
 		vector<shared_ptr<TileMap>> tileMapY;
@@ -476,4 +478,21 @@ void BattleScene::Loading()
 		_loading = false;
 		_player->SetIdle();
 	}
+}
+
+void BattleScene::CreateSound()
+{
+	SOUND->Add("Town", "0.Town.wav", true);
+	SOUND->Add("Field", "1.JailField.wav", true);
+	SOUND->Add("BossBGM", "1.JailBossn.wav", true);
+	SOUND->Add("Title", "title.wav", true);
+
+	SOUND->Add("Atk", "att-sound2-8.wav");
+	SOUND->Add("Shoot", "bow_crossbow_arrow_shoot_type1_03.wav");
+	SOUND->Add("CrossBow", "crossbow.wav");
+	SOUND->Add("Dead", "dead.wav");
+	SOUND->Add("Open", "OpenInventory.wav");
+	SOUND->Add("Dash", "ui-sound-13-dash.wav");
+
+	//SOUND->Add("key", "file");
 }
