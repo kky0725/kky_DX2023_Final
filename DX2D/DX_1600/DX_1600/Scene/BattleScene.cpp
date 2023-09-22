@@ -489,7 +489,7 @@ void BattleScene::CreateSound()
 {
 	SOUND->Add("Town", "0.Town.wav", true);
 	SOUND->Add("Field", "1.JailField.wav", true);
-	SOUND->Add("BossBGM", "1.JailBossn.wav", true);
+	SOUND->Add("BossBGM", "1.JailBoss.wav", true);
 	SOUND->Add("Title", "title.wav", true);
 
 	SOUND->Add("Atk", "att-sound2-8.wav");
