@@ -136,6 +136,8 @@ void Inventory::Open()
 	if (KEY_DOWN('I'))
 	{
 		_opened = !_opened;
+		if(_opened)
+			SOUND->Play("Open");
 	}
 }
 

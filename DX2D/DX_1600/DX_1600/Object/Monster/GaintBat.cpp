@@ -112,6 +112,11 @@ void GaintBat::TargetOn(Vector2 playerPos)
 	if (_targetOn)
 		return;
 	Vector2 dir = playerPos-_collider->GetTransform()->GetWorldPosition();
+	if (dir.x < 0)
+		_ani->SetLeft();
+	else
+		_ani->SetRight();
+
 	if (dir.Length() < _range)
 	{
 		_ani->SetState(Animation::State::ATK);
@@ -128,6 +133,8 @@ void GaintBat::AttackStart()
 
 int GaintBat::CheckAttack(shared_ptr<Collider> player)
 {
+	if (_ani->GetState() == Animation::State::ATK)
+		return 0;
 	TargetOn(player->GetTransform()->GetWorldPosition());
 
 	for (auto bullet : _bullets)

@@ -170,11 +170,17 @@ void Player::Jump()
 
 	if (KEY_DOWN('W') || KEY_DOWN(VK_SPACE))
 	{
-		if(_ani->GetISGround())
+		if (_ani->GetISGround())
+		{
 			EFFECT_PLAY("Jump", _footHold->GetPos());
+			SOUND->Play("Jump");
+		}
 
-		if(!_ani->GetISGround())
+		if (!_ani->GetISGround())
+		{
 			EFFECT_PLAY("DoubleJump", _footHold->GetPos());
+			SOUND->Play("Jump");
+		}
 
 		_jumpPower = 600.0f;
 		_jumpCount++;
@@ -245,6 +251,7 @@ void Player::Dash()
 		_dashCool = true;
 		//_speed = _dashSpeed;
 		_dashCount--;
+		SOUND->Play("Dash");
 	}
 
 	_dashCountUI->SetCount(_maxDashCount, _dashCount);
@@ -281,6 +288,7 @@ void Player::SwordAtk()
 	{
 		_atkCool = true;
 		_weapon->SetIsActive(true);
+		SOUND->Play("Atk");
 	}
 }
 
@@ -304,6 +312,7 @@ void Player::BowAtk()
 		Vector2 startPos = _collider->GetTransform()->GetWorldPosition();
 		Vector2 dir = W_MOUSE_POS - startPos;
 		dynamic_pointer_cast<Gun>(_weapon)->Attack(dir);
+		SOUND->Play("Shoot");
 	}
 }
 
@@ -388,6 +397,7 @@ void Player::Die()
 		return;
 
 	_ani->SetState(Animation::State::END);
+	SOUND->Play("Dead");
 
 	_time += DELTA_TIME;
 

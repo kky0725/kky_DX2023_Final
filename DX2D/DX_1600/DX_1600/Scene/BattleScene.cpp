@@ -204,6 +204,12 @@ void BattleScene::Init(wstring file)
 {
 	End();
 
+	if(_curIndex_x == 1 && _curIndex_y == 1)
+		SOUND->Play("Town");
+	else
+		SOUND->Play("Field");
+
+
 	_player->UpdateWeapon();
 
 	wstring filePath = L"MapInfo/" + file;
@@ -326,6 +332,8 @@ void BattleScene::Init(wstring file)
 void BattleScene::InitBoss()
 {
 	End();
+
+	SOUND->Play("BossBGM");
 
 	CAMERA->SetTarget(_player->GetTransform());
 
@@ -498,6 +506,7 @@ void BattleScene::CreateSound()
 	SOUND->Add("Dead", "dead.wav");
 	SOUND->Add("Open", "OpenInventory.wav");
 	SOUND->Add("Dash", "ui-sound-13-dash.wav");
+	SOUND->Add("Jump", "Jumping.wav");
 
 	//SOUND->Add("key", "file");
 }

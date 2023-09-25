@@ -26,7 +26,7 @@ Creature::Creature(float radius)
 
 	_hpBar->SetParent(_collider->GetTransform());
 
-	int count = MyMath::RandomInt(2, 3);
+	int count = MyMath::RandomInt(1, 3);
 	for (int i = 0; i < count; i++)
 	{
 		shared_ptr<Coin> coin = make_shared<Coin>();

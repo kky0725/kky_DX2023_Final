@@ -39,5 +39,5 @@ void BatBullet::Summon(Vector2 startPos, Vector2 dir)
 
 void BatBullet::Shoot()
 {
-	_speed = 200.0f;
+	_speed = 300.0f;
 }
