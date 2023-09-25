@@ -16,7 +16,7 @@ Player::Player()
 
 	_hpBar = make_shared<PlayerHpBar>();
 
-	_maxHp = 500;
+	_maxHp = 50;
 	_curHp = _maxHp;
 
 	_footHold = make_shared<CircleCollider>(12.0f);
@@ -222,7 +222,6 @@ void Player::Dash()
 		{
 			_dashCool = false;
 			_dashTime = 0.0f;
-			//_speed = 200.0f;
 		}
 	}
 
@@ -245,11 +244,9 @@ void Player::Dash()
 	if (_dashCount == 0)
 		return;
 
-	//if (KEY_DOWN(VK_RBUTTON) && !_dashCool)
 	if (KEY_DOWN(VK_XBUTTON2) && !_dashCool)
 	{
 		_dashCool = true;
-		//_speed = _dashSpeed;
 		_dashCount--;
 		SOUND->Play("Dash");
 	}
@@ -397,12 +394,12 @@ void Player::Die()
 		return;
 
 	_ani->SetState(Animation::State::END);
-	SOUND->Play("Dead");
 
 	_time += DELTA_TIME;
 
 	if (_time > 5.0f)
 		_end = true;
+
 }
 
 void Player::Rest()

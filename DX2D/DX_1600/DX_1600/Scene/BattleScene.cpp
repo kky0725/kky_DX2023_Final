@@ -204,10 +204,18 @@ void BattleScene::Init(wstring file)
 {
 	End();
 
-	if(_curIndex_x == 1 && _curIndex_y == 1)
+	if (_curIndex_x == 1 && _curIndex_y == 1)
+	{
 		SOUND->Play("Town");
+		SOUND->Stop("Field");
+		SOUND->Stop("BossBGM");
+	}
 	else
+	{
 		SOUND->Play("Field");
+		SOUND->Stop("Town");
+		SOUND->Stop("BossBGM");
+	}
 
 
 	_player->UpdateWeapon();
@@ -334,6 +342,7 @@ void BattleScene::InitBoss()
 	End();
 
 	SOUND->Play("BossBGM");
+	SOUND->Stop("Field");
 
 	CAMERA->SetTarget(_player->GetTransform());
 
